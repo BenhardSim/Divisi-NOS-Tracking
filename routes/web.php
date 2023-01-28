@@ -23,8 +23,8 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view("about", [
         "title" => "about",
-        "name" => "Benhard Simanullang",
-        "email" => "benhard.master.j@gmail.com",
+        "name" => ["Benhard Simanullang", "Julius Adrian"],
+        "email" => ["benhard.master.j@gmail.com", "juliusa368@gmail.com"],
         "image" => "nanami-mami.png"
     ]);
 });

@@ -15,12 +15,12 @@
         </div>
       @endif
       
-      <main class="form-signin w-100 m-auto">
-          <h1 class="h3 mb-3 fw-normal text-center">Please log in</h1>
+      <main class="form-signin w-100 m-auto bg-white rounded p-5">
+          <h1 class="h3 mb-3 fw-normal text-center">Please Log In</h1>
           <form method="POST" action="/login">
             @csrf
             <div class="d-flex justify-content-center">
-              <img class="mb-4" src="https://karedok.net/old/files/u1/laravel-logo.jpg" alt="" width="136" height="57">
+              <img class="mb-4" src="img/logo-telkomsel-baru.png" alt="" width="136" height="57">
             </div>
         
             <div class="form-floating">
