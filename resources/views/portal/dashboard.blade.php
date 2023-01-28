@@ -2,10 +2,10 @@
 
 @section('container')
 
-    <div class="mt-4 navbar d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <div class="mt-4 navbar d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
         {{-- <h1 class="h2 mt-4">Welcome back, {{ auth()->user()->name }}</h1> --}}
         <div class="header-title">
-            <h1 class="h2 ">NOS Portal | Dashboard</h1>
+            <h3 class="" style="font-weight: normal;">NOS Portal | Dashboard</h3>
         </div>
         <div class="profile-pic">
             <span style="width:36px;height:36px;" data-feather="circle" class="align-text-bottom"></span>
