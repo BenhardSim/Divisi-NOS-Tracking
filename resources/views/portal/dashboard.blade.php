@@ -123,6 +123,15 @@
         </div>
     </section>
     
+    <div class="container rvc-stat mb-5">
+        <div class="rvc-title">
+            <h5>Opex</h5>
+        </div>
+        <div class="rvc-graph">
+            <canvas id="opex_main"></canvas>
+        </div>
+    </div>
+
 @endsection
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 <script src="js/stat.js"></script>
@@ -285,4 +294,35 @@
     };
 
     new Chart(costbbm_main, costbbm_mainconfig);
+
+    const opex_main = document.getElementById('opex_main').getContext('2d');
+    //const labels = Utils.months({count: 7});
+    const opex_maindata = {
+        labels: ['Absorption', 'Accrue', 'Available'],
+        datasets: [
+        {
+        label: ['Data OPEX'],
+        data: [90, 50, 18],
+        backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)'
+        ],
+        hoverOffset: 4
+        },
+    ]
+    };
+    const opex_mainconfig = {
+        type: 'pie',
+        data: opex_maindata,
+        options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+        }
+    };
+
+    new Chart(opex_main, opex_mainconfig);
 </script>
