@@ -16,85 +16,6 @@
             </form>
         </div>
     </div>
-    <div>
-        <canvas id="myCharts"></canvas>
-    </div>
-    <div>
-        <canvas id="myCharts2"></canvas>
-    </div>
-@endsection
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module">
-        const ctx = document.getElementById('myCharts').getContext('2d');
-        //const labels = Utils.months({count: 7});
-        const data = {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
-            datasets: [
-            {
-            label: ['PS'],
-            data: [120000, 50000, 75000, 22000, 12500, 55000, 40000, 100000, 110000, 120500, 140000, 125000],
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1
-            },
-            {
-            label: ['RM'],
-            data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
-            fill: false,
-            borderColor: 'rgb(255, 192, 192)',
-            tension: 0.1
-            }
-        ]
-        };
-        const config = {
-            type: 'line',
-            data: data,
-            options: {
-                scales: {
-                    y: {
-                    beginAtZero: true
-                    }
-                }
-            }
-        };
-
-        new Chart(ctx, config);
-
-        const ctx2 = document.getElementById('myCharts2').getContext('2d');
-        //const labels = Utils.months({count: 7});
-        const data2 = {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-            datasets: [
-            {
-            label: ['My First Dataset'],
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1
-            },
-            {
-            label: ['My Second Dataset'],
-            data: [65, 59, 85, 81, 56, 55, 40],
-            fill: false,
-            borderColor: 'rgb(255, 192, 192)',
-            tension: 0.1
-            }
-        ]
-        };
-        const config2 = {
-            type: 'line',
-            data: data2,
-            options: {
-                scales: {
-                    y: {
-                    beginAtZero: true
-                    }
-                }
-            }
-        };
-
-        new Chart(ctx2, config);
-    </script>
     {{-- site box --}}
     <div class="row">
         <div class="col-lg col-sm">
@@ -228,4 +149,99 @@
 
     <br><br><br>
 
+    <div class="container rvc-stat mb-5">
+        <div class="rvc-title">
+            <h5>Reserved Varcost</h5>
+        </div>
+        <div class="rvc-graph">
+            <canvas id="varcost_main"></canvas>
+        </div>
+    </div>
+
+    <div class="container rvc-stat mb-5">
+        <div class="rvc-title">
+            <h5>Cost BBM</h5>
+        </div>
+        <div class="rvc-graph">
+            <canvas id="costbbm_main"></canvas>
+        </div>
+    </div>
 @endsection
+<script type="module">
+    const varcost_main = document.getElementById('varcost_main').getContext('2d');
+    //const labels = Utils.months({count: 7});
+    const varcost_maindata = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        datasets: [
+        {
+        label: ['PS'],
+        data: [120000, 50000, 75000, 22000, 12500, 55000, 40000, 100000, 110000, 120500, 140000, 125000],
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
+        },
+        {
+        label: ['RM'],
+        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        fill: false,
+        borderColor: 'rgb(255, 192, 192)',
+        tension: 0.1
+        }
+    ]
+    };
+    const varcost_mainconfig = {
+        type: 'line',
+        data: varcost_maindata,
+        options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+        }
+    };
+
+    new Chart(varcost_main, varcost_mainconfig);
+
+    const costbbm_main = document.getElementById('costbbm_main').getContext('2d');
+    //const labels = Utils.months({count: 7});
+    const costbbm_maindata = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        datasets: [
+        {
+        label: ['Cost (dalam ribuan rupiah)'],
+        data: [65, 59, 80, 81, 56, 55, 40],
+        fill: false,
+        borderColor: 'rgb(100, 100, 255)',
+        tension: 0.1
+        },
+        {
+        label: ['Lama Pemakaian (bulan)'],
+        data: [12, 10, 32, 30, 12, 11, 10],
+        fill: false,
+        borderColor: 'rgb(100, 255, 100)',
+        tension: 0.1
+        },
+        {
+        label: ['BBM (Liter)'],
+        data: [10, 12, 34, 77, 34, 21, 22],
+        fill: false,
+        borderColor: 'rgb(255, 100, 100)',
+        tension: 0.1
+        }
+    ]
+    };
+    const costbbm_mainconfig = {
+        type: 'line',
+        data: costbbm_maindata,
+        options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+        }
+    };
+
+    new Chart(costbbm_main, costbbm_mainconfig);
+</script>
