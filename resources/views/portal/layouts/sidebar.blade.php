@@ -11,8 +11,14 @@
             Dashboard
           </a>
         </li>
-        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('dashboard/upload*') ? '#5B8FB9' : '' }} ">
-          <a class="nav-link text-white" href="/dashboard/upload">
+        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('upload-dokumen') ? '#5B8FB9' : '' }} ">
+          <a class="nav-link text-white"  href="/upload-dokumen">
+            <span style="color: #EB3223" data-feather="upload" class="align-text-bottom"></span>
+            Upload Dokumen
+          </a> 
+        </li>
+        <li class="nav-item pt-2 pb-2">
+          <a class="nav-link {{ Request::is('dashboard/upload*') ? 'active' : ' text-white ' }}" href="/dashboard/upload">
             <span style="color: #EB3223" data-feather="upload" class="align-text-bottom"></span>
             Upload Data
           </a> 

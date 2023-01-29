@@ -71,102 +71,58 @@
     </div>
     <br><br><br>
 
-    {{-- chart revenue vs cost regional  --}}
+    <section class="row">
+        {{-- chart revenue vs cost regional  --}}
 
-    <div class="container rvc-stat">
-        <div class="rvc-title">
-            <h5>Revenue Vs Cost Regional</h5>
+        <div class="col-lg-6">
+            <div class="container rvc-stat shadow">
+                <div class="rvc-title">
+                    <h5>Revenue Vs Cost Regional</h5>
+                </div>
+                <div class="rvc-graph">
+                    <canvas id="revenue_main"></canvas>
+                </div>
+            </div>
         </div>
-        <div class="rvc-graph">
-            <canvas id="myChart"></canvas>
-        </div>
-    </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
-    <script>
-        let ctx = document.getElementById('myChart');
-        let labels = Utils.months({count: 7});
-        let data = {
-        labels: labels,
-        datasets: [{
-            label: 'My First Dataset',
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1
-        }]
-        };
 
-        let config = {
-            type: 'line',
-            data: data,
-            options: {
-                maintainAspectRatio: false,
+        {{-- profit loss regional   --}}
+        <div class="col-lg-6">
+            <div class="container rvc-stat shadow">
+                <div class="rvc-title">
+                    <h5>Profit Loss Regional</h5>
+                </div>
+                <div class="rvc-graph">
+                    <canvas id="profitloss_main"></canvas>
+                </div>
+            </div>
+        </div>
 
-            }
-        };
-        new Chart(ctx, config);
-    </script>
+        {{-- Reserved Varcost   --}}
+        <div class="col-lg-6">
+            <div class="container rvc-stat mb-5 shadow">
+                <div class="rvc-title">
+                    <h5>Reserved Varcost</h5>
+                </div>
+                <div class="rvc-graph">
+                    <canvas id="varcost_main"></canvas>
+                </div>
+            </div>
+        </div>
 
-    <br><br><br>
+        {{-- Cost BBM --}}
+        <div class="col-lg-6">
+            <div class="container rvc-stat mb-5 shadow">
+                <div class="rvc-title">
+                    <h5>Cost BBM</h5>
+                </div>
+                <div class="rvc-graph">
+                    <canvas id="costbbm_main"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    {{-- chart revenue vs cost regional  --}}
-
-    <div class="container rvc-stat">
-        <div class="rvc-title">
-            <h5>Revenue Vs Cost Regional</h5>
-        </div>
-        <div class="rvc-graph">
-            <canvas id="myChart-2"></canvas>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
-    <script>
-        let ctx2 = document.getElementById('myChart-2');
-        let labels = Utils.months({count: 7});
-        let data = {
-        labels: labels,
-        datasets: [{
-            label: 'My First Dataset',
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1
-        }]
-        };
-
-        let config = {
-            type: 'line',
-            data: data,
-            options: {
-                maintainAspectRatio: false,
-
-            }
-        };
-        new Chart(ctx2, config);
-    </script>
-
-    <br><br><br>
-
-    <div class="container rvc-stat mb-5">
-        <div class="rvc-title">
-            <h5>Reserved Varcost</h5>
-        </div>
-        <div class="rvc-graph">
-            <canvas id="varcost_main"></canvas>
-        </div>
-    </div>
-
-    <div class="container rvc-stat mb-5">
-        <div class="rvc-title">
-            <h5>Cost BBM</h5>
-        </div>
-        <div class="rvc-graph">
-            <canvas id="costbbm_main"></canvas>
-        </div>
-    </div>
-
     <div class="container rvc-stat mb-5">
         <div class="rvc-title">
             <h5>Opex</h5>
@@ -177,7 +133,91 @@
     </div>
 
 @endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<script src="js/stat.js"></script>
 <script type="module">
+
+    // grafik revenue vs cost
+
+    const revvcost_main = document.getElementById('revenue_main').getContext('2d');
+    //const labels = Utils.months({count: 7});
+    const revvcost_mainData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        datasets: [
+        {
+        label: ['Revenue'],
+        data: [120000, 122000, 123000, 123000, 122000, 124000, 160000, 130000, 122000, 124000, 123000, 123000],
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
+        },
+        {
+        label: ['Cost'],
+        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        fill: false,
+        borderColor: 'rgb(255, 192, 192)',
+        tension: 0.1
+        }
+    ]
+    };
+    const revvcost_mainConfig = {
+        type: 'line',
+        data: revvcost_mainData,
+        options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+        }
+    };
+
+    new Chart(revvcost_main, revvcost_mainConfig);
+
+    // site profit loss regional 
+
+    const profitloss_main = document.getElementById('profitloss_main').getContext('2d');
+    //const labels = Utils.months({count: 7});  
+    const profitloss_mainData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        datasets: [
+        {
+            label: 'High Profit',
+            data: [1000, 1030, 1010 ,1010 ,1020, 1050, 1030, 1020, 1000, 1020, 1040, 1030, 1020],
+            backgroundColor: '#22aa99'
+        },
+        {
+            label: 'Profit',
+            data: [110, 100, 105 ,110 ,90, 100, 90, 105, 110, 110, 100, 110, 100],
+            backgroundColor: '#994499'
+        },
+        {
+            label: 'Loss',
+            data: [10, 13,12 ,11 ,10, 10, 13, 12, 10, 10, 140, 10, 10],
+            backgroundColor: '#316395'
+        },
+        ]
+    };
+    const profitloss_mainConfig = {
+        type: 'bar',
+        data: profitloss_mainData,
+        options: {
+            legend: {
+                position: 'top' // place legend on the right side of chart
+            },
+             scales: {
+                xAxes: [{
+                  stacked: true // this should be set to make the bars stacked
+                }],
+                 yAxes: [{
+                   stacked: true // this also..
+                }]
+            }
+        }
+    };
+
+    new Chart(profitloss_main, profitloss_mainConfig);
+
     const varcost_main = document.getElementById('varcost_main').getContext('2d');
     //const labels = Utils.months({count: 7});
     const varcost_maindata = {
