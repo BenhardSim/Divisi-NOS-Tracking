@@ -53,10 +53,6 @@
               Document Tracking
             </a>
         </li>
-      </ul>
-      
-      <div class="mt-5">
-      <ul class="nav flex-column">
         <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('dashboard/setting*') ? '#5B8FB9' : '' }} ">
           <a class="nav-link text-white" aria-current="page" href="/dashboard/setting">
             <span style="color: #EB3223" data-feather="settings" class="align-text-bottom"></span>
@@ -70,7 +66,7 @@
           </a>
         </li>
       </ul>
-      </div>
+>
 
       @can('admin')
       <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
