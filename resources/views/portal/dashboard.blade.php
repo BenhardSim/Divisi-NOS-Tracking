@@ -16,7 +16,14 @@
             </form>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <div>
+        <canvas id="myCharts"></canvas>
+    </div>
+    <div>
+        <canvas id="myCharts2"></canvas>
+    </div>
+@endsection
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module">
         const ctx = document.getElementById('myCharts').getContext('2d');
         //const labels = Utils.months({count: 7});
