@@ -24,7 +24,7 @@
                     <h4>SITE ALL</h4>
                 </div>
                 <div class="site-total">
-                    <h1>100</h1>
+                    <h1 style="font-weight: normal;">100</h1>
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
                     <h4>SITE TP</h4>
                 </div>
                 <div class="site-total">
-                    <h1>100</h1>
+                    <h1 style="font-weight: normal;">100</h1>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                     <h4>SITE TELKOM</h4>
                 </div>
                 <div class="site-total">
-                    <h1>100</h1>
+                    <h1 style="font-weight: normal;">100</h1>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
                     <h4>SITE TELKOMSEL</h4>
                 </div>
                 <div class="site-total">
-                    <h1>100</h1>
+                    <h1 style="font-weight: normal;">100</h1>
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
                     <h4>SITE RESELLER</h4>
                 </div>
                 <div class="site-total">
-                    <h1>100</h1>
+                    <h1 style="font-weight: normal;">100</h1>
                 </div>
             </div>
         </div>
@@ -326,13 +326,13 @@
     const opex_mainconfig = {
         type: 'pie',
         data: opex_maindata,
-        options: {
-            scales: {
-                y: {
-                beginAtZero: true
-                }
-            }
-        }
+        // options: {
+        //     scales: {
+        //         y: {
+        //         beginAtZero: true
+        //         }
+        //     }
+        // }
     };
 
     new Chart(opex_main, opex_mainconfig);

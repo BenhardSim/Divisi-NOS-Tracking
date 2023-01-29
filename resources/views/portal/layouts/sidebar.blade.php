@@ -17,60 +17,56 @@
             Upload Dokumen
           </a> 
         </li>
-        <li class="nav-item pt-2 pb-2">
-          <a class="nav-link {{ Request::is('dashboard/upload*') ? 'active' : ' text-white ' }}" href="/dashboard/upload">
+        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('upload-data*') ? '#5B8FB9' : '' }} ">
+          <a class="nav-link text-white" href="/upload-data">
             <span style="color: #EB3223" data-feather="upload" class="align-text-bottom"></span>
             Upload Data
           </a> 
         </li>
-        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('dashboard/tagging*') ? '#5B8FB9' : '' }} ">
-            <a class="nav-link text-white" href="/dashboard/tagging">
+        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('tagging*') ? '#5B8FB9' : '' }} ">
+            <a class="nav-link text-white" href="/tagging">
               <span style="color: #EB3223" data-feather="tag" class="align-text-bottom"></span>
               Tagging Asset
             </a>
         </li>
-        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('dashboard/control*') ? '#5B8FB9' : '' }} ">
-            <a class="nav-link text-white" href="/dashboard/control">
+        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('control*') ? '#5B8FB9' : '' }} ">
+            <a class="nav-link text-white" href="/control">
               <span style="color: #EB3223" data-feather="file-text" class="align-text-bottom"></span>
               Control Document
             </a>
         </li>
-        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('dashboard/numbering*') ? '#5B8FB9' : '' }} ">
-            <a class="nav-link text-white" href="/dashboard/numbering">
+        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('numbering*') ? '#5B8FB9' : '' }} ">
+            <a class="nav-link text-white" href="/numbering">
               <span style="color: #EB3223" data-feather="hash" class="align-text-bottom"></span>
               Numbering Document
             </a>
         </li>
-        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('dashboard/contract*') ? '#5B8FB9' : '' }} ">
-            <a class="nav-link text-white" href="/dashboard/contract">
+        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('contract*') ? '#5B8FB9' : '' }} ">
+            <a class="nav-link text-white" href="/contract">
               <span style="color: #EB3223" data-feather="pen-tool" class="align-text-bottom"></span>
               Contract TP
             </a>
         </li>
-        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('dashboard/tracking*') ? '#5B8FB9' : '' }} ">
-            <a class="nav-link text-white" href="/dashboard/tracking">
+        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('tracking*') ? '#5B8FB9' : '' }} ">
+            <a class="nav-link text-white" href="/tracking">
               <span style="color: #EB3223" data-feather="activity" class="align-text-bottom"></span>
               Document Tracking
             </a>
         </li>
-      </ul>
-      
-      <div class="mt-5">
-      <ul class="nav flex-column">
-        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('dashboard/setting*') ? '#5B8FB9' : '' }} ">
-          <a class="nav-link text-white" aria-current="page" href="/dashboard/setting">
+        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('/setting*') ? '#5B8FB9' : '' }} ">
+          <a class="nav-link text-white" aria-current="page" href="/setting">
             <span style="color: #EB3223" data-feather="settings" class="align-text-bottom"></span>
             Setting
           </a>
         </li>
-        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('dashboard/history*') ? '#5B8FB9' : '' }} ">
-          <a class="nav-link text-white" href="/dashboard/history">
+        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('history*') ? '#5B8FB9' : '' }} ">
+          <a class="nav-link text-white" href="/history">
             <span style="color: #EB3223" data-feather="clock" class="align-text-bottom"></span>
             History
           </a>
         </li>
       </ul>
-      </div>
+>
 
       @can('admin')
       <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -79,7 +75,7 @@
 
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : ' text-white" href="/dashboard/categories">
+          <a class="nav-link {{ Request::is('categories*') ? 'active' : ' text-white" href="/categories">
             <span data-feather="grid" class="align-text-bottom"></span>
             Post Categories
           </a>
