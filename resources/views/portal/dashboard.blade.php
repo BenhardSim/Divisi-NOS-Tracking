@@ -326,13 +326,13 @@
     const opex_mainconfig = {
         type: 'pie',
         data: opex_maindata,
-        options: {
-            scales: {
-                y: {
-                beginAtZero: true
-                }
-            }
-        }
+        // options: {
+        //     scales: {
+        //         y: {
+        //         beginAtZero: true
+        //         }
+        //     }
+        // }
     };
 
     new Chart(opex_main, opex_mainconfig);
