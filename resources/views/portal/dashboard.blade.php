@@ -100,7 +100,7 @@
 
         {{-- Reserved Varcost   --}}
         <div class="col-lg-6">
-            <div class="container rvc-stat mb-5 shadow">
+            <div class="container rvc-stat shadow">
                 <div class="rvc-title">
                     <h5>Reserved Varcost</h5>
                 </div>
@@ -112,7 +112,7 @@
 
         {{-- Cost BBM --}}
         <div class="col-lg-6">
-            <div class="container rvc-stat mb-5 shadow">
+            <div class="container rvc-stat shadow">
                 <div class="rvc-title">
                     <h5>Cost BBM</h5>
                 </div>
@@ -121,20 +121,25 @@
                 </div>
             </div>
         </div>
+
+        {{-- opex donut chart --}}
+        <div class="col-lg-6">
+            <div class="container rvc-stat shadow">
+                <div class="rvc-title">
+                    <h5>Opex</h5>
+                </div>
+                <div class="rvc-graph">
+                    <canvas id="opex_main"></canvas>
+                </div>
+            </div>
+        </div>
+
     </section>
     
-    <div class="container rvc-stat mb-5">
-        <div class="rvc-title">
-            <h5>Opex</h5>
-        </div>
-        <div class="rvc-graph">
-            <canvas id="opex_main"></canvas>
-        </div>
-    </div>
+    
 
 @endsection
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-<script src="js/stat.js"></script>
 <script type="module">
 
     // grafik revenue vs cost
@@ -218,6 +223,8 @@
 
     new Chart(profitloss_main, profitloss_mainConfig);
 
+    // varcost graph
+
     const varcost_main = document.getElementById('varcost_main').getContext('2d');
     //const labels = Utils.months({count: 7});
     const varcost_maindata = {
@@ -252,6 +259,8 @@
     };
 
     new Chart(varcost_main, varcost_mainconfig);
+
+    // cost BBM
 
     const costbbm_main = document.getElementById('costbbm_main').getContext('2d');
     //const labels = Utils.months({count: 7});
@@ -294,6 +303,8 @@
     };
 
     new Chart(costbbm_main, costbbm_mainconfig);
+
+    // OPEX
 
     const opex_main = document.getElementById('opex_main').getContext('2d');
     //const labels = Utils.months({count: 7});
