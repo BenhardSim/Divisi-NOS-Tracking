@@ -28,18 +28,18 @@
         const ctx = document.getElementById('myCharts').getContext('2d');
         //const labels = Utils.months({count: 7});
         const data = {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
             datasets: [
             {
-            label: ['My First Dataset'],
-            data: [65, 59, 80, 81, 56, 55, 40],
+            label: ['PS'],
+            data: [120000, 50000, 75000, 22000, 12500, 55000, 40000, 100000, 110000, 120500, 140000, 125000],
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
             tension: 0.1
             },
             {
-            label: ['My Second Dataset'],
-            data: [65, 59, 85, 81, 56, 55, 40],
+            label: ['RM'],
+            data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
             fill: false,
             borderColor: 'rgb(255, 192, 192)',
             tension: 0.1
@@ -83,7 +83,7 @@
         };
         const config2 = {
             type: 'line',
-            data: data,
+            data: data2,
             options: {
                 scales: {
                     y: {
