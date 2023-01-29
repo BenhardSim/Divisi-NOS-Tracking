@@ -1,6 +1,6 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-    <div class="position-sticky pt-3 sidebar-sticky">
-      <div style="text-align: center">
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse" style="position: sticky; height:100vh">
+    <div class="position-sticky sidebar-sticky">
+      <div style="text-align: left">
         <a class="" href="#"><img width="80%"  src="img/logo-telkomsel-baru.png" alt=""></a>
       </div>
       

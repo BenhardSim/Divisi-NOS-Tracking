@@ -15,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view("home", [
-        "title" => "home"
-    ]);
+    // return view("home", [
+    //     "title" => "home"
+    // ]);
+
+    return redirect()->intended('/login');
 });
 
 Route::get('/about', function () {
