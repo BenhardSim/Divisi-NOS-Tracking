@@ -174,17 +174,17 @@
         datasets: [
         {
             label: 'High Profit',
-            data: [1000, 1030, ,1010 ,1020, 1050, 1030, 1020, 1000, 1020, 1040, 1030, 1020],
+            data: [1000, 1030, 1010 ,1010 ,1020, 1050, 1030, 1020, 1000, 1020, 1040, 1030, 1020],
             backgroundColor: '#22aa99'
         },
         {
             label: 'Profit',
-            data: [110, 100, ,110 ,90, 100, 90, 105, 110, 110, 100, 110, 100],
+            data: [110, 100, 105 ,110 ,90, 100, 90, 105, 110, 110, 100, 110, 100],
             backgroundColor: '#994499'
         },
         {
             label: 'Loss',
-            data: [10, 13, ,11 ,10, 10, 13, 12, 10, 10, 140, 10, 10],
+            data: [10, 13,12 ,11 ,10, 10, 13, 12, 10, 10, 140, 10, 10],
             backgroundColor: '#316395'
         },
         ]
@@ -194,7 +194,7 @@
         data: profitloss_mainData,
         options: {
             legend: {
-                position: 'right' // place legend on the right side of chart
+                position: 'top' // place legend on the right side of chart
             },
              scales: {
                 xAxes: [{

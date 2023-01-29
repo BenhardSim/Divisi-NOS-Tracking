@@ -38,3 +38,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/dashboard', function(){
     return view('portal.dashboard');
 })->middleware('auth');
+
+Route::get('/upload-dokumen', function(){
+    return view('portal.upDokumen');
+})->middleware('auth');
