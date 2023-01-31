@@ -24,7 +24,7 @@
                     <h4>SITE ALL</h4>
                 </div>
                 <div class="site-total">
-                    <h1 style="font-weight: normal;">100</h1>
+                    <h1 style="font-weight: normal;">{{ $site_all }}</h1>
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
                     <h4>SITE TP</h4>
                 </div>
                 <div class="site-total">
-                    <h1 style="font-weight: normal;">100</h1>
+                    <h1 style="font-weight: normal;">{{ $site_tp }}</h1>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                     <h4>SITE TELKOM</h4>
                 </div>
                 <div class="site-total">
-                    <h1 style="font-weight: normal;">100</h1>
+                    <h1 style="font-weight: normal;">{{ $site_telkom }}</h1>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
                     <h4>SITE TELKOMSEL</h4>
                 </div>
                 <div class="site-total">
-                    <h1 style="font-weight: normal;">100</h1>
+                    <h1 style="font-weight: normal;">{{ $site_telkomsel }}</h1>
                 </div>
             </div>
         </div>
@@ -123,7 +123,7 @@
         </div>
 
         {{-- opex donut chart --}}
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title">
                     <h5>Opex</h5>
