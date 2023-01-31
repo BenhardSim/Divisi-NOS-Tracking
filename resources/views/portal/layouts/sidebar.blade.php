@@ -53,7 +53,7 @@
               Document Tracking
             </a>
         </li>
-        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('/setting*') ? '#5B8FB9' : '' }} ">
+        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('setting*') ? '#5B8FB9' : '' }} ">
           <a class="nav-link text-white" aria-current="page" href="/setting">
             <span style="color: #EB3223" data-feather="settings" class="align-text-bottom"></span>
             Setting
