@@ -123,7 +123,7 @@
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title">
-                    <h5>Cost BBM</h5>
+                    <a href="/bbm" class="links text-white"><h5>Cost BBM</h5></a>
                 </div>
                 <div class="rvc-graph">
                     <canvas id="costbbm_main"></canvas>
