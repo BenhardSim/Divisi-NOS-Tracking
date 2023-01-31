@@ -49,3 +49,5 @@ Route::get('/upload-dokumen', function(){
     return view('portal.upDokumen');
 })->middleware('auth');
 
+Route::get('/bbm', [DashboardController::class, 'indexBBM'])->middleware('auth');
+

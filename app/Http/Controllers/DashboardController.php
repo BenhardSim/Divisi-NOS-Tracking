@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\siteprofile;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class DashboardController extends Controller
 {
@@ -87,5 +89,11 @@ class DashboardController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function indexBBM(){
+        return view('portal.component.bbm_list', [
+            "site_all" => siteprofile::paginate(10)
+        ]);
     }
 }
