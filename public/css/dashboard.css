@@ -32,12 +32,18 @@ body {
   background: #d91b0a; 
 }
 
+
 /*
  * Sidebar
  */
 
 #sidebarMenu {
     background-color: #03001c;
+    transition: all .2s ease
+}
+
+#sidebarMenu li:hover{
+    background-color: #5B8FB9;
 }
 
 .sidebar {
@@ -185,6 +191,11 @@ body {
     border-radius: 10px;
     /* border: #03001c 1px solid; */
     margin: 10px;
+    transition: all 0.2s ease;
+}
+
+.rvc-stat:hover{
+    transform: scale(1.03);
 }
 
 .rvc-title {
