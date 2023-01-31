@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
@@ -36,9 +37,11 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/dashboard', function(){
-    return view('portal.dashboard');
-})->middleware('auth');
+// Route::get('/dashboard', function(){
+//     return view('portal.dashboard');
+// })->middleware('auth');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('/setting', [SettingController::class, 'index'])->middleware('auth');
 Route::put('/setting', [SettingController::class, 'update'])->middleware('auth');
