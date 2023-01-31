@@ -69,7 +69,16 @@
             </div>
         </div>
     </div>
-    <br><br><br>
+
+    <br>
+    
+    <div class="form-group container">
+       <form action="">
+           <input class="form-control" id="exampleFormControlInput1" placeholder="Search By Site ID">
+           
+       </form>
+    </div>
+
 
     <section class="row">
         {{-- chart revenue vs cost regional  --}}

@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SitesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 // })->middleware('auth');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/site-all', [SitesController::class, 'index'])->middleware('auth');
 
 Route::get('/setting', [SettingController::class, 'index'])->middleware('auth');
 Route::put('/setting', [SettingController::class, 'update'])->middleware('auth');
