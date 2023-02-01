@@ -58,6 +58,10 @@ Route::get('/upload-dokumen', function(){
 })->middleware('auth');
 
 Route::get('/bbm', [DashboardController::class, 'indexBBM'])->middleware('auth');
+Route::get('/rvc', [DashboardController::class, 'indexRVC'])->middleware('auth');
+Route::get('/pl', [DashboardController::class, 'indexPL'])->middleware('auth');
+Route::get('/opex', [DashboardController::class, 'indexOPEX'])->middleware('auth');
+Route::get('/rv', [DashboardController::class, 'indexRV'])->middleware('auth');
 
 Route::get('/search', [SitesController::class, 'searchSites'])->middleware('auth');
 
