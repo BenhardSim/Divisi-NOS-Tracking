@@ -1,3 +1,9 @@
+<div class="form-group container">
+  <form action="{{ url('/search') }}" method="GET" role="search" >
+      <input value="" name="search" class="form-control" id="exampleFormControlInput1" placeholder="Search By Site ID">
+  </form>
+</div>
+<br>
 <div class="container con-tbl px-2">
     <table class="table table-hover" >
         <thead>

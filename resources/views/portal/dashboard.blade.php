@@ -80,11 +80,12 @@
 
     <br>
     
-    <div class="form-group container">
-       <form action="">
-           <input class="form-control" id="exampleFormControlInput1" placeholder="Search By Site ID">
+    {{-- search bar --}}
 
-       </form>
+    <div class="form-group container">
+        <form action="{{ url('/search') }}" method="GET" role="search" >
+            <input value="" name="search" class="form-control" id="exampleFormControlInput1" placeholder="Search By Site ID">
+        </form>
     </div>
 
 
