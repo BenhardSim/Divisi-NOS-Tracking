@@ -19,36 +19,43 @@
     {{-- site box --}}
     <div class="row">
         <div class="col-lg col-sm">
-            <div class="sites">
-                <div class="site-title">
-                    <h4>SITE ALL</h4>
+            <a href="/site-all" style="text-decoration: none;">
+                <div class="sites">
+                    <div class="site-title">
+                        <h4>SITE ALL</h4>
+                    </div>
+                    <div class="site-total">
+                        <h1 style="font-weight: normal;">{{ $site_all }}</h1>
+                    </div>
                 </div>
-                <div class="site-total">
-                    <h1 style="font-weight: normal;">{{ $site_all }}</h1>
-                </div>
-            </div>
+            </a>
         </div>
         <div class="col-lg col-sm">
-            <div class="sites">
-                <div class="site-title">
-                    <h4>SITE TP</h4>
+            <a href="/site-tp" style="text-decoration: none;">
+                <div class="sites">
+                    <div class="site-title">
+                        <h4>SITE TP</h4>
+                    </div>
+                    <div class="site-total">
+                        <h1 style="font-weight: normal;">{{ $site_tp }}</h1>
+                    </div>
                 </div>
-                <div class="site-total">
-                    <h1 style="font-weight: normal;">{{ $site_tp }}</h1>
-                </div>
-            </div>
+            </a>
         </div>
         <div class="col-lg col-sm">
-            <div class="sites">
-                <div class="site-title">
-                    <h4>SITE TELKOM</h4>
+            <a href="/site-telkom" style="text-decoration: none;">
+                <div class="sites">
+                    <div class="site-title">
+                        <h4>SITE TELKOM</h4>
+                    </div>
+                    <div class="site-total">
+                        <h1 style="font-weight: normal;">{{ $site_telkom }}</h1>
+                    </div>
                 </div>
-                <div class="site-total">
-                    <h1 style="font-weight: normal;">{{ $site_telkom }}</h1>
-                </div>
-            </div>
+            </a>
         </div>
         <div class="col-lg col-sm">
+            <a href="/site-telkomsel" style="text-decoration: none;">
             <div class="sites">
                 <div class="site-title">
                     <h4>SITE TELKOMSEL</h4>
@@ -57,6 +64,7 @@
                     <h1 style="font-weight: normal;">{{ $site_telkomsel }}</h1>
                 </div>
             </div>
+            </a>
         </div>
         <div class="col-lg col-sm">
             <div class="sites">
@@ -69,7 +77,16 @@
             </div>
         </div>
     </div>
-    <br><br><br>
+
+    <br>
+    
+    <div class="form-group container">
+       <form action="">
+           <input class="form-control" id="exampleFormControlInput1" placeholder="Search By Site ID">
+
+       </form>
+    </div>
+
 
     <section class="row">
         {{-- chart revenue vs cost regional  --}}

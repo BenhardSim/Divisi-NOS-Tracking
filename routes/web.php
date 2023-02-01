@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SitesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +44,13 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
+
+// site list
+Route::get('/site-all', [SitesController::class, 'indexAll'])->middleware('auth');
+Route::get('/site-tp', [SitesController::class, 'indexTp'])->middleware('auth');
+Route::get('/site-telkom', [SitesController::class, 'indexTelkom'])->middleware('auth');
+Route::get('/site-telkomsel', [SitesController::class, 'indexTelkomsel'])->middleware('auth');
+
 Route::get('/setting', [SettingController::class, 'index'])->middleware('auth');
 Route::put('/setting', [SettingController::class, 'update'])->middleware('auth');
 Route::get('/upload-dokumen', function(){
@@ -50,4 +58,5 @@ Route::get('/upload-dokumen', function(){
 })->middleware('auth');
 
 Route::get('/bbm', [DashboardController::class, 'indexBBM'])->middleware('auth');
+
 

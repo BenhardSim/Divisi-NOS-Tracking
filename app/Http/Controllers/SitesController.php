@@ -3,27 +3,49 @@
 namespace App\Http\Controllers;
 
 use App\Models\siteprofile;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\Paginator;
 
-class DashboardController extends Controller
+class SitesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexAll()
     {
-        //
-        return view('portal.dashboard', [
-            "site_all" => siteprofile::count(),
-            "site_tp" => siteprofile::where("TOWERSTATUS", "Sewa TP")->count(),
-            "site_telkom" => siteprofile::where("PEMILIKTOWER", "Telkom")->count(),
-            "site_telkomsel" => siteprofile::where("PEMILIKTOWER", "Telkomsel")->count(),
+        return view('portal.site_list', [
+            "title" => "Site All",
+            "site_all" => siteprofile::paginate(10)
         ]);
     }
+
+    public function indexTp()
+    {
+        return view('portal.site_list', [
+            "title" => "Site TP",
+            "site_all" => siteprofile::where("TOWERSTATUS", "Sewa TP")->paginate(10)
+        ]);
+    }
+
+
+    public function indexTelkom()
+    {
+        return view('portal.site_list', [
+            "title" => "Site Telkom",
+            "site_all" => siteprofile::where("PEMILIKTOWER", "Telkom")->paginate(10)
+        ]);
+    }
+
+
+    public function indexTelkomsel()
+    {
+        return view('portal.site_list', [
+            "title" => "Site Telkomsel",
+            "site_all" => siteprofile::where("PEMILIKTOWER", "Telkomsel")->paginate(10)
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -89,12 +111,5 @@ class DashboardController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function indexBBM(){
-        return view('portal.site_list', [
-            "title" => "Daftar Cost BBM Site",
-            "site_all" => siteprofile::paginate(10)
-        ]);
     }
 }
