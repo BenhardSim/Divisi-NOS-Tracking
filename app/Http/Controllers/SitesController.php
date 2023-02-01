@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\siteprofile;
 use Illuminate\Http\Request;
 
 class SitesController extends Controller
@@ -11,11 +12,40 @@ class SitesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexAll()
     {
-        //
-        return view("test");
+        return view('portal.site_list', [
+            "title" => "Site All",
+            "site_all" => siteprofile::paginate(10)
+        ]);
     }
+
+    public function indexTp()
+    {
+        return view('portal.site_list', [
+            "title" => "Site TP",
+            "site_all" => siteprofile::where("TOWERSTATUS", "Sewa TP")->paginate(10)
+        ]);
+    }
+
+
+    public function indexTelkom()
+    {
+        return view('portal.site_list', [
+            "title" => "Site Telkom",
+            "site_all" => siteprofile::where("PEMILIKTOWER", "Telkom")->paginate(10)
+        ]);
+    }
+
+
+    public function indexTelkomsel()
+    {
+        return view('portal.site_list', [
+            "title" => "Site Telkomsel",
+            "site_all" => siteprofile::where("PEMILIKTOWER", "Telkomsel")->paginate(10)
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.

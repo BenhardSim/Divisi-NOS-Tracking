@@ -5,7 +5,7 @@
             <th scope="col" style="border-radius: 10px 0 0 0">Site ID</th>
             <th scope="col">Site Name</th>
             <th scope="col">Alamat</th>
-            <th scope="col">Statusssss</th>
+            <th scope="col">Status</th>
             <th scope="col" style="border-radius: 0 10px 0 0" class="text-center">Aksi</th>
           </tr>
         </thead>
