@@ -1,0 +1,29 @@
+body{
+    background-color: #FFE7CC;
+}
+
+.login-img{
+    /* background-color: #EB3223   ; */
+    background-image: url("../img/gedung-tsel.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    border-radius: 30px;
+}
+ .container-login{
+    /* margin: 40px; */
+    transform: scale(0.9);
+    border-radius: 30px;
+    background-color: white;
+ }
+
+ .form-signin{
+    border-radius: 30px;
+    display: flex;
+    /* align-items: center;  */
+    flex-direction: column;
+    margin: 0px;
+ }
+
+ .form-signin h1{
+    font-size: 3em;
+ }

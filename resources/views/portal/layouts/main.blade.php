@@ -32,10 +32,11 @@
         @yield('container')
         
       {{-- footer --}}
-        <br><br><br>
+        <br>
       <div>
         © 2023 Copyright:
       </div>
+      <br><br>
       </main>
     </div>
   </div>

@@ -92,7 +92,8 @@ class DashboardController extends Controller
     }
 
     public function indexBBM(){
-        return view('portal.component.bbm_list', [
+        return view('portal.site_list', [
+            "title" => "Daftar Cost BBM Site",
             "site_all" => siteprofile::paginate(10)
         ]);
     }
