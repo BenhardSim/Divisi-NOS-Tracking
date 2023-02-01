@@ -95,7 +95,7 @@
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title">
-                    <h5>Revenue Vs Cost Regional</h5>
+                    <a href="/rvc" class="links text-white"><h5>Revenue VS Cost Regional</h5></a>
                 </div>
                 <div class="rvc-graph">
                     <canvas id="revenue_main"></canvas>
@@ -108,7 +108,7 @@
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title">
-                    <h5>Profit Loss Regional</h5>
+                    <a href="/pl" class="links text-white"><h5>Profit Loss Regional</h5></a>
                 </div>
                 <div class="rvc-graph">
                     <canvas id="profitloss_main"></canvas>
@@ -120,7 +120,7 @@
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title">
-                    <h5>Reserved Varcost</h5>
+                    <a href="/rv" class="links text-white"><h5>Reserved Varcost</h5></a>
                 </div>
                 <div class="rvc-graph">
                     <canvas id="varcost_main"></canvas>
@@ -144,7 +144,7 @@
         <div class="col-lg-4">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title">
-                    <h5>Opex</h5>
+                    <a href="/opex" class="links text-white"><h5>OPEX</h5></a>
                 </div>
                 <div class="rvc-graph">
                     <canvas id="opex_main"></canvas>
