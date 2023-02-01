@@ -59,4 +59,6 @@ Route::get('/upload-dokumen', function(){
 
 Route::get('/bbm', [DashboardController::class, 'indexBBM'])->middleware('auth');
 
+Route::get('/search', [SitesController::class, 'searchSites'])->middleware('auth');
+
 
