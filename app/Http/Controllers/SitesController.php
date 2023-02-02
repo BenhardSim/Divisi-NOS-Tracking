@@ -63,6 +63,16 @@ class SitesController extends Controller
         }
     }
 
+    public function detailSites(siteprofile $id)
+    {
+        return view('portal.profile',[
+            "title" => "SITE ".$id->SITEID,
+            "id" => $id->SITEID,
+            "alamat" => $id->ALAMAT,
+            "nama" => $id->SITENAME            
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.

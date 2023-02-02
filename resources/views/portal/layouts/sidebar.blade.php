@@ -1,7 +1,7 @@
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse" style="position: sticky; height:100vh">
     <div class="position-sticky sidebar-sticky">
       <div style="text-align: left">
-        <a class="" href="#"><img width="80%"  src="img/logo-telkomsel-baru.png" alt=""></a>
+        <a class="" href="#"><img width="80%"  src="{{ asset('img/logo-telkomsel-baru.png') }}" alt=""></a>
       </div>
       
       <ul class="nav flex-column wht-text ">
@@ -11,6 +11,20 @@
             Dashboard
           </a>
         </li>
+{{-- 
+        <li class="nav-item pt-2 pb-2">
+          <a class="nav-link text-white" aria-current="page" href="/dashboard">
+            <span style="color: #EB3223" data-feather="upload" class="align-text-bottom"></span>
+            Upload
+          </a>
+          <ul class="submenu collapse" style="list-style-type: none;">
+            <li style="text-decoration: none" style="background-color: {{ Request::is('upload-dokumen') ? '#5B8FB9' : '' }}">
+              <a class="nav-link text-white" href="/upload-dokumen">Upload Dokumen</a>
+            </li>
+            <li><a class="nav-link text-white" href="#">Upload Data</a></li>
+          </ul>
+        </li> --}}
+        
         <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('upload-dokumen') ? '#5B8FB9' : '' }} ">
           <a class="nav-link text-white"  href="/upload-dokumen">
             <span style="color: #EB3223" data-feather="upload" class="align-text-bottom"></span>
@@ -23,6 +37,8 @@
             Upload Data
           </a> 
         </li>
+
+
         <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('tagging*') ? '#5B8FB9' : '' }} ">
             <a class="nav-link text-white" href="/tagging">
               <span style="color: #EB3223" data-feather="tag" class="align-text-bottom"></span>
