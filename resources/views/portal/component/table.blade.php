@@ -22,7 +22,7 @@
             <td>{{ $site->SITENAME }}</td>
             <td>{{ $site->ALAMAT }}</td>
             <td>{{ $site->TOWERSTATUS }}</td>
-            <td class=""><a href="" class="badge px-3 py-2 text-white text-center links" style="background-color: #144272">Detail</a></td>
+            <td class=""><a href="/search/{{ $site->SITEID }}" class="badge px-3 py-2 text-white text-center links" style="background-color: #144272">Detail</a></td>
           </tr>  
           @endforeach
           

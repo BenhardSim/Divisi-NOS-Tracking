@@ -51,18 +51,22 @@ Route::get('/site-tp', [SitesController::class, 'indexTp'])->middleware('auth');
 Route::get('/site-telkom', [SitesController::class, 'indexTelkom'])->middleware('auth');
 Route::get('/site-telkomsel', [SitesController::class, 'indexTelkomsel'])->middleware('auth');
 
+// lainnya
 Route::get('/setting', [SettingController::class, 'index'])->middleware('auth');
 Route::put('/setting', [SettingController::class, 'update'])->middleware('auth');
 Route::get('/upload-dokumen', function(){
     return view('portal.upDokumen');
 })->middleware('auth');
 
+// site from graph 
 Route::get('/bbm', [DashboardController::class, 'indexBBM'])->middleware('auth');
 Route::get('/rvc', [DashboardController::class, 'indexRVC'])->middleware('auth');
 Route::get('/pl', [DashboardController::class, 'indexPL'])->middleware('auth');
 Route::get('/opex', [DashboardController::class, 'indexOPEX'])->middleware('auth');
 Route::get('/rv', [DashboardController::class, 'indexRV'])->middleware('auth');
 
+// search
 Route::get('/search', [SitesController::class, 'searchSites'])->middleware('auth');
+Route::get('/search/{id:SITEID}', [SitesController::class, 'detailSites'])->middleware('auth');
 
 
