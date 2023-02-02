@@ -91,34 +91,5 @@ class DashboardController extends Controller
         //
     }
 
-    public function indexBBM(){
-        return view('portal.site_listchart', [
-            "title" => "Daftar Cost BBM Site",
-            "site_all" => siteprofile::paginate(10)
-        ]);
-    }
-    public function indexOPEX(){
-        return view('portal.site_listchart', [
-            "title" => "Daftar OPEX Site",
-            "site_all" => siteprofile::paginate(10)
-        ]);
-    }
-    public function indexRVC(){
-        return view('portal.site_listchart', [
-            "title" => "Daftar Revenue VS Cost Site",
-            "site_all" => siteprofile::paginate(10)
-        ]);
-    }
-    public function indexRV(){
-        return view('portal.site_listchart', [
-            "title" => "Daftar Reserved Varcost Site",
-            "site_all" => siteprofile::paginate(10)
-        ]);
-    }
-    public function indexPL(){
-        return view('portal.site_listchart', [
-            "title" => "Daftar Profit Loss Site",
-            "site_all" => siteprofile::paginate(10)
-        ]);
-    }
+    
 }
