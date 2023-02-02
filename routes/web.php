@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SettingController;
@@ -59,14 +60,22 @@ Route::get('/upload-dokumen', function(){
 })->middleware('auth');
 
 // site from graph 
-Route::get('/bbm', [DashboardController::class, 'indexBBM'])->middleware('auth');
-Route::get('/rvc', [DashboardController::class, 'indexRVC'])->middleware('auth');
-Route::get('/pl', [DashboardController::class, 'indexPL'])->middleware('auth');
-Route::get('/opex', [DashboardController::class, 'indexOPEX'])->middleware('auth');
-Route::get('/rv', [DashboardController::class, 'indexRV'])->middleware('auth');
+Route::get('/bbm', [ChartController::class, 'indexBBM'])->middleware('auth');
+Route::get('/rvc', [ChartController::class, 'indexRVC'])->middleware('auth');
+Route::get('/pl', [ChartController::class, 'indexPL'])->middleware('auth');
+Route::get('/opex', [ChartController::class, 'indexOPEX'])->middleware('auth');
+Route::get('/rv', [ChartController::class, 'indexRV'])->middleware('auth');
+
+Route::get('/bbm/{site:SITEID}', [ChartController::class, 'detailBBM'])->middleware('auth');
+Route::get('/rvc/{site:SITEID}', [ChartController::class, 'detailRVC'])->middleware('auth');
+Route::get('/pl/{site:SITEID}', [ChartController::class, 'detailPL'])->middleware('auth');
+Route::get('/opex/{site:SITEID}', [ChartController::class, 'detailOPEX'])->middleware('auth');
+Route::get('/rv/{site:SITEID}', [ChartController::class, 'detailRV'])->middleware('auth');
 
 // search
 Route::get('/search', [SitesController::class, 'searchSites'])->middleware('auth');
 Route::get('/search/{id:SITEID}', [SitesController::class, 'detailSites'])->middleware('auth');
+
+
 
 

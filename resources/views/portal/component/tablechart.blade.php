@@ -11,7 +11,7 @@
             <th scope="col" style="border-radius: 10px 0 0 0">Site ID</th>
             <th scope="col">Site Name</th>
             <th scope="col">Alamat</th>
-            <th scope="col">Status</th>
+            <th scope="col">Tower Status</th>
             <th scope="col" style="border-radius: 0 10px 0 0" class="text-center">Aksi</th>
           </tr>
         </thead>
@@ -22,7 +22,7 @@
             <td>{{ $site->SITENAME }}</td>
             <td>{{ $site->ALAMAT }}</td>
             <td>{{ $site->TOWERSTATUS }}</td>
-            <td class=""><a href="/search/{{ $site->SITEID }}" class="badge px-3 py-2 text-white text-center links" style="background-color: #144272">Detail</a></td>
+            <td class="text-center"><a href="/{{ $root }}/{{ $site->SITEID }}" class="badge px-3 py-2 text-white text-center links" style="background-color: #144272">Detail</a></td>
           </tr>  
           @endforeach
           
