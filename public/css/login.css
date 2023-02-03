@@ -1,29 +1,29 @@
-body{
-    background-color: #FFE7CC;
+body {
+    /* background-color: #ffe7cc; */
+    background-image: url("../img/black-pattern.jpg");
 }
 
-.login-img{
+.login-img {
     /* background-color: #EB3223   ; */
     background-image: url("../img/gedung-tsel.jpg");
-    background-size:cover;
+    background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 30px;
+    border-radius: 30px 0px 0px 30px;
 }
- .container-login{
+.container-login {
     /* margin: 40px; */
     transform: scale(0.9);
     border-radius: 30px;
     background-color: white;
- }
+}
 
- .form-signin{
+.form-signin {
     border-radius: 30px;
     display: flex;
-    /* align-items: center;  */
     flex-direction: column;
     margin: 0px;
- }
+}
 
- .form-signin h1{
+.form-signin h1 {
     font-size: 3em;
- }
+}

@@ -7,19 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
   <body>
-    
-   <!-- Background image -->
-    <div
-    class="bg-image mask"
-    style="
-      background-image: url('img/black-pattern.jpg');
-      height: 100vh;
-    "
-    >
-    <div style="background-color: rgba(0, 0, 0, 0.6);">
-      @include('partials.navbar')
-    </div>
-      <div class="d-flex">
         <div class="container mt-4">
           @yield('container')
         </div>
