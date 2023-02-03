@@ -78,7 +78,7 @@ class SitesController extends Controller
 
             "imbas" => imbas_petir::where("Siteid", $id->SITEID)->get(),
             "pebebe" => pbb::where("SITEID", $id->SITEID)->get(),
-            "claims" => claim_asset::where("SiteIDClaim", $id->SITEID)->get()
+            "claims" => claim_asset::where("SiteIDClaim", $id->SITEID)->get(),
             "no_kon" => $id->NOKONTRAK,
             "contracts" => kontrak_site_history::where('SITEID',$id->SITEID)->get(),             
         ]);
