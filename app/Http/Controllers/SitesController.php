@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\claim_asset;
+use App\Models\commissue;
 use App\Models\imbas_petir;
 use App\Models\pbb;
 use App\Models\siteprofile;
@@ -80,7 +81,8 @@ class SitesController extends Controller
             "pebebe" => pbb::where("SITEID", $id->SITEID)->get(),
             "claims" => claim_asset::where("SiteIDClaim", $id->SITEID)->get(),
             "no_kon" => $id->NOKONTRAK,
-            "contracts" => kontrak_site_history::where('SITEID',$id->SITEID)->get(),             
+            "contracts" => kontrak_site_history::where('SITEID',$id->SITEID)->get(),
+            "issues" => commissue::where("SITEID", $id->SITEID)->get(),             
         ]);
     }
 

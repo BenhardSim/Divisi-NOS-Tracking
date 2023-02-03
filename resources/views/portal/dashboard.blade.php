@@ -342,7 +342,7 @@
     ]
     };
     const opex_mainconfig = {
-        type: 'pie',
+        type: 'doughnut',
         data: opex_maindata,
         // options: {
         //     scales: {

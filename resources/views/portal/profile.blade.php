@@ -104,7 +104,7 @@
                       <td>{{ $contract->file_PKS }}</td>
                     </tr>
                     @endforeach
-                  </tbody>
+                </tbody>
               </table>
         </div>
     </div>
@@ -127,6 +127,20 @@
                     <th scope="col">Stats Case</th>
                   </tr>
                 </thead>
+                <tbody>
+                    @foreach ($issues as $issue)
+                    <tr>
+                      <td>{{ $issue->REVENUE }}</td>
+                      <td>{{ $issue->DETAIL }}</td>
+                      <td>{{ $issue->ACTION }}</td>
+                      <td>{{ $issue->PIC }}</td>
+                      <td>{{ $issue->STATSSITE }}</td>
+                      <td>{{ $issue->KOMPENSASI }}</td>
+                      <td>{{ $issue->REALISASI }}</td>
+                      <td>{{ $issue->STATSCASE }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
               </table>
         </div>
     </div>
