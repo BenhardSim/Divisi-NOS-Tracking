@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\siteprofile;
+use App\Models\kontrak_site_history;
 use Illuminate\Http\Request;
 
 class SitesController extends Controller
@@ -69,7 +70,9 @@ class SitesController extends Controller
             "title" => "SITE ".$id->SITEID,
             "id" => $id->SITEID,
             "alamat" => $id->ALAMAT,
-            "nama" => $id->SITENAME            
+            "nama" => $id->SITENAME,
+            "no_kon" => $id->NOKONTRAK,
+            "contracts" => kontrak_site_history::where('SITEID',$id->SITEID)->get(),             
         ]);
     }
 

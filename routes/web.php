@@ -5,7 +5,12 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SitesController;
+use App\Models\kontrak_site;
 use Illuminate\Support\Facades\Route;
+
+
+use App\Models\kontrak_site_history;
+use App\Models\siteprofile;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +80,10 @@ Route::get('/rv/{site:SITEID}', [ChartController::class, 'detailRV'])->middlewar
 // search
 Route::get('/search', [SitesController::class, 'searchSites'])->middleware('auth');
 Route::get('/search/{id:SITEID}', [SitesController::class, 'detailSites'])->middleware('auth');
+
+Route::get('/testing', function(siteprofile $id){
+    return view('portal.test', dd($id->kontrak_site_histories()));
+})->middleware('auth');
 
 
 
