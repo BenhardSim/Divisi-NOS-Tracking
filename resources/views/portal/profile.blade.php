@@ -47,7 +47,7 @@
                 <a href="/rvc" class="links text-white"><h5>Document Sertificate</h5></a>
             </div>
             <div class="rvc-graph">
-                <p>NO Sertifikat :</p>
+                <p>NO Sertifikat : {{ $no_kon }}</p>
                 <p>File Name</p>
             </div>
         </div>
@@ -93,6 +93,18 @@
                     <th scope="col">PKS</th>
                   </tr>
                 </thead>
+                <tbody>
+                    @foreach ($contracts as $contract)
+                    <tr>
+                      <td>{{ $contract->no_pks }}</td>
+                      <td>{{ $contract->awal_sewa }}</td>
+                      <td>{{ $contract->akhir_sewa }}</td>
+                      <td>{{ $contract->harga_sewa }}</td>
+                      <td>{{ $contract->remark }}</td>
+                      <td>{{ $contract->file_PKS }}</td>
+                    </tr>
+                    @endforeach
+                  </tbody>
               </table>
         </div>
     </div>

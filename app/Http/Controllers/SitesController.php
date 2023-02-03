@@ -6,6 +6,7 @@ use App\Models\claim_asset;
 use App\Models\imbas_petir;
 use App\Models\pbb;
 use App\Models\siteprofile;
+use App\Models\kontrak_site_history;
 use Illuminate\Http\Request;
 
 class SitesController extends Controller
@@ -74,9 +75,12 @@ class SitesController extends Controller
             "id" => $id->SITEID,
             "alamat" => $id->ALAMAT,
             "nama" => $id->SITENAME,
+
             "imbas" => imbas_petir::where("Siteid", $id->SITEID)->get(),
             "pebebe" => pbb::where("SITEID", $id->SITEID)->get(),
             "claims" => claim_asset::where("SiteIDClaim", $id->SITEID)->get()
+            "no_kon" => $id->NOKONTRAK,
+            "contracts" => kontrak_site_history::where('SITEID',$id->SITEID)->get(),             
         ]);
     }
 
