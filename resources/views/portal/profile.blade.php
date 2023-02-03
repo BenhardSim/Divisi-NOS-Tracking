@@ -56,7 +56,7 @@
     <div class="col-lg-3">
         <div class="container rvc-stat shadow">
             <div class="rvc-title">
-                <a href="/rvc" class="links text-white"><h5>Document HO</h5></a>
+                <a href="/rvc" class="links text-white"><h5>Document Lainnya</h5></a>
             </div>
             <div class="rvc-graph">
                 <p>NO HO : </p>
@@ -79,8 +79,18 @@
     
     <div class="col-lg-12">
         <div class="container rvc-stat shadow">
-            <div class="rvc-title">
-                <a href="/rvc" class="links text-white"><h5>Contract SITE</h5></a>
+            <div class="rvc-title title-box">
+                <div class="title-cont">
+                    <a href="/rvc" class="links text-white"><h5>Contract SITE</h5></a>
+                </div>
+                <div class="addicon">
+                    <!-- Button trigger modal -->
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <span style="color: #EB3223; width:30px" data-feather="plus-circle" class="iconn">
+                            Add Data
+                        </span>
+                    </a>
+                </div>       
             </div>
             <table class="table">
                 <thead>
@@ -108,12 +118,37 @@
               </table>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Insert Contract SITE</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                       ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="col-lg-12">
         <div class="container rvc-stat shadow">
-            <div class="rvc-title">
-                <a href="/rvc" class="links text-white"><h5>Comm issue</h5></a>
-            </div>
+                <div class="rvc-title title-box">
+                    <div class="title-cont">
+                        <a href="/rvc" class="links text-white"><h5>Comm issue</h5></a>
+                    </div>
+                    <div class="addicon">
+                        <a href="">
+                            <span style="color: #EB3223; width:30px" data-feather="plus-circle" class="iconn"></span>
+                        </a>
+                    </div>
+                </div>
             <table class="table">
                 <thead>
                   <tr>
@@ -147,8 +182,15 @@
 
     <div class="col-lg-12">
         <div class="container rvc-stat shadow">
-            <div class="rvc-title">
-                <a href="/rvc" class="links text-white"><h5>Contract SITE</h5></a>
+            <div class="rvc-title title-box">
+                <div class="title-cont">
+                    <a href="/rvc" class="links text-white"><h5>Contract SITE</h5></a>
+                </div>
+                <div class="addicon">
+                    <a href="">
+                        <span style="color: #EB3223; width:30px" data-feather="plus-circle" class="iconn"></span>
+                    </a>
+                </div>
             </div>
             <table class="table">
                 <thead>
@@ -167,8 +209,15 @@
 
     <div class="col-lg-12">
         <div class="container rvc-stat shadow">
-            <div class="rvc-title">
-                <a href="/rvc" class="links text-white"><h5>Imbas Petir</h5></a>
+            <div class="rvc-title title-box">
+                <div class="title-cont">
+                    <a href="/rvc" class="links text-white"><h5>Imbas Petir</h5></a>
+                </div>
+                <div class="addicon">
+                    <a href="">
+                        <span style="color: #EB3223; width:30px" data-feather="plus-circle" class="iconn"></span>
+                    </a>
+                </div>
             </div>
             <table class="table">
                 <thead>
@@ -209,8 +258,15 @@
 
     <div class="col-lg-12">
         <div class="container rvc-stat shadow">
-            <div class="rvc-title">
-                <a href="/rvc" class="links text-white"><h5>Claim Asset</h5></a>
+            <div class="rvc-title title-box">
+                <div class="title-cont">
+                    <a href="/rvc" class="links text-white"><h5>Claim Asset</h5></a>
+                </div>
+                <div class="addicon">
+                    <a href="">
+                        <span style="color: #EB3223; width:30px" data-feather="plus-circle" class="iconn"></span>
+                    </a>
+                </div>
             </div>
             <table class="table">
                 <thead>
@@ -249,8 +305,15 @@
 
     <div class="col-lg-12">
         <div class="container rvc-stat shadow">
-            <div class="rvc-title">
-                <a href="/rvc" class="links text-white"><h5>PBB</h5></a>
+            <div class="rvc-title title-box">
+                <div class="title-cont">
+                    <a href="/rvc" class="links text-white"><h5>PBB</h5></a>
+                </div>
+                <div class="addicon">
+                    <a href="">
+                        <span style="color: #EB3223; width:30px" data-feather="plus-circle" class="iconn"></span>
+                    </a>
+                </div>
             </div>
             <table class="table">
                 <thead>
