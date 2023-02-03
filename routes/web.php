@@ -5,6 +5,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SitesController;
+use App\Http\Controllers\TaggingController;
+use App\Models\imbas_petir;
+use App\Models\tagging_asset;
 use App\Models\kontrak_site;
 use Illuminate\Support\Facades\Route;
 
@@ -81,6 +84,13 @@ Route::get('/rv/{site:SITEID}', [ChartController::class, 'detailRV'])->middlewar
 Route::get('/search', [SitesController::class, 'searchSites'])->middleware('auth');
 Route::get('/search/{id:SITEID}', [SitesController::class, 'detailSites'])->middleware('auth');
 
+
+// tagging assset
+Route::get('/tagging', [TaggingController::class, 'index'])->middleware('auth');
+
+Route::get('/tester', function(){
+    return view('test', dd(imbas_petir::all()));
+});
 Route::get('/testing', function(siteprofile $id){
     return view('portal.test', dd($id->kontrak_site_histories()));
 })->middleware('auth');
