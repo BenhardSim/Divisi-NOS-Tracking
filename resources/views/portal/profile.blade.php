@@ -151,8 +151,8 @@
                     <th scope="col">Claim ID</th>
                     <th scope="col">Claim</th>
                     <th scope="col">Vendor Name</th>
-                    <th scope="col">Demage Notes</th>
-                    <th scope="col">Poles Number</th>
+                    <th scope="col">Damage Notes</th>
+                    <th scope="col">Polis Number</th>
                     <th scope="col">Event Date</th>
                     <th scope="col">Report Date</th>
                     <th scope="col">Cost Claim</th>
@@ -160,6 +160,23 @@
                     <th scope="col">Final Status</th>
                   </tr>
                 </thead>
+                <tbody>
+                    @foreach ($imbas as $petir)
+                    <tr class="text-left">
+                      <th scope="row">{{ $petir->Siteid }}</th>
+                      <td>{{ $petir->ClaimID }}</td>
+                      <td>{{ $petir->claim }}</td>
+                      <td>{{ $petir->VendorName }}</td>
+                      <td>{{ $petir->DamageNotes }}</td>
+                      <td>{{ $petir->PolisNumber }}</td>
+                      <td>{{ $petir->EventDate }}</td>
+                      <td>{{ $petir->ReportDate }}</td>
+                      <td>{{ $petir->EarlyStatus }}</td>
+                      <td>{{ $petir->FinalStatus }}</td>
+                    </tr>  
+                    @endforeach
+                    
+                </tbody>
               </table>
         </div>
     </div>
@@ -177,13 +194,29 @@
                     <th scope="col">Report Date</th>
                     <th scope="col">Claim Number</th>
                     <th scope="col">Lost Status</th>
-                    <th scope="col">Demage Cause</th>
+                    <th scope="col">Damage Cause</th>
                     <th scope="col">Early Report</th>
                     <th scope="col">Asset Category</th>
                     <th scope="col">Item Type</th>
                     <th scope="col">Quantity</th>
                   </tr>
                 </thead>
+                <tbody>
+                    @foreach ($claims as $claim)
+                    <tr class="text-left">
+                      <th scope="row">{{ $claim->SiteIDClaim }}</th>
+                      <td>{{ $claim->SiteNameClaim }}</td>
+                      <td>{{ $claim->Reportdate }}</td>
+                      <td>{{ $claim->ClaimNumber }}</td>
+                      <td>{{ $claim->LostStatus }}</td>
+                      <td>{{ $claim->DamageCause }}</td>
+                      <td>{{ $claim->Earlyreport }}</td>
+                      <td>{{ $claim->AssetCatagory }}</td>
+                      <td>{{ $claim->ItemType }}</td>
+                      <td>{{ $claim->Quantity }}</td>
+                    </tr>  
+                    @endforeach
+                </tbody>
               </table>
         </div>
     </div>
@@ -207,6 +240,22 @@
                     <th scope="col">Provinsi</th>
                   </tr>
                 </thead>
+                <tbody>
+                    @foreach ($pebebe as $pbb)
+                    <tr class="text-left">
+                      <th scope="row">{{ $pbb->SITENAME }}</th>
+                      <td>{{ $pbb->NOP }}</td>
+                      <td>{{ $pbb->NAMAWP }}</td>
+                      <td>{{ $pbb->NPWP }}</td>
+                      <td>{{ $pbb->KPP }}</td>
+                      <td>{{ $pbb->KELURAHAN }}</td>
+                      <td>{{ $pbb->KECAMATAN }}</td>
+                      <td>{{ $pbb->KAB }}</td>
+                      <td>{{ $pbb->PROVINSI }}</td>
+                    </tr>  
+                    @endforeach
+                    
+                </tbody>
               </table>
         </div>
     </div>

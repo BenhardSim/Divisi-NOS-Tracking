@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\claim_asset;
+use App\Models\imbas_petir;
+use App\Models\pbb;
 use App\Models\siteprofile;
 use Illuminate\Http\Request;
 
@@ -56,7 +59,8 @@ class SitesController extends Controller
             $searchSites = siteprofile::where('SITEID','LIKE','%'.$request->search.'%')->paginate(10);
             return view('portal.site_list', [
                 "title" => " Search : Site ".$request->search,
-                "site_all" => $searchSites 
+                "site_all" => $searchSites ,
+                
             ]);
         }else{
             return redirect()->back()->with('message','Empty Search');
@@ -69,7 +73,10 @@ class SitesController extends Controller
             "title" => "SITE ".$id->SITEID,
             "id" => $id->SITEID,
             "alamat" => $id->ALAMAT,
-            "nama" => $id->SITENAME            
+            "nama" => $id->SITENAME,
+            "imbas" => imbas_petir::where("Siteid", $id->SITEID)->get(),
+            "pebebe" => pbb::where("SITEID", $id->SITEID)->get(),
+            "claims" => claim_asset::where("SiteIDClaim", $id->SITEID)->get()
         ]);
     }
 
