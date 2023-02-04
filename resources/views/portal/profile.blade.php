@@ -83,12 +83,19 @@
                 <div class="title-cont">
                     <a href="/rvc" class="links text-white"><h5>Contract SITE</h5></a>
                 </div>
-                <div class="addicon" style="vertical-align: middle;">
-                    <!-- Button trigger modal -->
+                <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
+                    {{-- view All Data Button --}}
+                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
+                        <span> View All</span>
+                    </button>
+
+                    <!-- Insert Data Button -->
                     <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <span data-feather="plus-circle" class="align-text-bottom" style="margin-right: 5px"></span> 
                         <span> Add Data </span>
                     </button>
+
                 </div>       
             </div>
             <table class="table table-hover">
@@ -142,15 +149,15 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Harga Sewa</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Awal Sewa">
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Harga Sewa">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Remark</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Awal Sewa">
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Remark">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Upload File</label>
-                            <input type="file" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Awal Sewa">
+                            <input type="file" class="form-control" id="exampleInputEmail1" placeholder="Upload File">
                         </div>
                     </div>
                     <div class="modal-footer">
