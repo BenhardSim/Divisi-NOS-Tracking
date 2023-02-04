@@ -83,16 +83,15 @@
                 <div class="title-cont">
                     <a href="/rvc" class="links text-white"><h5>Contract SITE</h5></a>
                 </div>
-                <div class="addicon">
+                <div class="addicon" style="vertical-align: middle;">
                     <!-- Button trigger modal -->
-                    <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <span style="color: #EB3223; width:30px" data-feather="plus-circle" class="iconn">
-                            Add Data
-                        </span>
-                    </a>
+                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <span data-feather="plus-circle" class="align-text-bottom" style="margin-right: 5px"></span> 
+                        <span> Add Data </span>
+                    </button>
                 </div>       
             </div>
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">Nomor PKS</th>
@@ -105,8 +104,8 @@
                 </thead>
                 <tbody>
                     @foreach ($contracts as $contract)
-                    <tr>
-                      <td>{{ $contract->no_pks }}</td>
+                    <tr scope="row">
+                      <td >{{ $contract->no_pks }}</td>
                       <td>{{ $contract->awal_sewa }}</td>
                       <td>{{ $contract->akhir_sewa }}</td>
                       <td>{{ $contract->harga_sewa }}</td>
@@ -144,12 +143,14 @@
                         <a href="/rvc" class="links text-white"><h5>Comm issue</h5></a>
                     </div>
                     <div class="addicon">
-                        <a href="">
-                            <span style="color: #EB3223; width:30px" data-feather="plus-circle" class="iconn"></span>
-                        </a>
+                        <!-- Button trigger modal -->
+                        <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <span data-feather="plus-circle" class="align-text-bottom" style="margin-right: 5px"></span> 
+                            <span> Add Data </span>
+                        </button>
                     </div>
                 </div>
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">Revenue</th>
@@ -165,7 +166,7 @@
                 <tbody>
                     @foreach ($issues as $issue)
                     <tr>
-                      <td>{{ $issue->REVENUE }}</td>
+                      <td scope="row">{{ $issue->REVENUE }}</td>
                       <td>{{ $issue->DETAIL }}</td>
                       <td>{{ $issue->ACTION }}</td>
                       <td>{{ $issue->PIC }}</td>
@@ -184,42 +185,17 @@
         <div class="container rvc-stat shadow">
             <div class="rvc-title title-box">
                 <div class="title-cont">
-                    <a href="/rvc" class="links text-white"><h5>Contract SITE</h5></a>
-                </div>
-                <div class="addicon">
-                    <a href="">
-                        <span style="color: #EB3223; width:30px" data-feather="plus-circle" class="iconn"></span>
-                    </a>
-                </div>
-            </div>
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Nomor PKS</th>
-                    <th scope="col">Awal Sewa</th>
-                    <th scope="col">Akhir Sewa</th>
-                    <th scope="col">Harga Sewa</th>
-                    <th scope="col">Remark</th>
-                    <th scope="col">PKS</th>
-                  </tr>
-                </thead>
-              </table>
-        </div>
-    </div>
-
-    <div class="col-lg-12">
-        <div class="container rvc-stat shadow">
-            <div class="rvc-title title-box">
-                <div class="title-cont">
                     <a href="/rvc" class="links text-white"><h5>Imbas Petir</h5></a>
                 </div>
                 <div class="addicon">
-                    <a href="">
-                        <span style="color: #EB3223; width:30px" data-feather="plus-circle" class="iconn"></span>
-                    </a>
+                    <!-- Button trigger modal -->
+                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <span data-feather="plus-circle" class="align-text-bottom" style="margin-right: 5px"></span> 
+                        <span> Add Data </span>
+                    </button>
                 </div>
             </div>
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">SITE ID</th>
@@ -263,12 +239,14 @@
                     <a href="/rvc" class="links text-white"><h5>Claim Asset</h5></a>
                 </div>
                 <div class="addicon">
-                    <a href="">
-                        <span style="color: #EB3223; width:30px" data-feather="plus-circle" class="iconn"></span>
-                    </a>
+                    <!-- Button trigger modal -->
+                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <span data-feather="plus-circle" class="align-text-bottom" style="margin-right: 5px"></span> 
+                        <span> Add Data </span>
+                    </button>
                 </div>
             </div>
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">SITE ID</th>
@@ -310,12 +288,14 @@
                     <a href="/rvc" class="links text-white"><h5>PBB</h5></a>
                 </div>
                 <div class="addicon">
-                    <a href="">
-                        <span style="color: #EB3223; width:30px" data-feather="plus-circle" class="iconn"></span>
-                    </a>
+                    <!-- Button trigger modal -->
+                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <span data-feather="plus-circle" class="align-text-bottom" style="margin-right: 5px"></span> 
+                        <span> Add Data </span>
+                    </button>
                 </div>
             </div>
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">SITE Name</th>
