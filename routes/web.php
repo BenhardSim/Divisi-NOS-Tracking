@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ImbasController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SitesController;
@@ -88,6 +89,7 @@ Route::get('/search/{id:SITEID}', [SitesController::class, 'detailSites'])->midd
 // tagging assset
 Route::get('/tagging', [TaggingController::class, 'index'])->middleware('auth');
 
+// testing route
 Route::get('/tester', function(){
     return view('test', dd(imbas_petir::all()));
 });
@@ -96,5 +98,7 @@ Route::get('/testing', function(siteprofile $id){
 })->middleware('auth');
 
 
+// CRUD Imbas Petir
+Route::resource('/imbas_petirs', ImbasController::class)->middleware('auth');
 
 
