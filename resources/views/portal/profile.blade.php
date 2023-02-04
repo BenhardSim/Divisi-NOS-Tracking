@@ -117,21 +117,47 @@
               </table>
         </div>
     </div>
-    <!-- Modal -->
+
+    <!-- Modal Form Contract Site -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Insert Contract SITE</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Insert Contract for SITE {{ $id }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <form style="margin: 0">
                 <div class="modal-body">
-                       ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Nomor PKS</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nomor PKS">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Awal Sewa</label>
+                            <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Awal Sewa">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Akhir Sewa</label>
+                            <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Awal Sewa">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Harga Sewa</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Awal Sewa">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Remark</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Awal Sewa">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Upload File</label>
+                            <input type="file" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Awal Sewa">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Insert</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
