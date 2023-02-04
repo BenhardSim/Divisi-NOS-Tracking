@@ -76,7 +76,14 @@
             </div>
         </div>
     </div>
-    
+    <div class="col-lg-12">
+        @if (session()->has('success'))
+          <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+          </div>
+        
+        @endif
+    </div>
     <div class="col-lg-12">
         <div class="container rvc-stat shadow">
             <div class="rvc-title title-box">
@@ -222,7 +229,7 @@
                 </div>
                 <div class="addicon">
                     <!-- Button trigger modal -->
-                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#imbasModal">
                         <span data-feather="plus-circle" class="align-text-bottom" style="margin-right: 5px"></span> 
                         <span> Add Data </span>
                     </button>
@@ -236,12 +243,13 @@
                     <th scope="col">Claim</th>
                     <th scope="col">Vendor Name</th>
                     <th scope="col">Damage Notes</th>
-                    <th scope="col">Polis Number</th>
+                    {{-- <th scope="col">Polis Number</th> --}}
                     <th scope="col">Event Date</th>
                     <th scope="col">Report Date</th>
                     <th scope="col">Cost Claim</th>
                     <th scope="col">Early status</th>
                     <th scope="col">Final Status</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -252,16 +260,93 @@
                       <td>{{ $petir->claim }}</td>
                       <td>{{ $petir->VendorName }}</td>
                       <td>{{ $petir->DamageNotes }}</td>
-                      <td>{{ $petir->PolisNumber }}</td>
+                      {{-- <td>{{ $petir->PolisNumber }}</td> --}}
                       <td>{{ $petir->EventDate }}</td>
                       <td>{{ $petir->ReportDate }}</td>
+                      <td>{{ $petir->CostClaim }}</td>
                       <td>{{ $petir->EarlyStatus }}</td>
                       <td>{{ $petir->FinalStatus }}</td>
+                      <td class="">
+                        <a href="/imbas/{{ $petir->idimbas }}/edit" class="badge bg-warning"><span data-feather="edit-2"></span></a>
+                        <form action="/imbas_petirs/{{ $petir->idimbas }}" class="d-inline" method="POST">
+                          @csrf
+                          @method('delete')
+                          <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="delete"></span></button>
+                        </form>
+                      </td>
                     </tr>  
                     @endforeach
                     
                 </tbody>
               </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="imbasModal" tabindex="-1" aria-labelledby="imbasModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imbasModalLabel">Insert Imbas Petir for SITE {{ $id }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form style="margin: 0" method="POST" action="/imbas_petirs">
+                @csrf
+                <div class="modal-body">
+                        <div class="form-group">
+                          <label for="petir_siteid">Site ID</label>
+                          <input type="text" class="form-control" id="petir_siteid" name="Siteid" placeholder="Masukkan Site ID" value="{{ $id }}" readonly>
+                        </div>
+                        <div class="form-group">
+                          <label for="petir_sitename">Site Name</label>
+                          <input type="text" class="form-control" id="petir_sitename" name="SiteName" placeholder="Masukkan SiteName" value="{{ $nama }}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_claimid">Claim ID</label>
+                            <input type="text" class="form-control" id="petir_claimid" name="ClaimID" placeholder="Claim ID">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_claim">Claim</label>
+                            <input type="text" class="form-control" id="petir_claim" name="claim" placeholder="Masukkan Claim">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_vendorname">Vendor Name</label>
+                            <input type="text" class="form-control" id="petir_vendorname" name="VendorName" placeholder="Masukkan Vendor Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_damagenotes">Damage Notes</label>
+                            <input type="text" class="form-control" id="petir_damagenotes" name="DamageNotes" placeholder="Masukkan Damage Notes">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_polisnumber">Polis Number</label>
+                            <input type="text" class="form-control" id="petir_polisnumber" name="PolisNumber" placeholder="Polis Number">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_eventdate">Event Date</label>
+                            <input type="date" class="form-control" id="petir_eventdate" name="EventDate" placeholder="Masukkan Event Date">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_reportdate">Report Date</label>
+                            <input type="date" class="form-control" id="petir_reportdate" name="ReportDate" placeholder="Masukkan Report Date">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_costclaim">Cost Claim</label>
+                            <input type="text" class="form-control" id="petir_costclaim" name="CostClaim" placeholder="Masukkan Cost Claim">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_earlystatus">Early Status</label>
+                            <input type="text" class="form-control" id="petir_earlystatus" name="EarlyStatus" placeholder="Masukkan Early Status">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_finalstatus">Final Status</label>
+                            <input type="text" class="form-control" id="petir_finalstatus" name="FinalStatus" placeholder="Masukkan Final Status">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Insert</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
