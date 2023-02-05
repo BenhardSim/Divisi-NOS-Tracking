@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChartController;
+use App\Http\Controllers\ClaimController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImbasController;
 use App\Http\Controllers\LoginController;
@@ -100,5 +101,6 @@ Route::get('/testing', function(siteprofile $id){
 
 // CRUD Imbas Petir
 Route::resource('/imbas_petirs', ImbasController::class)->middleware('auth');
+Route::resource('/claim_assets', ClaimController::class)->middleware('auth');
 
 

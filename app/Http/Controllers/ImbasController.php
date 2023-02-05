@@ -52,9 +52,9 @@ class ImbasController extends Controller
            "CostClaim" => "required",
            "EarlyStatus" => "required",
            "FinalStatus" => "required",
+           "RTPO" => "required",
+           "Regional" => "required",
         ]);
-        $validatedData['RTPO'] = 0;
-        $validatedData['Regional'] = "Jawa Tengah";
         $validatedData['idimbas'] = imbas_petir::max('idimbas') + 1;
         //return redirect('/dashboard')->with('success', 'Data berhasil dimasukkan');
         // return view('portal.test', dd($request));
@@ -94,7 +94,39 @@ class ImbasController extends Controller
      */
     public function update(Request $request, imbas_petir $imbas_petir)
     {
-        //
+        /* disini ClaimID dibuat tidak unique karena bila dibuat unique 
+         maka ketika ClaimID nya tidak diubah, akan dikira duplikat oleh laravel */
+
+        $rules = [
+            "Siteid" => "required",
+            "SiteName" => "required",
+            "ClaimID" => "required",
+            "claim" => "required",
+            "VendorName" => "required",
+            "DamageNotes" => "required",
+            "PolisNumber" => "required",
+            "EventDate" => "required",
+            "ReportDate" => "required",
+            "CostClaim" => "required",
+            "EarlyStatus" => "required",
+            "FinalStatus" => "required",
+            "RTPO" => "required",
+            "Regional" => "required",
+        ];
+
+        /* Sebagai gantinya, dilihat dulu apakah ClaimID ada perubahan
+        jika tidak ada perubahan, maka dibuat tidak unique supaya tidak dituduh duplikat
+        jika ada perubahan, baru dibuat unique untuk melihat apakah ClaimID baru duplikat*/
+
+        if($request->ClaimID != $imbas_petir->ClaimID){
+            $rules['ClaimID'] = 'required|unique:imbas_petirs' ;
+        }
+        
+        $validatedData =  $request->validate($rules);
+
+        imbas_petir::where('idimbas', $imbas_petir->idimbas)->update($validatedData);
+
+        return back()->with('success', 'Imbas petir berhasil diperbarui');
     }
 
     /**
@@ -106,7 +138,7 @@ class ImbasController extends Controller
     public function destroy(imbas_petir $imbas_petir)
     {
         //
-        imbas_petir::where('idImbas', $imbas_petir->idimbas)->delete();
+        imbas_petir::where('idimbas', $imbas_petir->idimbas)->delete();
         //$imbas_petir->delete();
         return back()->with('success', 'Data imbas petir berhasil dihapus');
     }

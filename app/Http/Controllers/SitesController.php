@@ -76,6 +76,7 @@ class SitesController extends Controller
             "id" => $id->SITEID,
             "alamat" => $id->ALAMAT,
             "nama" => $id->SITENAME,
+            "site" => $id,
 
             "imbas" => imbas_petir::where("Siteid", $id->SITEID)->get(),
             "pebebe" => pbb::where("SITEID", $id->SITEID)->get(),

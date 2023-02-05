@@ -214,6 +214,8 @@
         </div>
     </div>
 
+
+    {{-- imbas petir --}}
     <div class="col-lg-12">
         <div class="container rvc-stat shadow">
             <div class="rvc-title title-box">
@@ -260,7 +262,9 @@
                       <td>{{ $petir->EarlyStatus }}</td>
                       <td>{{ $petir->FinalStatus }}</td>
                       <td class="">
-                        <a href="/imbas/{{ $petir->idimbas }}/edit" class="badge bg-warning"><span data-feather="edit-2"></span></a>
+                        <button style="" type="submit" class="badge bg-warning border-0"  data-bs-toggle="modal" data-bs-target="#imbasUpdate">
+                            <span data-feather="edit-2" class="" style=""></span> 
+                        </button>
                         <form action="/imbas_petirs/{{ $petir->idimbas }}" class="d-inline" method="POST">
                           @csrf
                           @method('delete')
@@ -333,6 +337,14 @@
                             <label for="petir_finalstatus">Final Status</label>
                             <input type="text" class="form-control" id="petir_finalstatus" name="FinalStatus" placeholder="Masukkan Final Status">
                         </div>
+                        <div class="form-group">
+                            <label for="petir_rtpo">RTPO</label>
+                            <input type="text" class="form-control" id="petir_rtpo" name="RTPO" placeholder="Masukkan RTPO">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_regional">Regional</label>
+                            <input type="text" class="form-control" id="petir_regional" name="Regional" placeholder="Masukkan Regional">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -343,6 +355,87 @@
         </div>
     </div>
 
+    @isset($petir)
+    <div class="modal fade" id="imbasUpdate" tabindex="-1" aria-labelledby="imbasUpdateLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imbasUpdateLabel">Update Imbas Petir for SITE {{ $id }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form style="margin: 0" method="POST" action="/imbas_petirs/{{ $petir->idimbas }}">
+                @method('put')
+                @csrf
+                <div class="modal-body">
+                        <div class="form-group">
+                          <label for="petir_siteid">Site ID</label>
+                          <input type="text" class="form-control" id="petir_siteid" name="Siteid" placeholder="Masukkan Site ID" value="{{ $id }}" readonly>
+                        </div>
+                        <div class="form-group">
+                          <label for="petir_sitename">Site Name</label>
+                          <input type="text" class="form-control" id="petir_sitename" name="SiteName" placeholder="Masukkan SiteName" value="{{ $nama }}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_claimid">Claim ID</label>
+                            <input type="text" class="form-control" id="petir_claimid" name="ClaimID" placeholder="Claim ID" value="{{ $petir->ClaimID }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_claim">Claim</label>
+                            <input type="text" class="form-control" id="petir_claim" name="claim" placeholder="Masukkan Claim" value="{{ $petir->claim }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_vendorname">Vendor Name</label>
+                            <input type="text" class="form-control" id="petir_vendorname" name="VendorName" placeholder="Masukkan Vendor Name" value="{{ $petir->VendorName }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_damagenotes">Damage Notes</label>
+                            <input type="text" class="form-control" id="petir_damagenotes" name="DamageNotes" placeholder="Masukkan Damage Notes" value="{{ $petir->DamageNotes }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_polisnumber">Polis Number</label>
+                            <input type="text" class="form-control" id="petir_polisnumber" name="PolisNumber" placeholder="Polis Number" value="{{ $petir->PolisNumber }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_eventdate">Event Date</label>
+                            <input type="date" class="form-control" id="petir_eventdate" name="EventDate" placeholder="Masukkan Event Date" value="{{ $petir->EventDate }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_reportdate">Report Date</label>
+                            <input type="date" class="form-control" id="petir_reportdate" name="ReportDate" placeholder="Masukkan Report Date" value="{{ $petir->ReportDate }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_costclaim">Cost Claim</label>
+                            <input type="text" class="form-control" id="petir_costclaim" name="CostClaim" placeholder="Masukkan Cost Claim" value="{{ $petir->CostClaim }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_earlystatus">Early Status</label>
+                            <input type="text" class="form-control" id="petir_earlystatus" name="EarlyStatus" placeholder="Masukkan Early Status" value="{{ $petir->EarlyStatus }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_finalstatus">Final Status</label>
+                            <input type="text" class="form-control" id="petir_finalstatus" name="FinalStatus" placeholder="Masukkan Final Status" value="{{ $petir->FinalStatus }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_rtpo">RTPO</label>
+                            <input type="text" class="form-control" id="petir_rtpo" name="RTPO" placeholder="Masukkan RTPO" value="{{ $petir->RTPO }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="petir_regional">Regional</label>
+                            <input type="text" class="form-control" id="petir_regional" name="Regional" placeholder="Masukkan Regional" value="{{ $petir->Regional }}">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Insert</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @endisset
+    
+
+    {{-- claim asset --}}
     <div class="col-lg-12">
         <div class="container rvc-stat shadow">
             <div class="rvc-title title-box">
@@ -351,7 +444,7 @@
                 </div>
                 <div class="addicon">
                     <!-- Button trigger modal -->
-                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#claimModal">
                         <span data-feather="plus-circle" class="align-text-bottom" style="margin-right: 5px"></span> 
                         <span> Add Data </span>
                     </button>
@@ -367,9 +460,10 @@
                     <th scope="col">Lost Status</th>
                     <th scope="col">Damage Cause</th>
                     <th scope="col">Early Report</th>
-                    <th scope="col">Asset Category</th>
+                    {{-- <th scope="col">Asset Category</th> --}}
                     <th scope="col">Item Type</th>
                     <th scope="col">Quantity</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -382,9 +476,19 @@
                       <td>{{ $claim->LostStatus }}</td>
                       <td>{{ $claim->DamageCause }}</td>
                       <td>{{ $claim->Earlyreport }}</td>
-                      <td>{{ $claim->AssetCatagory }}</td>
+                      {{-- <td>{{ $claim->AssetCatagory }}</td> --}}
                       <td>{{ $claim->ItemType }}</td>
                       <td>{{ $claim->Quantity }}</td>
+                      <td class="">
+                        <button style="" type="submit" class="badge bg-warning border-0"  data-bs-toggle="modal" data-bs-target="#claimUpdate">
+                            <span data-feather="edit-2" class="" style=""></span> 
+                        </button>
+                        <form action="/claim_assets/{{ $claim->idclaim }}" class="d-inline" method="POST">
+                          @csrf
+                          @method('delete')
+                          <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="delete"></span></button>
+                        </form>
+                      </td>
                     </tr>  
                     @endforeach
                 </tbody>
@@ -392,6 +496,164 @@
         </div>
     </div>
 
+    <div class="modal fade" id="claimModal" tabindex="-1" aria-labelledby="claimModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="claimModalLabel">Insert Claim Asset for SITE {{ $id }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form style="margin: 0" method="POST" action="/claim_assets">
+                @csrf
+                <div class="modal-body">
+                        <div class="form-group">
+                          <label for="claim_siteid">Site ID</label>
+                          <input type="text" class="form-control" id="claim_siteid" name="SiteIDClaim" placeholder="Masukkan Site ID" value="{{ $id }}" readonly>
+                        </div>
+                        <div class="form-group">
+                          <label for="claim_sitename">Site Name</label>
+                          <input type="text" class="form-control" id="claim_sitename" name="SiteNameClaim" placeholder="Masukkan SiteName" value="{{ $nama }}" readonly>
+                        </div>
+                        <div class="form-group">
+                          <label for="claim_regional">Regional</label>
+                          <input type="text" class="form-control" id="claim_regional" name="Regional" placeholder="Masukkan Regional">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_reportdate">Report Date</label>
+                            <input type="date" class="form-control" id="claim_reportdate" name="Reportdate" placeholder="Masukkan Report Date">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_claimnumber">Claim Number</label>
+                            <input type="text" class="form-control" id="claim_claimnumber" name="ClaimNumber" placeholder="Masukkan Claim Number">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_loststatus">Lost Status</label>
+                            <input type="text" class="form-control" id="claim_loststatus" name="LostStatus" placeholder="Masukkan Lost Status">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_damagecause">Damage Cause</label>
+                            <input type="text" class="form-control" id="claim_damagecause" name="DamageCause" placeholder="Masukkan Damage Cause">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_earlyreport">Early Report</label>
+                            <input type="text" class="form-control" id="claim_earlyreport" name="Earlyreport" placeholder="Early Report">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_assetcategory">Asset Category</label>
+                            <input type="text" class="form-control" id="claim_assetcategory" name="AssetCatagory" placeholder="Masukkan Asset Category">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_itemtype">Item Type</label>
+                            <input type="text" class="form-control" id="claim_itemtype" name="ItemType" placeholder="Masukkan Item Type">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_rtpo">RTPO</label>
+                            <input type="text" class="form-control" id="claim_rtpo" name="rtpo" placeholder="Masukkan RTPO">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_quantity">Quantity</label>
+                            <input type="text" class="form-control" id="claim_quantity" name="Quantity" placeholder="Masukkan Quantity">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_itemmerk">Item Merk</label>
+                            <input type="text" class="form-control" id="claim_itemmerk" name="ItemMerk" placeholder="Masukkan Item Merk">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_itemunit">Item Unit</label>
+                            <input type="text" class="form-control" id="claim_itemunit" name="ItemUnit" placeholder="Masukkan Item Unit">
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Insert</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @isset($claim)
+    <div class="modal fade" id="claimUpdate" tabindex="-1" aria-labelledby="claimUpdateLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="claimModalLabel">Update Claim Asset for SITE {{ $id }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form style="margin: 0" method="POST" action="/claim_assets/{{ $claim->idclaim }}">
+                @method('put')
+                @csrf
+                <div class="modal-body">
+                        <div class="form-group">
+                          <label for="claim_siteid">Site ID</label>
+                          <input type="text" class="form-control" id="claim_siteid" name="SiteIDClaim" placeholder="Masukkan Site ID" value="{{ $id }}" readonly>
+                        </div>
+                        <div class="form-group">
+                          <label for="claim_sitename">Site Name</label>
+                          <input type="text" class="form-control" id="claim_sitename" name="SiteNameClaim" placeholder="Masukkan SiteName" value="{{ $nama }}" readonly>
+                        </div>
+                        <div class="form-group">
+                          <label for="claim_regional">Regional</label>
+                          <input type="text" class="form-control" id="claim_regional" name="Regional" placeholder="Masukkan Regional"  value="{{ $claim->Regional }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_reportdate">Report Date</label>
+                            <input type="date" class="form-control" id="claim_reportdate" name="Reportdate" placeholder="Masukkan Report Date" value="{{ $claim->Reportdate }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_claimnumber">Claim Number</label>
+                            <input type="text" class="form-control" id="claim_claimnumber" name="ClaimNumber" placeholder="Masukkan Claim Number" value="{{ $claim->ClaimNumber }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_loststatus">Lost Status</label>
+                            <input type="text" class="form-control" id="claim_loststatus" name="LostStatus" placeholder="Masukkan Lost Status" value="{{ $claim->LostStatus }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_damagecause">Damage Cause</label>
+                            <input type="text" class="form-control" id="claim_damagecause" name="DamageCause" placeholder="Masukkan Damage Cause" value="{{ $claim->DamageCause }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_earlyreport">Early Report</label>
+                            <input type="text" class="form-control" id="claim_earlyreport" name="Earlyreport" placeholder="Early Report" value="{{ $claim->Earlyreport }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_assetcategory">Asset Category</label>
+                            <input type="text" class="form-control" id="claim_assetcategory" name="AssetCatagory" placeholder="Masukkan Asset Category" value="{{ $claim->AssetCatagory }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_itemtype">Item Type</label>
+                            <input type="text" class="form-control" id="claim_itemtype" name="ItemType" placeholder="Masukkan Item Type" value="{{ $claim->ItemType }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_rtpo">RTPO</label>
+                            <input type="text" class="form-control" id="claim_rtpo" name="rtpo" placeholder="Masukkan RTPO" value="{{ $claim->rtpo }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_quantity">Quantity</label>
+                            <input type="text" class="form-control" id="claim_quantity" name="Quantity" placeholder="Masukkan Quantity" value="{{ $claim->Quantity }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_itemmerk">Item Merk</label>
+                            <input type="text" class="form-control" id="claim_itemmerk" name="ItemMerk" placeholder="Masukkan Item Merk" value="{{ $claim->ItemMerk }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="claim_itemunit">Item Unit</label>
+                            <input type="text" class="form-control" id="claim_itemunit" name="ItemUnit" placeholder="Masukkan Item Unit" value="{{ $claim->ItemUnit }}">
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Insert</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @endisset
+    
+
+
+    {{-- PBB --}}
     <div class="col-lg-12">
         <div class="container rvc-stat shadow">
             <div class="rvc-title title-box">
@@ -493,7 +755,12 @@
 
 
 @endsection
-
+<script>
+    var $editing
+    function editImbas(){
+        $editing = $petir;
+    }
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 <script type="module">
 
