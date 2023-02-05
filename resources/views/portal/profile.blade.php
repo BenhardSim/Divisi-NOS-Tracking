@@ -96,7 +96,7 @@
                     </button>
 
                     <!-- Insert Data Button -->
-                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#addeditkontrak">
                         <span data-feather="plus-circle" class="align-text-bottom" style="margin-right: 5px"></span> 
                         <span> Add Data </span>
                     </button>
@@ -125,7 +125,9 @@
                       <td>{{ $contract->remark }}</td>
                       <td><a href="/file-kontrak/{{ $contract->id }}">View File</a></td>
                       <td>
-                        <a class="badge bg-warning"><span data-feather="edit-2"></span></a>
+                            <button id="delbtn-1" onclick="get_kontrak({{ $contract }})" value="{{ $contract->id }}" class="badge bg-warning border-0" data-bs-toggle="modal" data-bs-target="#editkontrak">
+                                <span data-feather="edit-2"></span>
+                            </button>
                             <!-- Button trigger modal -->
                             <button id="delbtn-1" onclick="get_id({{ $contract->id }})" value="{{ $contract->id }}" class="badge bg-danger border-0" data-bs-toggle="modal" data-bs-target="#confirmdel">
                                 <span data-feather="delete"></span>
@@ -161,19 +163,8 @@
         </div>
     </div>
 
-    <script>
-        let target_id;
-        function get_id(id){
-            target_id = id
-        }
-        function get_action_kontrak(form){
-            form.action = '/kontrak_site_histories/' + target_id;
-            form.preventDefault;
-        }
-    </script>
-
     <!-- Modal Form Contract Site -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addeditkontrak" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -189,27 +180,27 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nomor PKS</label>
-                          <input name="no_pks" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nomor PKS">
+                          <input name="no_pks" type="text" class="form-control" id="no_pks" placeholder="Masukkan Nomor PKS">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Awal Sewa</label>
-                            <input name="awal_sewa" type="date" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Awal Sewa">
+                            <input name="awal_sewa" type="date" class="form-control" id="awal_sewa" placeholder="Masukkan Awal Sewa">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Akhir Sewa</label>
-                            <input name="akhir_sewa" type="date" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Awal Sewa">
+                            <input name="akhir_sewa" type="date" class="form-control" id="akhir_sewa" placeholder="Masukkan Awal Sewa">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Harga Sewa</label>
-                            <input name="harga_sewa" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Harga Sewa">
+                            <input name="harga_sewa" type="text" class="form-control" id="harga_sewa" placeholder="Masukkan Harga Sewa">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Remark</label>
-                            <input name="remark" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Remark">
+                            <input name="remark" type="text" class="form-control" id="remark" placeholder="Masukkan Remark">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Upload File</label>
-                            <input name="file_pks" type="file" class="form-control" id="exampleInputEmail1" placeholder="Upload File">
+                            <input name="file_pks" type="file" class="form-control" id="file_pks" placeholder="Upload File">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -220,6 +211,77 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Edit Form Contract Site -->
+    <div class="modal fade" id="editkontrak" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Insert Contract for SITE {{ $id }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form style="margin: 0" method="POST" onsubmit="edit_kontrak_site(this)" enctype="multipart/form-data">
+                @method('put')
+                @csrf
+                <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Site ID</label>
+                            <input value="{{ $id }}" name="SITEID" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nomor PKS" >
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Nomor PKS</label>
+                          <input name="no_pks" type="text" class="form-control" id="no_pks_edit" placeholder="Masukkan Nomor PKS">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Awal Sewa</label>
+                            <input name="awal_sewa" type="date" class="form-control" id="awal_sewa_edit" placeholder="Masukkan Awal Sewa">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Akhir Sewa</label>
+                            <input name="akhir_sewa" type="date" class="form-control" id="akhir_sewa_edit" placeholder="Masukkan Awal Sewa">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Harga Sewa</label>
+                            <input name="harga_sewa" type="text" class="form-control" id="harga_sewa_edit" placeholder="Masukkan Harga Sewa">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Remark</label>
+                            <input name="remark" type="text" class="form-control" id="remark_edit" placeholder="Masukkan Remark">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let target_id;
+        let target_kontrak;
+        function get_id(id){
+            target_id = id
+        }
+        function get_action_kontrak(form){
+            form.action = '/kontrak_site_histories/' + target_id;
+        }
+
+        function get_kontrak(kontrak){
+            target_kontrak = kontrak;
+            document.getElementById('no_pks_edit').value = kontrak['no_pks'];
+            document.getElementById('awal_sewa_edit').value = kontrak['awal_sewa'];
+            document.getElementById('akhir_sewa_edit').value = kontrak['akhir_sewa'];
+            document.getElementById('harga_sewa_edit').value = kontrak['harga_sewa'];
+            document.getElementById('remark_edit').value = kontrak['remark'];
+        }
+
+        function edit_kontrak_site(form){
+            form.action = '/kontrak_site_histories/' + target_kontrak['id'];
+        }
+
+    </script>
 
     <div class="col-lg-12">
         <div class="container rvc-stat shadow">
@@ -520,18 +582,19 @@
 
    
 
-    @isset($petir)
+    {{-- @isset($petir) --}}
     <div class="modal fade" id="imbasUpdate" tabindex="-1" aria-labelledby="imbasUpdateLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="imbasUpdateLabel">Update Imbas Petir for SITE {{ $id }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form style="margin: 0" method="POST" action="/imbas_petirs/{{ $petir->idimbas }}">
+                <form style="margin: 0" method="POST" onsubmit="edit_imbas_petir(this)">
                 @method('put')
                 @csrf
-                <div class="modal-body">
+                <div class="modal-body row">
+                    <div class="col-6">
                         <div class="form-group">
                           <label for="petir_siteid">Site ID</label>
                           <input type="text" class="form-control" id="petir_siteid_edit" name="Siteid" placeholder="Masukkan Site ID" value="{{ $id }}" readonly>
@@ -560,6 +623,8 @@
                             <label for="petir_polisnumber">Polis Number</label>
                             <input type="text" class="form-control" id="petir_polisnumber_edit" name="PolisNumber" placeholder="Polis Number" >
                         </div>
+                    </div>
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="petir_eventdate">Event Date</label>
                             <input type="date" class="form-control" id="petir_eventdate_edit" name="EventDate" placeholder="Masukkan Event Date">
@@ -589,20 +654,24 @@
                             <input type="text" class="form-control" id="petir_regional_edit" name="Regional" placeholder="Masukkan Regional" >
                         </div>
                     </div>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Insert</button>
                     </div>
+                
                 </form>
             </div>
         </div>
     </div>
-    @endisset
+    {{-- @endisset --}}
     
     <script>
+        let target_petir;
         function get_petir(petir){
             console.log(petir);
-            document.getElementById('petir_claimid_edit').value = petir['claimID'];
+            target_petir = petir;
+            document.getElementById('petir_claimid_edit').value = petir['ClaimID'];
             document.getElementById('petir_claim_edit').value = petir['claim'];
             document.getElementById('petir_vendorname_edit').value = petir['VendorName'];
             document.getElementById('petir_damagenotes_edit').value = petir['DamageNotes'];
@@ -614,6 +683,10 @@
             document.getElementById('petir_finalstatus_edit').value = petir['FinalStatus'];
             document.getElementById('petir_rtpo_edit').value = petir['RTPO'];
             document.getElementById('petir_regional_edit').value = petir['Regional'];
+        }
+
+        function edit_imbas_petir(form){
+            form.action = '/imbas_petirs/' + target_petir['idimbas'];
         }
     </script>
 
