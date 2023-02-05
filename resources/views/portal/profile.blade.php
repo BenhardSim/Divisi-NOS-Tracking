@@ -420,7 +420,7 @@
                       <td>{{ $petir->EarlyStatus }}</td>
                       <td>{{ $petir->FinalStatus }}</td>
                       <td class="">
-                        <button style="" type="submit" class="badge bg-warning border-0"  data-bs-toggle="modal" data-bs-target="#imbasUpdate">
+                        <button onclick="get_petir({{ $petir }})" style="" type="submit" class="badge bg-warning border-0"  data-bs-toggle="modal" data-bs-target="#imbasUpdate">
                             <span data-feather="edit-2" class="" style=""></span> 
                         </button>
                         <form action="/imbas_petirs/{{ $petir->idimbas }}" class="d-inline" method="POST">
@@ -472,12 +472,13 @@
                             <label for="petir_damagenotes">Damage Notes</label>
                             <input type="text" class="form-control" id="petir_damagenotes" name="DamageNotes" placeholder="Masukkan Damage Notes">
                         </div>
-                    </div>
-                    <div class="col-6">
                         <div class="form-group">
                             <label for="petir_polisnumber">Polis Number</label>
                             <input type="text" class="form-control" id="petir_polisnumber" name="PolisNumber" placeholder="Polis Number">
                         </div>
+                    </div>
+                    <div class="col-6">
+                        
                         <div class="form-group">
                             <label for="petir_eventdate">Event Date</label>
                             <input type="date" class="form-control" id="petir_eventdate" name="EventDate" placeholder="Masukkan Event Date">
@@ -517,6 +518,8 @@
         </div>
     </div>
 
+   
+
     @isset($petir)
     <div class="modal fade" id="imbasUpdate" tabindex="-1" aria-labelledby="imbasUpdateLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -531,59 +534,59 @@
                 <div class="modal-body">
                         <div class="form-group">
                           <label for="petir_siteid">Site ID</label>
-                          <input type="text" class="form-control" id="petir_siteid" name="Siteid" placeholder="Masukkan Site ID" value="{{ $id }}" readonly>
+                          <input type="text" class="form-control" id="petir_siteid_edit" name="Siteid" placeholder="Masukkan Site ID" value="{{ $id }}" readonly>
                         </div>
                         <div class="form-group">
                           <label for="petir_sitename">Site Name</label>
-                          <input type="text" class="form-control" id="petir_sitename" name="SiteName" placeholder="Masukkan SiteName" value="{{ $nama }}" readonly>
+                          <input type="text" class="form-control" id="petir_sitename_edit" name="SiteName" placeholder="Masukkan SiteName" value="{{ $nama }}" readonly>
                         </div>
                         <div class="form-group">
                             <label for="petir_claimid">Claim ID</label>
-                            <input type="text" class="form-control" id="petir_claimid" name="ClaimID" placeholder="Claim ID" value="{{ $petir->ClaimID }}">
+                            <input type="text" class="form-control" id="petir_claimid_edit" name="ClaimID" placeholder="Claim ID" >
                         </div>
                         <div class="form-group">
                             <label for="petir_claim">Claim</label>
-                            <input type="text" class="form-control" id="petir_claim" name="claim" placeholder="Masukkan Claim" value="{{ $petir->claim }}">
+                            <input type="text" class="form-control" id="petir_claim_edit" name="claim" placeholder="Masukkan Claim" >
                         </div>
                         <div class="form-group">
                             <label for="petir_vendorname">Vendor Name</label>
-                            <input type="text" class="form-control" id="petir_vendorname" name="VendorName" placeholder="Masukkan Vendor Name" value="{{ $petir->VendorName }}">
+                            <input type="text" class="form-control" id="petir_vendorname_edit" name="VendorName" placeholder="Masukkan Vendor Name" >
                         </div>
                         <div class="form-group">
                             <label for="petir_damagenotes">Damage Notes</label>
-                            <input type="text" class="form-control" id="petir_damagenotes" name="DamageNotes" placeholder="Masukkan Damage Notes" value="{{ $petir->DamageNotes }}">
+                            <input type="text" class="form-control" id="petir_damagenotes_edit" name="DamageNotes" placeholder="Masukkan Damage Notes" >
                         </div>
                         <div class="form-group">
                             <label for="petir_polisnumber">Polis Number</label>
-                            <input type="text" class="form-control" id="petir_polisnumber" name="PolisNumber" placeholder="Polis Number" value="{{ $petir->PolisNumber }}">
+                            <input type="text" class="form-control" id="petir_polisnumber_edit" name="PolisNumber" placeholder="Polis Number" >
                         </div>
                         <div class="form-group">
                             <label for="petir_eventdate">Event Date</label>
-                            <input type="date" class="form-control" id="petir_eventdate" name="EventDate" placeholder="Masukkan Event Date" value="{{ $petir->EventDate }}">
+                            <input type="date" class="form-control" id="petir_eventdate_edit" name="EventDate" placeholder="Masukkan Event Date">
                         </div>
                         <div class="form-group">
                             <label for="petir_reportdate">Report Date</label>
-                            <input type="date" class="form-control" id="petir_reportdate" name="ReportDate" placeholder="Masukkan Report Date" value="{{ $petir->ReportDate }}">
+                            <input type="date" class="form-control" id="petir_reportdate_edit" name="ReportDate" placeholder="Masukkan Report Date" >
                         </div>
                         <div class="form-group">
                             <label for="petir_costclaim">Cost Claim</label>
-                            <input type="text" class="form-control" id="petir_costclaim" name="CostClaim" placeholder="Masukkan Cost Claim" value="{{ $petir->CostClaim }}">
+                            <input type="text" class="form-control" id="petir_costclaim_edit" name="CostClaim" placeholder="Masukkan Cost Claim" >
                         </div>
                         <div class="form-group">
                             <label for="petir_earlystatus">Early Status</label>
-                            <input type="text" class="form-control" id="petir_earlystatus" name="EarlyStatus" placeholder="Masukkan Early Status" value="{{ $petir->EarlyStatus }}">
+                            <input type="text" class="form-control" id="petir_earlystatus_edit" name="EarlyStatus" placeholder="Masukkan Early Status" >
                         </div>
                         <div class="form-group">
                             <label for="petir_finalstatus">Final Status</label>
-                            <input type="text" class="form-control" id="petir_finalstatus" name="FinalStatus" placeholder="Masukkan Final Status" value="{{ $petir->FinalStatus }}">
+                            <input type="text" class="form-control" id="petir_finalstatus_edit" name="FinalStatus" placeholder="Masukkan Final Status">
                         </div>
                         <div class="form-group">
                             <label for="petir_rtpo">RTPO</label>
-                            <input type="text" class="form-control" id="petir_rtpo" name="RTPO" placeholder="Masukkan RTPO" value="{{ $petir->RTPO }}">
+                            <input type="text" class="form-control" id="petir_rtpo_edit" name="RTPO" placeholder="Masukkan RTPO" >
                         </div>
                         <div class="form-group">
                             <label for="petir_regional">Regional</label>
-                            <input type="text" class="form-control" id="petir_regional" name="Regional" placeholder="Masukkan Regional" value="{{ $petir->Regional }}">
+                            <input type="text" class="form-control" id="petir_regional_edit" name="Regional" placeholder="Masukkan Regional" >
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -596,6 +599,23 @@
     </div>
     @endisset
     
+    <script>
+        function get_petir(petir){
+            console.log(petir);
+            document.getElementById('petir_claimid_edit').value = petir['claimID'];
+            document.getElementById('petir_claim_edit').value = petir['claim'];
+            document.getElementById('petir_vendorname_edit').value = petir['VendorName'];
+            document.getElementById('petir_damagenotes_edit').value = petir['DamageNotes'];
+            document.getElementById('petir_polisnumber_edit').value = petir['PolisNumber'];
+            document.getElementById('petir_eventdate_edit').value = petir['EventDate'];
+            document.getElementById('petir_reportdate_edit').value = petir['ReportDate'];
+            document.getElementById('petir_costclaim_edit').value = petir['CostClaim'];
+            document.getElementById('petir_earlystatus_edit').value = petir['EarlyStatus'];
+            document.getElementById('petir_finalstatus_edit').value = petir['FinalStatus'];
+            document.getElementById('petir_rtpo_edit').value = petir['RTPO'];
+            document.getElementById('petir_regional_edit').value = petir['Regional'];
+        }
+    </script>
 
     {{-- claim asset --}}
     <div class="col-lg-12">
