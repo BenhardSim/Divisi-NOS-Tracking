@@ -53,6 +53,7 @@ class ImbasController extends Controller
            "EarlyStatus" => "required",
            "FinalStatus" => "required",
         ]);
+        // mengisi data secara manual 
         $validatedData['RTPO'] = 0;
         $validatedData['Regional'] = "Jawa Tengah";
         $validatedData['idimbas'] = imbas_petir::max('idimbas') + 1;

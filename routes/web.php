@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChartController;
+use App\Http\Controllers\ContractController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImbasController;
 use App\Http\Controllers\LoginController;
@@ -100,5 +101,11 @@ Route::get('/testing', function(siteprofile $id){
 
 // CRUD Imbas Petir
 Route::resource('/imbas_petirs', ImbasController::class)->middleware('auth');
+
+// CRUD Contract Site
+Route::resource('/kontrak_site_histories', ContractController::class)->middleware('auth');
+
+// view file
+Route::get('/file-kontrak/{kontrakId:id}', [ContractController::class, 'getDocs'])->middleware('auth');
 
 
