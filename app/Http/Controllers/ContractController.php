@@ -84,12 +84,23 @@ class ContractController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\kontrak_site_history  $kontrak_site_history
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, kontrak_site_history $kontrak_site_history)
     {
-        //
+        $validatedData = $request->validate([
+            "SITEID" => "required",
+            "no_pks" => "required",
+            "awal_sewa" => "required",
+            "akhir_sewa" => "required",
+            "harga_sewa" => "required",
+            "remark" => "required",
+            // "file_pks" => "required",
+        ]);
+
+        kontrak_site_history::where('id',$kontrak_site_history->id)->update($validatedData);
+        return back()->with('success', 'Kontrak Site berhasil diperbarui');
     }
 
     /**
