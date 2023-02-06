@@ -6,6 +6,7 @@ use App\Http\Controllers\ContractController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImbasController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PbbController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SitesController;
 use App\Http\Controllers\TaggingController;
@@ -102,12 +103,14 @@ Route::get('/testing', function(siteprofile $id){
 
 // CRUD Imbas Petir
 Route::resource('/imbas_petirs', ImbasController::class)->middleware('auth');
+// CRUD Claim Asset
 Route::resource('/claim_assets', ClaimController::class)->middleware('auth');
-
+// CRUD PBB
+Route::resource('/pbbs', PbbController::class)->middleware('auth');
 // CRUD Contract Site
 Route::resource('/kontrak_site_histories', ContractController::class)->middleware('auth');
 
-// view file
+// view file contract site
 Route::get('/file-kontrak/{kontrakId:id}', [ContractController::class, 'getDocs'])->middleware('auth');
 
 

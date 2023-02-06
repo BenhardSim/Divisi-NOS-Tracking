@@ -138,8 +138,9 @@ class ImbasController extends Controller
     public function destroy(imbas_petir $imbas_petir)
     {
         //
+
         imbas_petir::where('idimbas', $imbas_petir->idimbas)->delete();
-        //$imbas_petir->delete();
         return back()->with('success', 'Data imbas petir berhasil dihapus');
+        //$imbas_petir->delete();
     }
 }
