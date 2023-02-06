@@ -48,7 +48,9 @@
             </div>
             <div class="rvc-graph">
                 <p>NO Sertifikat : {{ $no_kon }}</p>
-                <p>File Name</p>
+                <form class="form-inline">
+                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                  </form>
             </div>
         </div>
     </div>
@@ -129,7 +131,7 @@
                                 <span data-feather="edit-2"></span>
                             </button>
                             <!-- Button trigger modal -->
-                            <button id="delbtn-1" onclick="get_id({{ $contract->id }})" value="{{ $contract->id }}" class="badge bg-danger border-0" data-bs-toggle="modal" data-bs-target="#confirmdel">
+                            <button id="delbtn-1" onclick="get_id({{ json_encode(['id' => $contract->id, 'data' => 'kontrak']) }})" value="{{ $contract->id }}" class="badge bg-danger border-0" data-bs-toggle="modal" data-bs-target="#confirmdel">
                                 <span data-feather="delete"></span>
                             </button>
                       </td>
@@ -217,7 +219,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Insert Contract for SITE {{ $id }}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Update Contract for SITE {{ $id }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form style="margin: 0" method="POST" onsubmit="edit_kontrak_site(this)" enctype="multipart/form-data">
@@ -259,13 +261,17 @@
     </div>
 
     <script>
-        let target_id;
+        let target_data;
         let target_kontrak;
-        function get_id(id){
-            target_id = id
+        function get_id(data){
+            target_data = data
         }
         function get_action_kontrak(form){
-            form.action = '/kontrak_site_histories/' + target_id;
+            if(target_data['data'] === 'kontrak'){
+                form.action = '/kontrak_site_histories/' + target_data['id'];
+            }else if(target_data['data'] === 'commIssue'){
+                form.action = '/commissues/' + target_data['id'];
+            }
         }
 
         function get_kontrak(kontrak){
@@ -280,7 +286,6 @@
         function edit_kontrak_site(form){
             form.action = '/kontrak_site_histories/' + target_kontrak['id'];
         }
-
     </script>
 
     <div class="col-lg-12">
@@ -308,6 +313,7 @@
                     <th scope="col">Kompensasi</th>
                     <th scope="col">Realisasi</th>
                     <th scope="col">Stats Case</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -321,6 +327,16 @@
                       <td>{{ $issue->KOMPENSASI }}</td>
                       <td>{{ $issue->REALISASI }}</td>
                       <td>{{ $issue->STATSCASE }}</td>
+                      <td>
+                        {{-- edit button --}}
+                        <button id="delbtn-1" onclick="get_comm({{ $issue }})" value="{{ $issue->idComm }}" class="badge bg-warning border-0" data-bs-toggle="modal" data-bs-target="#modalcommissueedit">
+                            <span data-feather="edit-2"></span>
+                        </button>
+                        <!-- Button trigger modal -->
+                        <button id="delbtn-1" onclick="get_id({{ json_encode(['id' => $issue->idComm, 'data' => 'commIssue']) }})" value="{{ $issue->idComm }}" class="badge bg-danger border-0" data-bs-toggle="modal" data-bs-target="#confirmdel">
+                            <span data-feather="delete"></span>
+                        </button>
+                    </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -330,47 +346,59 @@
 
     <!-- Modal Form Comm Issue -->
     <div class="modal fade" id="modalcommissue" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Insert Comm Issue for SITE {{ $id }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form style="margin: 0" method="POST" action="/kontrak_site_histories" enctype="multipart/form-data">
+                <form style="margin: 0" method="POST" action="/commissues" enctype="multipart/form-data">
                 @csrf
-                <div class="modal-body">
+                <div class="modal-body row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">SITE ID</label>
+                            <input value="{{ $id }}" name="SITEID" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan SITEID" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">SITE NAME</label>
+                            <input value="{{ $nama }}" name="SITENAME" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan SITE NAME" readonly>
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Revenue</label>
-                            <input value="{{ $id }}" name="SITEID" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nomor PKS" >
+                            <input name="REVENUE" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Revenue" >
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Detail</label>
-                          <input name="no_pks" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nomor PKS">
+                          <input name="DETAIL" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Detail">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Action</label>
-                            <input name="awal_sewa" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Awal Sewa">
+                            <input name="ACTION" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Action">
                         </div>
+                    </div>
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Pic</label>
-                            <input name="akhir_sewa" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Awal Sewa">
+                            <input name="PIC" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Pic">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Stats Site</label>
-                            <input name="harga_sewa" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Harga Sewa">
+                            <label for="exampleInputEmail1">Status Site</label>
+                            <input name="STATSSITE" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Status Site">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Kompensasi</label>
-                            <input name="remark" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Remark">
+                            <input name="KOMPENSASI" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Kompensasi">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Realisasi</label>
-                            <input name="file_pks" type="text" class="form-control" id="exampleInputEmail1" placeholder="Upload File">
+                            <input name="REALISASI" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Realisasi">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Stat Case</label>
-                            <input name="file_pks" type="text" class="form-control" id="exampleInputEmail1" placeholder="Upload File">
+                            <input name="STATSCASE" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Status Case">
                         </div>
+                    </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -381,58 +409,91 @@
         </div>
     </div>
 
-    <!-- Modal Form Comm Issue -->
-    <div class="modal fade" id="modalcommissue" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <!-- Modal Form Edit Comm Issue -->
+    <div class="modal fade" id="modalcommissueedit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Insert Comm Issue for SITE {{ $id }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form style="margin: 0" method="POST" action="/kontrak_site_histories" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-body">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Revenue</label>
-                            <input value="{{ $id }}" name="SITEID" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nomor PKS" >
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Detail</label>
-                          <input name="no_pks" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nomor PKS">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Action</label>
-                            <input name="awal_sewa" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Awal Sewa">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Pic</label>
-                            <input name="akhir_sewa" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Awal Sewa">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Stats Site</label>
-                            <input name="harga_sewa" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Harga Sewa">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Kompensasi</label>
-                            <input name="remark" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Remark">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Realisasi</label>
-                            <input name="file_pks" type="text" class="form-control" id="exampleInputEmail1" placeholder="Upload File">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Stat Case</label>
-                            <input name="file_pks" type="text" class="form-control" id="exampleInputEmail1" placeholder="Upload File">
-                        </div>
+                <form style="margin: 0" method="POST" enctype="multipart/form-data" onsubmit="edit_comm_issue(this)">
+                    @method('put')
+                    @csrf
+                <div class="modal-body row">
+                    <div class="col-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">SITE ID</label>
+                        <input value="{{ $id }}" name="SITEID" type="text" class="form-control" id="SITEID" placeholder="Masukkan SITEID" readonly>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Insert</button>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">SITE NAME</label>
+                        <input value="{{ $nama }}" name="SITENAME" type="text" class="form-control" id="SITENAME" placeholder="Masukkan SITE NAME" readonly>
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Revenue</label>
+                        <input name="REVENUE" type="text" class="form-control" id="REVENUE" placeholder="Masukkan Revenue" >
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Detail</label>
+                      <input name="DETAIL" type="text" class="form-control" id="DETAIL" placeholder="Masukkan Detail">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Action</label>
+                        <input name="ACTION" type="text" class="form-control" id="ACTION" placeholder="Masukkan Action">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Pic</label>
+                        <input name="PIC" type="text" class="form-control" id="PIC" placeholder="Masukkan Pic">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Status Site</label>
+                        <input name="STATSSITE" type="text" class="form-control" id="STATSSITE" placeholder="Masukkan Status Site">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Kompensasi</label>
+                        <input name="KOMPENSASI" type="text" class="form-control" id="KOMPENSASI" placeholder="Masukkan Kompensasi">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Realisasi</label>
+                        <input name="REALISASI" type="text" class="form-control" id="REALISASI" placeholder="Masukkan Realisasi">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Stat Case</label>
+                        <input name="STATSCASE" type="text" class="form-control" id="STATSCASE" placeholder="Masukkan Status Case">
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Edit</button>
+                </div>
                 </form>
             </div>
         </div>
     </div>
+
+    <script>
+        let target_comm;
+        function get_comm(comm){
+            target_comm = comm;
+            document.getElementById('REVENUE').value = comm['REVENUE'];
+            document.getElementById('DETAIL').value = comm['DETAIL'];
+            document.getElementById('ACTION').value = comm['ACTION'];
+            document.getElementById('PIC').value = comm['PIC'];
+            document.getElementById('STATSSITE').value = comm['STATSSITE'];
+            document.getElementById('KOMPENSASI').value = comm['KOMPENSASI'];
+            document.getElementById('REALISASI').value = comm['REALISASI'];
+            document.getElementById('STATSCASE').value = comm['STATSCASE'];
+        }
+
+        function edit_comm_issue(form){
+            form.action = '/commissues/' + target_comm['idComm'];
+        }
+
+    </script>
 
 
     {{-- imbas petir --}}
@@ -453,7 +514,6 @@
             <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">SITE ID</th>
                     <th scope="col">Claim ID</th>
                     <th scope="col">Claim</th>
                     <th scope="col">Vendor Name</th>
@@ -470,7 +530,6 @@
                 <tbody>
                     @foreach ($imbas as $petir)
                     <tr class="text-left">
-                      <th scope="row">{{ $petir->Siteid }}</th>
                       <td>{{ $petir->ClaimID }}</td>
                       <td>{{ $petir->claim }}</td>
                       <td>{{ $petir->VendorName }}</td>
