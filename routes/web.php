@@ -10,6 +10,7 @@ use App\Http\Controllers\PbbController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SitesController;
 use App\Http\Controllers\TaggingController;
+use App\Http\Controllers\CommController;
 use App\Models\imbas_petir;
 use App\Models\tagging_asset;
 use App\Models\kontrak_site;
@@ -107,8 +108,14 @@ Route::resource('/imbas_petirs', ImbasController::class)->middleware('auth');
 Route::resource('/claim_assets', ClaimController::class)->middleware('auth');
 // CRUD PBB
 Route::resource('/pbbs', PbbController::class)->middleware('auth');
+// CRUD Claim Asset
+Route::resource('/claim_assets', ClaimController::class)->middleware('auth');
 // CRUD Contract Site
 Route::resource('/kontrak_site_histories', ContractController::class)->middleware('auth');
+// CRUD Commissue
+Route::resource('/commissues',CommController::class)->middleware('auth');
+
+
 
 // view file contract site
 Route::get('/file-kontrak/{kontrakId:id}', [ContractController::class, 'getDocs'])->middleware('auth');
