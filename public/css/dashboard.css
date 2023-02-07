@@ -39,10 +39,13 @@ body {
 
 #sidebarMenu {
     background-color: #03001c;
-    transition: all .2s ease
+    transition: all .2s ease;
+    -moz-box-shadow: -3px 0 5px 0 #555;
+    -webkit-box-shadow: -3px 0 5px 0 #555;
+    box-shadow: -3px 0 5px 0 #555;
 }
 
-#sidebarMenu li:hover{
+#sidebarMenu li:hover {
     background-color: #5B8FB9;
 }
 
@@ -55,8 +58,10 @@ body {
     bottom: 0;
     /* rtl:remove */
     left: 0;
-    z-index: 100; /* Behind the navbar */
-    padding: 0; /* Height of navbar */
+    z-index: 100;
+    /* Behind the navbar */
+    padding: 0;
+    /* Height of navbar */
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -69,7 +74,8 @@ body {
 .sidebar-sticky {
     height: calc(100vh - 48px);
     overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
 }
 
 .sidebar .nav-link {
@@ -145,12 +151,18 @@ body {
     justify-content: center;
     align-items: center;
     /* background-color: #727272; */
+    vertical-align: middle;
 }
 
 .profile-pic h6 {
     margin: 0;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+.btn-wrap{
+    display: flex;
+    align-items: center;
 }
 
 .sites {
@@ -193,7 +205,7 @@ body {
     transition: all 0.2s ease;
 }
 
-.rvc-stat:hover{
+.rvc-stat:hover {
     transform: scale(1.03);
 }
 
@@ -220,16 +232,16 @@ body {
     padding-right: 40px;
 }
 
-.title-box{
+.title-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.icon{
+.icon {
     transition: all 0.5s ease;
 }
 
-.iconn:hover{
+.iconn:hover {
     transform: scale(1.7);
 }

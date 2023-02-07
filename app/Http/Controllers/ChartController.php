@@ -23,9 +23,9 @@ class ChartController extends Controller
         ]);
     }
     public function indexRVC(){
-        return view('portal.site_listchart', [
+        return view('portal.Chart_NOP_RVC', [
             "root" => "rvc",
-            "title" => "Daftar Revenue VS Cost Site",
+            "title" => "Chart Revenue VS Cost NOP",
             "site_all" => siteprofile::paginate(10)
         ]);
     }
@@ -37,47 +37,49 @@ class ChartController extends Controller
         ]);
     }
     public function indexPL(){
-        return view('portal.site_listchart', [
+        return view('portal.Chart_NOP_PL', [
             "root" => "pl",
-            "title" => "Daftar Profit Loss Site",
+            "title" => "Chart Profit Loss NOP",
             "site_all" => siteprofile::paginate(10)
         ]);
     }
 
+
+
     // Fungsi detail
-    public function detailBBM(siteprofile $site)
-    {
-        return view('portal.profilechart',[
-            "title" => "SITE ".$site->SITENAME,
-            "site" => $site            
-        ]);
-    }
-    public function detailRV(siteprofile $site)
-    {
-        return view('portal.profilechart',[
-            "title" => "SITE ".$site->SITENAME,
-            "site" => $site            
-        ]);
-    }
-    public function detailRVC(siteprofile $site)
-    {
-        return view('portal.profilechart',[
-            "title" => "SITE ".$site->SITENAME,
-            "site" => $site            
-        ]);
-    }
-    public function detailPL(siteprofile $site)
-    {
-        return view('portal.profilechart',[
-            "title" => "SITE ".$site->SITENAME,
-            "site" => $site            
-        ]);
-    }
-    public function detailOPEX(siteprofile $site)
-    {
-        return view('portal.profilechart',[
-            "title" => "SITE ".$site->SITENAME,
-            "site" => $site            
-        ]);
-    }
+    // public function detailBBM(siteprofile $site)
+    // {
+    //     return view('portal.profilechart',[
+    //         "title" => "SITE ".$site->SITENAME,
+    //         "site" => $site            
+    //     ]);
+    // }
+    // public function detailRV(siteprofile $site)
+    // {
+    //     return view('portal.profilechart',[
+    //         "title" => "SITE ".$site->SITENAME,
+    //         "site" => $site            
+    //     ]);
+    // }
+    // public function detailRVC(siteprofile $site)
+    // {
+    //     return view('portal.Chart_NOP_RVC',[
+    //         "title" => "SITE ".$site->SITENAME,
+    //         "site" => $site            
+    //     ]);
+    // }
+    // public function detailPL(siteprofile $site)
+    // {
+    //     return view('portal.Chart_NOP_PL',[
+    //         "title" => "SITE ".$site->SITENAME,
+    //         "site" => $site            
+    //     ]);
+    // }
+    // public function detailOPEX(siteprofile $site)
+    // {
+    //     return view('portal.profilechart',[
+    //         "title" => "SITE ".$site->SITENAME,
+    //         "site" => $site            
+    //     ]);
+    // }
 }
