@@ -178,7 +178,7 @@
                 <div class="modal-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Site ID</label>
-                            <input value="{{ $id }}" name="SITEID" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nomor PKS" >
+                            <input value="{{ $id }}" name="SITEID" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nomor PKS" readonly>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nomor PKS</label>
@@ -228,7 +228,7 @@
                 <div class="modal-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Site ID</label>
-                            <input value="{{ $id }}" name="SITEID" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nomor PKS" >
+                            <input value="{{ $id }}" name="SITEID" type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nomor PKS" readonly>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nomor PKS</label>
@@ -346,7 +346,7 @@
 
     <!-- Modal Form Comm Issue -->
     <div class="modal fade" id="modalcommissue" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Insert Comm Issue for SITE {{ $id }}</h5>
@@ -411,10 +411,10 @@
 
     <!-- Modal Form Edit Comm Issue -->
     <div class="modal fade" id="modalcommissueedit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Insert Comm Issue for SITE {{ $id }}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Update Comm Issue for SITE {{ $id }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form style="margin: 0" method="POST" enctype="multipart/form-data" onsubmit="edit_comm_issue(this)">
@@ -580,7 +580,7 @@
     </div>
 
     <div class="modal fade" id="imbasModal" tabindex="-1" aria-labelledby="imbasModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="imbasModalLabel">Insert Imbas Petir for SITE {{ $id }}</h5>
@@ -663,7 +663,7 @@
    
 
     <div class="modal fade" id="imbasUpdate" tabindex="-1" aria-labelledby="imbasUpdateLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="imbasUpdateLabel">Update Imbas Petir for SITE {{ $id }}</h5>
@@ -1139,7 +1139,7 @@
     </div>
 
     <div class="modal fade" id="pbbModal" tabindex="-1" aria-labelledby="pbbModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="pbbModalLabel">Insert PBB for SITE {{ $id }}</h5>
@@ -1205,7 +1205,7 @@
     
 
     <div class="modal fade" id="pbbUpdate" tabindex="-1" aria-labelledby="pbbUpdateLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="imbasUpdateLabel">Update PBB for SITE {{ $id }}</h5>
