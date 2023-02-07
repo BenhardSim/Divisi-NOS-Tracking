@@ -5,19 +5,19 @@
                 <b>{{ auth()->user()->name }}</b>
                 <br>
                 @can('staff')
-                 You're on a staff level account
+                staff level account
                 @endcan
                 @can('supervisor')
-                 You're on a supervisor level account
+                supervisor level account
                 @endcan
                 @can('manager')
-                 You're on a manager level account
+                manager level account
                 @endcan
                 @can('gm')
-                 You're on a Grand Master level account
+                General Manager level account
                 @endcan
                 @can('admin')
-                 You're on an admin level account
+                admin level account
                 @endcan
             </p>
         </div>
