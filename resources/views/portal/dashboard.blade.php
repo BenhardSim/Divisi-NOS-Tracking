@@ -10,6 +10,23 @@
         </div>
         <div class="profile-pic">
             <h6>{{ auth()->user()->name }}</h6>
+            <h6>
+                @can('staff')
+                 You're on a staff level account
+                @endcan
+                @can('supervisor')
+                 You're on a supervisor level account
+                @endcan
+                @can('manager')
+                 You're on a manager level account
+                @endcan
+                @can('gm')
+                 You're on a Grand Master level account
+                @endcan
+                @can('admin')
+                 You're on an admin level account
+                @endcan
+            </h6>
             <form action="/logout" method="POST">
                 @csrf
                 <button type="submit" class="btn btn-danger"><span data-feather="log-out" class="align-text-bottom"></span> Logout</button>
