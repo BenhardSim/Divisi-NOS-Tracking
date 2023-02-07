@@ -85,7 +85,7 @@
 >
 
       @can('admin')
-      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 text-muted">
         <span>Administrator</span>
       </h6>
 

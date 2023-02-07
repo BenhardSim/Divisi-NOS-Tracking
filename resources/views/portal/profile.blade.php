@@ -42,10 +42,60 @@
             </div>
             <div class="rvc-graph">
                 <p>NO Sertifikat : {{ $no_kon }}</p>
-                <form class="form-inline">
-                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
-                  </form>
+                <p>See Latest Document : <a href="">View Document</a></p>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_doc_certi">
+                   Upload Document
+                </button>
             </div>
+        </div>
+    </div>
+
+   <!-- Modal Dokumen Sertifikat -->
+    <div class="modal fade" id="modal_doc_certi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Document Sertificate</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body row">
+                <div class="col-6">
+                    <h6>Document List</h6>
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">No Sertif</th>
+                            <th scope="col">Dokumen</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">10912</th>
+                            <td><a href="">View Document</a></td>
+                          </tr>
+                      </table>
+                </div>
+                <div class="col-6">
+                    <h6>Upload Document</h6>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">No Sertifikat</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Nomor sertifikat">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Upload Dokumen</label>
+                            <input type="file" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
         </div>
     </div>
     
@@ -55,7 +105,7 @@
                 <a href="/rvc" class="links text-white"><h5>Document Lainnya</h5></a>
             </div>
             <div class="rvc-graph">
-                <p>NO HO : </p>
+                <p>See Latest Document : <a href="">View Document</a></p>
                 <p>File Name</p>
             </div>
         </div>

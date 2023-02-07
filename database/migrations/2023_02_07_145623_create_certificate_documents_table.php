@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kontrak_site_histories', function (Blueprint $table) {
+        Schema::create('certificate_documents', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('no_ser')->unique();
+            $table->string('file_ser');
+            $table->string('SITEID');
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kontrak_site_histories');
+        Schema::dropIfExists('certificate_documents');
     }
 };
