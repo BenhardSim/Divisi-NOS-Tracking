@@ -83,7 +83,6 @@ class SitesController extends Controller
         $no_ser_target = certificate_document::select()->find($max_id_certificate);
         $no_imb_target = imb_document::select()->find($max_id_imb);
         $no_lain_target = lain_document::select()->find($max_id_lain);
-        
 
         return view('portal.profile',[
             "title" => "SITE ".$id->SITEID,
@@ -107,6 +106,7 @@ class SitesController extends Controller
             "latest_cer" => $no_ser_target,
             "latest_imb" => $no_imb_target,
             "latest_lain" => $no_lain_target,
+
         ]);
     }
 
