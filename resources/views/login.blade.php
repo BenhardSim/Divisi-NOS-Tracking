@@ -64,7 +64,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   </head>
     <link href="/css/login.css" rel="stylesheet">
-    <title>Hello, world!</title>
+    <title>NOS PORTAL</title>
   </head>
   <body>
     <section class="container-login shadow-lg">
@@ -116,7 +116,7 @@
             <button class="mt-3 w-100 btn btn-lg btn-primary" type="submit">Login</button>
             <p class="mt-2 mb-2 text-muted">&copy; 2023</p>
           </form>
-          <small class="d-block text-center mt-1">Not registered? <a href="/register">Register Now</a></small>
+          {{-- <small class="d-block text-center mt-1">Not registered? <a href="/register">Register Now</a></small> --}}
       </main>
       </div>
   </div>

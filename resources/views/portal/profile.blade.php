@@ -1610,46 +1610,46 @@
     // cost BBM
 
     const costbbm_main = document.getElementById('costbbm_main').getContext('2d');
-    //const labels = Utils.months({count: 7});
-    const costbbm_maindata = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-        datasets: [
-        {
-        label: ['Cost (dalam ribuan rupiah)'],
-        data: [65, 59, 80, 81, 56, 55, 40],
-        fill: false,
-        borderColor: 'rgb(100, 100, 255)',
-        tension: 0.1
-        },
-        {
-        label: ['Lama Pemakaian (bulan)'],
-        data: [12, 10, 32, 30, 12, 11, 10],
-        fill: false,
-        borderColor: 'rgb(100, 255, 100)',
-        tension: 0.1
-        },
-        {
-        label: ['BBM (Liter)'],
-        data: [10, 12, 34, 77, 34, 21, 22],
-        fill: false,
-        borderColor: 'rgb(255, 100, 100)',
-        tension: 0.1
-        }
-    ]
-    };
-    const costbbm_mainconfig = {
-        type: 'line',
-        data: costbbm_maindata,
-        options: {
-            scales: {
-                y: {
-                beginAtZero: true
-                }
-            }
-        }
-    };
+     //const labels = Utils.months({count: 7});
+     const costbbm_maindata = {
+         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+         datasets: [
+         {
+         label: ['Cost (dalam ribuan rupiah)'],
+         data: [65, 59, 80, 81, 56, 55, 40, 42, 45, 44, 80, 90],
+         fill: false,
+         borderColor: 'rgb(100, 100, 255)',
+         tension: 0.1
+         },
+         {
+         label: ['Lama Pemakaian (jam)'],
+         data: [12, 10, 32, 30, 12, 11, 10, 11, 12, 13, 14, 15],
+         fill: false,
+         borderColor: 'rgb(100, 255, 100)',
+         tension: 0.1
+         },
+         {
+         label: ['BBM (Liter)'],
+         data: [10, 12, 34, 77, 34, 21, 22, 20, 10, 30, 23, 12],
+         fill: false,
+         borderColor: 'rgb(255, 100, 100)',
+         tension: 0.1
+         }
+     ]
+     };
+     const costbbm_mainconfig = {
+         type: 'line',
+         data: costbbm_maindata,
+         options: {
+             scales: {
+                 y: {
+                 beginAtZero: true
+                 }
+             }
+         }
+     };
 
-    new Chart(costbbm_main, costbbm_mainconfig);
+     new Chart(costbbm_main, costbbm_mainconfig);
 
     // OPEX
 

@@ -38,16 +38,7 @@ Route::get('/', function () {
     //     "title" => "home"
     // ]);
 
-    return redirect()->intended('/login');
-});
-
-Route::get('/about', function () {
-    return view("about", [
-        "title" => "about",
-        "name" => ["Benhard Simanullang", "Julius Adrian"],
-        "email" => ["benhard.master.j@gmail.com", "juliusa368@gmail.com"],
-        "image" => "nanami-mami.png"
-    ]);
+    return redirect()->intended('/dashboard');
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -81,11 +72,6 @@ Route::get('/pl', [ChartController::class, 'indexPL'])->middleware('auth');
 Route::get('/opex', [ChartController::class, 'indexOPEX'])->middleware('auth');
 Route::get('/rv', [ChartController::class, 'indexRV'])->middleware('auth');
 
-Route::get('/bbm/{site:SITEID}', [ChartController::class, 'detailBBM'])->middleware('auth');
-Route::get('/rvc/{site:SITEID}', [ChartController::class, 'detailRVC'])->middleware('auth');
-Route::get('/pl/{site:SITEID}', [ChartController::class, 'detailPL'])->middleware('auth');
-Route::get('/opex/{site:SITEID}', [ChartController::class, 'detailOPEX'])->middleware('auth');
-Route::get('/rv/{site:SITEID}', [ChartController::class, 'detailRV'])->middleware('auth');
 
 // search
 Route::get('/search', [SitesController::class, 'searchSites'])->middleware('auth');
