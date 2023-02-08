@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\certificate_document;
 use App\Models\claim_asset;
 use App\Models\commissue;
+use App\Models\imb_document;
 use App\Models\imbas_petir;
 use App\Models\pbb;
 use App\Models\siteprofile;
@@ -71,6 +73,9 @@ class SitesController extends Controller
 
     public function detailSites(siteprofile $id)
     {
+        $max_id_certificate = certificate_document::max('id');
+        // nomor target sertifikat
+        $no_ser_target = certificate_document::select()->find($max_id_certificate);
         return view('portal.profile',[
             "title" => "SITE ".$id->SITEID,
             "id" => $id->SITEID,
@@ -83,7 +88,13 @@ class SitesController extends Controller
             "claims" => claim_asset::where("SiteIDClaim", $id->SITEID)->get(),
             "no_kon" => $id->NOKONTRAK,
             "contracts" => kontrak_site_history::where('SITEID',$id->SITEID)->get(),
-            "issues" => commissue::where("SITEID", $id->SITEID)->get(),             
+            "issues" => commissue::where("SITEID", $id->SITEID)->get(),
+
+            "certi_docs" => certificate_document::where('SITEID', $id->SITEID)->get(),
+            "imb_docs" => imb_document::where('SITEID',$id->SITEID)->get(),
+            
+            // latest document
+            "latest_cer" => $no_ser_target,
         ]);
     }
 

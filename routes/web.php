@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ClaimController;
 use App\Http\Controllers\ContractController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SitesController;
 use App\Http\Controllers\TaggingController;
 use App\Http\Controllers\CommController;
+use App\Http\Controllers\ImbController;
 use App\Models\imbas_petir;
 use App\Models\tagging_asset;
 use App\Models\kontrak_site;
@@ -114,10 +116,16 @@ Route::resource('/claim_assets', ClaimController::class)->middleware('auth');
 Route::resource('/kontrak_site_histories', ContractController::class)->middleware('auth');
 // CRUD Commissue
 Route::resource('/commissues',CommController::class)->middleware('auth');
+// CRUD certificate Document
+Route::resource('/certificate_documents',CertificateController::class)->middleware('auth');
+// CRUD certificate Document
+Route::resource('/certificate_imbs',ImbController::class)->middleware('auth');
 
 
 
 // view file contract site
 Route::get('/file-kontrak/{kontrakId:id}', [ContractController::class, 'getDocs'])->middleware('auth');
+// view file certificate document
+Route::get('/file-certificate/{id_ser:id}',[CertificateController::class, 'getDocs'])->middleware('auth');
 
 
