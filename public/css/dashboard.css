@@ -13,7 +13,7 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
 }
 
 /* Track */
@@ -245,3 +245,51 @@ body {
 .iconn:hover {
     transform: scale(1.7);
 }
+
+.up-data{
+    background-color: #0F6292;
+    padding: 25px;
+    border-radius: 10px;
+    color: white;
+}
+
+.center-ver-hor{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.up-docs-sign{
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    margin-left: 20px;
+    overflow-y: auto;
+    height: 600px;
+}
+
+.notification {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .belll {
+    color: black;
+  }
+
+  .belll:hover {
+    color: #d91b0a;
+  }
+  
+  .notification .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 100%;
+    background: red;
+    color: white;
+    font-size: 10px;
+  }
