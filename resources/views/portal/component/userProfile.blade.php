@@ -1,5 +1,10 @@
-
     <div class="profile-pic">
+        <div style="padding-right: 18px">
+            <a href="#" class="notification">
+                <span data-feather="bell" class="align-text-bottom belll" style="width: 28px;height:28px;"></span>
+                <span class="badge">3</span>
+              </a>
+        </div>
         <div style="padding-right: 10px">
             <p>
                 <b>{{ auth()->user()->name }}</b>
