@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\kontrak_site_history;
 use App\Models\siteprofile;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,10 +36,6 @@ use App\Models\siteprofile;
 */
 
 Route::get('/', function () {
-    // return view("home", [
-    //     "title" => "home"
-    // ]);
-
     return redirect()->intended('/dashboard');
 });
 
@@ -46,11 +43,21 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-// Route::get('/dashboard', function(){
-//     return view('portal.dashboard');
-// })->middleware('auth');
-
+// Sidebar route
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/setting', [SettingController::class, 'index'])->middleware('auth');
+Route::put('/setting', [SettingController::class, 'update'])->middleware('auth');
+Route::get('/upload-dokumen', function(){
+    return view('portal.upDokumen',[
+        "users_lvl_1" => User::where('level_akun',1)->get(),
+        "users_lvl_2" => User::where('level_akun',2)->get(),
+        "users_lvl_3" => User::where('level_akun',3)->get(),
+        "users_lvl_4" => User::where('level_akun',4)->get(),
+    ]);
+})->middleware('auth');
+Route::get('/upload-data', function(){
+    return view('portal.add_data');
+})->middleware('auth');
 
 
 // site list
@@ -59,12 +66,6 @@ Route::get('/site-tp', [SitesController::class, 'indexTp'])->middleware('auth');
 Route::get('/site-telkom', [SitesController::class, 'indexTelkom'])->middleware('auth');
 Route::get('/site-telkomsel', [SitesController::class, 'indexTelkomsel'])->middleware('auth');
 
-// lainnya
-Route::get('/setting', [SettingController::class, 'index'])->middleware('auth');
-Route::put('/setting', [SettingController::class, 'update'])->middleware('auth');
-Route::get('/upload-dokumen', function(){
-    return view('portal.upDokumen');
-})->middleware('auth');
 
 // site from graph 
 Route::get('/bbm', [ChartController::class, 'indexBBM'])->middleware('auth');
