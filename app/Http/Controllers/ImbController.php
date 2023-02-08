@@ -97,4 +97,9 @@ class ImbController extends Controller
     {
         //
     }
+
+    public function getDocs(imb_document $id_imb){
+        $name = $id_imb->file_imb;
+        return response()->file(storage_path('app\public\file-imb\\'.$name));
+    }
 }

@@ -13,6 +13,7 @@ use App\Http\Controllers\SitesController;
 use App\Http\Controllers\TaggingController;
 use App\Http\Controllers\CommController;
 use App\Http\Controllers\ImbController;
+use App\Http\Controllers\lainController;
 use App\Models\imbas_petir;
 use App\Models\tagging_asset;
 use App\Models\kontrak_site;
@@ -104,8 +105,10 @@ Route::resource('/kontrak_site_histories', ContractController::class)->middlewar
 Route::resource('/commissues',CommController::class)->middleware('auth');
 // CRUD certificate Document
 Route::resource('/certificate_documents',CertificateController::class)->middleware('auth');
-// CRUD certificate Document
+// CRUD IMB Document
 Route::resource('/certificate_imbs',ImbController::class)->middleware('auth');
+// CRUD Document Lainnya
+Route::resource('/lain_documents',lainController::class)->middleware('auth');
 
 
 
@@ -113,5 +116,9 @@ Route::resource('/certificate_imbs',ImbController::class)->middleware('auth');
 Route::get('/file-kontrak/{kontrakId:id}', [ContractController::class, 'getDocs'])->middleware('auth');
 // view file certificate document
 Route::get('/file-certificate/{id_ser:id}',[CertificateController::class, 'getDocs'])->middleware('auth');
+// view file IMB document
+Route::get('/file-imb/{id_imb:id}',[ImbController::class,'getDocs'])->middleware('auth');
+// view file lainnya 
+Route::get('/file-lain/{id_lain:id}',[lainController::class,'getDocs'])->middleware('auth');
 
 

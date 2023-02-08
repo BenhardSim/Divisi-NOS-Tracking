@@ -66,8 +66,8 @@
             </div>
             <div class="modal-body row">
                 <div class="col-6">
-                    <h6>Document List</h6>
-                    <table class="table table-hover">
+                    <h6>Document Upload History</h6>
+                    <table class="table table-hover" style="overflow-y: auto;">
                         <thead>
                           <tr>
                             <th scope="col">No Sertif</th>
@@ -121,11 +121,81 @@
                 <a href="/rvc" class="links text-white"><h5>Document Lainnya</h5></a>
             </div>
             <div class="rvc-graph">
-                <p>See Latest Document : <a href="">View Document</a></p>
-                <p>File Name</p>
+                @if($latest_lain)
+                    <p>File Name : {{ $latest_lain->nama_file }}</p>
+                    <p>See Latest Document : <a href="/file-lain/{{ $latest_lain->id }}">View Document</a></p>
+                @endif
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_doc_lain">
+                    Upload Document
+                 </button>
             </div>
         </div>
     </div>
+
+     <!-- Modal Dokumen Lainnya -->
+     <div class="modal fade" id="modal_doc_lain" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Document Lainnya</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body row">
+                <div class="col-6">
+                    <h6>Document Upload History</h6>
+                    <table class="table table-hover" style="overflow-y: auto;">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nama Dokumen</th>
+                            <th scope="col">Dokumen</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($lain_docs as $lain_doc)
+                          <tr>
+                            @if ($lain_doc)
+                                <td scope="row">{{ $lain_doc->nama_file }}</td>
+                                <td><a href="/file-lain/{{ $lain_doc->id }}">View Document</a></td>
+                            @endif
+                            @if (!$lain_doc)
+                                <td scope="row">-</td>
+                                <td><a href="">-</a></td>
+                            @endif
+                          </tr>
+                        @endforeach
+                        </tbody>
+                      </table>
+                </div>
+                <div class="col-6">
+                    <h6>Upload Document</h6>
+                    <form method="POST" action="/lain_documents" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label>Site Id</label>
+                            <input value="{{ $id }}" type="text" class="form-control" name="SITEID" id="SITEID" aria-describedby="emailHelp" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Nama Dokumen</label>
+                            <input type="text" class="form-control" name="nama_file" id="nama_file" aria-describedby="emailHelp" placeholder="Masukkan Nama Dokumen">
+                        </div>
+                        <div class="form-group">
+                            <label>Upload Dokumen</label>
+                            <input type="file" class="form-control" name="file_lain" id="file_lain">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
 
         <div class="col-lg-3">
         <div class="container rvc-stat shadow">
@@ -133,8 +203,14 @@
                 <a href="/rvc" class="links text-white"><h5>Document IMB</h5></a>
             </div>
             <div class="rvc-graph">
-                <p>NO IMB : - </p>
-                <p>See Latest Document : -</p>
+                @if($latest_imb)
+                    <p>NO IMB : {{ $latest_imb->no_imb }} </p>
+                    <p>See Latest Document : <a href="/file-imb/{{ $latest_imb->id }}">View Document</a></p>
+                @endif
+                @if(!$latest_imb)
+                    <p>NO IMB : - </p>
+                    <p>See Latest Document : -</p>
+                @endif
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_doc_certi">
                     Upload Document
                  </button>
@@ -152,7 +228,7 @@
             </div>
             <div class="modal-body row">
                 <div class="col-6">
-                    <h6>Document List</h6>
+                    <h6>Document Upload History</h6>
                     <table class="table table-hover">
                         <thead>
                           <tr>
@@ -165,7 +241,11 @@
                           <tr>
                             @if ($imb_doc)
                                 <td scope="row">{{ $imb_doc->no_imb }}</td>
-                                <td><a href="">View Document</a></td>
+                                <td><a href="/file-imb/{{ $imb_doc->id }}">View Document</a></td>
+                            @endif
+                            @if (!$imb_doc)
+                                <td scope="row">-</td>
+                                <td><a href="">-</a></td>
                             @endif
                           </tr>
                         @endforeach

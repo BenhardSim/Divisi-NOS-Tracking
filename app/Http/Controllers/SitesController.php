@@ -10,6 +10,7 @@ use App\Models\imbas_petir;
 use App\Models\pbb;
 use App\Models\siteprofile;
 use App\Models\kontrak_site_history;
+use App\Models\lain_document;
 use Illuminate\Http\Request;
 
 class SitesController extends Controller
@@ -73,9 +74,17 @@ class SitesController extends Controller
 
     public function detailSites(siteprofile $id)
     {
+
         $max_id_certificate = certificate_document::max('id');
+        $max_id_imb = imb_document::max('id');
+        $max_id_lain = lain_document::max('id');
+        
         // nomor target sertifikat
         $no_ser_target = certificate_document::select()->find($max_id_certificate);
+        $no_imb_target = imb_document::select()->find($max_id_imb);
+        $no_lain_target = lain_document::select()->find($max_id_lain);
+        
+
         return view('portal.profile',[
             "title" => "SITE ".$id->SITEID,
             "id" => $id->SITEID,
@@ -92,9 +101,12 @@ class SitesController extends Controller
 
             "certi_docs" => certificate_document::where('SITEID', $id->SITEID)->get(),
             "imb_docs" => imb_document::where('SITEID',$id->SITEID)->get(),
+            "lain_docs" => lain_document::where('SITEID',$id->SITEID)->get(),
             
-            // latest document
+            // latest document certificate
             "latest_cer" => $no_ser_target,
+            "latest_imb" => $no_imb_target,
+            "latest_lain" => $no_lain_target,
         ]);
     }
 
