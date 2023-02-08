@@ -41,9 +41,15 @@
                 <a href="/rvc" class="links text-white"><h5>Document Sertificate</h5></a>
             </div>
             <div class="rvc-graph">
-                <p>NO Sertifikat : {{ $no_kon }}</p>
-                <p>See Latest Document : <a href="">View Document</a></p>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_doc_certi">
+                @if ($latest_cer)
+                    <p>NO Sertifikat : {{ $latest_cer->no_ser }}</p>
+                    <p>See Latest Document : <a href="/file-certificate/{{ $latest_cer->id }}">View Document</a></p>
+                @endif
+                @if (!$latest_cer)
+                    <p>NO Sertifikat : - </p>
+                    <p>See Latest Document : -</p>
+                @endif
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_doc_imb">
                    Upload Document
                 </button>
             </div>
@@ -51,7 +57,7 @@
     </div>
 
    <!-- Modal Dokumen Sertifikat -->
-    <div class="modal fade" id="modal_doc_certi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modal_doc_imb" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -69,22 +75,32 @@
                           </tr>
                         </thead>
                         <tbody>
+                        @foreach($certi_docs as $certi_doc)
                           <tr>
-                            <th scope="row">10912</th>
-                            <td><a href="">View Document</a></td>
+                            @if ($certi_doc)
+                                <td scope="row">{{ $certi_doc->no_ser }}</td>
+                                <td><a href="/file-certificate/{{ $certi_doc->id }}">View Document</a></td>
+                            @endif
                           </tr>
+                        @endforeach
+                        </tbody>
                       </table>
                 </div>
                 <div class="col-6">
                     <h6>Upload Document</h6>
-                    <form>
+                    <form method="POST" action="/certificate_documents" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Site Id</label>
+                            <input value="{{ $id }}" type="text" class="form-control" name="SITEID" id="SITEID" aria-describedby="emailHelp" readonly>
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">No Sertifikat</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Nomor sertifikat">
+                            <input type="text" class="form-control" name="no_ser" id="no_ser" aria-describedby="emailHelp" placeholder="Masukkan Nomor sertifikat">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Upload Dokumen</label>
-                            <input type="file" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <input type="file" class="form-control" name="file_ser" id="file_ser" placeholder="Password">
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -117,13 +133,80 @@
                 <a href="/rvc" class="links text-white"><h5>Document IMB</h5></a>
             </div>
             <div class="rvc-graph">
-                <p>NO IMB : </p>
-                <p>File Name</p>
+                <p>NO IMB : - </p>
+                <p>See Latest Document : -</p>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_doc_certi">
+                    Upload Document
+                 </button>
             </div>
         </div>
     </div>
+
+     <!-- Modal Dokumen IMB -->
+     <div class="modal fade" id="modal_doc_certi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Document IMB</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body row">
+                <div class="col-6">
+                    <h6>Document List</h6>
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">No IMB</th>
+                            <th scope="col">Dokumen</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($imb_docs as $imb_doc)
+                          <tr>
+                            @if ($imb_doc)
+                                <td scope="row">{{ $imb_doc->no_imb }}</td>
+                                <td><a href="">View Document</a></td>
+                            @endif
+                          </tr>
+                        @endforeach
+                        </tbody>
+                      </table>
+                </div>
+                <div class="col-6">
+                    <h6>Upload Document</h6>
+                    <form method="POST" action="/certificate_imbs" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Site Id</label>
+                            <input value="{{ $id }}" type="text" class="form-control" name="SITEID" id="SITEID" aria-describedby="emailHelp" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">No IMB</label>
+                            <input type="text" class="form-control" name="no_imb" id="no_imb" aria-describedby="emailHelp" placeholder="Masukkan Nomor IMB">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Upload Dokumen</label>
+                            <input type="file" class="form-control" name="file_imb" id="file_imb" placeholder="Password">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+
+
+    {{-- notification --}}
     @if (session()->has('success'))
-    <div class="alert alert-success container" role="alert">
+    <div class="alert alert-success container col-lg-12" role="alert">
       {{ session('success') }}
     </div>
     @endif

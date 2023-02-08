@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\certificate_document;
-use App\Http\Requests\Storecertificate_documentRequest;
-use App\Http\Requests\Updatecertificate_documentRequest;
+use App\Models\imb_document;
+use App\Http\Requests\Storeimb_documentRequest;
+use App\Http\Requests\Updateimb_documentRequest;
 
-class CertificateDocumentController extends Controller
+class ImbDocumentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class CertificateDocumentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Storecertificate_documentRequest  $request
+     * @param  \App\Http\Requests\Storeimb_documentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Storecertificate_documentRequest $request)
+    public function store(Storeimb_documentRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class CertificateDocumentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\certificate_document  $certificate_document
+     * @param  \App\Models\imb_document  $imb_document
      * @return \Illuminate\Http\Response
      */
-    public function show(certificate_document $certificate_document)
+    public function show(imb_document $imb_document)
     {
         //
     }
@@ -53,10 +53,10 @@ class CertificateDocumentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\certificate_document  $certificate_document
+     * @param  \App\Models\imb_document  $imb_document
      * @return \Illuminate\Http\Response
      */
-    public function edit(certificate_document $certificate_document)
+    public function edit(imb_document $imb_document)
     {
         //
     }
@@ -64,11 +64,11 @@ class CertificateDocumentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Updatecertificate_documentRequest  $request
-     * @param  \App\Models\certificate_document  $certificate_document
+     * @param  \App\Http\Requests\Updateimb_documentRequest  $request
+     * @param  \App\Models\imb_document  $imb_document
      * @return \Illuminate\Http\Response
      */
-    public function update(Updatecertificate_documentRequest $request, certificate_document $certificate_document)
+    public function update(Updateimb_documentRequest $request, imb_document $imb_document)
     {
         //
     }
@@ -76,10 +76,10 @@ class CertificateDocumentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\certificate_document  $certificate_document
+     * @param  \App\Models\imb_document  $imb_document
      * @return \Illuminate\Http\Response
      */
-    public function destroy(certificate_document $certificate_document)
+    public function destroy(imb_document $imb_document)
     {
         //
     }
