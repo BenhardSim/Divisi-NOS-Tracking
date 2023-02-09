@@ -1510,50 +1510,13 @@
         }
     </script>
 
-    <div class="col-lg-6">
+    <div class="col-lg-12">
         <div class="container rvc-stat shadow">
             <div class="rvc-title">
                 <a href="/rvc" class="links text-white"><h5>Revenue VS Cost SITE {{ $id }}</h5></a>
             </div>
             <div class="rvc-graph">
                 <canvas id="revenue_main"></canvas>
-            </div>
-        </div>
-    </div>
-
-
-    {{-- profit loss regional   --}}
-    <div class="col-lg-6">
-        <div class="container rvc-stat shadow">
-            <div class="rvc-title">
-                <a href="/pl" class="links text-white"><h5>Profit Loss SITE {{ $id }}</h5></a>
-            </div>
-            <div class="rvc-graph">
-                <canvas id="profitloss_main"></canvas>
-            </div>
-        </div>
-    </div>
-
-    {{-- Reserved Varcost   --}}
-    <div class="col-lg-6">
-        <div class="container rvc-stat shadow">
-            <div class="rvc-title">
-                <a href="/rv" class="links text-white"><h5>Reserved Varcost SITE {{ $id }}</h5></a>
-            </div>
-            <div class="rvc-graph">
-                <canvas id="varcost_main"></canvas>
-            </div>
-        </div>
-    </div>
-
-    {{-- Cost BBM --}}
-    <div class="col-lg-6">
-        <div class="container rvc-stat shadow">
-            <div class="rvc-title">
-                <a href="/bbm" class="links text-white"><h5>Cost BBM SITE {{ $id }}</h5></a>
-            </div>
-            <div class="rvc-graph">
-                <canvas id="costbbm_main"></canvas>
             </div>
         </div>
     </div>
@@ -1580,19 +1543,103 @@
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
         datasets: [
         {
-        label: ['Revenue'],
+        label: ['Depre BTS'],
         data: [120000, 122000, 123000, 123000, 122000, 124000, 160000, 130000, 122000, 124000, 123000, 123000],
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
         },
         {
-        label: ['Cost'],
+        label: ['Depre_TowerOwn'],
         data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
         fill: false,
-        borderColor: 'rgb(255, 192, 192)',
+        borderColor: 'rgb(100, 100, 0)',
         tension: 0.1
-        }
+        },
+        {
+        label: ['Opex_Isr'],
+        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        fill: false,
+        borderColor: 'rgb(0, 100, 100)',
+        tension: 0.1
+        },
+        {
+        label: ['Cost_Nsr'],
+        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        fill: false,
+        borderColor: 'rgb(200, 100, 200)',
+        tension: 0.1
+        },
+        {
+        label: ['Depre_Combat'],
+        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        fill: false,
+        borderColor: 'rgb(200, 200, 192)',
+        tension: 0.1
+        },
+        {
+        label: ['Depre_Power'],
+        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        fill: false,
+        borderColor: 'rgb(50, 50, 50)',
+        tension: 0.1
+        },
+        {
+        label: ['Opex_Transmission'],
+        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        fill: false,
+        borderColor: 'rgb(0, 200, 50)',
+        tension: 0.1
+        },
+        {
+        label: ['Cost_Tower'],
+        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        fill: false,
+        borderColor: 'rgb(255, 255, 50)',
+        tension: 0.1
+        },
+        {
+        label: ['Depre_Uso'],
+        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        fill: false,
+        borderColor: 'rgb(255, 150, 150)',
+        tension: 0.1
+        },
+        {
+        label: ['Depre_SiteSupport'],
+        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        fill: false,
+        borderColor: 'rgb(255, 0, 0)',
+        tension: 0.1
+        },
+        {
+        label: ['Opex_Power'],
+        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        fill: false,
+        borderColor: 'rgb(0, 192, 0)',
+        tension: 0.1
+        },
+        {
+        label: ['Depre_AccessLink'],
+        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        fill: false,
+        borderColor: 'rgb(0, 192, 192)',
+        tension: 0.1
+        },
+        {
+        label: ['Opex_Frequency'],
+        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        fill: false,
+        borderColor: 'rgb(255, 0, 192)',
+        tension: 0.1
+        },
+        {
+        label: ['Opex_RM'],
+        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        fill: false,
+        borderColor: 'rgb(255, 192, 0)',
+        tension: 0.1
+        },
     ]
     };
     const revvcost_mainConfig = {
@@ -1609,161 +1656,4 @@
 
     new Chart(revvcost_main, revvcost_mainConfig);
 
-    // site profit loss regional 
-
-    const profitloss_main = document.getElementById('profitloss_main').getContext('2d');
-    //const labels = Utils.months({count: 7});  
-    const profitloss_mainData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
-        datasets: [
-        {
-            label: 'High Profit',
-            data: [1000, 1030, 1010 ,1010 ,1020, 1050, 1030, 1020, 1000, 1020, 1040, 1030, 1020],
-            backgroundColor: '#22aa99'
-        },
-        {
-            label: 'Profit',
-            data: [110, 100, 105 ,110 ,90, 100, 90, 105, 110, 110, 100, 110, 100],
-            backgroundColor: '#994499'
-        },
-        {
-            label: 'Loss',
-            data: [10, 13,12 ,11 ,10, 10, 13, 12, 10, 10, 140, 10, 10],
-            backgroundColor: '#316395'
-        },
-        ]
-    };
-    const profitloss_mainConfig = {
-        type: 'bar',
-        data: profitloss_mainData,
-        options: {
-            legend: {
-                position: 'top' // place legend on the right side of chart
-            },
-             scales: {
-                xAxes: [{
-                  stacked: true // this should be set to make the bars stacked
-                }],
-                 yAxes: [{
-                   stacked: true // this also..
-                }]
-            }
-        }
-    };
-
-    new Chart(profitloss_main, profitloss_mainConfig);
-
-    // varcost graph
-
-    const varcost_main = document.getElementById('varcost_main').getContext('2d');
-    //const labels = Utils.months({count: 7});
-    const varcost_maindata = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
-        datasets: [
-        {
-        label: ['PS'],
-        data: [120000, 50000, 75000, 22000, 12500, 55000, 40000, 100000, 110000, 120500, 140000, 125000],
-        fill: false,
-        borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1
-        },
-        {
-        label: ['RM'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
-        fill: false,
-        borderColor: 'rgb(255, 192, 192)',
-        tension: 0.1
-        }
-    ]
-    };
-    const varcost_mainconfig = {
-        type: 'line',
-        data: varcost_maindata,
-        options: {
-            scales: {
-                y: {
-                beginAtZero: true
-                }
-            }
-        }
-    };
-
-    new Chart(varcost_main, varcost_mainconfig);
-
-    // cost BBM
-
-    const costbbm_main = document.getElementById('costbbm_main').getContext('2d');
-     //const labels = Utils.months({count: 7});
-     const costbbm_maindata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
-         datasets: [
-         {
-         label: ['Cost (dalam ribuan rupiah)'],
-         data: [65, 59, 80, 81, 56, 55, 40, 42, 45, 44, 80, 90],
-         fill: false,
-         borderColor: 'rgb(100, 100, 255)',
-         tension: 0.1
-         },
-         {
-         label: ['Lama Pemakaian (jam)'],
-         data: [12, 10, 32, 30, 12, 11, 10, 11, 12, 13, 14, 15],
-         fill: false,
-         borderColor: 'rgb(100, 255, 100)',
-         tension: 0.1
-         },
-         {
-         label: ['BBM (Liter)'],
-         data: [10, 12, 34, 77, 34, 21, 22, 20, 10, 30, 23, 12],
-         fill: false,
-         borderColor: 'rgb(255, 100, 100)',
-         tension: 0.1
-         }
-     ]
-     };
-     const costbbm_mainconfig = {
-         type: 'line',
-         data: costbbm_maindata,
-         options: {
-             scales: {
-                 y: {
-                 beginAtZero: true
-                 }
-             }
-         }
-     };
-
-     new Chart(costbbm_main, costbbm_mainconfig);
-
-    // OPEX
-
-    const opex_main = document.getElementById('opex_main').getContext('2d');
-    //const labels = Utils.months({count: 7});
-    const opex_maindata = {
-        labels: ['Absorption', 'Accrue', 'Available'],
-        datasets: [
-        {
-        label: ['Data OPEX'],
-        data: [90, 50, 18],
-        backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)'
-        ],
-        hoverOffset: 4
-        },
-    ]
-    };
-    const opex_mainconfig = {
-        type: 'pie',
-        data: opex_maindata,
-        // options: {
-        //     scales: {
-        //         y: {
-        //         beginAtZero: true
-        //         }
-        //     }
-        // }
-    };
-
-    new Chart(opex_main, opex_mainconfig);
 </script>
