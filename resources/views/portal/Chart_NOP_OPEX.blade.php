@@ -9,7 +9,7 @@
     @include('portal.component.userProfile')
 </div>
     {{-- @include('portal.component.tablechart') --}}
-    <div class="row d-flex justify-content-center">
+    {{-- <div class="row d-flex justify-content-center">
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title">
@@ -20,79 +20,109 @@
                 </div>
             </div>
         </div>
+    </div> --}}
+
+    <div class="d-flex justify-content-center">
+        <div class="col-lg-6">
+            <div class="container rvc-stat shadow">
+                <div class="rvc-title">
+                    <a href="/opex" class="links text-white"><h5>OPEX Regional</h5></a>
+                </div>
+                <div class="rvc-graph d-flex justify-content-center">
+                    <div style="width: 50%">
+                        <canvas id="opex_regional"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    
 
     <div class="row">
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title">
-                    <a href="/bbm" class="links text-white"><h5>OPEX NOP Semarang</h5></a>
+                    <a href="/opex" class="links text-white"><h5>OPEX Semarang</h5></a>
                 </div>
-                <div class="rvc-graph">
-                    <canvas id="opex_semarang"></canvas>
+                <div class="rvc-graph d-flex justify-content-center">
+                    <div style="width: 50%">
+                        <canvas id="opex_semarang"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-
+    
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title">
-                    <a href="/bbm" class="links text-white"><h5>OPEX NOP Surakarta</h5></a>
+                    <a href="/opex" class="links text-white"><h5>OPEX Surakarta</h5></a>
                 </div>
-                <div class="rvc-graph">
-                    <canvas id="opex_surakarta"></canvas>
+                <div class="rvc-graph d-flex justify-content-center">
+                    <div style="width: 50%">
+                        <canvas id="opex_surakarta"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-     
+    
     <div class="row">
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title">
-                    <a href="/bbm" class="links text-white"><h5>OPEX NOP Yogyakarta</h5></a>
+                    <a href="/opex" class="links text-white"><h5>OPEX Yogyakarta</h5></a>
                 </div>
-                <div class="rvc-graph">
-                    <canvas id="opex_yogyakarta"></canvas>
+                <div class="rvc-graph d-flex justify-content-center">
+                    <div style="width: 50%">
+                        <canvas id="opex_yogyakarta"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-
+    
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title">
-                    <a href="/bbm" class="links text-white"><h5>OPEX NOP Purwokerto</h5></a>
+                    <a href="/opex" class="links text-white"><h5>OPEX Purwokerto</h5></a>
                 </div>
-                <div class="rvc-graph">
-                    <canvas id="opex_purwokerto"></canvas>
+                <div class="rvc-graph d-flex justify-content-center">
+                    <div style="width: 50%">
+                        <canvas id="opex_purwokerto"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-     
+    
     <div class="row">
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title">
-                    <a href="/bbm" class="links text-white"><h5>OPEX NOP Pekalongan</h5></a>
+                    <a href="/opex" class="links text-white"><h5>OPEX Pekalongan</h5></a>
                 </div>
-                <div class="rvc-graph">
-                    <canvas id="opex_pekalongan"></canvas>
+                <div class="rvc-graph d-flex justify-content-center">
+                    <div style="width: 50%">
+                        <canvas id="opex_pekalongan"></canvas>
+                    </div>
                 </div>
             </div>
-        </div> 
-
+        </div>
+    
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title">
-                    <a href="/bbm" class="links text-white"><h5>OPEX NOP Salatiga</h5></a>
+                    <a href="/opex" class="links text-white"><h5>OPEX Salatiga</h5></a>
                 </div>
-                <div class="rvc-graph">
-                    <canvas id="opex_salatiga"></canvas>
+                <div class="rvc-graph d-flex justify-content-center">
+                    <div style="width: 50%">
+                        <canvas id="opex_salatiga"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    
+    
  @endsection    
  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
  <script type="module">
