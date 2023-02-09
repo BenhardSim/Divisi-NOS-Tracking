@@ -58,7 +58,7 @@ Route::get('/upload-dokumen', function(){
 })->middleware('auth');
 Route::get('/upload-data', function(){
     return view('portal.add_data');
-})->middleware('auth');
+})->middleware('admin');
 
 
 // site list

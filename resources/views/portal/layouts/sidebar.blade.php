@@ -31,10 +31,23 @@
             Upload Dokumen
           </a> 
         </li>
+
+
+
+        {{-- hanya bisa di akses admin --}}
+        @can('admin')
         <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('upload-data*') ? '#5B8FB9' : '' }} ">
           <a class="nav-link text-white" href="/upload-data">
             <span style="color: #EB3223" data-feather="upload" class="align-text-bottom"></span>
             Upload Data
+          </a> 
+        </li>
+        @endcan
+
+        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('sign-document') ? '#5B8FB9' : '' }} ">
+          <a class="nav-link text-white"  href="/sign-document">
+            <span style="color: #EB3223" data-feather="check-circle" class="align-text-bottom"></span>
+            Sign Document
           </a> 
         </li>
 
@@ -63,12 +76,16 @@
               Contract TP
             </a>
         </li>
+
+        @can('admin')
         <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('tracking*') ? '#5B8FB9' : '' }} ">
             <a class="nav-link text-white" href="/tracking">
               <span style="color: #EB3223" data-feather="activity" class="align-text-bottom"></span>
               Document Tracking
             </a>
         </li>
+        @endcan
+
         <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('setting*') ? '#5B8FB9' : '' }} ">
           <a class="nav-link text-white" aria-current="page" href="/setting">
             <span style="color: #EB3223" data-feather="settings" class="align-text-bottom"></span>
@@ -82,22 +99,7 @@
           </a>
         </li>
       </ul>
->
 
-      @can('admin')
-      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 text-muted">
-        <span>Administrator</span>
-      </h6>
-
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link {{ Request::is('categories*') ? 'active' : ' text-white" href="/categories">
-            <span data-feather="grid" class="align-text-bottom"></span>
-            Post Categories
-          </a>
-        </li>
-      </ul>
-      @endcan
       
     </div>
   </nav>
