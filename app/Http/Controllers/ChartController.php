@@ -57,6 +57,27 @@ class ChartController extends Controller
             "site_all" => siteprofile::all()
         ]);
     }
+    public function indexKPIA(){
+        return view('portal.Chart_NOP_KPIA', [
+            "root" => "kpia",
+            "title" => "Chart KPI Activity",
+            "site_all" => siteprofile::all()
+        ]);
+    }
+    public function indexKPIU(){
+        return view('portal.Chart_NOP_KPIU', [
+            "root" => "kpiu",
+            "title" => "Chart KPI Utama",
+            "site_all" => siteprofile::all()
+        ]);
+    }
+    public function indexKPIS(){
+        return view('portal.Chart_NOP_KPIS', [
+            "root" => "kpis",
+            "title" => "Chart KPI Supporting",
+            "site_all" => siteprofile::all()
+        ]);
+    }
 
 
 

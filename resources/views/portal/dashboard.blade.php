@@ -170,6 +170,37 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-6">
+            <div class="container rvc-stat shadow">
+                <div class="rvc-title">
+                    <a href="/kpiu" class="links text-white"><h5>KPI Utama</h5></a>
+                </div>
+                <div class="rvc-graph">
+                    <canvas id="kpiu_main"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="container rvc-stat shadow">
+                <div class="rvc-title">
+                    <a href="/kpia" class="links text-white"><h5>KPI Activity</h5></a>
+                </div>
+                <div class="rvc-graph">
+                    <canvas id="kpia_main"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="container rvc-stat shadow">
+                <div class="rvc-title">
+                    <a href="/kpis" class="links text-white"><h5>KPI Supporting</h5></a>
+                </div>
+                <div class="rvc-graph">
+                    <canvas id="kpis_main"></canvas>
+                </div>
+            </div>
+        </div>
     </section>
     
     
@@ -499,4 +530,133 @@
     };
 
     new Chart(iirr_main, iirr_mainConfig);
+
+    // KPI Utama
+    const kpiu_main = document.getElementById('kpiu_main').getContext('2d');
+    //const labels = Utils.months({count: 7});  
+    const kpiu_mainData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        datasets: [
+            {
+            type: 'line',
+            label: 'Activ KPI Utama',
+            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            borderColor: '#994499',
+
+        },
+        {
+            type: 'line',
+            label: 'target',
+            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            borderColor: '#316395',
+
+        },
+        {
+            type: 'bar',
+            label: 'KPI Utama',
+            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            backgroundColor: '#22aa99'
+        },
+        
+        ]
+    };
+    const kpiu_mainConfig = {
+        type: "bar",
+        data: kpiu_mainData,
+        options: {
+            legend: {
+                position: 'top' // place legend on the right side of chart
+            },
+             scales: {
+            }
+        }
+    };
+
+    new Chart(kpiu_main, kpiu_mainConfig);
+
+    // KPI Supporting
+    const kpis_main = document.getElementById('kpis_main').getContext('2d');
+    //const labels = Utils.months({count: 7});  
+    const kpis_mainData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        datasets: [
+            {
+            type: 'line',
+            label: 'Activ KPI Supporting',
+            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            borderColor: '#994499',
+
+        },
+        {
+            type: 'line',
+            label: 'target',
+            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            borderColor: '#316395',
+
+        },
+        {
+            type: 'bar',
+            label: 'KPI Supporting',
+            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            backgroundColor: '#22aa99'
+        },
+        
+        ]
+    };
+    const kpis_mainConfig = {
+        type: "bar",
+        data: kpis_mainData,
+        options: {
+            legend: {
+                position: 'top' // place legend on the right side of chart
+            },
+             scales: {
+            }
+        }
+    };
+
+    new Chart(kpis_main, kpis_mainConfig);
+
+    // KPI Activity
+    const kpia_main = document.getElementById('kpia_main').getContext('2d');
+    //const labels = Utils.months({count: 7});  
+    const kpia_mainData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        datasets: [
+            {
+            type: 'line',
+            label: 'Activ KPI Activity',
+            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            borderColor: '#994499',
+
+        },
+        {
+            type: 'line',
+            label: 'target',
+            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            borderColor: '#316395',
+
+        },
+        {
+            type: 'bar',
+            label: 'KPI Activity',
+            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            backgroundColor: '#22aa99'
+        },
+        
+        ]
+    };
+    const kpia_mainConfig = {
+        type: "bar",
+        data: kpia_mainData,
+        options: {
+            legend: {
+                position: 'top' // place legend on the right side of chart
+            },
+             scales: {
+            }
+        }
+    };
+
+    new Chart(kpia_main, kpia_mainConfig);
 </script>
