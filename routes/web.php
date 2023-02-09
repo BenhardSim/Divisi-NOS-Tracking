@@ -74,6 +74,8 @@ Route::get('/rvc', [ChartController::class, 'indexRVC'])->middleware('auth');
 Route::get('/pl', [ChartController::class, 'indexPL'])->middleware('auth');
 Route::get('/opex', [ChartController::class, 'indexOPEX'])->middleware('auth');
 Route::get('/rv', [ChartController::class, 'indexRV'])->middleware('auth');
+Route::get('/tirr', [ChartController::class, 'indexTIRR'])->middleware('auth');
+Route::get('/iirr', [ChartController::class, 'indexIIRR'])->middleware('auth');
 
 
 // search

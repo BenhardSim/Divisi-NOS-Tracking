@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('claim_assets', function (Blueprint $table) {
-            $table->string('idclaim')->unique();
+            $table->bigIncrements('idclaim',1)->unique();
             $table->string('SiteIDClaim');
             $table->string('SiteNameClaim');
             $table->date('Reportdate');

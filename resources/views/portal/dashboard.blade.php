@@ -136,17 +136,40 @@
         </div>
 
         {{-- opex donut chart --}}
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title">
                     <a href="/opex" class="links text-white"><h5>OPEX</h5></a>
                 </div>
-                <div class="rvc-graph">
-                    <canvas id="opex_main"></canvas>
+                <div class="rvc-graph d-flex justify-content-center">
+                    <div style="width: 50%">
+                        <canvas id="opex_main"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <div class="col-lg-6">
+            <div class="container rvc-stat shadow">
+                <div class="rvc-title">
+                    <a href="/tirr" class="links text-white"><h5>Tren IRR VS Revenue VS Komitmen</h5></a>
+                </div>
+                <div class="rvc-graph">
+                    <canvas id="tirr_main"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="container rvc-stat shadow">
+                <div class="rvc-title">
+                    <a href="/iirr" class="links text-white"><h5>Infra IRR</h5></a>
+                </div>
+                <div class="rvc-graph">
+                    <canvas id="iirr_main"></canvas>
+                </div>
+            </div>
+        </div>
     </section>
     
     
@@ -157,7 +180,7 @@
 
     // grafik revenue vs cost
 
-    const revvcost_main = document.getElementById('revenue_main').getContext('2d');
+    const revvcost_main = document.getElementById('revenue_main');
     //const labels = Utils.months({count: 7});
     const revvcost_mainData = {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
@@ -276,46 +299,46 @@
     // cost BBM
 
     const costbbm_main = document.getElementById('costbbm_main').getContext('2d');
-    //const labels = Utils.months({count: 7});
-    const costbbm_maindata = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-        datasets: [
-        {
-        label: ['Cost (dalam ribuan rupiah)'],
-        data: [65, 59, 80, 81, 56, 55, 40],
-        fill: false,
-        borderColor: 'rgb(100, 100, 255)',
-        tension: 0.1
-        },
-        {
-        label: ['Lama Pemakaian (bulan)'],
-        data: [12, 10, 32, 30, 12, 11, 10],
-        fill: false,
-        borderColor: 'rgb(100, 255, 100)',
-        tension: 0.1
-        },
-        {
-        label: ['BBM (Liter)'],
-        data: [10, 12, 34, 77, 34, 21, 22],
-        fill: false,
-        borderColor: 'rgb(255, 100, 100)',
-        tension: 0.1
-        }
-    ]
-    };
-    const costbbm_mainconfig = {
-        type: 'line',
-        data: costbbm_maindata,
-        options: {
-            scales: {
-                y: {
-                beginAtZero: true
-                }
-            }
-        }
-    };
+     //const labels = Utils.months({count: 7});
+     const costbbm_maindata = {
+         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+         datasets: [
+         {
+         label: ['Cost (dalam ribuan rupiah)'],
+         data: [65, 59, 80, 81, 56, 55, 40, 42, 45, 44, 80, 90],
+         fill: false,
+         borderColor: 'rgb(100, 100, 255)',
+         tension: 0.1
+         },
+         {
+         label: ['Lama Pemakaian (jam)'],
+         data: [12, 10, 32, 30, 12, 11, 10, 11, 12, 13, 14, 15],
+         fill: false,
+         borderColor: 'rgb(100, 255, 100)',
+         tension: 0.1
+         },
+         {
+         label: ['BBM (Liter)'],
+         data: [10, 12, 34, 77, 34, 21, 22, 20, 10, 30, 23, 12],
+         fill: false,
+         borderColor: 'rgb(255, 100, 100)',
+         tension: 0.1
+         }
+     ]
+     };
+     const costbbm_mainconfig = {
+         type: 'line',
+         data: costbbm_maindata,
+         options: {
+             scales: {
+                 y: {
+                 beginAtZero: true
+                 }
+             }
+         }
+     };
 
-    new Chart(costbbm_main, costbbm_mainconfig);
+     new Chart(costbbm_main, costbbm_mainconfig);
 
     // OPEX
 
@@ -349,4 +372,131 @@
     };
 
     new Chart(opex_main, opex_mainconfig);
+
+    // tren IRR
+    const tirr_main = document.getElementById('tirr_main').getContext('2d');
+     //const labels = Utils.months({count: 7});
+     const tirr_maindata = {
+         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+         datasets: [
+         {
+         label: ['B2S'],
+         data: [28, 55.3, 61.7, 66.6, 74.2, 84.6, 89.4, 90, 89.9, 91.2, 93.1, 91.2],
+         fill: false,
+         borderColor: 'rgb(250, 120, 100)',
+         tension: 0.1
+         },
+         {
+         label: ['Collo TP'],
+         data: [13.1, 35.2, 39.3, 43, 46.1, 47.5, 50.4, 57.3, 60.4, 60.7, 64.5, 67.7],
+         fill: false,
+         borderColor: 'rgb(100, 255, 100)',
+         tension: 0.1
+         },
+         {
+         label: ['Target IRR Collo'],
+         data: [51.6, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2],
+         fill: false,
+         borderColor: 'rgb(0, 0, 100)',
+         pointStyle: 'crossRot',
+         radius: 7,
+         tension: 0.1
+         },
+         {
+         label: ['Target IRR B2S'],
+         data: [61.3, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4],
+         fill: false,
+         borderColor: 'rgb(255, 125, 0)',
+         pointStyle: 'crossRot',
+         radius: 7,
+         tension: 0.1
+         },
+         {
+         label: ['Komitmen Collo'],
+         data: [79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1],
+         fill: false,
+         borderColor: 'rgb(28, 115, 102)',
+         tension: 0.1
+         },
+         {
+         label: ['Komitmen B2S'],
+         data: [79.3, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2],
+         fill: false,
+         borderColor: 'rgb(200, 100, 100)',
+         tension: 0.1
+         },
+     ]
+     };
+     const tirr_mainconfig = {
+         type: 'line',
+         data: tirr_maindata,
+         options: {
+             scales: {
+                 y: {
+                 beginAtZero: true
+                 }
+             }
+         }
+     };
+
+     new Chart(tirr_main, tirr_mainconfig);
+
+     // infra irr
+     const iirr_main = document.getElementById('iirr_main').getContext('2d');
+    //const labels = Utils.months({count: 7});  
+    const iirr_mainData = {
+        labels: ['Not IRR; Komitmen Not Achieved; >6 Bulan; Single Band',
+        'Not IRR; Komitmen Not Achieved; <6 Bulan; Single Band',
+        'Not IRR; Komitmen Not Achieved; <6 Bulan; Dual Band',
+        'IRR; Komitmen Achieved; >6 Bulan; Dual Band',
+        'IRR; Komitmen Achieved; >6 Bulan; Triple Band',
+        'IRR; Komitmen Achieved; <6 Bulan; Single Band',
+        'IRR; Komitmen Achieved; <6 Bulan; Dual Band',
+        'IRR; Komitmen Achieved; <6 Bulan; Triple Band',
+        'IRR; Komitmen Not Achieved; >6 Bulan; Dual Band',
+        'IRR; Komitmen Not Achieved; <6 Bulan; Single Band',
+        'IRR; Komitmen Not Achieved; <6 Bulan; Dual Band'
+        ],
+        datasets: [
+        {
+            axis: 'y',
+            label: 'B2S',
+            data: [2, 4, 0, 2, 1, 1, 10, 2, 5, 7, 11],
+            fill: false,
+            backgroundColor: '#22aa99'
+        },
+        {
+            axis: 'y',
+            label: 'Collo TP',
+            data: [0, 0, 1, 1, 1, 1, 2, 1, 0, 10, 1],
+            fill: false,
+            backgroundColor: '#994499'
+        },
+        ]
+    };
+    const iirr_mainConfig = {
+        type: 'horizontalBar',
+        data: iirr_mainData,
+        options: {
+            scales: {
+                xAxes: [{
+                  stacked: true // this should be set to make the bars stacked
+                }],
+                 yAxes: [{
+                   stacked: true, // this also..
+                   ticks: {
+                    fontSize: 10
+                   }  
+                }]
+            },
+            legend: {
+            labels: {
+                // This more specific font property overrides the global property
+                fontSize: 10
+            }
+        }
+        }
+    };
+
+    new Chart(iirr_main, iirr_mainConfig);
 </script>
