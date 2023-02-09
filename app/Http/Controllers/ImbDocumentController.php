@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\imb_document;
-use Illuminate\Http\Request;
+use App\Http\Requests\Storeimb_documentRequest;
+use App\Http\Requests\Updateimb_documentRequest;
 
-class ImbController extends Controller
+class ImbDocumentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,27 +31,12 @@ class ImbController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Storeimb_documentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Storeimb_documentRequest $request)
     {
-        $validatedData = $request->validate([
-            "SITEID" => "required",
-            "no_imb" => "required",
-            "file_imb" => "required",
-        ]);
-
-        $validatedData['id'] = imb_document::max('id') + 1;
-        $validatedData['SITEID'] = $request->SITEID;
-
-        // configure file 
-        $docs = $request->file('file_imb');
-        $uniqname = 'id-certificate-'.$validatedData['no_imb'].'-'.$docs->getClientOriginalName();
-        $docs->storeAs('public/file-imb',$uniqname);
-        $validatedData['file_imb'] = $uniqname;
-        imb_document::create($validatedData);
-        return back()->with('success', 'Document IMB berhasil ditambahkan');
+        //
     }
 
     /**
@@ -78,11 +64,11 @@ class ImbController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Updateimb_documentRequest  $request
      * @param  \App\Models\imb_document  $imb_document
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, imb_document $imb_document)
+    public function update(Updateimb_documentRequest $request, imb_document $imb_document)
     {
         //
     }
@@ -97,11 +83,4 @@ class ImbController extends Controller
     {
         //
     }
-
-
-    public function getDocs(imb_document $id_imb){
-        $name = $id_imb->file_imb;
-        return response()->file(storage_path('app\public\file-imb\\'.$name));
-    }
-
 }

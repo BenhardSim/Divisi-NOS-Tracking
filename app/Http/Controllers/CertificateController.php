@@ -6,6 +6,7 @@ use App\Models\certificate_document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
+
 class CertificateController extends Controller
 {
     /**
@@ -53,6 +54,7 @@ class CertificateController extends Controller
         str_replace('/', '-', $uniqname);
 
         // menyimpan data
+
         $docs->storeAs('public/file-certificate',$uniqname);
         $validatedData['file_ser'] = $uniqname;
         certificate_document::create($validatedData);

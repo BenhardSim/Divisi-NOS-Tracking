@@ -211,6 +211,7 @@
                     <p>NO IMB : - </p>
                     <p>See Latest Document : -</p>
                 @endif
+
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_doc_certi">
                     Upload Document
                  </button>
@@ -229,6 +230,7 @@
             <div class="modal-body row">
                 <div class="col-6">
                     <h6>Document Upload History</h6>
+
                     <table class="table table-hover">
                         <thead>
                           <tr>
@@ -246,6 +248,7 @@
                             @if (!$imb_doc)
                                 <td scope="row">-</td>
                                 <td><a href="">-</a></td>
+
                             @endif
                           </tr>
                         @endforeach
