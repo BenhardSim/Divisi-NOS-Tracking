@@ -11,14 +11,14 @@ class ChartController extends Controller
     public function indexBBM(){
         return view('portal.Chart_NOP_BBM', [
             "root" => "bbm",
-            "title" => "Daftar Cost BBM Site",
+            "title" => "Chart Cost BBM NOP",
             "site_all" => siteprofile::all()
         ]);
     }
     public function indexOPEX(){
         return view('portal.Chart_NOP_OPEX', [
             "root" => "opex",
-            "title" => "Daftar OPEX Site",
+            "title" => "Chart OPEX NOP",
             "site_all" => siteprofile::all()
         ]);
     }
@@ -32,7 +32,7 @@ class ChartController extends Controller
     public function indexRV(){
         return view('portal.Chart_NOP_RV', [
             "root" => "rv",
-            "title" => "Daftar Reserved Varcost Site",
+            "title" => "Chart Reserved Varcost NOP",
             "site_all" => siteprofile::all()
         ]);
     }
@@ -40,6 +40,20 @@ class ChartController extends Controller
         return view('portal.Chart_NOP_PL', [
             "root" => "pl",
             "title" => "Chart Profit Loss NOP",
+            "site_all" => siteprofile::all()
+        ]);
+    }
+    public function indexTIRR(){
+        return view('portal.Chart_NOP_TIRR', [
+            "root" => "tirr",
+            "title" => "Chart Tren IRR VS Revenue VS Komitmen NOP",
+            "site_all" => siteprofile::all()
+        ]);
+    }
+    public function indexIIRR(){
+        return view('portal.Chart_NOP_IIRR', [
+            "root" => "iirr",
+            "title" => "Chart Infra IRR NOP",
             "site_all" => siteprofile::all()
         ]);
     }
