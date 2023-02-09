@@ -14,7 +14,7 @@ use App\Http\Controllers\TaggingController;
 use App\Http\Controllers\CommController;
 use App\Http\Controllers\ImbController;
 use App\Http\Controllers\lainController;
-
+use App\Http\Controllers\SignController;
 use App\Models\imbas_petir;
 use App\Models\tagging_asset;
 use App\Models\kontrak_site;
@@ -88,6 +88,9 @@ Route::get('/search/{id:SITEID}', [SitesController::class, 'detailSites'])->midd
 
 // tagging assset
 Route::get('/tagging', [TaggingController::class, 'index'])->middleware('auth');
+
+// sign-document
+Route::get('/sign-document', [SignController::class, 'index'])->middleware('auth');
 
 // testing route
 Route::get('/tester', function(){
