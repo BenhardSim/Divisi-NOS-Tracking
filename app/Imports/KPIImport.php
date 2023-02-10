@@ -5,6 +5,7 @@ namespace App\Imports;
 use App\Models\KPI_utama;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Carbon\Carbon;
 
 class KPIImport implements ToModel, WithHeadingRow
 {
@@ -13,6 +14,11 @@ class KPIImport implements ToModel, WithHeadingRow
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
+
+    // function changeModel($date){
+    //     return Carbon::createFromFormat('m/d/Y', $date)->format('Y-m-d');
+    // }
+
     public function model(array $row)
     {
         return new KPI_utama([
@@ -22,7 +28,8 @@ class KPIImport implements ToModel, WithHeadingRow
             'avail_all' => $row['avail_all'],
             'avail_power' => $row['avail_power'],
             'kpi_target' => $row['kpi_target'],
-            // 'kpi_utama' => $row['kpi_utama'],
+            'date'=> Carbon::createFromFormat('m/d/Y',$row['date'])->format('Y-m-d'),
+            'kpi_utama' => $row['kpi_utama'],
         ]);
     }
 }

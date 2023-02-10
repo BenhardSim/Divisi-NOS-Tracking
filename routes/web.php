@@ -149,7 +149,19 @@ Route::get('/download',function(){
 // import file
 Route::post('/fileImport',function(){
     // dd('test');
-    Excel::import(new KPIImport,request()->file('file'));
-    return back();
+    $validatedData = request()->validate([
+        "tipe-template" => "Required",
+    ]);
+    if($validatedData["tipe-template"] === 'KPI_utama'){
+        Excel::import(new KPIImport,request()->file('file'));
+        return back();
+    }else if($validatedData["tipe-template"] === 'KPI_utama'){
+
+    }else if($validatedData["tipe-template"] === 'KPI_utama'){
+
+    }else if($validatedData["tipe-template"] === 'KPI_utama'){
+
+    };
+    dd("fail");
 });
 
