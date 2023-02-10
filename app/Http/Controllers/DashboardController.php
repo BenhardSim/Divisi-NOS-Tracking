@@ -17,6 +17,7 @@ class DashboardController extends Controller
     public function index()
     {
         //
+        
         return view('portal.dashboard', [
             "site_all" => siteprofile::count(),
             "site_tp" => siteprofile::where("TOWERSTATUS", "Sewa TP")->count(),

@@ -26,7 +26,7 @@
         </div>
     @endif
     <div class="col-lg-8">
-        <form action="/dashboard/setting" method="POST">
+        <form action="/setting" method="POST">
         @method('put')
         @csrf
             <div class="mb-3">

@@ -15,6 +15,7 @@ use App\Http\Controllers\CommController;
 use App\Http\Controllers\ImbController;
 use App\Http\Controllers\lainController;
 use App\Http\Controllers\SignController;
+use App\Http\Controllers\TrackedDocumentController;
 use App\Models\imbas_petir;
 use App\Models\tagging_asset;
 use App\Models\kontrak_site;
@@ -121,6 +122,8 @@ Route::resource('/certificate_imbs',ImbController::class)->middleware('auth');
 // CRUD Document Lainnya
 Route::resource('/lain_documents',lainController::class)->middleware('auth');
 
+// CRUD Tracked Document
+Route::resource('/tracked_document',TrackedDocumentController::class)->middleware('auth');
 
 
 
