@@ -14,31 +14,47 @@
     <div class="row">
         <div class="col-8">
             <div class="container up-data shadow-lg">                
-                <form>
+                <form id="form-import" enctype="multipart/form-data" method="POST" action="/fileImport">
+                    @csrf
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Pilih Jenis Dokumen Yang Akan di Upload</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select id="templates" class="form-select" aria-label="Default select example" onchange="getType()">
                             <option selected>Pilih Dokumen</option>
-                            <option value="1">Revenue dan Cost</option>
-                            <option value="2">Reserved Var Cost</option>
-                            <option value="3">Cost BBM</option>
-                            <option value="4">OPEX</option>
+                            <option value="KPI_utama">KPI Utama</option>
+                            <option value="RVC">Reserved Var Cost</option>
+                            <option value="BBM">Cost BBM</option>
+                            <option value="OPEX">OPEX</option>
                             <option value="5">Three</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-dark">Download Template</button>
+                    <a id="download-template" class="btn btn-dark">Download Template</a>
                     <br><br>
                     <div class="mb-3">
                       <label for="exampleInputPassword1" class="form-label">Upload Data</label>
-                      <input type="file" class="form-control" id="exampleInputPassword1">
+                      <input type="file" class="form-control" id="exampleInputPassword1" name="file">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
+                </form>
             </div>
         </div>
         <div class="col-4"></div>
 
     </div>
+
+    <script>
+        function getType(){
+            let e = document.getElementById('templates');
+            let type = e.options[e.selectedIndex].value;
+            // mengarahkan template dokumen 
+            document.getElementById('download-template').href = 'download/?type=' + type;
+            // mengarahkan action form ke import data
+
+            // document.getElementById('form-import').action = '/file-import';
+            console.log( document.getElementById('form-import').action);
+            console.log(document.getElementById('download-template').href);
+        }
+
+    </script>
 
 
 @endsection
