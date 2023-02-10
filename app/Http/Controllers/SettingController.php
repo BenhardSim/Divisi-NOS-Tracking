@@ -23,10 +23,10 @@ class SettingController extends Controller
         ];
 
         if(!Hash::check($request->password, auth()->user()->password)){
-            return redirect('/dashboard/setting')->with('updateError', 'Password lama salah');
+            return redirect('/setting')->with('updateError', 'Password lama salah');
         }
         if($request->new == $request->password){
-            return redirect('/dashboard/setting')->with('duplicateError', 'Password baru dan lama sama');
+            return redirect('/setting')->with('duplicateError', 'Password baru dan lama sama');
         }
         $validatedData =  $request->validate($rules);
 
@@ -38,6 +38,6 @@ class SettingController extends Controller
 
         User::where('id', auth()->user()->id)->update($finalData);
 
-        return redirect('/dashboard/setting')->with('success', 'Password berhasil diperbarui');
+        return redirect('/setting')->with('success', 'Password berhasil diperbarui');
     }
 }

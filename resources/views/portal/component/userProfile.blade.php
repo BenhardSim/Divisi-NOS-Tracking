@@ -1,9 +1,30 @@
+    @php
+        if (Gate::allows('staff')) {
+                $notifcount =  App\Models\tracked_document::where("level_approval", 0)->where("id_pengirim", auth()->user()->id)->count();
+        }
+        if (Gate::allows('supervisor')) {
+                $notifcount =  App\Models\tracked_document::where("level_approval", 1)->where("id_level_dua", auth()->user()->id)->count();
+        }
+        if (Gate::allows('manager')) {
+                $notifcount =  App\Models\tracked_document::where("level_approval", 2)->where("id_level_tiga", auth()->user()->id)->count();
+        }
+        if (Gate::allows('gm')) {
+                $notifcount =  App\Models\tracked_document::where("level_approval", 3)->where("id_level_empat", auth()->user()->id)->where("status", "Pending")->count();
+        }
+    @endphp
+    
     <div class="profile-pic">
         <div style="padding-right: 18px">
-            <a href="#" class="notification">
+            <a href="/sign-document" class="notification">
                 <span data-feather="bell" class="align-text-bottom belll" style="width: 28px;height:28px;"></span>
-                <span class="badge">3</span>
-              </a>
+                @isset($notifcount)
+                    @if($notifcount > 0)
+                        <span class="badge">      
+                            {{ $notifcount }}
+                        </span>
+                    @endif
+                @endisset
+            </a>
         </div>
         <div style="padding-right: 10px">
             <p>

@@ -19,6 +19,9 @@ class DashboardController extends Controller
     public function index()
     {
 
+        //
+        
+
         $months = array('January','February','March','April','May','June','July','August','September','October','November'.'December');
 
         $AllIds = KPI_utama::all()->toArray();
