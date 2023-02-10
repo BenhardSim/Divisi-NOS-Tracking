@@ -1,19 +1,24 @@
 <?php
 
-use App\Http\Controllers\CertificateController;
+use App\Models\User;
+use App\Models\imbas_petir;
+use App\Models\siteprofile;
+use App\Models\kontrak_site;
+use App\Models\tagging_asset;
+use Illuminate\Http\Response;
+use App\Models\kontrak_site_history;
+
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImbController;
+use App\Http\Controllers\PbbController;
+use App\Http\Controllers\CommController;
+use App\Http\Controllers\lainController;
+
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ClaimController;
-use App\Http\Controllers\ContractController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImbasController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PbbController;
-use App\Http\Controllers\SettingController;
-use App\Http\Controllers\SitesController;
-use App\Http\Controllers\TaggingController;
-use App\Http\Controllers\CommController;
-use App\Http\Controllers\ImbController;
-use App\Http\Controllers\lainController;
 use App\Http\Controllers\SignController;
 use App\Http\Controllers\TrackedDocumentController;
 use App\Models\imbas_petir;
@@ -22,9 +27,14 @@ use App\Models\kontrak_site;
 use Illuminate\Support\Facades\Route;
 
 
-use App\Models\kontrak_site_history;
-use App\Models\siteprofile;
-use App\Models\User;
+
+use App\Http\Controllers\SitesController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\TaggingController;
+use App\Http\Controllers\ContractController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CertificateController;
+use App\Imports\KPIImport;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,5 +146,29 @@ Route::get('/file-imb/{id_imb:id}',[ImbController::class,'getDocs'])->middleware
 // view file lainnya 
 Route::get('/file-lain/{id_lain:id}',[lainController::class,'getDocs'])->middleware('auth');
 
+Route::get('/download',function(){
+    $type = request()->type;
 
+    $path = storage_path().'\app\public\templates\\'.$type.'.xlsx';
+    return response()->download($path);
+});
+
+// import file
+Route::post('/fileImport',function(){
+    // dd('test');
+    $validatedData = request()->validate([
+        "tipe-template" => "Required",
+    ]);
+    if($validatedData["tipe-template"] === 'KPI_utama'){
+        Excel::import(new KPIImport,request()->file('file'));
+        return back();
+    }else if($validatedData["tipe-template"] === 'KPI_utama'){
+
+    }else if($validatedData["tipe-template"] === 'KPI_utama'){
+
+    }else if($validatedData["tipe-template"] === 'KPI_utama'){
+
+    };
+    dd("fail");
+});
 
