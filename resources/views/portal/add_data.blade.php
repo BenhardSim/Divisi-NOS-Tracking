@@ -18,7 +18,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Pilih Jenis Dokumen Yang Akan di Upload</label>
-                        <select id="templates" class="form-select" aria-label="Default select example" onchange="getType()">
+                        <select id="templates" class="form-select" aria-label="Default select example" onchange="getType()" name="tipe-template">
                             <option selected>Pilih Dokumen</option>
                             <option value="KPI_utama">KPI Utama</option>
                             <option value="RVC">Reserved Var Cost</option>

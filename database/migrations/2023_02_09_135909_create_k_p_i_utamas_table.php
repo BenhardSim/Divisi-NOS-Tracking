@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('avail_all');
             $table->string('avail_power');
             $table->integer('kpi_target');
-            $table->timestamp('date')->useCurrent();
+            $table->date('date');
+            $table->integer('kpi_utama');
+
         });
     }
 
