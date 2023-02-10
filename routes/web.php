@@ -19,6 +19,8 @@ use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ClaimController;
 use App\Http\Controllers\ImbasController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SignController;
+
 
 
 use App\Http\Controllers\SitesController;
@@ -92,6 +94,9 @@ Route::get('/search/{id:SITEID}', [SitesController::class, 'detailSites'])->midd
 
 // tagging assset
 Route::get('/tagging', [TaggingController::class, 'index'])->middleware('auth');
+
+// sign-document
+Route::get('/sign-document', [SignController::class, 'index'])->middleware('auth');
 
 // testing route
 Route::get('/tester', function(){
