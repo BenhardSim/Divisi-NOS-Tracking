@@ -254,6 +254,7 @@ class DashboardController extends Controller
                 $value_KPI_support = array_slice($value_KPI_support,$size-12,$size-1);
                 $monthList_KPI_support = array_slice($monthList_KPI_support,$size-12,$size-1);
                 
+
             }
 
         }
