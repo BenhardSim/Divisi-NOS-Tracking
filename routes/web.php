@@ -135,28 +135,10 @@ Route::get('/file-lain/{id_lain:id}',[lainController::class,'getDocs'])->middlew
 
 Route::get('/download',function(){
     $type = request()->type;
-    $path = storage_path().'\app\public\templates\\'.$type.'.xlsx';
+    $path = storage_path().'\app\public\templates\\'.$type.'.csv';
     return response()->download($path);
 });
 
-// import file
-// Route::post('/fileImport',function(){
-//     // dd('test');
-//     $validatedData = request()->validate([
-//         "tipe-template" => "Required",
-//     ]);
-//     if($validatedData["tipe-template"] === 'KPI_utama'){
-//         Excel::import(new KPIImport,request()->file('file'));
-//         return back();
-//     }else if($validatedData["tipe-template"] === 'KPI_utama'){
-
-//     }else if($validatedData["tipe-template"] === 'KPI_utama'){
-
-//     }else if($validatedData["tipe-template"] === 'KPI_utama'){
-
-//     };
-//     dd("fail");
-// });
-
+// route import CSV
 Route::post('/fileImport',[ImportController::class,'importTemplates']);
 

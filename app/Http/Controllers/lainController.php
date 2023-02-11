@@ -56,7 +56,7 @@ class lainController extends Controller
         $docs->storeAs('public/file-lain',$uniqname);
         $validatedData['file_lain'] = $uniqname;
         lain_document::create($validatedData);
-        return back()->with('success', 'Document Lainnya berhasil ditambahkan');
+        return back()->with('toast_success', 'Document Lainnya berhasil ditambahkan');
     }
 
     /**

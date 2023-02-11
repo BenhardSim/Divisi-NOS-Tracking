@@ -115,26 +115,26 @@
     const kpia_regional = document.getElementById('kpia_regional').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const kpia_regionalData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_KPI_activity),
         datasets: [
             {
             type: 'line',
             label: 'Activ KPI Activity',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_active_activity),
             borderColor: '#994499',
 
         },
         {
             type: 'line',
             label: 'target',
-            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            data: @json($value_KPI_activity_target),
             borderColor: '#316395',
 
         },
         {
             type: 'bar',
             label: 'KPI Activity',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_activity),
             backgroundColor: '#22aa99'
         },
         

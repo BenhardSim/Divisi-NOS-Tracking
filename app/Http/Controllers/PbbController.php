@@ -53,7 +53,7 @@ class PbbController extends Controller
         // return view('portal.test', dd($request));
         
         pbb::create($validatedData);
-        return back()->with('success', 'Data PBB berhasil ditambahkan');
+        return back()->with('toast_success', 'Data PBB berhasil ditambahkan');
     }
 
     /**
@@ -105,7 +105,7 @@ class PbbController extends Controller
 
         pbb::where('idPBB', $pbb->idPBB)->update($validatedData);
 
-        return back()->with('success', 'PBB berhasil diperbarui');
+        return back()->with('toast_success', 'PBB berhasil diperbarui');
     }
 
     /**
@@ -119,6 +119,6 @@ class PbbController extends Controller
         //
         pbb::where('idPBB', $pbb->idPBB)->delete();
         //$claim_asset->delete();
-        return back()->with('success', 'Data PBB berhasil dihapus');
+        return back()->with('toast_success', 'Data PBB berhasil dihapus');
     }
 }

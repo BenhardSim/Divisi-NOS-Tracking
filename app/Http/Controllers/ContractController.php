@@ -55,7 +55,7 @@ class ContractController extends Controller
         $docs->storeAs('public/file-kontrak',$uniqname);
         $validatedData['file_pks'] = $uniqname;
         kontrak_site_history::create($validatedData);
-        return back()->with('success', 'Data kontrak site berhasil ditambahkan');
+        return back()->with('toast_success', 'Data kontrak site berhasil ditambahkan');
     }
 
     /**
@@ -100,7 +100,7 @@ class ContractController extends Controller
         ]);
 
         kontrak_site_history::where('id',$kontrak_site_history->id)->update($validatedData);
-        return back()->with('success', 'Kontrak Site berhasil diperbarui');
+        return back()->with('toast_success', 'Kontrak Site berhasil diperbarui');
     }
 
     /**
@@ -112,7 +112,7 @@ class ContractController extends Controller
     public function destroy(kontrak_site_history $kontrak_site_history)
     {
         kontrak_site_history::where('id',$kontrak_site_history->id)->delete();
-        return back()->with('success', 'Data kontrak site berhasil dihapus');
+        return back()->with('toast_success', 'Data kontrak site berhasil dihapus');
     }
 
     public function getDocs(kontrak_site_history $kontrakId){

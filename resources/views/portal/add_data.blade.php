@@ -11,6 +11,30 @@
         @include('portal.component.userProfile')
     </div>
 
+    {{-- notification --}}
+    @if (session()->has('success'))
+    <div class="row">
+        <div class="col-8">
+            <div class="alert alert-success container alert-dismissible fade show" role="alert">
+                {{ session('fail') }}
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    @endif
+
+    @if (session()->has('fail'))
+    <div class="row">
+        <div class="col-8">
+            <div class="alert alert-danger container alert-dismissible fade show" role="alert">
+                {{ session('fail') }}
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    @endif
+
+    
     <div class="row">
         <div class="col-8">
             <div class="container up-data shadow-lg">                
@@ -23,7 +47,7 @@
                             <option value="KPI_utama">KPI Utama</option>
                             <option value="KPI_aktif">KPI Activity</option>
                             <option value="KPI_support">KPI Support</option>
-                            <option value="RVC">Reserved Var Cost</option>
+                            <option value="RCOST">Reserved Var Cost</option>
                             <option value="BBM">Cost BBM</option>
                             <option value="OPEX">OPEX</option>
                             <option value="5">Three</option>

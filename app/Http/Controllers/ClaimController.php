@@ -57,7 +57,7 @@ class ClaimController extends Controller
         // return view('portal.test', dd($request));
         
         claim_asset::create($validatedData);
-        return back()->with('success', 'Data claim asset berhasil ditambahkan');
+        return back()->with('toast_success', 'Data claim asset berhasil ditambahkan');
     }
 
     /**
@@ -113,7 +113,7 @@ class ClaimController extends Controller
 
         claim_asset::where('idclaim', $claim_asset->idclaim)->update($validatedData);
 
-        return back()->with('success', 'Claim asset berhasil diperbarui');
+        return back()->with('toast_success', 'Claim asset berhasil diperbarui');
     }
 
     /**
@@ -127,6 +127,6 @@ class ClaimController extends Controller
         //
         claim_asset::where('idclaim', $claim_asset->idclaim)->delete();
         //$claim_asset->delete();
-        return back()->with('success', 'Data claim asset berhasil dihapus');
+        return back()->with('toast_success', 'Data claim asset berhasil dihapus');
     }
 }

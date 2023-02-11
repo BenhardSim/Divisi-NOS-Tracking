@@ -51,7 +51,7 @@ class CommController extends Controller
 
         $validatedData['idComm'] = commissue::max('idComm') + 1;
         commissue::create($validatedData);
-        return back()->with('success', 'Comm Issue berhasil ditambahkan');
+        return back()->with('toast_success', 'Comm Issue berhasil ditambahkan');
     }
 
     /**
@@ -99,7 +99,7 @@ class CommController extends Controller
         ]);
 
         commissue::where('idComm',$commissue->idComm)->update($validatedData);
-        return back()->with('success', 'comm Issue berhasil diperbarui');
+        return back()->with('toast_success', 'comm Issue berhasil diperbarui');
     }
 
     /**
@@ -111,6 +111,6 @@ class CommController extends Controller
     public function destroy(commissue $commissue)
     {
         commissue::where('idComm',$commissue->idComm)->delete();
-        return back()->with('success', 'Data Comm Issue berhasil dihapus');
+        return back()->with('toast_success', 'Data Comm Issue berhasil dihapus');
     }
 }
