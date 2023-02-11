@@ -1,15 +1,11 @@
 <?php
 
 use App\Models\User;
-use App\Models\imbas_petir;
 use App\Models\siteprofile;
-use App\Models\kontrak_site;
-use App\Models\tagging_asset;
 use Illuminate\Http\Response;
 use App\Models\kontrak_site_history;
 
 use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImbController;
 use App\Http\Controllers\PbbController;
 use App\Http\Controllers\CommController;
@@ -34,7 +30,9 @@ use App\Http\Controllers\TaggingController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\UploadController;
 use App\Imports\KPIImport;
+use App\Models\tracked_document;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,14 +57,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/setting', [SettingController::class, 'index'])->middleware('auth');
 Route::put('/setting', [SettingController::class, 'update'])->middleware('auth');
-Route::get('/upload-dokumen', function(){
-    return view('portal.upDokumen',[
-        "users_lvl_1" => User::where('level_akun',1)->get(),
-        "users_lvl_2" => User::where('level_akun',2)->get(),
-        "users_lvl_3" => User::where('level_akun',3)->get(),
-        "users_lvl_4" => User::where('level_akun',4)->get(),
-    ]);
-})->middleware('auth');
+Route::get('/upload-dokumen', [UploadController::class, 'index'])->middleware('auth');
 Route::get('/upload-data', function(){
     return view('portal.add_data');
 })->middleware('admin');

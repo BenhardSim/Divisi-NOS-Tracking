@@ -22,7 +22,7 @@
       </tr>
       <tr>
         <th class="table-info" scope="row">Nama File</th>
-        <td>{{ $document->nama_file }}</td>
+        <td>{{ $document->file }}</td>
       </tr>
       <tr>
         <th class="table-info" scope="row">Keterangan</th>
@@ -54,15 +54,15 @@
       </tr>
       <tr>
         <th class="table-info" scope="row">Tujuan Level Dua</th>
-        <td>{{ $document->id_level_dua }}</td>
+        <td>{{ $kedua->name }}</td>
       </tr>
       <tr>
         <th class="table-info" scope="row">Tujuan Level Tiga</th>
-        <td>{{ $document->id_level_tiga }}</td>
+        <td>{{ $ketiga->name }}</td>
       </tr>
       <tr>
         <th class="table-info" scope="row">Tujuan Level Empat</th>
-        <td>{{ $document->id_level_empat }}</td>
+        <td>{{ $keempat->name }}</td>
       </tr>
       <tr>
         <th class="table-info" scope="row">Waktu dan Tanggal</th>
