@@ -32,7 +32,7 @@
             <th scope="row">{{ $document->id}}</th>
             <td>{{ $document->nama_pengirim }}</td>
             <td>{{ $document->deskripsi }}</td>
-            <td>{{ $document->tanggal}}</td>
+            <td>{{ $document->tanggal->format('D, d M Y H:i')}}</td>
             <td>{{ $document->status}}</td>
             <td class="d-flex justify-content-center">
                 @if ($document->status == "Pending")

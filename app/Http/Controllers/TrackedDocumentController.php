@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\tracked_document;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -37,6 +39,65 @@ class TrackedDocumentController extends Controller
     public function store(Request $request)
     {
         //
+        if (Gate::allows('staff')) {
+            $validatedData = $request->validate([
+                "id_level_dua" => "required",
+                "id_level_tiga" => "required",
+                "id_level_empat" => "required",
+                "deskripsi" => "required",
+                "file" => "required",
+             ]);
+        }
+        if (Gate::allows('supervisor')) {
+            $validatedData = $request->validate([
+                "id_level_tiga" => "required",
+                "id_level_empat" => "required",
+                "deskripsi" => "required",
+                "file" => "required",
+             ]);
+        }
+        if (Gate::allows('manager')) {
+            $validatedData = $request->validate([
+                "id_level_empat" => "required",
+                "deskripsi" => "required",
+                "file" => "required",
+             ]);
+        }
+        if (Gate::allows('gm')) {
+            $validatedData = $request->validate([
+                "deskripsi" => "required",
+                "file" => "required",
+             ]);
+        }
+        //$validatedData['idimbas'] = tracked_document::max('idimbas') + 1;
+        //return redirect('/dashboard')->with('success', 'Data berhasil dimasukkan');
+         // return view('portal.test', dd($request));
+
+        $max = tracked_document::max('id') + 1;
+
+        $docs = $request->file('file');
+        $uniqname = 'id-tracked-'.$max.'-'.$docs->getClientOriginalName();
+        $docs->storeAs('public/file-tracked',$uniqname);
+        $validatedData['file'] = $uniqname;
+        $validatedData['id_pengirim'] = auth()->user()->id;
+        $validatedData['nama_pengirim'] = auth()->user()->name;
+        $validatedData['level_approval'] = auth()->user()->level_akun;
+        $validatedData['level_pengirim'] = auth()->user()->level_akun;
+        $validatedData['tanggal'] = Carbon::now('Asia/Jakarta');
+        if (Gate::allows('supervisor')) {
+            $validatedData['id_level_dua'] = auth()->user()->id;
+        }
+        if (Gate::allows('manager')) {
+            $validatedData['id_level_tiga'] = auth()->user()->id;
+        }
+        if (Gate::allows('gm')) {
+            $validatedData['id_level_empat'] = auth()->user()->id;
+            $validatedData['status'] = "Approved";
+        }
+        
+         
+         tracked_document::create($validatedData);
+         return back()->with('success', 'Data tracked document berhasil ditambahkan');
     }
 
     /**
@@ -50,7 +111,10 @@ class TrackedDocumentController extends Controller
         //
         return view('portal.detailtracked',[
             "document" => $tracked_document,
-            "title" => "Detail Tracked Document" 
+            "title" => "Detail Tracked Document",
+            "kedua" => User::where("id", $tracked_document->id_level_dua)->first(),
+            "ketiga" => User::where("id", $tracked_document->id_level_tiga)->first(),
+            "keempat" => User::where("id", $tracked_document->id_level_empat)->first(),
         ]);
     }
 
@@ -76,6 +140,9 @@ class TrackedDocumentController extends Controller
     {
         // rejection
         if(isset($request['keterangan'])){
+            $request->validate([
+                "keterangan" => 'required'
+            ]);
             $validatedData = [
                 "level_approval" => $tracked_document->level_pengirim - 1,
                 "status" => "Rejected",
