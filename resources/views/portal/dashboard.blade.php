@@ -304,18 +304,18 @@
     const varcost_main = document.getElementById('varcost_main').getContext('2d');
     //const labels = Utils.months({count: 7});
     const varcost_maindata = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_ReservedCost),
         datasets: [
         {
         label: ['PS'],
-        data: [120000, 50000, 75000, 22000, 12500, 55000, 40000, 100000, 110000, 120500, 140000, 125000],
+        data: @json($value_RCOST_PS),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
         },
         {
         label: ['RM'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data: @json($value_RCOST_RM),
         fill: false,
         borderColor: 'rgb(255, 192, 192)',
         tension: 0.1

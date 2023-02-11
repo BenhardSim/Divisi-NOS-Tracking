@@ -7,6 +7,7 @@ use App\Models\KPI_Support;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use App\Models\KPI_utama;
+use App\Models\ReservedCost;
 use App\Models\siteprofile;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
@@ -253,14 +254,77 @@ class DashboardController extends Controller
                 $value_KPI_support_target = array_slice($value_KPI_support_target,$size-12,$size-1);
                 $value_KPI_support = array_slice($value_KPI_support,$size-12,$size-1);
                 $monthList_KPI_support = array_slice($monthList_KPI_support,$size-12,$size-1);
-                
-
             }
 
         }
 
+        /* ==================================== LOGIC Reserved Var COST =========================================================== */
 
-        // dd(sizeof($monthList_KPI_Utama));
+        // get All the data ordered by date
+        $AllIds_ReservedCost = ReservedCost::orderBy('date')->get()->toArray(); 
+        $monthList_ReservedCost = array();
+        $size = sizeof($AllIds_ReservedCost);
+
+        // kalau data pada database tidak kosong
+        if(sizeof($AllIds_ReservedCost) !== 0){
+
+
+            /*-- generate waktu untuk sumbu x --*/
+            // ambil interval 
+            $from = $AllIds_ReservedCost[0]['date'];
+            $to = $AllIds_ReservedCost[$size-1]['date'];
+
+            // key -> value untuk mengecek apakah bulan sudah ada atau blm 
+            $check_month = [];
+            
+            // Reservation::whereBetween('reservation_from', [$from, $to])->get();
+            // mengenerate periode
+            $period = CarbonPeriod::create($from, $to);
+
+            // mengeassign value dengan default 0 bila tidak ada
+            foreach ($period as $date) {
+                $key = $date->format('Y-m');
+                $check_month[$key] = 0;
+            }
+
+            // proses filter
+            foreach ($period as $date) {
+                // echo $date->format('Y-m-d');
+                $key = $date->format('Y-m');
+                // kalau belum terpilih 
+                if($check_month[$key] !== 1){
+                    array_push($monthList_ReservedCost,$date->format('Y-m'));
+                    $check_month[$key] = 1;
+                }   
+            }
+
+            // inisial nilai value dengan panjang month list
+            $value_RCOST_PS = array_fill(0, sizeof($monthList_ReservedCost), 0);
+            $value_RCOST_RM = array_fill(0, sizeof($monthList_ReservedCost), 0);
+
+            foreach($AllIds_ReservedCost as $data){
+                $data_target =  $data;
+                $data_type = $data['type'];
+                $month_target =  $data['date'];
+                $month_target =  date('Y-M', strtotime($month_target));
+
+                // jumlah month sedikit tidak, foreach tidak memberi load yang besar
+                foreach($monthList_ReservedCost as $key => $month){
+                    $month =  date('Y-M', strtotime($month));
+
+                    // cek apakah bulan sesuai dan masuk ke dalam tipe mana
+                    if($month_target === $month && $data_type === 'PS'){
+                        $value_RCOST_PS[$key] += $data_target['ticket_number'];
+                    }else if($month_target === $month && $data_type === 'RM'){
+                        $value_RCOST_RM[$key] += $data_target['ticket_number'];
+                    } 
+                }
+                
+            }
+        }
+
+
+        // dd($value_RCOST_PS);
         return view('portal.dashboard', [
             "site_all" => siteprofile::count(),
             "site_tp" => siteprofile::where("TOWERSTATUS", "Sewa TP")->count(),
@@ -281,6 +345,10 @@ class DashboardController extends Controller
             "value_KPI_active_support" => $value_KPI_active_support,
             "value_KPI_support" => $value_KPI_support,
             "monthList_KPI_support" => $monthList_KPI_support,
+
+            "monthList_ReservedCost" => $monthList_ReservedCost,
+            "value_RCOST_PS" => $value_RCOST_PS,
+            "value_RCOST_RM" => $value_RCOST_RM,
 
 
         ]);

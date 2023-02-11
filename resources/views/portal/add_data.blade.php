@@ -23,7 +23,7 @@
                             <option value="KPI_utama">KPI Utama</option>
                             <option value="KPI_aktif">KPI Activity</option>
                             <option value="KPI_support">KPI Support</option>
-                            <option value="RVC">Reserved Var Cost</option>
+                            <option value="RCOST">Reserved Var Cost</option>
                             <option value="BBM">Cost BBM</option>
                             <option value="OPEX">OPEX</option>
                             <option value="5">Three</option>
@@ -54,8 +54,42 @@
             // document.getElementById('form-import').action = '/file-import';
             console.log( document.getElementById('form-import').action);
             console.log(document.getElementById('download-template').href);
-        }
+            Toastify({
+            text: "This is a toast",
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
 
+            }).showToast();
+        }
+        
+
+        @if (session()->has('success'))
+            function tos(){
+                console.log('test');
+                Toastify({
+                text: "This is a toast",
+                duration: 3000,
+                destination: "https://github.com/apvarun/toastify-js",
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: "linear-gradient(to right, #00b09b, #96c93d)",
+                },
+                }).showToast();
+            }
+            document.getElementsByTagName("body")[0].addEventListener('load', tos);
+        @endif
     </script>
 
 

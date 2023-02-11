@@ -35,7 +35,7 @@
               <select class="form-control " id="exampleFormControlSelect1">
                 <option value="" selected>Pilih User</option>
                 @foreach($users_lvl_2 as $user_lvl_2)
-                  <option value="">{{ $user_lvl_1->name }}</option>
+                  <option value="">{{ $user_lvl_2->name }}</option>
                 @endforeach
               </select>
             </div>
@@ -44,7 +44,7 @@
               <select class="form-control " id="exampleFormControlSelect1">
                 <option value="" selected>Pilih User</option>
                 @foreach($users_lvl_3 as $user_lvl_3)
-                  <option value="">{{ $user_lvl_1->name }}</option>
+                  <option value="">{{ $user_lvl_3->name }}</option>
                 @endforeach
               </select>
             </div>
@@ -52,8 +52,8 @@
               <label for="exampleFormControlSelect1">Sign Level 4</label>
               <select class="form-control " id="exampleFormControlSelect1">
                 <option value="" selected>Pilih User</option>
-                @foreach($users_lvl_3 as $user_lvl_3)
-                  <option value="">{{ $user_lvl_1->name }}</option>
+                @foreach($users_lvl_4 as $user_lvl_4)
+                  <option value="">{{ $user_lvl_4->name }}</option>
                 @endforeach
               </select>
             </div>
