@@ -4,13 +4,11 @@ use App\Models\User;
 use App\Models\siteprofile;
 use Illuminate\Http\Response;
 use App\Models\kontrak_site_history;
-
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\ImbController;
 use App\Http\Controllers\PbbController;
 use App\Http\Controllers\CommController;
 use App\Http\Controllers\lainController;
-
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ClaimController;
 use App\Http\Controllers\ImbasController;
@@ -21,9 +19,6 @@ use App\Models\imbas_petir;
 use App\Models\tagging_asset;
 use App\Models\kontrak_site;
 use Illuminate\Support\Facades\Route;
-
-
-
 use App\Http\Controllers\SitesController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TaggingController;
@@ -31,6 +26,7 @@ use App\Http\Controllers\ContractController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\ImportController;
 use App\Imports\KPIImport;
 use App\Models\tracked_document;
 
@@ -139,27 +135,28 @@ Route::get('/file-lain/{id_lain:id}',[lainController::class,'getDocs'])->middlew
 
 Route::get('/download',function(){
     $type = request()->type;
-
     $path = storage_path().'\app\public\templates\\'.$type.'.xlsx';
     return response()->download($path);
 });
 
 // import file
-Route::post('/fileImport',function(){
-    // dd('test');
-    $validatedData = request()->validate([
-        "tipe-template" => "Required",
-    ]);
-    if($validatedData["tipe-template"] === 'KPI_utama'){
-        Excel::import(new KPIImport,request()->file('file'));
-        return back();
-    }else if($validatedData["tipe-template"] === 'KPI_utama'){
+// Route::post('/fileImport',function(){
+//     // dd('test');
+//     $validatedData = request()->validate([
+//         "tipe-template" => "Required",
+//     ]);
+//     if($validatedData["tipe-template"] === 'KPI_utama'){
+//         Excel::import(new KPIImport,request()->file('file'));
+//         return back();
+//     }else if($validatedData["tipe-template"] === 'KPI_utama'){
 
-    }else if($validatedData["tipe-template"] === 'KPI_utama'){
+//     }else if($validatedData["tipe-template"] === 'KPI_utama'){
 
-    }else if($validatedData["tipe-template"] === 'KPI_utama'){
+//     }else if($validatedData["tipe-template"] === 'KPI_utama'){
 
-    };
-    dd("fail");
-});
+//     };
+//     dd("fail");
+// });
+
+Route::post('/fileImport',[ImportController::class,'importTemplates']);
 

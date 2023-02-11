@@ -125,6 +125,10 @@
                     <p>File Name : {{ $latest_lain->nama_file }}</p>
                     <p>See Latest Document : <a href="/file-lain/{{ $latest_lain->id }}">View Document</a></p>
                 @endif
+                @if(!$latest_lain)
+                    <p>File Name : -</p>
+                    <p>See Latest Document : -</p>
+                @endif
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_doc_lain">
                     Upload Document
                  </button>

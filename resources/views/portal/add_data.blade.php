@@ -21,6 +21,8 @@
                         <select id="templates" class="form-select" aria-label="Default select example" onchange="getType()" name="tipe-template">
                             <option selected>Pilih Dokumen</option>
                             <option value="KPI_utama">KPI Utama</option>
+                            <option value="KPI_aktif">KPI Activity</option>
+                            <option value="KPI_support">KPI Support</option>
                             <option value="RVC">Reserved Var Cost</option>
                             <option value="BBM">Cost BBM</option>
                             <option value="OPEX">OPEX</option>
