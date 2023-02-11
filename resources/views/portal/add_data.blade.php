@@ -11,6 +11,30 @@
         @include('portal.component.userProfile')
     </div>
 
+    {{-- notification --}}
+    @if (session()->has('success'))
+    <div class="row">
+        <div class="col-8">
+            <div class="alert alert-success container alert-dismissible fade show" role="alert">
+                {{ session('fail') }}
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    @endif
+
+    @if (session()->has('fail'))
+    <div class="row">
+        <div class="col-8">
+            <div class="alert alert-danger container alert-dismissible fade show" role="alert">
+                {{ session('fail') }}
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    @endif
+
+    
     <div class="row">
         <div class="col-8">
             <div class="container up-data shadow-lg">                
@@ -54,42 +78,8 @@
             // document.getElementById('form-import').action = '/file-import';
             console.log( document.getElementById('form-import').action);
             console.log(document.getElementById('download-template').href);
-            Toastify({
-            text: "This is a toast",
-            duration: 3000,
-            destination: "https://github.com/apvarun/toastify-js",
-            newWindow: true,
-            close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "right", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-                background: "linear-gradient(to right, #00b09b, #96c93d)",
-            },
-
-            }).showToast();
         }
-        
 
-        @if (session()->has('success'))
-            function tos(){
-                console.log('test');
-                Toastify({
-                text: "This is a toast",
-                duration: 3000,
-                destination: "https://github.com/apvarun/toastify-js",
-                newWindow: true,
-                close: true,
-                gravity: "top", // `top` or `bottom`
-                position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
-                style: {
-                    background: "linear-gradient(to right, #00b09b, #96c93d)",
-                },
-                }).showToast();
-            }
-            document.getElementsByTagName("body")[0].addEventListener('load', tos);
-        @endif
     </script>
 
 

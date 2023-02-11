@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('work_status');
             $table->string('SITEID');
             $table->string('site_name');
+            $table->string('nop');
             $table->enum('type',['PS','RM']);
             $table->timestamps();
         });

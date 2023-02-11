@@ -18,17 +18,17 @@ class ImportController extends Controller
         ]);
         if($validatedData["tipe-template"] === 'KPI_utama'){
             Excel::import(new KPIImport,request()->file('file'));
-            return back();
+            return back()->with('toast_success', 'Data KPI Aktif berhasil ditambahkan');
         }else if($validatedData["tipe-template"] === 'KPI_aktif'){
             Excel::import(new KPIActivityImport,request()->file('file'));
-            return back();
+            return back()->with('toast_success', 'Data KPI Activity berhasil ditambahkan');
         }else if($validatedData["tipe-template"] === 'KPI_support'){
             Excel::import(new KPISupportImport,request()->file('file'));
-            return back()->with('success', 'Data KPI Support berhasil ditambahkan');
+            return back()->with('toast_success', 'Data KPI Support berhasil ditambahkan');
         }else if($validatedData["tipe-template"] === 'RCOST'){
             Excel::import(new ReservedCostImport,request()->file('file'));
-            return back();
+            return back()->with('toast_success', 'Data Reserved Var Cost berhasil ditambahkan');
         };
-        dd("fail");
+        return back()->with('toast_error', 'pilih jenis Dokumen yang akan di masukkan !');
     }
 }

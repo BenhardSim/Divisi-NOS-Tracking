@@ -50,7 +50,7 @@ class ImbController extends Controller
         $docs->storeAs('public/file-imb',$uniqname);
         $validatedData['file_imb'] = $uniqname;
         imb_document::create($validatedData);
-        return back()->with('success', 'Document IMB berhasil ditambahkan');
+        return back()->with('toast_success', 'Document IMB berhasil ditambahkan');
     }
 
     /**

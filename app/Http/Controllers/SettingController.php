@@ -38,6 +38,6 @@ class SettingController extends Controller
 
         User::where('id', auth()->user()->id)->update($finalData);
 
-        return redirect('/setting')->with('success', 'Password berhasil diperbarui');
+        return redirect('/setting')->with('toast_success', 'Password berhasil diperbarui');
     }
 }

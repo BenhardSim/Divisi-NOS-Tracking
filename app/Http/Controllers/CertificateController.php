@@ -58,7 +58,7 @@ class CertificateController extends Controller
         $docs->storeAs('public/file-certificate',$uniqname);
         $validatedData['file_ser'] = $uniqname;
         certificate_document::create($validatedData);
-        return back()->with('success', 'Document certificate berhasil ditambahkan');
+        return back()->with('toast_success', 'Document certificate berhasil ditambahkan');
     }
 
     /**

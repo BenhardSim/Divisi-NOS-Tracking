@@ -56,11 +56,11 @@ class ImbasController extends Controller
            "Regional" => "required",
         ]);
         $validatedData['idimbas'] = imbas_petir::max('idimbas') + 1;
-        //return redirect('/dashboard')->with('success', 'Data berhasil dimasukkan');
+        //return redirect('/dashboard')->with('toast_success', 'Data berhasil dimasukkan');
         // return view('portal.test', dd($request));
         
         imbas_petir::create($validatedData);
-        return back()->with('success', 'Data imbas petir berhasil ditambahkan');
+        return back()->with('toast_success', 'Data imbas petir berhasil ditambahkan');
     }
 
     /**
@@ -126,7 +126,7 @@ class ImbasController extends Controller
 
         imbas_petir::where('idimbas', $imbas_petir->idimbas)->update($validatedData);
 
-        return back()->with('success', 'Imbas petir berhasil diperbarui');
+        return back()->with('toast_success', 'Imbas petir berhasil diperbarui');
     }
 
     /**
@@ -140,7 +140,7 @@ class ImbasController extends Controller
         //
 
         imbas_petir::where('idimbas', $imbas_petir->idimbas)->delete();
-        return back()->with('success', 'Data imbas petir berhasil dihapus');
+        return back()->with('toast_success', 'Data imbas petir berhasil dihapus');
         //$imbas_petir->delete();
     }
 }

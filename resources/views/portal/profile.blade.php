@@ -292,11 +292,13 @@
 
 
     {{-- notification --}}
-    @if (session()->has('success'))
-    <div class="alert alert-success container col-lg-12" role="alert">
-      {{ session('success') }}
+    {{-- @if (session()->has('success'))
+    <div class="col-12 px-3">
+        <div class="alert alert-success container" role="alert">
+            {{ session('success') }}
+        </div>
     </div>
-    @endif
+    @endif --}}
     
     <div class="col-lg-12">
         <div class="container rvc-stat shadow">
