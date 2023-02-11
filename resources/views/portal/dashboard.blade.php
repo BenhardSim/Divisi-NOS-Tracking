@@ -173,8 +173,17 @@
 
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
-                <div class="rvc-title">
-                    <a href="/kpiu" class="links text-white"><h5>KPI Utama</h5></a>
+                <div class="rvc-title title-box">
+                    <div class="title-cont">
+                        <a href="/kpiu" class="links text-white"><h5>KPI Utama</h5></a>
+                    </div>
+                    <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
+                        {{-- view All Data Button --}}
+                        <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
+                            <span>Magnify</span>
+                        </button>
+                    </div>
                 </div>
                 <div class="rvc-graph">
                     <canvas id="kpiu_main"></canvas>
@@ -535,7 +544,7 @@
     const kpiu_main = document.getElementById('kpiu_main').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const kpiu_mainData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_KPI_Utama),
         datasets: [
             {
             type: 'line',
@@ -578,26 +587,26 @@
     const kpis_main = document.getElementById('kpis_main').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const kpis_mainData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_KPI_support),
         datasets: [
             {
             type: 'line',
             label: 'Activ KPI Supporting',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_active_support),
             borderColor: '#994499',
 
         },
         {
             type: 'line',
             label: 'target',
-            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            data: @json($value_KPI_support_target),
             borderColor: '#316395',
 
         },
         {
             type: 'bar',
             label: 'KPI Supporting',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_support),
             backgroundColor: '#22aa99'
         },
         
@@ -621,26 +630,26 @@
     const kpia_main = document.getElementById('kpia_main').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const kpia_mainData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_KPI_activity),
         datasets: [
             {
             type: 'line',
             label: 'Activ KPI Activity',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_active_activity),
             borderColor: '#994499',
 
         },
         {
             type: 'line',
             label: 'target',
-            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            data: @json($value_KPI_activity_target),
             borderColor: '#316395',
 
         },
         {
             type: 'bar',
             label: 'KPI Activity',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_activity),
             backgroundColor: '#22aa99'
         },
         
