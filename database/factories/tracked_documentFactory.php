@@ -29,7 +29,7 @@ class tracked_documentFactory extends Factory
             // $table->string('id_level_dua');
             // $table->string('id_level_tiga');
             // $table->string('id_level_empat');
-            'nama_file' => "Persetujuan Pembelian BTS",
+            'file' => "Persetujuan Pembelian BTS",
             'level_approval' => 1,
             // 'view_file' => $this->faker->name(),
             'id_pengirim' => "1",

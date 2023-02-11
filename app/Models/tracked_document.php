@@ -9,5 +9,7 @@ use Illuminate\Support\Facades\Gate;
 class tracked_document extends Model
 {
     use HasFactory;
-    // public $timestamps = false;
+    public $timestamps = false;
+    protected $dates = ['tanggal'];
+    protected $guarded = [];
 }
