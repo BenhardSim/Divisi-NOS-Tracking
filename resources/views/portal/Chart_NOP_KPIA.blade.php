@@ -157,26 +157,26 @@
     const kpia_semarang = document.getElementById('kpia_semarang').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const kpia_semarangData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_KPI_aktif_semarang),
         datasets: [
             {
             type: 'line',
-            label: 'Activ KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            label: 'Activ KPI Activity',
+            data: @json($value_KPI_active_aktif_semarang),
             borderColor: '#994499',
 
         },
         {
             type: 'line',
             label: 'target',
-            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            data: @json($value_KPI_aktif_target_semarang),
             borderColor: '#316395',
 
         },
         {
             type: 'bar',
-            label: 'KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            label: 'KPI Activity',
+            data: @json($value_KPI_aktif_semarang),
             backgroundColor: '#22aa99'
         },
         
@@ -199,26 +199,26 @@
     const kpia_surakarta = document.getElementById('kpia_surakarta').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const kpia_surakartaData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_KPI_aktif_surakarta),
         datasets: [
             {
             type: 'line',
-            label: 'Activ KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            label: 'Activ KPI Activity',
+            data: @json($value_KPI_active_aktif_surakarta),
             borderColor: '#994499',
 
         },
         {
             type: 'line',
             label: 'target',
-            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            data: @json($value_KPI_aktif_target_surakarta),
             borderColor: '#316395',
 
         },
         {
             type: 'bar',
-            label: 'KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            label: 'KPI Activity',
+            data: @json($value_KPI_aktif_surakarta),
             backgroundColor: '#22aa99'
         },
         
@@ -241,26 +241,26 @@
     const kpia_yogyakarta = document.getElementById('kpia_yogyakarta').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const kpia_yogyakartaData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_KPI_aktif_yogyakarta),
         datasets: [
             {
             type: 'line',
-            label: 'Activ KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            label: 'Activ KPI Activity',
+            data: @json($value_KPI_active_aktif_yogyakarta),
             borderColor: '#994499',
 
         },
         {
             type: 'line',
             label: 'target',
-            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            data: @json($value_KPI_aktif_target_yogyakarta),
             borderColor: '#316395',
 
         },
         {
             type: 'bar',
-            label: 'KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            label: 'KPI Activity',
+            data: @json($value_KPI_aktif_yogyakarta),
             backgroundColor: '#22aa99'
         },
         
@@ -283,26 +283,26 @@
     const kpia_purwokerto = document.getElementById('kpia_purwokerto').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const kpia_purwokertoData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_KPI_aktif_purwokerto),
         datasets: [
             {
             type: 'line',
-            label: 'Activ KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            label: 'Activ KPI Activity',
+            data: @json($value_KPI_active_aktif_purwokerto),
             borderColor: '#994499',
 
         },
         {
             type: 'line',
             label: 'target',
-            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            data: @json($value_KPI_aktif_target_purwokerto),
             borderColor: '#316395',
 
         },
         {
             type: 'bar',
-            label: 'KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            label: 'KPI Activity',
+            data: @json($value_KPI_aktif_purwokerto),
             backgroundColor: '#22aa99'
         },
         
@@ -325,26 +325,26 @@
     const kpia_pekalongan = document.getElementById('kpia_pekalongan').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const kpia_pekalonganData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_KPI_aktif_pekalongan),
         datasets: [
             {
             type: 'line',
-            label: 'Activ KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            label: 'Activ KPI Activity',
+            data: @json($value_KPI_active_aktif_pekalongan),
             borderColor: '#994499',
 
         },
         {
             type: 'line',
             label: 'target',
-            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            data: @json($value_KPI_aktif_target_pekalongan),
             borderColor: '#316395',
 
         },
         {
             type: 'bar',
-            label: 'KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            label: 'KPI Activity',
+            data: @json($value_KPI_aktif_pekalongan),
             backgroundColor: '#22aa99'
         },
         
@@ -367,26 +367,26 @@
     const kpia_salatiga = document.getElementById('kpia_salatiga').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const kpia_salatigaData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_KPI_aktif_salatiga),
         datasets: [
             {
             type: 'line',
-            label: 'Activ KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            label: 'Activ KPI Activity',
+            data: @json($value_KPI_active_aktif_salatiga),
             borderColor: '#994499',
 
         },
         {
             type: 'line',
             label: 'target',
-            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            data: @json($value_KPI_aktif_target_salatiga),
             borderColor: '#316395',
 
         },
         {
             type: 'bar',
-            label: 'KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            label: 'KPI Activity',
+            data: @json($value_KPI_aktif_salatiga),
             backgroundColor: '#22aa99'
         },
         

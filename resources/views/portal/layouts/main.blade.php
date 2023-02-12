@@ -35,8 +35,10 @@
         
       {{-- footer --}}
         <br>
-      <div>
-        © 2023 Copyright:
+      <div style="padding-left: 12px">
+        <p>
+          NOS-PORTAL © 2023 Copyright: PT. Telkomunikasi Seluler Indonesia
+        </p>
       </div>
       <br><br>
       </main>
