@@ -76,9 +76,7 @@
       </div>
 
       <div class="col-lg-4 form-signin" style="height: 100vh">
-        <div class="d-flex justify-content-center">
-          <img class="mt-4" src="img/logo-telkomsel-baru.png" alt="" width="320" height="150">
-        </div>
+        
         
         <main class="form-signin w-100 m-auto bg-white rounded px-5">
           @if (session()->has('success'))
@@ -95,7 +93,9 @@
           
           <form method="POST" action="/login">
             @csrf
-            <p class="h3 mb-3 fw-bold text-center text-danger">Please Log In</p>
+            <div class="d-flex justify-content-center">
+              <img class="mt-4" src="img/logo-telkomsel-baru.png" alt="" width="320" height="150">
+            </div>
             <div class="form-floating">
               <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" autofocus required value="{{ old('email') }}">
               <label for="email">Email address</label>
