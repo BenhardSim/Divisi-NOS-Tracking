@@ -263,6 +263,8 @@ class DashboardController extends Controller
         // get All the data ordered by date
         $AllIds_ReservedCost = ReservedCost::orderBy('date')->get()->toArray(); 
         $monthList_ReservedCost = array();
+        $value_RCOST_PS = array();
+        $value_RCOST_RM = array();
         $size = sizeof($AllIds_ReservedCost);
 
         // kalau data pada database tidak kosong

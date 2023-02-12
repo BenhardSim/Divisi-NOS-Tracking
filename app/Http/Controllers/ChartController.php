@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\siteprofile;
-use App\Models\KPI_Support;
-use App\Models\KPI_utama;
-use App\Models\KPI_aktif;
-use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use App\Models\KPI_aktif;
+use App\Models\KPI_utama;
+use App\Models\KPI_Support;
+use App\Models\siteprofile;
+use App\Models\ReservedCost;
+use Illuminate\Http\Request;
 
 class ChartController extends Controller
 {
@@ -64,7 +65,7 @@ class ChartController extends Controller
                 // O(nx12)
                 foreach($kpi_month as $key => $month){
                     $month =  date('Y-M', strtotime($month));
-                    if($month_target === $month && $data_target['NOP'] === $NOP){
+                    if($month_target === $month){
                         $kpi_target[$key] += $data_target['kpi_target'];
                         $kpi_active[$key] += $data_target['ach_kpi'];
                         $kpi_val[$key] += $data_target[$type];
@@ -82,6 +83,67 @@ class ChartController extends Controller
                 $kpi_month = array_slice($kpi_month,$size-12,$size-1);
             }
 
+        }
+    }
+
+    function RVNOP(&$AllIds_ReservedCost,&$monthList_ReservedCost,&$value_RCOST_PS,&$value_RCOST_RM){
+        
+        if(sizeof($AllIds_ReservedCost) !== 0){
+            $size = sizeof($AllIds_ReservedCost);
+            /*-- generate waktu untuk sumbu x --*/
+            // ambil interval 
+            $from = $AllIds_ReservedCost[0]['date'];
+            $to = $AllIds_ReservedCost[$size-1]['date'];
+
+            // key -> value untuk mengecek apakah bulan sudah ada atau blm 
+            $check_month = [];
+            
+            // Reservation::whereBetween('reservation_from', [$from, $to])->get();
+            // mengenerate periode
+            $period = CarbonPeriod::create($from, $to);
+
+            // mengeassign value dengan default 0 bila tidak ada
+            foreach ($period as $date) {
+                $key = $date->format('Y-m');
+                $check_month[$key] = 0;
+            }
+
+            // proses filter
+            foreach ($period as $date) {
+                // echo $date->format('Y-m-d');
+                $key = $date->format('Y-m');
+                // kalau belum terpilih 
+                if($check_month[$key] !== 1){
+                    array_push($monthList_ReservedCost,$date->format('Y-m'));
+                    $check_month[$key] = 1;
+                }   
+            }
+
+            // inisial nilai value dengan panjang month list
+            $value_RCOST_PS = array_fill(0, sizeof($monthList_ReservedCost), 0);
+            $value_RCOST_RM = array_fill(0, sizeof($monthList_ReservedCost), 0);
+
+            foreach($AllIds_ReservedCost as $data){
+                $data_target =  $data;
+                $data_type = $data['type'];
+                $month_target =  $data['date'];
+                $month_target =  date('Y-M', strtotime($month_target));
+                $NOP_target = $data['nop'];
+
+                // jumlah month sedikit tidak, foreach tidak memberi load yang besar
+                foreach($monthList_ReservedCost as $key => $month){
+                    $month =  date('Y-M', strtotime($month));
+
+                    // cek apakah bulan sesuai dan masuk ke dalam tipe mana
+                    if($month_target === $month && $data_type === 'PS'){
+                         $value_RCOST_PS[$key] += $data_target['ticket_number'];
+                     }else if($month_target === $month && $data_type === 'RM'){
+                        $value_RCOST_RM[$key] += $data_target['ticket_number'];
+                    } 
+                    
+                }
+                
+            }
         }
     }
 
@@ -108,12 +170,109 @@ class ChartController extends Controller
         ]);
     }
     public function indexRV(){
+
+         /* ==================================== LOGIC Reserved Var COST REGIONAL =========================================================== */
+
+        // get All the data ordered by date
+        $AllIds_ReservedCost = ReservedCost::orderBy('date')->get()->toArray(); 
+        $monthList_ReservedCost = array();
+        $value_RCOST_PS = array();
+        $value_RCOST_RM = array();
+
+        $this->RVNOP($AllIds_ReservedCost,$monthList_ReservedCost,$value_RCOST_PS,$value_RCOST_RM);
+
+        /* ==================================== LOGIC Reserved Var COST NOP Semarang =========================================================== */
+
+        $AllIds_ReservedCost_semarang = ReservedCost::where('NOP','semarang')->orderBy('date')->get()->toArray();
+        $monthList_ReservedCost_semarang = array();
+        $value_RCOST_PS_semarang = array();
+        $value_RCOST_RM_semarang = array();
+
+        $this->RVNOP($AllIds_ReservedCost_semarang,$monthList_ReservedCost_semarang,$value_RCOST_PS_semarang,$value_RCOST_RM_semarang);
+
+        /* ==================================== LOGIC Reserved Var COST NOP Surakarta =========================================================== */
+
+        $AllIds_ReservedCost_surakarta = ReservedCost::where('NOP','surakarta')->orderBy('date')->get()->toArray();
+        $monthList_ReservedCost_surakarta = array();
+        $value_RCOST_PS_surakarta = array();
+        $value_RCOST_RM_surakarta = array();
+
+        $this->RVNOP($AllIds_ReservedCost_surakarta,$monthList_ReservedCost_surakarta,$value_RCOST_PS_surakarta,$value_RCOST_RM_surakarta);
+
+        /* ==================================== LOGIC Reserved Var COST NOP Yogyakarta =========================================================== */
+
+        $AllIds_ReservedCost_yogyakarta = ReservedCost::where('NOP','yogyakarta')->orderBy('date')->get()->toArray();
+        $monthList_ReservedCost_yogyakarta = array();
+        $value_RCOST_PS_yogyakarta = array();
+        $value_RCOST_RM_yogyakarta = array();
+
+        $this->RVNOP($AllIds_ReservedCost_yogyakarta,$monthList_ReservedCost_yogyakarta,$value_RCOST_PS_yogyakarta,$value_RCOST_RM_yogyakarta);
+
+        /* ==================================== LOGIC Reserved Var COST NOP Purwokerto =========================================================== */
+
+        $AllIds_ReservedCost_purwokerto = ReservedCost::where('NOP','purwokerto')->orderBy('date')->get()->toArray();
+        $monthList_ReservedCost_purwokerto = array();
+        $value_RCOST_PS_purwokerto = array();
+        $value_RCOST_RM_purwokerto = array();
+
+        $this->RVNOP($AllIds_ReservedCost_purwokerto,$monthList_ReservedCost_purwokerto,$value_RCOST_PS_purwokerto,$value_RCOST_RM_purwokerto);
+
+        /* ==================================== LOGIC Reserved Var COST NOP Pekalongan =========================================================== */
+
+        $AllIds_ReservedCost_pekalongan = ReservedCost::where('NOP','pekalongan')->orderBy('date')->get()->toArray();
+        $monthList_ReservedCost_pekalongan = array();
+        $value_RCOST_PS_pekalongan = array();
+        $value_RCOST_RM_pekalongan = array();
+
+        $this->RVNOP($AllIds_ReservedCost_pekalongan,$monthList_ReservedCost_pekalongan,$value_RCOST_PS_pekalongan,$value_RCOST_RM_pekalongan);
+
+        /* ==================================== LOGIC Reserved Var COST NOP Salatiga =========================================================== */
+
+        $AllIds_ReservedCost_salatiga = ReservedCost::where('NOP','salatiga')->orderBy('date')->get()->toArray();
+        $monthList_ReservedCost_salatiga = array();
+        $value_RCOST_PS_salatiga = array();
+        $value_RCOST_RM_salatiga = array();
+
+        $this->RVNOP($AllIds_ReservedCost_salatiga,$monthList_ReservedCost_salatiga,$value_RCOST_PS_salatiga,$value_RCOST_RM_salatiga);
+
+
         return view('portal.Chart_NOP_RV', [
             "root" => "rv",
             "title" => "Chart Reserved Varcost NOP",
-            "site_all" => siteprofile::all()
+            "site_all" => siteprofile::all(),
+
+            "monthList_ReservedCost" => $monthList_ReservedCost,
+            "value_RCOST_PS" => $value_RCOST_PS,
+            "value_RCOST_RM" => $value_RCOST_RM,
+
+            "monthList_ReservedCost_semarang" => $monthList_ReservedCost_semarang,
+            "value_RCOST_PS_semarang" => $value_RCOST_PS_semarang,
+            "value_RCOST_RM_semarang" => $value_RCOST_RM_semarang,
+
+            "monthList_ReservedCost_surakarta" => $monthList_ReservedCost_surakarta,
+            "value_RCOST_PS_surakarta" => $value_RCOST_PS_surakarta,
+            "value_RCOST_RM_surakarta" => $value_RCOST_RM_surakarta,
+
+            "monthList_ReservedCost_yogyakarta" => $monthList_ReservedCost_yogyakarta,
+            "value_RCOST_PS_yogyakarta" => $value_RCOST_PS_yogyakarta,
+            "value_RCOST_RM_yogyakarta" => $value_RCOST_RM_yogyakarta,
+
+            "monthList_ReservedCost_purwokerto" => $monthList_ReservedCost_purwokerto,
+            "value_RCOST_PS_purwokerto" => $value_RCOST_PS_purwokerto,
+            "value_RCOST_RM_purwokerto" => $value_RCOST_RM_purwokerto,
+
+            "monthList_ReservedCost_pekalongan" => $monthList_ReservedCost_pekalongan,
+            "value_RCOST_PS_pekalongan" => $value_RCOST_PS_pekalongan,
+            "value_RCOST_RM_pekalongan" => $value_RCOST_RM_pekalongan,
+
+            "monthList_ReservedCost_salatiga" => $monthList_ReservedCost_salatiga,
+            "value_RCOST_PS_salatiga" => $value_RCOST_PS_salatiga,
+            "value_RCOST_RM_salatiga" => $value_RCOST_RM_salatiga,
         ]);
     }
+
+
+
     public function indexPL(){
         return view('portal.Chart_NOP_PL', [
             "root" => "pl",
