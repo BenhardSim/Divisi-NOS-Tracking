@@ -66,7 +66,7 @@ Route::get('/site-telkom', [SitesController::class, 'indexTelkom'])->middleware(
 Route::get('/site-telkomsel', [SitesController::class, 'indexTelkomsel'])->middleware('auth');
 
 
-// site from graph 
+// NOP charts 
 Route::get('/bbm', [ChartController::class, 'indexBBM'])->middleware('auth');
 Route::get('/rvc', [ChartController::class, 'indexRVC'])->middleware('auth');
 Route::get('/pl', [ChartController::class, 'indexPL'])->middleware('auth');
@@ -130,6 +130,8 @@ Route::get('/file-kontrak/{kontrakId:id}', [ContractController::class, 'getDocs'
 Route::get('/file-certificate/{id_ser:id}',[CertificateController::class, 'getDocs'])->middleware('auth');
 // view file IMB document
 Route::get('/file-imb/{id_imb:id}',[ImbController::class,'getDocs'])->middleware('auth');
+// view file tracked document
+Route::get('/file-tracked/{id_trc:id}',[TrackedDocumentController::class,'getDocs'])->middleware('auth');
 // view file lainnya 
 Route::get('/file-lain/{id_lain:id}',[lainController::class,'getDocs'])->middleware('auth');
 

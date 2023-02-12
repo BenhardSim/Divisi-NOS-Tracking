@@ -22,7 +22,7 @@
       </tr>
       <tr>
         <th class="table-info" scope="row">Nama File</th>
-        <td>{{ $document->file }}</td>
+        <td class=""><a class="links" href="/file-tracked/{{ $document->id }}">{{ $document->file }}</a></td>
       </tr>
       <tr>
         <th class="table-info" scope="row">Keterangan</th>
@@ -66,7 +66,7 @@
       </tr>
       <tr>
         <th class="table-info" scope="row">Waktu dan Tanggal</th>
-        <td>{{ $document->tanggal }}</td>
+        <td>{{ $document->tanggal->format('D, d M Y H:i') }}</td>
       </tr>
     </tbody>
   </table>

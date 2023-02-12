@@ -76,26 +76,26 @@
       </div>
 
       <div class="col-lg-4 form-signin" style="height: 100vh">
-        @if (session()->has('success'))
-          <div class="alert alert-success" role="alert">
-            {{ session('success') }}
-          </div>
-        @endif
-  
-        @if (session()->has('loginError'))
-          <div class="alert alert-danger" role="alert">
-            {{ session('loginError') }}
-          </div>
-        @endif
+        <div class="d-flex justify-content-center">
+          <img class="mt-4" src="img/logo-telkomsel-baru.png" alt="" width="320" height="150">
+        </div>
         
-        <main class="form-signin w-100 m-auto bg-white rounded p-5">
-          <h1 class="h3 mb-3 fw-normal text-center">Please Log In</h1>
+        <main class="form-signin w-100 m-auto bg-white rounded px-5">
+          @if (session()->has('success'))
+            <div class="alert alert-success" role="alert">
+              {{ session('success') }}
+            </div>
+          @endif
+  
+          @if (session()->has('loginError'))
+            <div class="alert alert-danger" role="alert">
+              {{ session('loginError') }}
+            </div>
+          @endif
+          
           <form method="POST" action="/login">
             @csrf
-            <div class="d-flex justify-content-center">
-              <img class="mb-4" src="img/logo-telkomsel-baru.png" alt="" width="136" height="57">
-            </div>
-        
+            <p class="h3 mb-3 fw-bold text-center text-danger">Please Log In</p>
             <div class="form-floating">
               <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" autofocus required value="{{ old('email') }}">
               <label for="email">Email address</label>
@@ -115,10 +115,10 @@
               @enderror
             </div>
             <button class="mt-3 w-100 btn btn-lg btn-primary" type="submit">Login</button>
-            <p class="mt-2 mb-2 text-muted">&copy; 2023</p>
           </form>
           {{-- <small class="d-block text-center mt-1">Not registered? <a href="/register">Register Now</a></small> --}}
-      </main>
+        </main>
+        <p class="mt-5 text-muted text-center">&copy; 2023 Copyright: PT. Telkomunikasi Seluler Indonesia</p>
       </div>
   </div>
 </section>
