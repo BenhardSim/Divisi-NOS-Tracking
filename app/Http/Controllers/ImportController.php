@@ -7,6 +7,7 @@ use App\Imports\KPIImport;
 use App\Imports\KPIActivityImport;
 use App\Imports\KPISupportImport;
 use App\Imports\ReservedCostImport;
+use App\Imports\ProfitLossImport;
 use Illuminate\Http\Request;
 
 class ImportController extends Controller
@@ -15,6 +16,7 @@ class ImportController extends Controller
         // dd('test');
         $validatedData = request()->validate([
             "tipe-template" => "Required",
+            "file" => "Required",
         ]);
         if($validatedData["tipe-template"] === 'KPI_utama'){
             Excel::import(new KPIImport,request()->file('file'));
@@ -28,7 +30,10 @@ class ImportController extends Controller
         }else if($validatedData["tipe-template"] === 'RCOST'){
             Excel::import(new ReservedCostImport,request()->file('file'));
             return back()->with('toast_success', 'Data Reserved Var Cost berhasil ditambahkan');
-        };
+        }else if($validatedData["tipe-template"] === 'ProfitLoss'){
+            Excel::import(new ProfitLossImport,request()->file('file'));
+            return back()->with('toast_success', 'Data Profit Loss berhasil ditambahkan');
+        };;
         return back()->with('toast_error', 'pilih jenis Dokumen yang akan di masukkan !');
     }
 }

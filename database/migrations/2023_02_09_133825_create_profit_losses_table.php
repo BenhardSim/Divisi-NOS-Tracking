@@ -17,10 +17,13 @@ return new class extends Migration
         Schema::create('profit_losses', function (Blueprint $table) {
             $table->id();
             $table->string('SITEID');
-            // $table->int('low_profit');
-            // $table->int('loss');
-            // $table->int('high_profit');
-            // $table->date('date')->default('s')
+            $table->string('site_name');
+            $table->string('kabupaten');
+            $table->string('NOP');
+            $table->integer('revenue');
+            $table->string('remark');
+            $table->date('date');
+            $table->timestamps();
         });
     }
 

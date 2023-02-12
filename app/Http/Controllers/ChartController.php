@@ -9,10 +9,109 @@ use App\Models\KPI_utama;
 use App\Models\KPI_Support;
 use App\Models\siteprofile;
 use App\Models\ReservedCost;
+use App\Models\profit_loss;
 use Illuminate\Http\Request;
 
 class ChartController extends Controller
 {
+    function ChartFunction($AllIds,&$month_list,$chart_type,&$val_x_1,&$val_x_2,&$val_x_3='empty'){
+        if(sizeof($AllIds) !== 0){
+            // ambil interval date bulan dari data paling kecil ke paling besar 
+            $from = $AllIds[0]['date'];
+            $to = $AllIds[sizeof($AllIds)-1]['date'];
+            
+            // key -> value untuk mengecek apakah bulan sudah ada atau blm 
+            $check_month = [];
+            
+            // Reservation::whereBetween('reservation_from', [$from, $to])->get();
+            // mengenerate periode
+            $period = CarbonPeriod::create($from, $to);
+            
+            // mengeassign value dengan default 0 bila tidak ada
+            foreach ($period as $date) {
+                $key = $date->format('Y-m');
+                $check_month[$key] = 0;
+            }
+            
+            // proses filter
+            foreach ($period as $date) {
+                // echo $date->format('Y-m-d');
+                $key = $date->format('Y-m');
+                // kalau belum terpilih 
+                if($check_month[$key] !== 1){
+                    array_push($month_list,$date->format('Y-m'));
+                    $check_month[$key] = 1;
+                }
+            }
+
+            // inisial nilai value dengan panjang month list
+            $val_x_1 = array_fill(0, sizeof($month_list), 0);
+            $val_x_2 = array_fill(0, sizeof($month_list), 0);
+            $val_x_3 = array_fill(0, sizeof($month_list), 0);
+            
+            // Convert the period to an array of dates
+            // $monthList = $period->format('Y-m-d')->toArray();
+
+            // dd($from.'-'.$to);
+            // dd($month_list);
+            foreach($AllIds as $AllId){
+                $data_target =  $AllId;
+                $month_target =  $AllId['date'];
+                // Carbon::parse($month_target->format('Y-m-d'));
+                $month_target =  date('Y-M', strtotime($month_target));
+                // $month_target =  date('F', strtotime($strmonth->pluck('date')));
+
+                // O(nx12)
+                foreach($month_list as $key => $month){
+                    $month =  date('Y-M', strtotime($month));
+                    if($chart_type === 'kpi_utama'){
+                        if($month_target === $month){
+                            $val_x_1[$key] += $data_target['kpi_target'];
+                            $val_x_2[$key] += $data_target['ach_kpi'];
+                            $val_x_3[$key] += $data_target['kpi_utama'];
+                        } 
+                    }else if($chart_type === 'kpi_activity'){
+                        if($month_target === $month){
+                            $val_x_1[$key] += $data_target['kpi_target'];
+                            $val_x_2[$key] += $data_target['ach_kpi'];
+                            $val_x_3[$key] += $data_target['kpi_activity'];
+                        }
+                    }else if($chart_type === 'kpi_support'){
+                        if($month_target === $month){
+                            $val_x_1[$key] += $data_target['kpi_target'];
+                            $val_x_2[$key] += $data_target['ach_kpi'];
+                            $val_x_3[$key] += $data_target['kpi_support'];
+                        }
+                    }else if($chart_type === 'var_cost'){
+                        if($month_target === $month && $data_target['type'] === 'PS'){
+                            $val_x_1[$key] += $data_target['ticket_number'];
+                        }else if($month_target === $month && $data_target['type'] === 'RM'){
+                            $val_x_2[$key] += $data_target['ticket_number'];
+                        }
+                    }else if($chart_type === 'profit_loss'){
+                        if($month_target === $month && $data_target['remark'] === 'high profit'){
+                            $val_x_1[$key] += $data_target['revenue'];
+                        }else if($month_target === $month && $data_target['remark'] === 'profit'){
+                            $val_x_2[$key] += $data_target['revenue'];
+                        }else if($month_target === $month && $data_target['remark'] === 'loss'){
+                            $val_x_3[$key] += $data_target['revenue'];
+                        }  
+                    }
+                // array_push($monthList,$month_target);
+            };
+
+            // hanya mengambil 12 data terakhir
+            if(sizeof($month_list) > 12){
+                $size = sizeof($month_list);
+                $val_x_1 = array_slice($val_x_1,$size-12,$size-1);
+                $val_x_2 = array_slice($val_x_2,$size-12,$size-1);
+                $val_x_3 = array_slice($val_x_3,$size-12,$size-1);
+                $month_list = array_slice($month_list,$size-12,$size-1);
+                
+            }
+        }
+    }
+    }
 
     // Pass by reference
     function KPISNOP(&$allid,&$kpi_target,&$kpi_active,&$kpi_val,&$kpi_month,$NOP,$type){
@@ -274,12 +373,127 @@ class ChartController extends Controller
 
 
     public function indexPL(){
+
+        //* ==================================== LOGIC Reserved Var COST regional =========================================================== */
+
+        $AllIds_PL = profit_loss::orderBy('date')->get()->toArray(); 
+        $value_PL_HP = array();
+        $value_PL_LP = array();
+        $value_PL_LOSS = array();
+        $monthList_PL = array();
+        $size = sizeof($AllIds_PL);
+
+        $this->ChartFunction($AllIds_PL,$monthList_PL,'profit_loss',$value_PL_HP,$value_PL_LP,$value_PL_LOSS);
+
+        //* ==================================== LOGIC Reserved Var COST NOP Semarang =========================================================== */
+
+        $AllIds_PL_semarang = profit_loss::where('NOP','semarang')->orderBy('date')->get()->toArray(); 
+        $value_PL_HP_semarang = array();
+        $value_PL_LP_semarang = array();
+        $value_PL_LOSS_semarang = array();
+        $monthList_PL_semarang = array();
+        $size = sizeof($AllIds_PL_semarang);
+
+        $this->ChartFunction($AllIds_PL_semarang,$monthList_PL_semarang,'profit_loss',$value_PL_HP_semarang,$value_PL_LP_semarang,$value_PL_LOSS_semarang);
+
+        //* ==================================== LOGIC Reserved Var COST NOP surakarta =========================================================== */
+
+        $AllIds_PL_surakarta = profit_loss::where('NOP','surakarta')->orderBy('date')->get()->toArray(); 
+        $value_PL_HP_surakarta = array();
+        $value_PL_LP_surakarta = array();
+        $value_PL_LOSS_surakarta = array();
+        $monthList_PL_surakarta = array();
+        $size = sizeof($AllIds_PL_surakarta);
+
+        $this->ChartFunction($AllIds_PL_surakarta,$monthList_PL_surakarta,'profit_loss',$value_PL_HP_surakarta,$value_PL_LP_surakarta,$value_PL_LOSS_surakarta);
+
+        //* ==================================== LOGIC Reserved Var COST NOP yogyakarta =========================================================== */
+
+        $AllIds_PL_yogyakarta = profit_loss::where('NOP','yogyakarta')->orderBy('date')->get()->toArray(); 
+        $value_PL_HP_yogyakarta = array();
+        $value_PL_LP_yogyakarta = array();
+        $value_PL_LOSS_yogyakarta = array();
+        $monthList_PL_yogyakarta = array();
+        $size = sizeof($AllIds_PL_yogyakarta);
+
+        $this->ChartFunction($AllIds_PL_yogyakarta,$monthList_PL_yogyakarta,'profit_loss',$value_PL_HP_yogyakarta,$value_PL_LP_yogyakarta,$value_PL_LOSS_yogyakarta);
+
+        //* ==================================== LOGIC Reserved Var COST NOP purwokerto =========================================================== */
+
+        $AllIds_PL_purwokerto = profit_loss::where('NOP','purwokerto')->orderBy('date')->get()->toArray(); 
+        $value_PL_HP_purwokerto = array();
+        $value_PL_LP_purwokerto = array();
+        $value_PL_LOSS_purwokerto = array();
+        $monthList_PL_purwokerto = array();
+        $size = sizeof($AllIds_PL_purwokerto);
+
+        $this->ChartFunction($AllIds_PL_purwokerto,$monthList_PL_purwokerto,'profit_loss',$value_PL_HP_purwokerto,$value_PL_LP_purwokerto,$value_PL_LOSS_purwokerto);
+
+        //* ==================================== LOGIC Reserved Var COST NOP pekalongan =========================================================== */
+
+        $AllIds_PL_pekalongan = profit_loss::where('NOP','pekalongan')->orderBy('date')->get()->toArray(); 
+        $value_PL_HP_pekalongan = array();
+        $value_PL_LP_pekalongan = array();
+        $value_PL_LOSS_pekalongan = array();
+        $monthList_PL_pekalongan = array();
+        $size = sizeof($AllIds_PL_pekalongan);
+
+        $this->ChartFunction($AllIds_PL_pekalongan,$monthList_PL_pekalongan,'profit_loss',$value_PL_HP_pekalongan,$value_PL_LP_pekalongan,$value_PL_LOSS_pekalongan);
+
+        //* ==================================== LOGIC Reserved Var COST NOP salatiga =========================================================== */
+
+        $AllIds_PL_salatiga = profit_loss::where('NOP','salatiga')->orderBy('date')->get()->toArray(); 
+        $value_PL_HP_salatiga = array();
+        $value_PL_LP_salatiga = array();
+        $value_PL_LOSS_salatiga = array();
+        $monthList_PL_salatiga = array();
+        $size = sizeof($AllIds_PL_salatiga);
+
+        $this->ChartFunction($AllIds_PL_salatiga,$monthList_PL_salatiga,'profit_loss',$value_PL_HP_salatiga,$value_PL_LP_salatiga,$value_PL_LOSS_salatiga);
+
         return view('portal.Chart_NOP_PL', [
             "root" => "pl",
             "title" => "Chart Profit Loss NOP",
-            "site_all" => siteprofile::all()
+            "site_all" => siteprofile::all(),
+
+            "monthList_PL" => $monthList_PL,
+            "value_PL_LP" => $value_PL_LP,
+            "value_PL_HP" => $value_PL_HP,
+            "value_PL_LOSS" => $value_PL_LOSS,
+
+            "monthList_PL_semarang" => $monthList_PL_semarang,
+            "value_PL_LP_semarang" => $value_PL_LP_semarang,
+            "value_PL_HP_semarang" => $value_PL_HP_semarang,
+            "value_PL_LOSS_semarang" => $value_PL_LOSS_semarang,
+
+            "monthList_PL_surakarta" => $monthList_PL_surakarta,
+            "value_PL_LP_surakarta" => $value_PL_LP_surakarta,
+            "value_PL_HP_surakarta" => $value_PL_HP_surakarta,
+            "value_PL_LOSS_surakarta" => $value_PL_LOSS_surakarta,
+
+            "monthList_PL_yogyakarta" => $monthList_PL_yogyakarta,
+            "value_PL_LP_yogyakarta" => $value_PL_LP_yogyakarta,
+            "value_PL_HP_yogyakarta" => $value_PL_HP_yogyakarta,
+            "value_PL_LOSS_yogyakarta" => $value_PL_LOSS_yogyakarta,
+
+            "monthList_PL_purwokerto" => $monthList_PL_purwokerto,
+            "value_PL_LP_purwokerto" => $value_PL_LP_purwokerto,
+            "value_PL_HP_purwokerto" => $value_PL_HP_purwokerto,
+            "value_PL_LOSS_purwokerto" => $value_PL_LOSS_purwokerto,
+
+            "monthList_PL_pekalongan" => $monthList_PL_pekalongan,
+            "value_PL_LP_pekalongan" => $value_PL_LP_pekalongan,
+            "value_PL_HP_pekalongan" => $value_PL_HP_pekalongan,
+            "value_PL_LOSS_pekalongan" => $value_PL_LOSS_pekalongan,
+
+            "monthList_PL_salatiga" => $monthList_PL_salatiga,
+            "value_PL_LP_salatiga" => $value_PL_LP_salatiga,
+            "value_PL_HP_salatiga" => $value_PL_HP_salatiga,
+            "value_PL_LOSS_salatiga" => $value_PL_LOSS_salatiga,
         ]);
     }
+
+
     public function indexTIRR(){
         return view('portal.Chart_NOP_TIRR', [
             "root" => "tirr",
