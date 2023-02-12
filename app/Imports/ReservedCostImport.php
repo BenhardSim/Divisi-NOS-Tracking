@@ -24,6 +24,7 @@ class ReservedCostImport implements ToModel, WithHeadingRow
             'work_status' => $row['work_status'],
             'siteid' => $row['siteid'],
             'site_name' => $row['site_name'],
+            'nop' => $row['nop'],
             'type' => $row['type'],
         ]);
     }

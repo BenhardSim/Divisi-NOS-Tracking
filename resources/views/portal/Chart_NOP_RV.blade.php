@@ -22,6 +22,12 @@
         </div>
     </div>
 
+     {{-- NOP-Row-1 --}}
+     <br>
+     <div class="col-lg-12 pt-5" style="text-align: center">
+         <h5>Reserved Var Cost NOP</h5>
+     </div>
+
     <div class="row">
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
@@ -100,23 +106,23 @@
         const varcost_regional = document.getElementById('varcost_regional').getContext('2d');
         //const labels = Utils.months({count: 7});
         const varcost_regionaldata = {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+            labels: @json($monthList_ReservedCost),
             datasets: [
             {
             label: ['PS'],
-            data: [120000, 50000, 75000, 22000, 12500, 55000, 40000, 100000, 110000, 120500, 140000, 125000],
+            data: @json($value_RCOST_PS),
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
             tension: 0.1
             },
             {
             label: ['RM'],
-            data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+            data: @json($value_RCOST_RM),
             fill: false,
             borderColor: 'rgb(255, 192, 192)',
             tension: 0.1
             }
-        ]
+    ]
         };
         const varcost_regionalconfig = {
             type: 'line',
@@ -135,18 +141,18 @@
         const varcost_semarang = document.getElementById('varcost_semarang').getContext('2d');
         //const labels = Utils.months({count: 7});
         const varcost_semarangdata = {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+            labels: @json($monthList_ReservedCost_semarang),
             datasets: [
             {
             label: ['PS'],
-            data: [120000, 50000, 75000, 22000, 12500, 55000, 40000, 100000, 110000, 120500, 140000, 125000],
+            data: @json($value_RCOST_PS_semarang),
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
             tension: 0.1
             },
             {
             label: ['RM'],
-            data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+            data: @json($value_RCOST_RM_semarang),
             fill: false,
             borderColor: 'rgb(255, 192, 192)',
             tension: 0.1
@@ -170,18 +176,18 @@
         const varcost_surakarta = document.getElementById('varcost_surakarta').getContext('2d');
         //const labels = Utils.months({count: 7});
         const varcost_surakartadata = {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+            labels: @json($monthList_ReservedCost_surakarta),
             datasets: [
             {
             label: ['PS'],
-            data: [120000, 50000, 75000, 22000, 12500, 55000, 40000, 100000, 110000, 120500, 140000, 125000],
+            data: @json($value_RCOST_PS_surakarta),
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
             tension: 0.1
             },
             {
             label: ['RM'],
-            data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+            data: @json($value_RCOST_RM_surakarta),
             fill: false,
             borderColor: 'rgb(255, 192, 192)',
             tension: 0.1
@@ -205,18 +211,18 @@
         const varcost_yogyakarta = document.getElementById('varcost_yogyakarta').getContext('2d');
         //const labels = Utils.months({count: 7});
         const varcost_yogyakartadata = {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+            labels: @json($monthList_ReservedCost_yogyakarta),
             datasets: [
             {
             label: ['PS'],
-            data: [120000, 50000, 75000, 22000, 12500, 55000, 40000, 100000, 110000, 120500, 140000, 125000],
+            data: @json($value_RCOST_PS_yogyakarta),
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
             tension: 0.1
             },
             {
             label: ['RM'],
-            data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+            data: @json($value_RCOST_RM_yogyakarta),
             fill: false,
             borderColor: 'rgb(255, 192, 192)',
             tension: 0.1
@@ -240,18 +246,18 @@
         const varcost_purwokerto = document.getElementById('varcost_purwokerto').getContext('2d');
         //const labels = Utils.months({count: 7});
         const varcost_purwokertodata = {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+            labels: @json($monthList_ReservedCost_purwokerto),
             datasets: [
             {
             label: ['PS'],
-            data: [120000, 50000, 75000, 22000, 12500, 55000, 40000, 100000, 110000, 120500, 140000, 125000],
+            data: @json($value_RCOST_PS_purwokerto),
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
             tension: 0.1
             },
             {
             label: ['RM'],
-            data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+            data: @json($value_RCOST_RM_purwokerto),
             fill: false,
             borderColor: 'rgb(255, 192, 192)',
             tension: 0.1
@@ -275,18 +281,18 @@
         const varcost_pekalongan = document.getElementById('varcost_pekalongan').getContext('2d');
         //const labels = Utils.months({count: 7});
         const varcost_pekalongandata = {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+            labels: @json($monthList_ReservedCost_pekalongan),
             datasets: [
             {
             label: ['PS'],
-            data: [120000, 50000, 75000, 22000, 12500, 55000, 40000, 100000, 110000, 120500, 140000, 125000],
+            data: @json($value_RCOST_PS_pekalongan),
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
             tension: 0.1
             },
             {
             label: ['RM'],
-            data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+            data: @json($value_RCOST_RM_pekalongan),
             fill: false,
             borderColor: 'rgb(255, 192, 192)',
             tension: 0.1
@@ -310,18 +316,18 @@
         const varcost_salatiga = document.getElementById('varcost_salatiga').getContext('2d');
         //const labels = Utils.months({count: 7});
         const varcost_salatigadata = {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+            labels: @json($monthList_ReservedCost_salatiga),
             datasets: [
             {
             label: ['PS'],
-            data: [120000, 50000, 75000, 22000, 12500, 55000, 40000, 100000, 110000, 120500, 140000, 125000],
+            data: @json($value_RCOST_PS_salatiga),
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
             tension: 0.1
             },
             {
             label: ['RM'],
-            data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+            data: @json($value_RCOST_RM_salatiga),
             fill: false,
             borderColor: 'rgb(255, 192, 192)',
             tension: 0.1

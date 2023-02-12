@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\kontrak_site_history;
 use App\Models\siteprofile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ContractController extends Controller
 {
@@ -54,6 +55,20 @@ class ContractController extends Controller
         $uniqname = 'id-kontrak-'.$validatedData['id'].'-'.$docs->getClientOriginalName();
         $docs->storeAs('public/file-kontrak',$uniqname);
         $validatedData['file_pks'] = $uniqname;
+
+        $validator = Validator::make($request->all(), [
+            "SITEID" => "required",
+            "no_pks" => "required",
+            "awal_sewa" => "required",
+            "akhir_sewa" => "required",
+            "harga_sewa" => "required",
+            "remark" => "required",
+            "file_pks" => "required",
+        ]);
+        if($validator->stopOnFirstFailure()->fails()){
+            return back()->with('toast_success', 'Isi semua field kosong !');
+        }
+
         kontrak_site_history::create($validatedData);
         return back()->with('toast_success', 'Data kontrak site berhasil ditambahkan');
     }
@@ -99,6 +114,18 @@ class ContractController extends Controller
             // "file_pks" => "required",
         ]);
 
+        $validator = Validator::make($request->all(), [
+            "SITEID" => "required",
+            "no_pks" => "required",
+            "awal_sewa" => "required",
+            "akhir_sewa" => "required",
+            "harga_sewa" => "required",
+            "remark" => "required",
+            // "file_pks" => "required",
+        ]);
+        if($validator->fails()){
+            return back()->with('toast_errors', 'Isi semua field kosong !');
+        }
         kontrak_site_history::where('id',$kontrak_site_history->id)->update($validatedData);
         return back()->with('toast_success', 'Kontrak Site berhasil diperbarui');
     }
