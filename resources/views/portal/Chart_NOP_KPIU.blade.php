@@ -163,26 +163,26 @@
     const kpiu_semarang = document.getElementById('kpiu_semarang').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const kpiu_semarangData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_KPI_utama_semarang),
         datasets: [
             {
             type: 'line',
             label: 'Activ KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_active_utama_semarang),
             borderColor: '#994499',
 
         },
         {
             type: 'line',
             label: 'target',
-            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            data: @json($value_KPI_utama_target_semarang),
             borderColor: '#316395',
 
         },
         {
             type: 'bar',
             label: 'KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_utama_semarang),
             backgroundColor: '#22aa99'
         },
         
@@ -205,26 +205,26 @@
     const kpiu_surakarta = document.getElementById('kpiu_surakarta').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const kpiu_surakartaData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_KPI_utama_surakarta),
         datasets: [
             {
             type: 'line',
             label: 'Activ KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_active_utama_surakarta),
             borderColor: '#994499',
 
         },
         {
             type: 'line',
             label: 'target',
-            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            data: @json($value_KPI_utama_target_surakarta),
             borderColor: '#316395',
 
         },
         {
             type: 'bar',
             label: 'KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_utama_surakarta),
             backgroundColor: '#22aa99'
         },
         
@@ -247,26 +247,26 @@
     const kpiu_yogyakarta = document.getElementById('kpiu_yogyakarta').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const kpiu_yogyakartaData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_KPI_utama_yogyakarta),
         datasets: [
             {
             type: 'line',
             label: 'Activ KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_active_utama_yogyakarta),
             borderColor: '#994499',
 
         },
         {
             type: 'line',
             label: 'target',
-            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            data: @json($value_KPI_utama_target_yogyakarta),
             borderColor: '#316395',
 
         },
         {
             type: 'bar',
             label: 'KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_utama_yogyakarta),
             backgroundColor: '#22aa99'
         },
         
@@ -289,26 +289,26 @@
     const kpiu_purwokerto = document.getElementById('kpiu_purwokerto').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const kpiu_purwokertoData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_KPI_utama_purwokerto),
         datasets: [
             {
             type: 'line',
             label: 'Activ KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_active_utama_purwokerto),
             borderColor: '#994499',
 
         },
         {
             type: 'line',
             label: 'target',
-            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            data: @json($value_KPI_utama_target_purwokerto),
             borderColor: '#316395',
 
         },
         {
             type: 'bar',
             label: 'KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_utama_purwokerto),
             backgroundColor: '#22aa99'
         },
         
@@ -331,26 +331,26 @@
     const kpiu_pekalongan = document.getElementById('kpiu_pekalongan').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const kpiu_pekalonganData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_KPI_utama_pekalongan),
         datasets: [
             {
             type: 'line',
             label: 'Activ KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_active_utama_pekalongan),
             borderColor: '#994499',
 
         },
         {
             type: 'line',
             label: 'target',
-            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            data: @json($value_KPI_utama_target_pekalongan),
             borderColor: '#316395',
 
         },
         {
             type: 'bar',
             label: 'KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_utama_pekalongan),
             backgroundColor: '#22aa99'
         },
         
@@ -373,26 +373,26 @@
     const kpiu_salatiga = document.getElementById('kpiu_salatiga').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const kpiu_salatigaData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_KPI_utama_salatiga),
         datasets: [
             {
             type: 'line',
             label: 'Activ KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_active_utama_salatiga),
             borderColor: '#994499',
 
         },
         {
             type: 'line',
             label: 'target',
-            data: [85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
+            data: @json($value_KPI_utama_target_salatiga),
             borderColor: '#316395',
 
         },
         {
             type: 'bar',
             label: 'KPI Utama',
-            data: [20, 50, 60 ,110 ,90, 100, 70, 50, 75, 110, 100, 110, 100],
+            data: @json($value_KPI_utama_salatiga),
             backgroundColor: '#22aa99'
         },
         
