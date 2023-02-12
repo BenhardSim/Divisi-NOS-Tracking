@@ -25,6 +25,7 @@
           </ul>
         </li> --}}
         
+        @cannot('admin')
         <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('upload-dokumen') ? '#5B8FB9' : '' }} ">
           <a class="nav-link text-white"  href="/upload-dokumen">
             <span style="color: #EB3223" data-feather="upload" class="align-text-bottom"></span>
@@ -32,6 +33,8 @@
           </a> 
         </li>
 
+        @endcannot
+        
 
 
         {{-- hanya bisa di akses admin --}}
@@ -44,12 +47,16 @@
         </li>
         @endcan
 
+        @cannot('admin')
         <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('sign-document') ? '#5B8FB9' : '' }} ">
           <a class="nav-link text-white"  href="/sign-document">
             <span style="color: #EB3223" data-feather="check-circle" class="align-text-bottom"></span>
             Sign Document
           </a> 
         </li>
+        @endcannot
+
+        
 
 
         <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('tagging*') ? '#5B8FB9' : '' }} ">

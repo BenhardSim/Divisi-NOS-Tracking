@@ -341,7 +341,7 @@
                       <td>{{ $contract->akhir_sewa }}</td>
                       <td>{{ $contract->harga_sewa }}</td>
                       <td>{{ $contract->remark }}</td>
-                      <td><a href="/file-kontrak/{{ $contract->id }}">View File</a></td>
+                      <td><a class="links" href="/file-kontrak/{{ $contract->id }}">View File</a></td>
                       <td>
                             <button id="delbtn-1" onclick="get_kontrak({{ $contract }})" value="{{ $contract->id }}" class="badge bg-warning border-0" data-bs-toggle="modal" data-bs-target="#editkontrak">
                                 <span data-feather="edit-2"></span>

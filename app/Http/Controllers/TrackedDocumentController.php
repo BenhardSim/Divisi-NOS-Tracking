@@ -179,4 +179,9 @@ class TrackedDocumentController extends Controller
     {
         //
     }
+
+    public function getDocs(tracked_document $id_trc){
+        $name = $id_trc->file;
+        return response()->file(storage_path('app\public\file-tracked\\'.$name));
+    }
 }
