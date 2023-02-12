@@ -48,6 +48,7 @@
                             <option value="KPI_aktif">KPI Activity</option>
                             <option value="KPI_support">KPI Support</option>
                             <option value="RCOST">Reserved Var Cost</option>
+                            <option value="ProfitLoss">Profit Loss</option>
                             <option value="BBM">Cost BBM</option>
                             <option value="OPEX">OPEX</option>
                             <option value="5">Three</option>
@@ -74,7 +75,6 @@
             // mengarahkan template dokumen 
             document.getElementById('download-template').href = 'download/?type=' + type;
             // mengarahkan action form ke import data
-
             // document.getElementById('form-import').action = '/file-import';
             console.log( document.getElementById('form-import').action);
             console.log(document.getElementById('download-template').href);

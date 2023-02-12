@@ -260,21 +260,21 @@
     const profitloss_main = document.getElementById('profitloss_main').getContext('2d');
     //const labels = Utils.months({count: 7});  
     const profitloss_mainData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_PL),
         datasets: [
         {
             label: 'High Profit',
-            data: [1000, 1030, 1010 ,1010 ,1020, 1050, 1030, 1020, 1000, 1020, 1040, 1030, 1020],
+            data: @json($value_PL_HP),
             backgroundColor: '#22aa99'
         },
         {
-            label: 'Profit',
-            data: [110, 100, 105 ,110 ,90, 100, 90, 105, 110, 110, 100, 110, 100],
+            label: 'Low Profit',
+            data: @json($value_PL_LP),
             backgroundColor: '#994499'
         },
         {
             label: 'Loss',
-            data: [10, 13,12 ,11 ,10, 10, 13, 12, 10, 10, 140, 10, 10],
+            data: @json($value_PL_LOSS),
             backgroundColor: '#316395'
         },
         ]
