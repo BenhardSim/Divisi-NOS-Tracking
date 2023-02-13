@@ -99,12 +99,15 @@
             Setting
           </a>
         </li>
-        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('history*') ? '#5B8FB9' : '' }} ">
-          <a class="nav-link text-white" href="/history">
-            <span style="color: #EB3223" data-feather="clock" class="align-text-bottom"></span>
-            History
-          </a>
-        </li>
+        @can('admin')
+          <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('history*') ? '#5B8FB9' : '' }} ">
+            <a class="nav-link text-white" href="/history">
+              <span style="color: #EB3223" data-feather="clock" class="align-text-bottom"></span>
+              History
+            </a>
+          </li>
+        @endcan
+        
       </ul>
 
       
