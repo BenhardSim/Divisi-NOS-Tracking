@@ -123,6 +123,13 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        
+        // dd(KPI_utama::whereDate('date','<=','2022-1-1')->whereDate('date','>=','2020-1-1')->get()->toArray());
+        // dd(KPI_utama::select('date')->get()->toArray());
+        
+        // $all_id = KPI_utama::whereBetween('date', [$interval_akhir_in, $interval_awal_in])->get()->toArray();
+
+        // dd($all_id);
 
         /* ==================================== LOGIC KPI UTAMA =========================================================== */
 

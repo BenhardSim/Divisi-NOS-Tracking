@@ -21,8 +21,9 @@ class KPIImport implements ToModel, WithHeadingRow
 
     public function model(array $row)
     {
+        $latestId = KPI_utama::max('id') + 1;
         return new KPI_utama([
-            'id' => $row['id'],
+            'id' => $latestId,
             'nop' => $row['nop'],
             'ach_kpi' => $row['ach_kpi'],
             'avail_all' => $row['avail_all'],

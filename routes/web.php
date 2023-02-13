@@ -1,34 +1,37 @@
 <?php
 
 use App\Models\User;
+use App\Imports\KPIImport;
+use App\Models\imbas_petir;
 use App\Models\siteprofile;
+use App\Models\kontrak_site;
+use Illuminate\Http\Request;
+use App\Models\tagging_asset;
 use Illuminate\Http\Response;
+use App\Models\tracked_document;
+use Illuminate\Support\Facades\App;
 use App\Models\kontrak_site_history;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImbController;
 use App\Http\Controllers\PbbController;
 use App\Http\Controllers\CommController;
 use App\Http\Controllers\lainController;
+use App\Http\Controllers\SignController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ClaimController;
 use App\Http\Controllers\ImbasController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\SignController;
-use App\Http\Controllers\TrackedDocumentController;
-use App\Models\imbas_petir;
-use App\Models\tagging_asset;
-use App\Models\kontrak_site;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SitesController;
+use App\Http\Controllers\ImportController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TaggingController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CertificateController;
-use App\Http\Controllers\UploadController;
-use App\Http\Controllers\ImportController;
-use App\Imports\KPIImport;
-use App\Models\tracked_document;
+use App\Http\Controllers\FilterController;
+use App\Http\Controllers\TrackedDocumentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -139,8 +142,12 @@ Route::get('/download',function(){
     $type = request()->type;
     $path = storage_path().'\app\public\templates\\'.$type.'.csv';
     return response()->download($path);
-});
+})->middleware('auth');
+
 
 // route import CSV
-Route::post('/fileImport',[ImportController::class,'importTemplates']);
+Route::post('/fileImport',[ImportController::class,'importTemplates'])->middleware('auth');
 
+
+// route get filter data
+Route::get('/filter-data',[FilterController::class, 'filterData'])->middleware('auth');
