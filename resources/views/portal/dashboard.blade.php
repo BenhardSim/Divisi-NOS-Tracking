@@ -59,7 +59,7 @@
                     <h1 style="font-weight: normal;">{{ $site_telkomsel }}</h1>
                 </div>
             </div>
-            </a>search
+            </a>
         </div>
         <div class="col-lg col-sm">
             <div class="sites">
@@ -102,8 +102,17 @@
         {{-- profit loss regional   --}}
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
-                <div class="rvc-title">
-                    <a href="/pl" class="links text-white"><h5>Profit Loss Regional</h5></a>
+                <div class="rvc-title title-box">
+                    <div class="title-cont">
+                        <a href="/pl" class="links text-white"><h5>Profit Loss Regional</h5></a>
+                    </div>
+                    <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
+                        {{-- view All Data Button --}}
+                        <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailPL">
+                            <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
+                            <span>Magnify</span>
+                        </button>
+                    </div>
                 </div>
                 <div class="rvc-graph">
                     <canvas id="profitloss_main"></canvas>
@@ -111,15 +120,114 @@
             </div>
         </div>
 
+        {{-- MODAL MAGNIFY PROFIT LOSS --}}
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDetailPL" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FILTER DATA PROFIT LOSS</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body container row">
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow">
+                            <div class="rvc-graph">
+                                <canvas id="profitloss_main_toast"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow" style="padding: 10px" >
+                            <form method="GET">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="filter awal">Starting Date</label>
+                                        <input id="in_awal_PL" name='interval_awal' type="date" class="form-control" placeholder="filter awal">
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="filter akhir">End Date</label>
+                                        <input id="in_akhir_PL" name="interval_akhir" type="date" class="form-control" placeholder="filter akhir">
+                                    </div>
+                                    <div class="col-2">
+                                        <br>
+                                        <button type="submit" id="search-filter-PL" class="btn btn-primary" >Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+
         {{-- Reserved Varcost   --}}
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
-                <div class="rvc-title">
-                    <a href="/rv" class="links text-white"><h5>Reserved Varcost</h5></a>
+                <div class="rvc-title title-box">
+                    <div class="title-cont">
+                        <a href="/rv" class="links text-white"><h5>Reserved Varcost</h5></a>
+                    </div>
+                    <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
+                        {{-- view All Data Button --}}
+                        <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailRCOST">
+                            <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
+                            <span>Magnify</span>
+                        </button>
+                    </div>
                 </div>
                 <div class="rvc-graph">
                     <canvas id="varcost_main"></canvas>
                 </div>
+            </div>
+        </div>
+
+        {{-- MODAL MAGNIFY RESERVED VARCOST --}}
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDetailRCOST" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FILTER DATA RESERVED VAR COST</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body container row">
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow">
+                            <div class="rvc-graph">
+                                <canvas id="varcost_main_toast"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow" style="padding: 10px" >
+                            <form method="GET">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="filter awal">Starting Date</label>
+                                        <input id="in_awal_RCOST" name='interval_awal' type="date" class="form-control" placeholder="filter awal">
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="filter akhir">End Date</label>
+                                        <input id="in_akhir_RCOST" name="interval_akhir" type="date" class="form-control" placeholder="filter akhir">
+                                    </div>
+                                    <div class="col-2">
+                                        <br>
+                                        <button type="submit" id="search-filter-RCOST" class="btn btn-primary" >Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
 
@@ -235,52 +343,6 @@
             </div>
         </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-        <script>
-            // URL dari controller 
-            let Route = '/filter-data';
-
-            let dataIn = {
-                "interval_awal" : document.getDocumentElementById('in_awal'),
-                "interval_akhir" : document.getDocumentElementById('in_akhir'),
-            }
-            
-            document.getDocumentElementById('search-filter').addEventListener('click',(e)=>{
-                e.preventDefault();
-                console.log('test');
-            })
-
-            // $('#search-filter').click(function(e) {
-            //     console.log('test');
-            //     e.preventDefault();
-            //     interval_awal = $('#interval_awal').val();
-            //     interval_akhir = $('#interval_akhir').val();
-            //     console.log(`start date: ${interval_awal} | end date: ${interval_akhir}`);
-            // })
-            
-            // function getData(e){
-            //     e.preventDefault();
-            //     let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            //     fetch(Route,{
-            //         headers: {
-            //             "Content-Type": "application/json",
-            //             "Accept": "application/json, text-plain, */*",
-            //             "X-Requested-With": "XMLHttpRequest",
-            //             "X-CSRF-TOKEN": token
-            //         },
-            //         method: 'get',
-            //         credentials: "same-origin",
-            //         body : dataIn,
-            //     }).then((data) => {
-            //         console.log(data);
-            //     })
-            // }
-        </script>
-
-
-
-
-
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title title-box">
@@ -289,7 +351,7 @@
                     </div>
                     <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
                         {{-- view All Data Button --}}
-                        <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailKPIU">
+                        <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailKPIA">
                             <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
                             <span>Magnify</span>
                         </button>
@@ -300,6 +362,52 @@
                 </div>
             </div>
         </div>
+
+        {{-- MODAL MAGNIFY KPI ACTIVITY --}}
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDetailKPIA" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FILTER DATA KPI ACTIVITY</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body container row">
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow">
+                            <div class="rvc-graph">
+                                <canvas id="kpia_main_toast"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow" style="padding: 10px" >
+                            <form method="GET">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="filter awal">Starting Date</label>
+                                        <input id="in_awal_kpia" name='interval_awal' type="date" class="form-control" placeholder="filter awal">
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="filter akhir">End Date</label>
+                                        <input id="in_akhir_kpia" name="interval_akhir" type="date" class="form-control" placeholder="filter akhir">
+                                    </div>
+                                    <div class="col-2">
+                                        <br>
+                                        <button type="submit" id="search-filter-kpia" class="btn btn-primary" >Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title title-box">
@@ -308,7 +416,7 @@
                     </div>
                     <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
                         {{-- view All Data Button --}}
-                        <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailKPIU">
+                        <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailKPIS">
                             <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
                             <span>Magnify</span>
                         </button>
@@ -317,6 +425,50 @@
                 <div class="rvc-graph">
                     <canvas id="kpis_main"></canvas>
                 </div>
+            </div>
+        </div>
+
+        {{-- MODAL MAGNIFY KPI SUPPORTING --}}
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDetailKPIS" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FILTER DATA KPI SUPPORTING</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body container row">
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow">
+                            <div class="rvc-graph">
+                                <canvas id="kpis_mainToast"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow" style="padding: 10px" >
+                            <form method="GET">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="filter awal">Starting Date</label>
+                                        <input id="in_awal_kpis" name='interval_awal' type="date" class="form-control" placeholder="filter awal">
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="filter akhir">End Date</label>
+                                        <input id="in_akhir_kpis" name="interval_akhir" type="date" class="form-control" placeholder="filter akhir">
+                                    </div>
+                                    <div class="col-2">
+                                        <br>
+                                        <button type="submit" id="search-filter-kpis" class="btn btn-primary" >Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </section>
@@ -408,6 +560,50 @@
 
     new Chart(profitloss_main, profitloss_mainConfig);
 
+    // site profit loss regional TOAST
+
+    const profitloss_main_toast = document.getElementById('profitloss_main_toast').getContext('2d');
+    //const labels = Utils.months({count: 7});  
+    const profitloss_main_toastData = {
+        labels: @json($monthList_PL),
+        datasets: [
+        {
+            label: 'High Profit',
+            data: @json($value_PL_HP),
+            backgroundColor: '#22aa99'
+        },
+        {
+            label: 'Low Profit',
+            data: @json($value_PL_LP),
+            backgroundColor: '#994499'
+        },
+        {
+            label: 'Loss',
+            data: @json($value_PL_LOSS),
+            backgroundColor: '#316395'
+        },
+        ]
+    };
+    const profitloss_main_toastConfig = {
+        type: 'bar',
+        data: profitloss_main_toastData,
+        options: {
+            legend: {
+                position: 'top' // place legend on the right side of chart
+            },
+             scales: {
+                xAxes: [{
+                  stacked: true // this should be set to make the bars stacked
+                }],
+                 yAxes: [{
+                   stacked: true // this also..
+                }]
+            }
+        }
+    };
+
+    let PL_toast = new Chart(profitloss_main_toast, profitloss_main_toastConfig);
+
     // varcost graph
 
     const varcost_main = document.getElementById('varcost_main').getContext('2d');
@@ -444,6 +640,43 @@
     };
 
     new Chart(varcost_main, varcost_mainconfig);
+
+     // varcost graph TOAST
+
+     const varcost_main_toast = document.getElementById('varcost_main_toast').getContext('2d');
+    //const labels = Utils.months({count: 7});
+    const varcost_main_toastdata = {
+        labels: @json($monthList_ReservedCost),
+        datasets: [
+        {
+        label: ['PS'],
+        data: @json($value_RCOST_PS),
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
+        },
+        {
+        label: ['RM'],
+        data: @json($value_RCOST_RM),
+        fill: false,
+        borderColor: 'rgb(255, 192, 192)',
+        tension: 0.1
+        }
+    ]
+    };
+    const varcost_main_toastconfig = {
+        type: 'line',
+        data: varcost_main_toastdata,
+        options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+        }
+    };
+
+    let RCOST_toast = new Chart(varcost_main_toast, varcost_main_toastconfig);
 
     // cost BBM
 
@@ -778,6 +1011,49 @@
 
     new Chart(kpis_main, kpis_mainConfig);
 
+    // KPI Supporting toast
+    const kpis_mainToast = document.getElementById('kpis_mainToast').getContext('2d');
+    //const labels = Utils.months({count: 7});  
+    const kpis_mainToastData = {
+        labels: @json($monthList_KPI_support),
+        datasets: [
+            {
+            type: 'line',
+            label: 'Activ KPI Supporting',
+            data: @json($value_KPI_active_support),
+            borderColor: '#994499',
+
+        },
+        {
+            type: 'line',
+            label: 'target',
+            data: @json($value_KPI_support_target),
+            borderColor: '#316395',
+
+        },
+        {
+            type: 'bar',
+            label: 'KPI Supporting',
+            data: @json($value_KPI_support),
+            backgroundColor: '#22aa99'
+        },
+        
+        ]
+    };
+    const kpis_mainToastConfig = {
+        type: "bar",
+        data: kpis_mainToastData,
+        options: {
+            legend: {
+                position: 'top' // place legend on the right side of chart
+            },
+             scales: {
+            }
+        }
+    };
+
+    let KPIS_toast = new Chart(kpis_mainToast, kpis_mainToastConfig);
+
     // KPI Activity
     const kpia_main = document.getElementById('kpia_main').getContext('2d');
     //const labels = Utils.months({count: 7});  
@@ -821,36 +1097,112 @@
 
     new Chart(kpia_main, kpia_mainConfig);
 
-    let updateChart = function(start_date, end_date){
+    // KPI Activity toast
+    const kpia_main_toast = document.getElementById('kpia_main_toast').getContext('2d');
+    //const labels = Utils.months({count: 7});  
+    const kpia_main_toastData = {
+        labels: @json($monthList_KPI_activity),
+        datasets: [
+            {
+            type: 'line',
+            label: 'Activ KPI Activity',
+            data: @json($value_KPI_active_activity),
+            borderColor: '#994499',
 
+        },
+        {
+            type: 'line',
+            label: 'target',
+            data: @json($value_KPI_activity_target),
+            borderColor: '#316395',
 
+        },
+        {
+            type: 'bar',
+            label: 'KPI Activity',
+            data: @json($value_KPI_activity),
+            backgroundColor: '#22aa99'
+        },
+        
+        ]
+    };
+    const kpia_main_toastConfig = {
+        type: "bar",
+        data: kpia_main_toastData,
+        options: {
+            legend: {
+                position: 'top' // place legend on the right side of chart
+            },
+             scales: {
+            }
+        }
+    };
+
+    let KPIA_toast = new Chart(kpia_main_toast, kpia_main_toastConfig);
+
+    let updateChart = function(start_date,end_date,type){
         $.ajax({
-                    url: "/filter-data",
+            url: "/filter-data",
                     type: "GET",
                     dataType: "json",
                     data: {
                         start_date: start_date,
                         end_date: end_date,
+                        type:type,
                     },
                     headers: {
                         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
                     },
                     success: function(dataOutput) {
-                        // kpiu_main_toastData.labels = dataOutput.AllIds_KPI_activity
-                        // for(int i=0;i<dataOutput.length();i++){
-                        //     console.log(dataOutput.filteredData[0].date);
-                        // }
-                        
-                        console.log(dataOutput.filteredData);
-                        // console.log(dataOutput.filteredData);
-                        // console.log(dataOutput.filteredData);
-                        
-
-                        // labels
+                        if(type === 'kpi_utama'){
+                            // labels
+                            kpiu_main_toastData.labels = dataOutput.val_month
+                            // data
+                            kpiu_main_toastData.datasets[0].data = dataOutput.val_x_1;
+                            kpiu_main_toastData.datasets[1].data = dataOutput.val_x_2;
+                            kpiu_main_toastData.datasets[2].data = dataOutput.val_x_3;
+                            // update
+                            KPIU_toast.update();
+                        }else if(type === 'kpi_activity'){
+                            // labels
+                            kpia_main_toastData.labels = dataOutput.val_month
+                            // data
+                            kpia_main_toastData.datasets[0].data = dataOutput.val_x_1;
+                            kpia_main_toastData.datasets[1].data = dataOutput.val_x_2;
+                            kpia_main_toastData.datasets[2].data = dataOutput.val_x_3;
+                            // update
+                            KPIA_toast.update();
+                        }else if(type === 'kpi_support'){
+                            // labels
+                            kpis_mainToastData.labels = dataOutput.val_month
+                            // data
+                            kpis_mainToastData.datasets[0].data = dataOutput.val_x_1;
+                            kpis_mainToastData.datasets[1].data = dataOutput.val_x_2;
+                            kpis_mainToastData.datasets[2].data = dataOutput.val_x_3;
+                            // update
+                            KPIS_toast.update();
+                        }else if(type === 'profit_loss'){
+                            // labels
+                            profitloss_main_toastData.labels = dataOutput.val_month
+                            // data
+                            profitloss_main_toastData.datasets[0].data = dataOutput.val_x_1;
+                            profitloss_main_toastData.datasets[1].data = dataOutput.val_x_2;
+                            profitloss_main_toastData.datasets[2].data = dataOutput.val_x_3;
+                            // update
+                            PL_toast.update();
+                        }else if(type === 'var_cost'){
+                            // labels
+                            varcost_main_toastdata.labels = dataOutput.val_month
+                            // data
+                            varcost_main_toastdata.datasets[0].data = dataOutput.val_x_1;
+                            varcost_main_toastdata.datasets[1].data = dataOutput.val_x_2;
+                            // update
+                            RCOST_toast.update();
+                        }
                     },
                     error: function(data) {
                         console.log(data);
-                    },
+                    },           
             });
         
     }
@@ -858,13 +1210,45 @@
     $('#search-filter').click(function(e) {
             // console.log('test');
             e.preventDefault();
-            let interval_awal = $('#in_awal').val();
-            let interval_akhir = $('#in_akhir').val();
-            updateChart(interval_awal,interval_akhir);
-          
-            
+            let interval_awal_KPIU = $('#in_awal').val();
+            let interval_akhir_KPIU = $('#in_akhir').val();
+            updateChart(interval_awal_KPIU,interval_akhir_KPIU,'kpi_utama');
 
-            // console.log(`start date: ${interval_awal} | end date: ${interval_akhir}`);
+    })
+
+    $('#search-filter-kpia').click(function(e) {
+            // console.log('test');
+            e.preventDefault();
+            let interval_awal_KPIU = $('#in_awal_kpia').val();
+            let interval_akhir_KPIU = $('#in_akhir_kpia').val();
+            updateChart(interval_awal_KPIU,interval_akhir_KPIU,'kpi_activity');
+
+    })
+
+    $('#search-filter-kpis').click(function(e) {
+            // console.log('test');
+            e.preventDefault();
+            let interval_awal_KPIU = $('#in_awal_kpis').val();
+            let interval_akhir_KPIU = $('#in_akhir_kpis').val();
+            updateChart(interval_awal_KPIU,interval_akhir_KPIU,'kpi_support');
+
+    })
+
+    $('#search-filter-PL').click(function(e) {
+            // console.log('test');
+            e.preventDefault();
+            let interval_awal_PL = $('#in_awal_PL').val();
+            let interval_akhir_PL = $('#in_akhir_PL').val();
+            updateChart(interval_awal_PL,interval_akhir_PL,'profit_loss');
+
+    })
+
+    $('#search-filter-RCOST').click(function(e) {
+            // console.log('test');
+            e.preventDefault();
+            let interval_awal_PL = $('#in_awal_RCOST').val();
+            let interval_akhir_PL = $('#in_akhir_RCOST').val();
+            updateChart(interval_awal_PL,interval_akhir_PL,'var_cost');
 
     })
 </script>
