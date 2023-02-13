@@ -64,7 +64,20 @@
                 </form>
             </div>
         </div>
-        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="container shadow-lg" style="padding: 12px;border-radius:10px">
+                <h5>Catatan Penting !!</h5>
+                <h6>Mohon Baca petunjuk berikut sebelum mengupload data.</h6>
+                <br>
+                <ol>
+                    <li>Pastikan Dokumen yang Dimasukkan merupakan dokumen dengan format .CSV</li>
+                    <li>Pilih Tipe Dokumen yang akan di masukkan </li>
+                    <li>pastikan format dari table sesuai dengan template yang telah di sediakan</li>
+                    <li>Jangan mengubah/menambahkan/menghapus kolom dari template table</li>
+                    <li>Bila terdapat kolom yang memiliki tipe data tanggal (date) masukkan tanggal dengan format <b>M-d-Y</b></li>
+                </ol>
+            </div>
+        </div>
 
     </div>
 

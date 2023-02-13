@@ -16,8 +16,9 @@ class KPISupportImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
+        $latestId = KPI_support::max('id') + 1;
         return new KPI_support([
-            'id' => $row['id'],
+            'id' => $latestId,
             'nop' => $row['nop'],
             'ach_kpi' => $row['ach_kpi'],
             'avail_all' => $row['avail_all'],

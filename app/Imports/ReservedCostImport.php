@@ -16,8 +16,9 @@ class ReservedCostImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
+        $latestId = ReservedCost::max('id') + 1;
         return new ReservedCost([
-            'id' => $row['id'],
+            'id' => $latestId,
             'date'=> Carbon::createFromFormat('m/d/Y',$row['date'])->format('Y-m-d'),
             'ticket_number' => $row['ticket_number'],
             'status' => $row['status'],

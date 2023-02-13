@@ -59,7 +59,7 @@
                     <h1 style="font-weight: normal;">{{ $site_telkomsel }}</h1>
                 </div>
             </div>
-            </a>
+            </a>search
         </div>
         <div class="col-lg col-sm">
             <div class="sites">
@@ -179,7 +179,7 @@
                     </div>
                     <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
                         {{-- view All Data Button --}}
-                        <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailKPIU">
                             <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
                             <span>Magnify</span>
                         </button>
@@ -190,10 +190,110 @@
                 </div>
             </div>
         </div>
+
+        {{-- MODAL MAGNIFY KPI UTAMA --}}
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDetailKPIU" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FILTER DATA KPI UTAMA</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body container row">
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow">
+                            <div class="rvc-graph">
+                                <canvas id="kpiu_main_toast"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow" style="padding: 10px" >
+                            <form method="GET">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="filter awal">Starting Date</label>
+                                        <input id="in_awal" name='interval_awal' type="date" class="form-control" placeholder="filter awal">
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="filter akhir">End Date</label>
+                                        <input id="in_akhir" name="interval_akhir" type="date" class="form-control" placeholder="filter akhir">
+                                    </div>
+                                    <div class="col-2">
+                                        <br>
+                                        <button type="submit" id="search-filter" class="btn btn-primary" >Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+        <script>
+            // URL dari controller 
+            let Route = '/filter-data';
+
+            let dataIn = {
+                "interval_awal" : document.getDocumentElementById('in_awal'),
+                "interval_akhir" : document.getDocumentElementById('in_akhir'),
+            }
+            
+            document.getDocumentElementById('search-filter').addEventListener('click',(e)=>{
+                e.preventDefault();
+                console.log('test');
+            })
+
+            // $('#search-filter').click(function(e) {
+            //     console.log('test');
+            //     e.preventDefault();
+            //     interval_awal = $('#interval_awal').val();
+            //     interval_akhir = $('#interval_akhir').val();
+            //     console.log(`start date: ${interval_awal} | end date: ${interval_akhir}`);
+            // })
+            
+            // function getData(e){
+            //     e.preventDefault();
+            //     let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            //     fetch(Route,{
+            //         headers: {
+            //             "Content-Type": "application/json",
+            //             "Accept": "application/json, text-plain, */*",
+            //             "X-Requested-With": "XMLHttpRequest",
+            //             "X-CSRF-TOKEN": token
+            //         },
+            //         method: 'get',
+            //         credentials: "same-origin",
+            //         body : dataIn,
+            //     }).then((data) => {
+            //         console.log(data);
+            //     })
+            // }
+        </script>
+
+
+
+
+
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
-                <div class="rvc-title">
-                    <a href="/kpia" class="links text-white"><h5>KPI Activity</h5></a>
+                <div class="rvc-title title-box">
+                    <div class="title-cont">
+                        <a href="/kpia" class="links text-white"><h5>KPI Activity</h5></a>
+                    </div>
+                    <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
+                        {{-- view All Data Button --}}
+                        <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailKPIU">
+                            <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
+                            <span>Magnify</span>
+                        </button>
+                    </div>
                 </div>
                 <div class="rvc-graph">
                     <canvas id="kpia_main"></canvas>
@@ -202,8 +302,17 @@
         </div>
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
-                <div class="rvc-title">
-                    <a href="/kpis" class="links text-white"><h5>KPI Supporting</h5></a>
+                <div class="rvc-title title-box">
+                    <div class="title-cont">
+                        <a href="/kpis" class="links text-white"><h5>KPI Supporting</h5></a>
+                    </div>
+                    <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
+                        {{-- view All Data Button --}}
+                        <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailKPIU">
+                            <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
+                            <span>Magnify</span>
+                        </button>
+                    </div>
                 </div>
                 <div class="rvc-graph">
                     <canvas id="kpis_main"></canvas>
@@ -583,6 +692,49 @@
 
     new Chart(kpiu_main, kpiu_mainConfig);
 
+     // KPI Utama Toast
+    const kpiu_main_toast = document.getElementById('kpiu_main_toast').getContext('2d');
+    //const labels = Utils.months({count: 7});  
+    const kpiu_main_toastData = {
+        labels: @json($monthList_KPI_Utama),
+        datasets: [
+            {
+            type: 'line',
+            label: 'Activ KPI Utama',
+            data: @json($value_KPI_active_utama),
+            borderColor: '#994499',
+
+        },
+        {
+            type: 'line',
+            label: 'target',
+            data: @json($value_KPI_target),
+            borderColor: '#316395',
+
+        },
+        {
+            type: 'bar',
+            label: 'KPI Utama',
+            data: @json($value_KPI_utama),
+            backgroundColor: '#22aa99'
+        },
+        
+        ]
+    };
+    const kpiu_main_toastConfig = {
+        type: "bar",
+        data: kpiu_main_toastData,
+        options: {
+            legend: {
+                position: 'top' // place legend on the right side of chart
+            },
+             scales: {
+            }
+        }
+    };
+
+    let KPIU_toast = new Chart(kpiu_main_toast, kpiu_main_toastConfig);
+
     // KPI Supporting
     const kpis_main = document.getElementById('kpis_main').getContext('2d');
     //const labels = Utils.months({count: 7});  
@@ -668,4 +820,51 @@
     };
 
     new Chart(kpia_main, kpia_mainConfig);
+
+    let updateChart = function(start_date, end_date){
+
+
+        $.ajax({
+                    url: "/filter-data",
+                    type: "GET",
+                    dataType: "json",
+                    data: {
+                        start_date: start_date,
+                        end_date: end_date,
+                    },
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    success: function(dataOutput) {
+                        // kpiu_main_toastData.labels = dataOutput.AllIds_KPI_activity
+                        // for(int i=0;i<dataOutput.length();i++){
+                        //     console.log(dataOutput.filteredData[0].date);
+                        // }
+                        
+                        console.log(dataOutput.filteredData);
+                        // console.log(dataOutput.filteredData);
+                        // console.log(dataOutput.filteredData);
+                        
+
+                        // labels
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    },
+            });
+        
+    }
+
+    $('#search-filter').click(function(e) {
+            // console.log('test');
+            e.preventDefault();
+            let interval_awal = $('#in_awal').val();
+            let interval_akhir = $('#in_akhir').val();
+            updateChart(interval_awal,interval_akhir);
+          
+            
+
+            // console.log(`start date: ${interval_awal} | end date: ${interval_akhir}`);
+
+    })
 </script>
