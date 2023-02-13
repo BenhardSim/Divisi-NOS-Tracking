@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DocumentHistory;
 use App\Models\tracked_document;
 use App\Models\User;
 use Carbon\Carbon;
@@ -90,13 +91,22 @@ class TrackedDocumentController extends Controller
         if (Gate::allows('manager')) {
             $validatedData['id_level_tiga'] = auth()->user()->id;
         }
+        $validatedHistory = [
+            "user_id" => auth()->user()->id,
+            "document_name" => $validatedData['file'],
+            "action" => "Created",
+            "waktu" => Carbon::now(),
+
+        ];
         if (Gate::allows('gm')) {
             $validatedData['id_level_empat'] = auth()->user()->id;
             $validatedData['status'] = "Approved";
+            $validatedHistory['action'] = "Created and Approved";
         }
         
          
          tracked_document::create($validatedData);
+         DocumentHistory::create($validatedHistory);
          return back()->with('success', 'Data tracked document berhasil ditambahkan');
     }
 
@@ -148,6 +158,15 @@ class TrackedDocumentController extends Controller
                 "status" => "Rejected",
                 "keterangan" => $request['keterangan'],
             ];
+
+            $validatedHistory = [
+                "user_id" => auth()->user()->id,
+                "document_name" => $tracked_document->file,
+                "action" => "Rejected",
+                "waktu" => Carbon::now(),
+    
+            ];
+            DocumentHistory::create($validatedHistory);
             tracked_document::where('id',$tracked_document->id)->update($validatedData);
             return back()->with('success', 'Dokumen berhasil ditolak');
         }
@@ -157,13 +176,22 @@ class TrackedDocumentController extends Controller
             $validatedData = [
                 "status" => "Approved",
             ];
-            tracked_document::where('id',$tracked_document->id)->update($validatedData);
-            return back()->with('success', 'Dokumen berhasil disetujui');
         }
-        $validatedData = [
-            "level_approval" => $tracked_document->level_approval + 1,
+        else{
+            $validatedData = [
+                "level_approval" => $tracked_document->level_approval + 1,
+            ];
+        }
+        $validatedHistory = [
+            "user_id" => auth()->user()->id,
+            "document_name" => $tracked_document->file,
+            "action" => "Approved",
+            "waktu" => Carbon::now(),
+
         ];
+        
         tracked_document::where('id',$tracked_document->id)->update($validatedData);
+        DocumentHistory::create($validatedHistory);
         return back()->with('success', 'Dokumen berhasil disetujui');
 
         

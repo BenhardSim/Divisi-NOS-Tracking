@@ -32,6 +32,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\TrackedDocumentController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\TrackingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +62,10 @@ Route::get('/upload-dokumen', [UploadController::class, 'index'])->middleware('a
 Route::get('/upload-data', function(){
     return view('portal.add_data');
 })->middleware('admin');
+Route::get('/tagging', [TaggingController::class, 'index'])->middleware('auth');
+Route::get('/sign-document', [SignController::class, 'index'])->middleware('auth');
+Route::get('/history',[HistoryController::class, 'index'])->middleware('auth');
+Route::get('/tracking',[TrackingController::class, 'index'])->middleware('auth');
 
 
 // site list
@@ -87,11 +93,7 @@ Route::get('/search', [SitesController::class, 'searchSites'])->middleware('auth
 Route::get('/search/{id:SITEID}', [SitesController::class, 'detailSites'])->middleware('auth');
 
 
-// tagging assset
-Route::get('/tagging', [TaggingController::class, 'index'])->middleware('auth');
 
-// sign-document
-Route::get('/sign-document', [SignController::class, 'index'])->middleware('auth');
 
 // testing route
 Route::get('/tester', function(){
@@ -124,6 +126,7 @@ Route::resource('/lain_documents',lainController::class)->middleware('auth');
 
 // CRUD Tracked Document
 Route::resource('/tracked_document',TrackedDocumentController::class)->middleware('auth');
+
 
 
 
