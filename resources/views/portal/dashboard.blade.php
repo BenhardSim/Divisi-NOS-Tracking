@@ -67,7 +67,7 @@
                     <h4>SITE RESELLER</h4>
                 </div>
                 <div class="site-total">
-                    <h1 style="font-weight: normal;">100</h1>
+                    <h1 style="font-weight: normal;">{{ $site_reseller }}</h1>
                 </div>
             </div>
         </div>

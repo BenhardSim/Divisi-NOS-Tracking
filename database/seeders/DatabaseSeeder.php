@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(20)->create();
-        tracked_document::factory(5)->create();
+        //tracked_document::factory(5)->create();
         siteprofile::factory(500)->create();
 
         // \App\Models\User::factory()->create([
