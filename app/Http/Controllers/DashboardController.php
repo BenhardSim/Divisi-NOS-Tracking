@@ -191,9 +191,10 @@ class DashboardController extends Controller
         // dd($value_PL_LP);
         return view('portal.dashboard', [
             "site_all" => siteprofile::count(),
-            "site_tp" => siteprofile::where("TOWERSTATUS", "Sewa TP")->count(),
-            "site_telkom" => siteprofile::where("PEMILIKTOWER", "Telkom")->count(),
-            "site_telkomsel" => siteprofile::where("PEMILIKTOWER", "Telkomsel")->count(),
+            "site_tp" => siteprofile::where('TOWERSTATUS', "Sewa TP")->count(),
+            "site_telkom" => siteprofile::where('TOWERSTATUS', "Beli Telkom")->count(),
+            "site_telkomsel" => siteprofile::where('TOWERSTATUS', "Beli Telkomsel")->count(),
+            "site_reseller" => siteprofile::where('TOWERSTATUS', "Sewa Reseller")->count(),
 
             "value_KPI_target" => $value_KPI_target,
             "value_KPI_active_utama" => $value_KPI_active_utama,

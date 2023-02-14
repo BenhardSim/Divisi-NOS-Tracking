@@ -15,6 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('siteprofiles', function (Blueprint $table) {
+            $table->string('SITEIDOLD');
             $table->string('SITEID')->unique();
             $table->string('SITENAME');
             $table->string('ALAMAT');
@@ -36,22 +37,24 @@ return new class extends Migration
             $table->string('NOIMBTOWER');
             $table->string('NOSERTIFIKATLAHAN');
             $table->string('NOKONTRAK');
+            $table->string('CONTACTPERSON');
+            $table->string('NOHPCP');
+            $table->string('ALAMATCP');
             $table->string('AWALPERIODEKONTRAK');
             $table->string('AKHIRPERIODEKONTRAK');
             $table->string('LUASDIMENSILAHAN');
             $table->string('JENISCATUANLISTRIK');
             $table->string('DAYALISTRIKTERPASANG');
-            $table->string('ID_PEL');
             $table->string('SITESTATUS');
+            $table->string('ID_PEL');
+            $table->string('PAYMENTPLNMETODE');
             $table->string('HO',20);
             $table->string('SITETSELBARU',20);
             $table->string('SITETSELSEWA',20);
-            $table->timestamp('TGL')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->string('MASABERLAKUIMB',25);
+            $table->string('noHO');
+            $table->string('MASABERLAKU');
             $table->string('status',50);
-            $table->enum('STATUSKONTRAK',['RECURRING','RECONTRACT'])->nullable()->default('RECURRING');
-            $table->date('LEASESTART');
-            $table->date('LEASEEND');
-            $table->primary('SITEID');
         });
     }
 
