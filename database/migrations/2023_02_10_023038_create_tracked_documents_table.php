@@ -22,9 +22,9 @@ return new class extends Migration
             $table->string('id_pengirim');
             $table->string('nama_pengirim');
             $table->integer('level_pengirim');
-            $table->string('id_level_dua')->nullable()->default('-');
-            $table->string('id_level_tiga')->nullable()->default('-');
-            $table->string('id_level_empat');
+            $table->string('id_level_dua')->default('-');
+            $table->string('id_level_tiga')->default('-');
+            $table->string('id_level_empat')->default('-');
             $table->dateTime('tanggal');
             $table->string('keterangan')->default('-');
         });

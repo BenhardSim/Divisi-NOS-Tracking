@@ -29,7 +29,7 @@
         <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('upload-dokumen') ? '#5B8FB9' : '' }} ">
           <a class="nav-link text-white"  href="/upload-dokumen">
             <span style="color: #EB3223" data-feather="upload" class="align-text-bottom"></span>
-            Upload Dokumen
+            Upload Document
           </a> 
         </li>
 
@@ -51,26 +51,12 @@
         <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('sign-document') ? '#5B8FB9' : '' }} ">
           <a class="nav-link text-white"  href="/sign-document">
             <span style="color: #EB3223" data-feather="check-circle" class="align-text-bottom"></span>
-            Sign Document
+            Control Document
           </a> 
         </li>
         @endcannot
 
-        
-
-
-        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('tagging*') ? '#5B8FB9' : '' }} ">
-            <a class="nav-link text-white" href="/tagging">
-              <span style="color: #EB3223" data-feather="tag" class="align-text-bottom"></span>
-              Tagging Asset
-            </a>
-        </li>
-        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('control*') ? '#5B8FB9' : '' }} ">
-            <a class="nav-link text-white" href="/control">
-              <span style="color: #EB3223" data-feather="file-text" class="align-text-bottom"></span>
-              Control Document
-            </a>
-        </li>
+    
         {{-- <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('numbering*') ? '#5B8FB9' : '' }} ">
             <a class="nav-link text-white" href="/numbering">
               <span style="color: #EB3223" data-feather="hash" class="align-text-bottom"></span>
@@ -99,14 +85,17 @@
             Setting
           </a>
         </li>
+
         @can('admin')
-          <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('history*') ? '#5B8FB9' : '' }} ">
-            <a class="nav-link text-white" href="/history">
-              <span style="color: #EB3223" data-feather="clock" class="align-text-bottom"></span>
-              History
-            </a>
-          </li>
+        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('history*') ? '#5B8FB9' : '' }} ">
+          <a class="nav-link text-white" href="/history">
+            <span style="color: #EB3223" data-feather="clock" class="align-text-bottom"></span>
+            History
+          </a>
+        </li>
         @endcan
+        
+
         
       </ul>
 

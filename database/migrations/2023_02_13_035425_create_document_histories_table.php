@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->string('document_name');
+            $table->string('document_id');
             $table->string('action');
             $table->dateTime('waktu');
 

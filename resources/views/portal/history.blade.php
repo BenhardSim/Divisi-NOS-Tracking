@@ -9,7 +9,7 @@
     @include('portal.component.userProfile')
 </div>
 
-<div class="list-group col-lg-8">
+<div class="list-group col-lg-8 shadow">
     @foreach ($histories as $history)
     @php
         $user = App\Models\User::where("id", $history->user_id)->first();
@@ -31,8 +31,7 @@
         <p class="mb-1">{{ $history->document_name }}</p>
         <small>{{ $user->name }}</small>
     </a>
-    @endforeach
-    
-  </div>
+    @endforeach   
+</div>
     
 @endsection

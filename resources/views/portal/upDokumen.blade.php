@@ -107,21 +107,37 @@
                   $kedua = App\Models\User::where("id", $document->id_level_dua)->first();
                   $ketiga = App\Models\User::where("id", $document->id_level_tiga)->first();
                   $keempat = App\Models\User::where("id", $document->id_level_empat)->first();
+                  if(isset($kedua)){
+                    $history2 = App\Models\DocumentHistory::where("document_id", $document->id)->where("user_id", $kedua->id)->first();
+                  }
+                  if(isset($ketiga)){
+                    $history3 = App\Models\DocumentHistory::where("document_id", $document->id)->where("user_id", $ketiga->id)->first();
+                  }
+                  if(isset($keempat)){
+                    $history4 = App\Models\DocumentHistory::where("document_id", $document->id)->where("user_id", $keempat->id)->first();
+                  }
               @endphp
+                <a href="tracked_document/{{ $document->id }}">
               <tr>
                 <td>
                   <div>
                     <p style="padding: 0%">
                       <b>Pengirim</b> : {{ $document->nama_pengirim }} <br>
+                      <b>Nama Dokumen</b> : {{ $document->file }} <br>
                       <b>Tanggal Kirim</b> : {{ $document->tanggal->format('D, d M Y H:i') }} <br>
                       <b>Status</b> : {{ $document->status }} <br>
                       <b>Level Approval</b> : {{ $document->level_approval }} <br>
-                      <b>Tujuan User Level 2</b> : {{ $kedua->name }} <br>
-                      <b>Tujuan User Level 3</b> : {{ $ketiga->name }} <br>
-                      <b>Tujuan User Level 4</b> : {{ $keempat->name }}</p>
-                  </div>
-                </td>
+                      <b>Tujuan User Level 2</b> : @isset($kedua){{ $kedua->name }} @else - @endisset<br>
+                      <b>Tujuan User Level 3</b> : @isset($ketiga){{ $ketiga->name }} @else - @endisset<br>
+                      <b>Tujuan User Level 4</b> : @isset($keempat){{ $keempat->name }} @else - @endisset<br>
+                      <b>Approval Level 2</b> :@isset($history2) {{ $history2->waktu->format('D, d M Y H:i')  }} @else - @endisset<br>
+                      <b>Approval Level 3</b> :@isset($history3) {{ $history3->waktu->format('D, d M Y H:i')  }} @else - @endisset<br>
+                      <b>Approval Level 4</b> :@isset($history4) {{ $history4->waktu->format('D, d M Y H:i')  }} @else - @endisset<br>
+                    </p>  
+                    </div>
+                  </td>
               </tr> 
+            </a>
               @endforeach
             </tbody>
           </table>
@@ -129,6 +145,31 @@
       </div>
     </div>
 
+    <h2 class="mt-4 mb-3">Log History</h2>
+    <div class="list-group col-lg-8 shadow">
+      @foreach ($histories as $history)
+      @php
+          $user = App\Models\User::where("id", $history->user_id)->first();
+          $document = App\Models\tracked_document::where("id", $history->document_id)->first();
+      @endphp
+      <a href="tracked_document/{{ $document->id }}" class="list-group-item list-group-item-action" aria-current="true">
+          <div class="d-flex w-100 justify-content-between">
+            @if ($history->action == "Created and Approved" || $history->action == "Approved")
+              <h5 class="mb-1 text-success">{{ $history->action }}</h5>
+            @endif
+            @if ($history->action == "Rejected")
+              <h5 class="mb-1 text-danger">{{ $history->action }}</h5>
+            @endif
+            @if ($history->action == "Created")
+              <h5 class="mb-1 text-primary">{{ $history->action }}</h5>
+            @endif
+            <small>{{ $history->waktu->format('D, d M Y H:i') }}</small>
+          </div>
+          <p class="mb-1">{{ $history->document_name }}</p>
+          <small>{{ $user->name }}</small>
+      </a>
+      @endforeach   
+  </div>
     
 </div>
 

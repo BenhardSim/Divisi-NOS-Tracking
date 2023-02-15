@@ -29,16 +29,16 @@ class tracked_documentFactory extends Factory
             // $table->string('id_level_dua');
             // $table->string('id_level_tiga');
             // $table->string('id_level_empat');
-            'file' => "Persetujuan Pembelian BTS",
+            'file' => $this->faker->sentence(3),
             'level_approval' => 1,
             // 'view_file' => $this->faker->name(),
-            'id_pengirim' => "1",
-            'nama_pengirim' => "Parker Bins",
+            'id_pengirim' => User::where("level_akun", 1)->first()->id,
+            'nama_pengirim' => User::where("level_akun", 1)->first()->name,
             'level_pengirim' => 1,
-            'id_level_dua' => "2",
-            'id_level_tiga' => "3",
-            'id_level_empat' => "4",
-            'deskripsi' => "File ini adalah...",
+            'id_level_dua' => User::where("level_akun", 2)->first()->id,
+            'id_level_tiga' => User::where("level_akun", 3)->first()->id,
+            'id_level_empat' => User::where("level_akun", 4)->first()->id,
+            'deskripsi' => $this->faker->paragraph(),
             'tanggal' => Carbon::now('Asia/Jakarta'),
             'keterangan' => "-",
         ];
