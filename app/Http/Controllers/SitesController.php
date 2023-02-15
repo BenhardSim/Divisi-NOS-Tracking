@@ -24,7 +24,6 @@ class SitesController extends Controller
     {
         return view('portal.site_list', [
             "title" => "Site All",
-            "slug" => "site-all",
             "site_all" => siteprofile::paginate(10)
         ]);
     }
@@ -33,7 +32,6 @@ class SitesController extends Controller
     {
         return view('portal.site_list', [
             "title" => "Site TP",
-            "slug" => "site-tp",
             "site_all" => siteprofile::where("TOWERSTATUS", "Sewa TP")->paginate(10)
         ]);
     }
@@ -43,8 +41,7 @@ class SitesController extends Controller
     {
         return view('portal.site_list', [
             "title" => "Site Telkom",
-            "slug" => "site-telkom",
-            "site_all" => siteprofile::where("PEMILIKTOWER", "Telkom")->paginate(10)
+            "site_all" => siteprofile::where("TOWERSTATUS", "Beli Telkom")->paginate(10)
         ]);
     }
 
@@ -53,8 +50,14 @@ class SitesController extends Controller
     {
         return view('portal.site_list', [
             "title" => "Site Telkomsel",
-            "slug" => "site-telkomsel",
-            "site_all" => siteprofile::where("PEMILIKTOWER", "Telkomsel")->paginate(10)
+            "site_all" => siteprofile::where("TOWERSTATUS", "Beli Telkomsel")->paginate(10)
+        ]);
+    }
+    public function indexReseller()
+    {
+        return view('portal.site_list', [
+            "title" => "Site Reseller",
+            "site_all" => siteprofile::where("TOWERSTATUS", "Sewa Reseller")->paginate(10)
         ]);
     }
 
