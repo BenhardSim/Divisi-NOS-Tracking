@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KPI_aktif;
-use App\Models\KPI_Support;
 use Carbon\Carbon;
+use App\Models\BBM;
+use App\Models\RVC;
 use Carbon\CarbonPeriod;
+use App\Models\KPI_aktif;
 use App\Models\KPI_utama;
+use App\Models\KPI_Support;
 use App\Models\profit_loss;
-use App\Models\ReservedCost;
 use App\Models\siteprofile;
+use App\Models\ReservedCost;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
@@ -99,6 +101,18 @@ class DashboardController extends Controller
                         }else if($month_target === $month && $data_target['remark'] === 'loss'){
                             $val_x_3[$key] += $data_target['revenue'];
                         }  
+                    }else if($chart_type === 'rvc'){
+                        if($month_target === $month){
+                            $val_x_1[$key] += $data_target['revenue'];
+                            $val_x_2[$key] += $data_target['cost'];
+                        }
+                    }
+                    else if($chart_type === 'bbm'){
+                        if($month_target === $month){
+                            $val_x_1[$key] += $data_target['harga_total'];
+                            $val_x_2[$key] += $data_target['RH'];
+                            $val_x_3[$key] += $data_target['bbm'];
+                        }
                     }
                 // array_push($monthList,$month_target);
             };
@@ -188,7 +202,27 @@ class DashboardController extends Controller
 
         $this->ChartFunction($AllIds_PL,$monthList_PL,'profit_loss',$value_PL_HP,$value_PL_LP,$value_PL_LOSS);
 
-        // dd($value_PL_LP);
+        /* ==================================== LOGIC REVENUE VS COST REGIONAL =========================================================== */
+
+        $AllIds_RVC = RVC::orderBy('date')->get()->toArray(); 
+        $value_RVC_rev = array();
+        $value_RVC_cost = array();
+        $monthList_RVC = array();
+
+        $this->ChartFunction($AllIds_RVC,$monthList_RVC,'rvc',$value_RVC_rev,$value_RVC_cost);
+
+        /* ==================================== LOGIC BBM REGIONAL =========================================================== */
+
+        $AllIds_BBM = BBM::orderBy('date')->get()->toArray(); 
+        $value_BBM_total = array();
+        $value_BBM_RH = array();
+        $value_BBM_BBM = array();
+        $monthList_BBM = array();
+
+        $this->ChartFunction($AllIds_BBM,$monthList_BBM,'bbm',$value_BBM_total,$value_BBM_RH,$value_BBM_BBM);
+
+
+        // dd($monthList_BBM);
         return view('portal.dashboard', [
             "site_all" => siteprofile::count(),
             "site_tp" => siteprofile::where('TOWERSTATUS', "Sewa TP")->count(),
@@ -219,6 +253,15 @@ class DashboardController extends Controller
             "value_PL_LP" => $value_PL_LP,
             "value_PL_HP" => $value_PL_HP,
             "value_PL_LOSS" => $value_PL_LOSS,
+
+            "monthList_RVC" => $monthList_RVC,
+            "value_RVC_rev" => $value_RVC_rev,
+            "value_RVC_cost" => $value_RVC_cost,
+
+            "monthList_BBM" => $monthList_BBM,
+            "value_BBM_total" => $value_BBM_total,
+            "value_BBM_RH" => $value_BBM_RH,
+            "value_BBM_BBM" => $value_BBM_BBM,
 
 
         ]);

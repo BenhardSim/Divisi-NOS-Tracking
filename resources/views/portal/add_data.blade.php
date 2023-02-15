@@ -51,6 +51,7 @@
                             <option value="ProfitLoss">Profit Loss</option>
                             <option value="BBM">Cost BBM</option>
                             <option value="OPEX">OPEX</option>
+                            <option value="RVC">Revenue VS Cost</option>
                             <option value="5">Three</option>
                         </select>
                     </div>
@@ -65,7 +66,7 @@
             </div>
         </div>
         <div class="col-4">
-            <div class="container shadow-lg" style="padding: 12px;border-radius:10px">
+            <div class="container shadow-lg" style="padding: 12px;border-radius:10px;background-color:#FCE22A">
                 <h5>Catatan Penting !!</h5>
                 <h6>Mohon Baca petunjuk berikut sebelum mengupload data.</h6>
                 <br>
@@ -74,7 +75,7 @@
                     <li>Pilih Tipe Dokumen yang akan di masukkan </li>
                     <li>pastikan format dari table sesuai dengan template yang telah di sediakan</li>
                     <li>Jangan mengubah/menambahkan/menghapus kolom dari template table</li>
-                    <li>Bila terdapat kolom yang memiliki tipe data tanggal (date) masukkan tanggal dengan format <b>M-d-Y</b></li>
+                    <li>Bila terdapat kolom yang memiliki tipe data tanggal (date) masukkan tanggal dengan format <b>M/d/Y</b></li>
                 </ol>
             </div>
         </div>
@@ -87,10 +88,6 @@
             let type = e.options[e.selectedIndex].value;
             // mengarahkan template dokumen 
             document.getElementById('download-template').href = 'download/?type=' + type;
-            // mengarahkan action form ke import data
-            // document.getElementById('form-import').action = '/file-import';
-            console.log( document.getElementById('form-import').action);
-            console.log(document.getElementById('download-template').href);
         }
 
     </script>

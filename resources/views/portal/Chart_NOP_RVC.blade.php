@@ -117,18 +117,18 @@
     const revvcost_main = document.getElementById('revenue_main').getContext('2d');
     //const labels = Utils.months({count: 7});
     const revvcost_mainData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_RVC),
         datasets: [
         {
         label: ['Revenue'],
-        data: [120000, 122000, 123000, 123000, 122000, 124000, 160000, 130000, 122000, 124000, 123000, 123000],
+        data: @json($value_RVC_rev),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
         },
         {
         label: ['Cost'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data: @json($value_RVC_cost),
         fill: false,
         borderColor: 'rgb(255, 192, 192)',
         tension: 0.1
@@ -154,18 +154,18 @@
     const revvcost_main_nop_1 = document.getElementById('revenue_main_nop_1').getContext('2d');
     //const labels = Utils.months({count: 7});
     const revvcost_mainData_nop_1 = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_RVC_semarang),
         datasets: [
         {
         label: ['Revenue'],
-        data: [120000, 122000, 123000, 123000, 122000, 124000, 160000, 130000, 122000, 124000, 123000, 123000],
+        data: @json($value_RVC_rev_semarang),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
         },
         {
         label: ['Cost'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data: @json($value_RVC_cost_semarang),
         fill: false,
         borderColor: 'rgb(255, 192, 192)',
         tension: 0.1
@@ -191,18 +191,18 @@
     const revvcost_main_nop_2 = document.getElementById('revenue_main_nop_2').getContext('2d');
     //const labels = Utils.months({count: 7});
     const revvcost_mainData_nop_2 = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_RVC_surakarta),
         datasets: [
         {
         label: ['Revenue'],
-        data: [120000, 122000, 123000, 123000, 122000, 124000, 160000, 130000, 122000, 124000, 123000, 123000],
+        data: @json($value_RVC_rev_surakarta),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
         },
         {
         label: ['Cost'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data: @json($value_RVC_cost_surakarta),
         fill: false,
         borderColor: 'rgb(255, 192, 192)',
         tension: 0.1
@@ -228,18 +228,18 @@
     const revvcost_main_nop_3 = document.getElementById('revenue_main_nop_3').getContext('2d');
     //const labels = Utils.months({count: 7});
     const revvcost_mainData_nop_3 = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_RVC_yogyakarta),
         datasets: [
         {
         label: ['Revenue'],
-        data: [120000, 122000, 123000, 123000, 122000, 124000, 160000, 130000, 122000, 124000, 123000, 123000],
+        data: @json($value_RVC_rev_yogyakarta),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
         },
         {
         label: ['Cost'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data: @json($value_RVC_cost_yogyakarta),
         fill: false,
         borderColor: 'rgb(255, 192, 192)',
         tension: 0.1
@@ -265,18 +265,18 @@
     const revvcost_main_nop_4 = document.getElementById('revenue_main_nop_4').getContext('2d');
     //const labels = Utils.months({count: 7});
     const revvcost_mainData_nop_4 = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_RVC_purwokerto),
         datasets: [
         {
         label: ['Revenue'],
-        data: [120000, 122000, 123000, 123000, 122000, 124000, 160000, 130000, 122000, 124000, 123000, 123000],
+        data: @json($value_RVC_rev_purwokerto),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
         },
         {
         label: ['Cost'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data: @json($value_RVC_cost_purwokerto),
         fill: false,
         borderColor: 'rgb(255, 192, 192)',
         tension: 0.1
@@ -302,18 +302,18 @@
     const revvcost_main_nop_5 = document.getElementById('revenue_main_nop_5').getContext('2d');
     //const labels = Utils.months({count: 7});
     const revvcost_mainData_nop_5 = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_RVC_pekalongan),
         datasets: [
         {
         label: ['Revenue'],
-        data: [120000, 122000, 123000, 123000, 122000, 124000, 160000, 130000, 122000, 124000, 123000, 123000],
+        data: @json($value_RVC_rev_pekalongan),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
         },
         {
         label: ['Cost'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data: @json($value_RVC_cost_pekalongan),
         fill: false,
         borderColor: 'rgb(255, 192, 192)',
         tension: 0.1
@@ -339,18 +339,18 @@
     const revvcost_main_nop_6 = document.getElementById('revenue_main_nop_6').getContext('2d');
     //const labels = Utils.months({count: 7});
     const revvcost_mainData_nop_6 = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_RVC_salatiga),
         datasets: [
         {
         label: ['Revenue'],
-        data: [120000, 122000, 123000, 123000, 122000, 124000, 160000, 130000, 122000, 124000, 123000, 123000],
+        data: @json($value_RVC_rev_salatiga),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
         },
         {
         label: ['Cost'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data: @json($value_RVC_cost_salatiga),
         fill: false,
         borderColor: 'rgb(255, 192, 192)',
         tension: 0.1
