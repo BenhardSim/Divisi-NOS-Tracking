@@ -62,6 +62,7 @@
             </a>
         </div>
         <div class="col-lg col-sm">
+            <a href="/dashboard" style="text-decoration: none;">
             <div class="sites">
                 <div class="site-title">
                     <h4>SITE RESELLER</h4>
@@ -70,6 +71,7 @@
                     <h1 style="font-weight: normal;">{{ $site_reseller }}</h1>
                 </div>
             </div>
+            </a>
         </div>
     </div>
 
@@ -89,12 +91,65 @@
 
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
-                <div class="rvc-title">
-                    <a href="/rvc" class="links text-white"><h5>Revenue VS Cost Regional</h5></a>
+                <div class="rvc-title title-box">
+                    <div class="title-cont">
+                        <a href="/rvc" class="links text-white"><h5>Revenue VS Cost Regional</h5></a>
+                    </div>
+                    <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
+                        {{-- view All Data Button --}}
+                        <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailRVC">
+                            <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
+                            <span>Magnify</span>
+                        </button>
+                    </div>
                 </div>
                 <div class="rvc-graph">
                     <canvas id="revenue_main"></canvas>
                 </div>
+            </div>
+        </div>
+
+        {{-- MODAL MAGNIFY REVENUE VS COST --}}
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDetailRVC" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FILTER DATA REVENUE VS COST</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body container row">
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow">
+                            <div class="rvc-graph">
+                                <canvas id="revenue_main_toast"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow" style="padding: 10px" >
+                            <form method="GET">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="filter awal">Starting Date</label>
+                                        <input id="in_awal_RVC" name='interval_awal' type="date" class="form-control" placeholder="filter awal">
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="filter akhir">End Date</label>
+                                        <input id="in_akhir_RVC" name="interval_akhir" type="date" class="form-control" placeholder="filter akhir">
+                                    </div>
+                                    <div class="col-2">
+                                        <br>
+                                        <button type="submit" id="search-filter-RVC" class="btn btn-primary" >Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     
@@ -234,12 +289,62 @@
         {{-- Cost BBM --}}
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
-                <div class="rvc-title">
-                    <a href="/bbm" class="links text-white"><h5>Cost BBM</h5></a>
+                <div class="rvc-title title-box">
+                    <div class="title-cont">
+                        <a href="/bbm" class="links text-white"><h5>Cost BBM</h5></a>
+                    </div>
+                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailBBM">
+                        <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
+                        <span>Magnify</span>
+                    </button>
                 </div>
                 <div class="rvc-graph">
                     <canvas id="costbbm_main"></canvas>
                 </div>
+            </div>
+        </div>
+
+        {{-- MODAL MAGNIFY BBM --}}
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDetailBBM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FILTER DATA BBM</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body container row">
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow">
+                            <div class="rvc-graph">
+                                <canvas id="costbbm_main_toast"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow" style="padding: 10px" >
+                            <form method="GET">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="filter awal">Starting Date</label>
+                                        <input id="in_awal_BBM" name='interval_awal' type="date" class="form-control" placeholder="filter awal">
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="filter akhir">End Date</label>
+                                        <input id="in_akhir_BBM" name="interval_akhir" type="date" class="form-control" placeholder="filter akhir">
+                                    </div>
+                                    <div class="col-2">
+                                        <br>
+                                        <button type="submit" id="search-filter-BBM" class="btn btn-primary" >Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
 
@@ -484,18 +589,18 @@
     const revvcost_main = document.getElementById('revenue_main');
     //const labels = Utils.months({count: 7});
     const revvcost_mainData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_RVC),
         datasets: [
         {
         label: ['Revenue'],
-        data: [120000, 122000, 123000, 123000, 122000, 124000, 160000, 130000, 122000, 124000, 123000, 123000],
+        data: @json($value_RVC_rev),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
         },
         {
         label: ['Cost'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data: @json($value_RVC_cost),
         fill: false,
         borderColor: 'rgb(255, 192, 192)',
         tension: 0.1
@@ -515,6 +620,43 @@
     };
 
     new Chart(revvcost_main, revvcost_mainConfig);
+
+    // grafik revenue vs cost TOAST
+
+    const revvcost_mainToast = document.getElementById('revenue_main_toast');
+    //const labels = Utils.months({count: 7});
+    const revvcost_mainToastData = {
+        labels: @json($monthList_RVC),
+        datasets: [
+        {
+        label: ['Revenue'],
+        data: @json($value_RVC_rev),
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
+        },
+        {
+        label: ['Cost'],
+        data: @json($value_RVC_cost),
+        fill: false,
+        borderColor: 'rgb(255, 192, 192)',
+        tension: 0.1
+        }
+    ]
+    };
+    const revvcost_mainToastConfig = {
+        type: 'line',
+        data: revvcost_mainToastData,
+        options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+        }
+    };
+
+    let RVC_toast = new Chart(revvcost_mainToast, revvcost_mainToastConfig);
 
     // site profit loss regional 
 
@@ -641,7 +783,7 @@
 
     new Chart(varcost_main, varcost_mainconfig);
 
-     // varcost graph TOAST
+    // varcost graph TOAST
 
      const varcost_main_toast = document.getElementById('varcost_main_toast').getContext('2d');
     //const labels = Utils.months({count: 7});
@@ -683,25 +825,25 @@
     const costbbm_main = document.getElementById('costbbm_main').getContext('2d');
      //const labels = Utils.months({count: 7});
      const costbbm_maindata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+         labels: @json($monthList_BBM),
          datasets: [
          {
          label: ['Cost (dalam ribuan rupiah)'],
-         data: [65, 59, 80, 81, 56, 55, 40, 42, 45, 44, 80, 90],
+         data: @json($value_BBM_total),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
          tension: 0.1
          },
          {
          label: ['Lama Pemakaian (jam)'],
-         data: [12, 10, 32, 30, 12, 11, 10, 11, 12, 13, 14, 15],
+         data: @json($value_BBM_RH),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
          tension: 0.1
          },
          {
          label: ['BBM (Liter)'],
-         data: [10, 12, 34, 77, 34, 21, 22, 20, 10, 30, 23, 12],
+         data: @json($value_BBM_BBM),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
          tension: 0.1
@@ -721,6 +863,50 @@
      };
 
      new Chart(costbbm_main, costbbm_mainconfig);
+
+     // cost BBM TOAST
+
+    const costbbm_mainToast = document.getElementById('costbbm_main_toast').getContext('2d');
+     //const labels = Utils.months({count: 7});
+     const costbbm_mainToastdata = {
+         labels: @json($monthList_BBM),
+         datasets: [
+         {
+         label: ['Cost (dalam ribuan rupiah)'],
+         data: @json($value_BBM_total),
+         fill: false,
+         borderColor: 'rgb(100, 100, 255)',
+         tension: 0.1
+         },
+         {
+         label: ['Lama Pemakaian (jam)'],
+         data: @json($value_BBM_RH),
+         fill: false,
+         borderColor: 'rgb(100, 255, 100)',
+         tension: 0.1
+         },
+         {
+         label: ['BBM (Liter)'],
+         data: @json($value_BBM_BBM),
+         fill: false,
+         borderColor: 'rgb(255, 100, 100)',
+         tension: 0.1
+         }
+     ]
+     };
+     const costbbm_mainToastconfig = {
+         type: 'line',
+         data: costbbm_mainToastdata,
+         options: {
+             scales: {
+                 y: {
+                 beginAtZero: true
+                 }
+             }
+         }
+     };
+
+    let BBM_toast = new Chart(costbbm_mainToast, costbbm_mainToastconfig);
 
     // OPEX
 
@@ -1198,7 +1384,25 @@
                             varcost_main_toastdata.datasets[1].data = dataOutput.val_x_2;
                             // update
                             RCOST_toast.update();
+                        }else if(type === 'rvc'){
+                            // labels
+                            revvcost_mainToastData.labels = dataOutput.val_month
+                            // data
+                            revvcost_mainToastData.datasets[0].data = dataOutput.val_x_1;
+                            revvcost_mainToastData.datasets[1].data = dataOutput.val_x_2;
+                            // update
+                            RVC_toast.update();
+                        }else if(type === 'bbm'){
+                            // labels
+                            costbbm_mainToastdata.labels = dataOutput.val_month
+                            // data
+                            costbbm_mainToastdata.datasets[0].data = dataOutput.val_x_1;
+                            costbbm_mainToastdata.datasets[1].data = dataOutput.val_x_2;
+                            costbbm_mainToastdata.datasets[2].data = dataOutput.val_x_3;
+                            // update
+                            BBM_toast.update();
                         }
+
                     },
                     error: function(data) {
                         console.log(data);
@@ -1249,6 +1453,24 @@
             let interval_awal_PL = $('#in_awal_RCOST').val();
             let interval_akhir_PL = $('#in_akhir_RCOST').val();
             updateChart(interval_awal_PL,interval_akhir_PL,'var_cost');
+
+    })
+
+    $('#search-filter-RVC').click(function(e) {
+            // console.log('test');
+            e.preventDefault();
+            let interval_awal_RVC = $('#in_awal_RVC').val();
+            let interval_akhir_RVC = $('#in_akhir_RVC').val();
+            updateChart(interval_awal_RVC,interval_akhir_RVC,'rvc');
+
+    })
+
+    $('#search-filter-BBM').click(function(e) {
+            // console.log('test');
+            e.preventDefault();
+            let interval_awal_BBM = $('#in_awal_BBM').val();
+            let interval_akhir_BBM = $('#in_akhir_BBM').val();
+            updateChart(interval_awal_BBM,interval_akhir_BBM,'bbm');
 
     })
 </script>

@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\BBM;
+use App\Models\RVC;
 use Carbon\CarbonPeriod;
 use App\Models\KPI_aktif;
-use App\Models\KPI_Support;
 use App\Models\KPI_utama;
+use App\Models\KPI_Support;
 use App\Models\profit_loss;
 use App\Models\ReservedCost;
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
 use function PHPSTORM_META\type;
 
 class FilterController extends Controller
@@ -97,6 +99,17 @@ class FilterController extends Controller
                         }else if($month_target === $month && $data_target['remark'] === 'loss'){
                             $val_x_3[$key] += $data_target['revenue'];
                         }  
+                    }else if($chart_type === 'rvc'){
+                        if($month_target === $month){
+                            $val_x_1[$key] += $data_target['revenue'];
+                            $val_x_2[$key] += $data_target['cost'];
+                        }
+                    }else if($chart_type === 'bbm'){
+                        if($month_target === $month){
+                            $val_x_1[$key] += $data_target['harga_total'];
+                            $val_x_2[$key] += $data_target['RH'];
+                            $val_x_3[$key] += $data_target['bbm'];
+                        }
                     }
                 // array_push($monthList,$month_target);
             };
@@ -119,6 +132,10 @@ class FilterController extends Controller
             $all_val = profit_loss::orderBy('date')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
         }else if($type === 'var_cost'){
             $all_val = ReservedCost::orderBy('date')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+        }else if($type === 'rvc'){
+            $all_val = RVC::orderBy('date')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+        }else if($type === 'bbm'){
+            $all_val = BBM::orderBy('date')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
         }
 
         $val_x_1 = array();

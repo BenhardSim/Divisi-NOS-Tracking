@@ -22,6 +22,12 @@
         </div>
     </div>
 
+    {{-- NOP-Row-1 --}}
+    <br><br>
+    <div class="col-lg-12 pt-5" style="text-align: center">
+        <h5>COST BBM NOP</h5>
+    </div>
+
     <div class="row">
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
@@ -99,25 +105,25 @@
      const costbbm_regional = document.getElementById('costbbm_regional').getContext('2d');
      //const labels = Utils.months({count: 7});
      const costbbm_regionaldata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_BBM),
          datasets: [
          {
          label: ['Cost (dalam ribuan rupiah)'],
-         data: [65, 59, 80, 81, 56, 55, 40, 42, 45, 44, 80, 90],
+         data: @json($value_BBM_total),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
          tension: 0.1
          },
          {
          label: ['Lama Pemakaian (jam)'],
-         data: [12, 10, 32, 30, 12, 11, 10, 11, 12, 13, 14, 15],
+         data: @json($value_BBM_RH),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
          tension: 0.1
          },
          {
          label: ['BBM (Liter)'],
-         data: [10, 12, 34, 77, 34, 21, 22, 20, 10, 30, 23, 12],
+         data: @json($value_BBM_BBM),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
          tension: 0.1
@@ -141,25 +147,25 @@
      const costbbm_semarang = document.getElementById('costbbm_semarang').getContext('2d');
      //const labels = Utils.months({count: 7});
      const costbbm_semarangdata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_BBM_semarang),
          datasets: [
          {
          label: ['Cost (dalam ribuan rupiah)'],
-         data: [65, 59, 80, 81, 56, 55, 40, 42, 45, 44, 80, 90],
+         data: @json($value_BBM_total_semarang),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
          tension: 0.1
          },
          {
          label: ['Lama Pemakaian (jam)'],
-         data: [12, 10, 32, 30, 12, 11, 10, 11, 12, 13, 14, 15],
+         data: @json($value_BBM_RH_semarang),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
          tension: 0.1
          },
          {
          label: ['BBM (Liter)'],
-         data: [10, 12, 34, 77, 34, 21, 22, 20, 10, 30, 23, 12],
+         data: @json($value_BBM_BBM_semarang),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
          tension: 0.1
@@ -183,25 +189,25 @@
      const costbbm_surakarta = document.getElementById('costbbm_surakarta').getContext('2d');
      //const labels = Utils.months({count: 7});
      const costbbm_surakartadata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_BBM_surakarta),
          datasets: [
          {
          label: ['Cost (dalam ribuan rupiah)'],
-         data: [65, 59, 80, 81, 56, 55, 40, 42, 45, 44, 80, 90],
+         data: @json($value_BBM_total_surakarta),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
          tension: 0.1
          },
          {
          label: ['Lama Pemakaian (jam)'],
-         data: [12, 10, 32, 30, 12, 11, 10, 11, 12, 13, 14, 15],
+         data: @json($value_BBM_RH_surakarta),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
          tension: 0.1
          },
          {
          label: ['BBM (Liter)'],
-         data: [10, 12, 34, 77, 34, 21, 22, 20, 10, 30, 23, 12],
+         data: @json($value_BBM_BBM_surakarta),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
          tension: 0.1
@@ -225,25 +231,25 @@
      const costbbm_yogyakarta = document.getElementById('costbbm_yogyakarta').getContext('2d');
      //const labels = Utils.months({count: 7});
      const costbbm_yogyakartadata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_BBM_yogyakarta),
          datasets: [
          {
          label: ['Cost (dalam ribuan rupiah)'],
-         data: [65, 59, 80, 81, 56, 55, 40, 42, 45, 44, 80, 90],
+         data: @json($value_BBM_total_yogyakarta),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
          tension: 0.1
          },
          {
          label: ['Lama Pemakaian (jam)'],
-         data: [12, 10, 32, 30, 12, 11, 10, 11, 12, 13, 14, 15],
+         data: @json($value_BBM_RH_yogyakarta),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
          tension: 0.1
          },
          {
          label: ['BBM (Liter)'],
-         data: [10, 12, 34, 77, 34, 21, 22, 20, 10, 30, 23, 12],
+         data: @json($value_BBM_BBM_yogyakarta),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
          tension: 0.1
@@ -267,25 +273,25 @@
      const costbbm_purwokerto = document.getElementById('costbbm_purwokerto').getContext('2d');
      //const labels = Utils.months({count: 7});
      const costbbm_purwokertodata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_BBM_purwokerto),
          datasets: [
          {
          label: ['Cost (dalam ribuan rupiah)'],
-         data: [65, 59, 80, 81, 56, 55, 40, 42, 45, 44, 80, 90],
+         data: @json($value_BBM_total_purwokerto),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
          tension: 0.1
          },
          {
          label: ['Lama Pemakaian (jam)'],
-         data: [12, 10, 32, 30, 12, 11, 10, 11, 12, 13, 14, 15],
+         data: @json($value_BBM_RH_purwokerto),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
          tension: 0.1
          },
          {
          label: ['BBM (Liter)'],
-         data: [10, 12, 34, 77, 34, 21, 22, 20, 10, 30, 23, 12],
+         data: @json($value_BBM_BBM_purwokerto),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
          tension: 0.1
@@ -309,25 +315,25 @@
      const costbbm_pekalongan = document.getElementById('costbbm_pekalongan').getContext('2d');
      //const labels = Utils.months({count: 7});
      const costbbm_pekalongandata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_BBM_pekalongan),
          datasets: [
          {
          label: ['Cost (dalam ribuan rupiah)'],
-         data: [65, 59, 80, 81, 56, 55, 40, 42, 45, 44, 80, 90],
+         data: @json($value_BBM_total_pekalongan),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
          tension: 0.1
          },
          {
          label: ['Lama Pemakaian (jam)'],
-         data: [12, 10, 32, 30, 12, 11, 10, 11, 12, 13, 14, 15],
+         data: @json($value_BBM_RH_pekalongan),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
          tension: 0.1
          },
          {
          label: ['BBM (Liter)'],
-         data: [10, 12, 34, 77, 34, 21, 22, 20, 10, 30, 23, 12],
+         data: @json($value_BBM_BBM_pekalongan),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
          tension: 0.1
@@ -351,25 +357,25 @@
      const costbbm_salatiga = document.getElementById('costbbm_salatiga').getContext('2d');
      //const labels = Utils.months({count: 7});
      const costbbm_salatigadata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_BBM_salatiga),
          datasets: [
          {
          label: ['Cost (dalam ribuan rupiah)'],
-         data: [65, 59, 80, 81, 56, 55, 40, 42, 45, 44, 80, 90],
+         data: @json($value_BBM_total_salatiga),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
          tension: 0.1
          },
          {
          label: ['Lama Pemakaian (jam)'],
-         data: [12, 10, 32, 30, 12, 11, 10, 11, 12, 13, 14, 15],
+         data: @json($value_BBM_RH_salatiga),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
          tension: 0.1
          },
          {
          label: ['BBM (Liter)'],
-         data: [10, 12, 34, 77, 34, 21, 22, 20, 10, 30, 23, 12],
+         data: @json($value_BBM_BBM_salatiga),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
          tension: 0.1

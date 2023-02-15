@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\BBMImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\KPIImport;
 use App\Imports\KPIActivityImport;
 use App\Imports\KPISupportImport;
 use App\Imports\ReservedCostImport;
 use App\Imports\ProfitLossImport;
+use App\Imports\RVCImport;
 use Illuminate\Http\Request;
 
 class ImportController extends Controller
@@ -33,7 +35,13 @@ class ImportController extends Controller
         }else if($validatedData["tipe-template"] === 'ProfitLoss'){
             Excel::import(new ProfitLossImport,request()->file('file'));
             return back()->with('toast_success', 'Data Profit Loss berhasil ditambahkan');
-        };;
+        }else if($validatedData["tipe-template"] === 'RVC'){
+            Excel::import(new RVCImport,request()->file('file'));
+            return back()->with('toast_success', 'Data Revenue VS Cost berhasil ditambahkan');
+        }else if($validatedData["tipe-template"] === 'BBM'){
+            Excel::import(new BBMImport,request()->file('file'));
+            return back()->with('toast_success', 'Data BBM berhasil ditambahkan');
+        };
         return back()->with('toast_error', 'pilih jenis Dokumen yang akan di masukkan !');
     }
 }

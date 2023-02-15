@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\BBM;
+use App\Models\RVC;
 use Carbon\CarbonPeriod;
 use App\Models\KPI_aktif;
 use App\Models\KPI_utama;
 use App\Models\KPI_Support;
+use App\Models\profit_loss;
 use App\Models\siteprofile;
 use App\Models\ReservedCost;
-use App\Models\profit_loss;
 use Illuminate\Http\Request;
 
 class ChartController extends Controller
@@ -96,6 +98,17 @@ class ChartController extends Controller
                         }else if($month_target === $month && $data_target['remark'] === 'loss'){
                             $val_x_3[$key] += $data_target['revenue'];
                         }  
+                    }else if($chart_type === 'rvc'){
+                        if($month_target === $month){
+                            $val_x_1[$key] += $data_target['revenue'];
+                            $val_x_2[$key] += $data_target['cost'];
+                        }
+                    }else if($chart_type === 'bbm'){
+                        if($month_target === $month){
+                            $val_x_1[$key] += $data_target['harga_total'];
+                            $val_x_2[$key] += $data_target['RH'];
+                            $val_x_3[$key] += $data_target['bbm'];
+                        }
                     }
                 // array_push($monthList,$month_target);
             };
@@ -248,10 +261,118 @@ class ChartController extends Controller
 
     //Fungsi Index
     public function indexBBM(){
+
+        /* ==================================== LOGIC BBM REGIONAL =========================================================== */
+
+        $AllIds_BBM = BBM::orderBy('date')->get()->toArray(); 
+        $value_BBM_total = array();
+        $value_BBM_RH = array();
+        $value_BBM_BBM = array();
+        $monthList_BBM = array();
+
+        $this->ChartFunction($AllIds_BBM,$monthList_BBM,'bbm',$value_BBM_total,$value_BBM_RH,$value_BBM_BBM);
+
+        /* ==================================== LOGIC BBM NOP Semarang =========================================================== */
+
+        $AllIds_BBM_semarang = BBM::where('NOP','semarang')->orderBy('date')->get()->toArray(); 
+        $value_BBM_total_semarang = array();
+        $value_BBM_RH_semarang = array();
+        $value_BBM_BBM_semarang = array();
+        $monthList_BBM_semarang = array();
+
+        $this->ChartFunction($AllIds_BBM_semarang,$monthList_BBM_semarang,'bbm',$value_BBM_total_semarang,$value_BBM_RH_semarang,$value_BBM_BBM_semarang);
+        
+        /* ==================================== LOGIC BBM NOP surakarta =========================================================== */
+
+        $AllIds_BBM_surakarta = BBM::where('NOP','surakarta')->orderBy('date')->get()->toArray(); 
+        $value_BBM_total_surakarta = array();
+        $value_BBM_RH_surakarta = array();
+        $value_BBM_BBM_surakarta = array();
+        $monthList_BBM_surakarta = array();
+
+        $this->ChartFunction($AllIds_BBM_surakarta,$monthList_BBM_surakarta,'bbm',$value_BBM_total_surakarta,$value_BBM_RH_surakarta,$value_BBM_BBM_surakarta);
+
+        /* ==================================== LOGIC BBM NOP yogyakarta =========================================================== */
+
+        $AllIds_BBM_yogyakarta = BBM::where('NOP','yogyakarta')->orderBy('date')->get()->toArray(); 
+        $value_BBM_total_yogyakarta = array();
+        $value_BBM_RH_yogyakarta = array();
+        $value_BBM_BBM_yogyakarta = array();
+        $monthList_BBM_yogyakarta = array();
+
+        $this->ChartFunction($AllIds_BBM_yogyakarta,$monthList_BBM_yogyakarta,'bbm',$value_BBM_total_yogyakarta,$value_BBM_RH_yogyakarta,$value_BBM_BBM_yogyakarta);
+
+        /* ==================================== LOGIC BBM NOP purwokerto =========================================================== */
+
+        $AllIds_BBM_purwokerto = BBM::where('NOP','purwokerto')->orderBy('date')->get()->toArray(); 
+        $value_BBM_total_purwokerto = array();
+        $value_BBM_RH_purwokerto = array();
+        $value_BBM_BBM_purwokerto = array();
+        $monthList_BBM_purwokerto = array();
+
+        $this->ChartFunction($AllIds_BBM_purwokerto,$monthList_BBM_purwokerto,'bbm',$value_BBM_total_purwokerto,$value_BBM_RH_purwokerto,$value_BBM_BBM_purwokerto);
+
+        /* ==================================== LOGIC BBM NOP pekalongan =========================================================== */
+
+        $AllIds_BBM_pekalongan = BBM::where('NOP','pekalongan')->orderBy('date')->get()->toArray(); 
+        $value_BBM_total_pekalongan = array();
+        $value_BBM_RH_pekalongan = array();
+        $value_BBM_BBM_pekalongan = array();
+        $monthList_BBM_pekalongan = array();
+
+        $this->ChartFunction($AllIds_BBM_pekalongan,$monthList_BBM_pekalongan,'bbm',$value_BBM_total_pekalongan,$value_BBM_RH_pekalongan,$value_BBM_BBM_pekalongan);
+
+        /* ==================================== LOGIC BBM NOP salatiga =========================================================== */
+
+        $AllIds_BBM_salatiga = BBM::where('NOP','salatiga')->orderBy('date')->get()->toArray(); 
+        $value_BBM_total_salatiga = array();
+        $value_BBM_RH_salatiga = array();
+        $value_BBM_BBM_salatiga = array();
+        $monthList_BBM_salatiga = array();
+
+        $this->ChartFunction($AllIds_BBM_salatiga,$monthList_BBM_salatiga,'bbm',$value_BBM_total_salatiga,$value_BBM_RH_salatiga,$value_BBM_BBM_salatiga);
+
         return view('portal.Chart_NOP_BBM', [
             "root" => "bbm",
             "title" => "Chart Cost BBM NOP",
-            "site_all" => siteprofile::all()
+            "site_all" => siteprofile::all(),
+
+            "monthList_BBM" => $monthList_BBM,
+            "value_BBM_total" => $value_BBM_total,
+            "value_BBM_RH" => $value_BBM_RH,
+            "value_BBM_BBM" => $value_BBM_BBM,
+            
+            "monthList_BBM_semarang" => $monthList_BBM_semarang,
+            "value_BBM_total_semarang" => $value_BBM_total_semarang,
+            "value_BBM_RH_semarang" => $value_BBM_RH_semarang,
+            "value_BBM_BBM_semarang" => $value_BBM_BBM_semarang,
+
+            "monthList_BBM_surakarta" => $monthList_BBM_surakarta,
+            "value_BBM_total_surakarta" => $value_BBM_total_surakarta,
+            "value_BBM_RH_surakarta" => $value_BBM_RH_surakarta,
+            "value_BBM_BBM_surakarta" => $value_BBM_BBM_surakarta,
+
+            "monthList_BBM_yogyakarta" => $monthList_BBM_yogyakarta,
+            "value_BBM_total_yogyakarta" => $value_BBM_total_yogyakarta,
+            "value_BBM_RH_yogyakarta" => $value_BBM_RH_yogyakarta,
+            "value_BBM_BBM_yogyakarta" => $value_BBM_BBM_yogyakarta,
+
+            "monthList_BBM_purwokerto" => $monthList_BBM_purwokerto,
+            "value_BBM_total_purwokerto" => $value_BBM_total_purwokerto,
+            "value_BBM_RH_purwokerto" => $value_BBM_RH_purwokerto,
+            "value_BBM_BBM_purwokerto" => $value_BBM_BBM_purwokerto,
+
+            "monthList_BBM_pekalongan" => $monthList_BBM_pekalongan,
+            "value_BBM_total_pekalongan" => $value_BBM_total_pekalongan,
+            "value_BBM_RH_pekalongan" => $value_BBM_RH_pekalongan,
+            "value_BBM_BBM_pekalongan" => $value_BBM_BBM_pekalongan,
+
+            "monthList_BBM_salatiga" => $monthList_BBM_salatiga,
+            "value_BBM_total_salatiga" => $value_BBM_total_salatiga,
+            "value_BBM_RH_salatiga" => $value_BBM_RH_salatiga,
+            "value_BBM_BBM_salatiga" => $value_BBM_BBM_salatiga,
+
+
         ]);
     }
     public function indexOPEX(){
@@ -262,10 +383,105 @@ class ChartController extends Controller
         ]);
     }
     public function indexRVC(){
+
+        /* ==================================== LOGIC REVENUE VS COST REGIONAL =========================================================== */
+
+        $AllIds_RVC = RVC::orderBy('date')->get()->toArray(); 
+        $value_RVC_rev = array();
+        $value_RVC_cost = array();
+        $monthList_RVC = array();
+
+        $this->ChartFunction($AllIds_RVC,$monthList_RVC,'rvc',$value_RVC_rev,$value_RVC_cost);
+
+        /* ==================================== LOGIC REVENUE VS COST SEMARANG =========================================================== */
+
+        $AllIds_RVC_semarang = RVC::where('NOP','semarang')->orderBy('date')->get()->toArray(); 
+        $value_RVC_rev_semarang = array();
+        $value_RVC_cost_semarang = array();
+        $monthList_RVC_semarang = array();
+
+        $this->ChartFunction($AllIds_RVC_semarang,$monthList_RVC_semarang,'rvc',$value_RVC_rev_semarang,$value_RVC_cost_semarang);
+
+        /* ==================================== LOGIC REVENUE VS COST surakarta =========================================================== */
+
+        $AllIds_RVC_surakarta = RVC::where('NOP','surakarta')->orderBy('date')->get()->toArray(); 
+        $value_RVC_rev_surakarta = array();
+        $value_RVC_cost_surakarta = array();
+        $monthList_RVC_surakarta = array();
+
+        $this->ChartFunction($AllIds_RVC_surakarta,$monthList_RVC_surakarta,'rvc',$value_RVC_rev_surakarta,$value_RVC_cost_surakarta);
+
+        /* ==================================== LOGIC REVENUE VS COST yogyakarta =========================================================== */
+
+        $AllIds_RVC_yogyakarta = RVC::where('NOP','yogyakarta')->orderBy('date')->get()->toArray(); 
+        $value_RVC_rev_yogyakarta = array();
+        $value_RVC_cost_yogyakarta = array();
+        $monthList_RVC_yogyakarta = array();
+
+        $this->ChartFunction($AllIds_RVC_yogyakarta,$monthList_RVC_yogyakarta,'rvc',$value_RVC_rev_yogyakarta,$value_RVC_cost_yogyakarta);
+
+        /* ==================================== LOGIC REVENUE VS COST purwokerto =========================================================== */
+
+        $AllIds_RVC_purwokerto = RVC::where('NOP','purwokerto')->orderBy('date')->get()->toArray(); 
+        $value_RVC_rev_purwokerto = array();
+        $value_RVC_cost_purwokerto = array();
+        $monthList_RVC_purwokerto = array();
+
+        $this->ChartFunction($AllIds_RVC_purwokerto,$monthList_RVC_purwokerto,'rvc',$value_RVC_rev_purwokerto,$value_RVC_cost_purwokerto);
+
+        /* ==================================== LOGIC REVENUE VS COST pekalongan =========================================================== */
+
+        $AllIds_RVC_pekalongan = RVC::where('NOP','pekalongan')->orderBy('date')->get()->toArray(); 
+        $value_RVC_rev_pekalongan = array();
+        $value_RVC_cost_pekalongan = array();
+        $monthList_RVC_pekalongan = array();
+
+        $this->ChartFunction($AllIds_RVC_pekalongan,$monthList_RVC_pekalongan,'rvc',$value_RVC_rev_pekalongan,$value_RVC_cost_pekalongan);
+        
+        /* ==================================== LOGIC REVENUE VS COST salatiga =========================================================== */
+
+        $AllIds_RVC_salatiga = RVC::where('NOP','salatiga')->orderBy('date')->get()->toArray(); 
+        $value_RVC_rev_salatiga = array();
+        $value_RVC_cost_salatiga = array();
+        $monthList_RVC_salatiga = array();
+
+        $this->ChartFunction($AllIds_RVC_salatiga,$monthList_RVC_salatiga,'rvc',$value_RVC_rev_salatiga,$value_RVC_cost_salatiga);
+
+        
+
+
         return view('portal.Chart_NOP_RVC', [
             "root" => "rvc",
             "title" => "Chart Revenue VS Cost NOP",
-            "site_all" => siteprofile::all()
+            "site_all" => siteprofile::all(),
+
+            "monthList_RVC" => $monthList_RVC,
+            "value_RVC_rev" => $value_RVC_rev,
+            "value_RVC_cost" => $value_RVC_cost,
+
+            "monthList_RVC_semarang" => $monthList_RVC_semarang,
+            "value_RVC_rev_semarang" => $value_RVC_rev_semarang,
+            "value_RVC_cost_semarang" => $value_RVC_cost_semarang,
+
+            "monthList_RVC_surakarta" => $monthList_RVC_surakarta,
+            "value_RVC_rev_surakarta" => $value_RVC_rev_surakarta,
+            "value_RVC_cost_surakarta" => $value_RVC_cost_surakarta,
+
+            "monthList_RVC_yogyakarta" => $monthList_RVC_yogyakarta,
+            "value_RVC_rev_yogyakarta" => $value_RVC_rev_yogyakarta,
+            "value_RVC_cost_yogyakarta" => $value_RVC_cost_yogyakarta,
+
+            "monthList_RVC_purwokerto" => $monthList_RVC_purwokerto,
+            "value_RVC_rev_purwokerto" => $value_RVC_rev_purwokerto,
+            "value_RVC_cost_purwokerto" => $value_RVC_cost_purwokerto,
+
+            "monthList_RVC_pekalongan" => $monthList_RVC_pekalongan,
+            "value_RVC_rev_pekalongan" => $value_RVC_rev_pekalongan,
+            "value_RVC_cost_pekalongan" => $value_RVC_cost_pekalongan,
+
+            "monthList_RVC_salatiga" => $monthList_RVC_salatiga,
+            "value_RVC_rev_salatiga" => $value_RVC_rev_salatiga,
+            "value_RVC_cost_salatiga" => $value_RVC_cost_salatiga,
         ]);
     }
     public function indexRV(){
