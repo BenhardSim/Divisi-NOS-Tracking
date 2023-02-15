@@ -46,7 +46,7 @@ class TrackedDocumentController extends Controller
                 "id_level_tiga" => "required",
                 "id_level_empat" => "required",
                 "deskripsi" => "required",
-                "file" => "required",
+                "file" => "required"
              ]);
         }
         if (Gate::allows('supervisor')) {
@@ -61,7 +61,7 @@ class TrackedDocumentController extends Controller
             $validatedData = $request->validate([
                 "id_level_empat" => "required",
                 "deskripsi" => "required",
-                "file" => "required",
+                "file" => "required"
              ]);
         }
         if (Gate::allows('gm')) {
@@ -91,21 +91,25 @@ class TrackedDocumentController extends Controller
         if (Gate::allows('manager')) {
             $validatedData['id_level_tiga'] = auth()->user()->id;
         }
-        $validatedHistory = [
-            "user_id" => auth()->user()->id,
-            "document_name" => $validatedData['file'],
-            "action" => "Created",
-            "waktu" => Carbon::now(),
-
-        ];
         if (Gate::allows('gm')) {
             $validatedData['id_level_empat'] = auth()->user()->id;
             $validatedData['status'] = "Approved";
+            
+        }
+        $saved = tracked_document::create($validatedData);
+
+        // creating history row
+        $validatedHistory = [
+            "user_id" => auth()->user()->id,
+            "document_name" => $validatedData['file'],
+            "document_id" => $saved->id,
+            "action" => "Created",
+            "waktu" => Carbon::now('Asia/Jakarta'),
+
+        ];
+        if (Gate::allows('gm')){
             $validatedHistory['action'] = "Created and Approved";
         }
-        
-         
-         tracked_document::create($validatedData);
          DocumentHistory::create($validatedHistory);
          return back()->with('success', 'Data tracked document berhasil ditambahkan');
     }
@@ -158,16 +162,18 @@ class TrackedDocumentController extends Controller
                 "status" => "Rejected",
                 "keterangan" => $request['keterangan'],
             ];
+            tracked_document::where('id',$tracked_document->id)->update($validatedData);
 
+            // creating history row
             $validatedHistory = [
                 "user_id" => auth()->user()->id,
                 "document_name" => $tracked_document->file,
+                "document_id" => $tracked_document->id,
                 "action" => "Rejected",
-                "waktu" => Carbon::now(),
+                "waktu" => Carbon::now('Asia/Jakarta'),
     
             ];
             DocumentHistory::create($validatedHistory);
-            tracked_document::where('id',$tracked_document->id)->update($validatedData);
             return back()->with('success', 'Dokumen berhasil ditolak');
         }
 
@@ -182,15 +188,17 @@ class TrackedDocumentController extends Controller
                 "level_approval" => $tracked_document->level_approval + 1,
             ];
         }
+        tracked_document::where('id',$tracked_document->id)->update($validatedData);
+
+        // creating history row
         $validatedHistory = [
             "user_id" => auth()->user()->id,
             "document_name" => $tracked_document->file,
+            "document_id" => $tracked_document->id,
             "action" => "Approved",
-            "waktu" => Carbon::now(),
+            "waktu" => Carbon::now('Asia/Jakarta'),
 
         ];
-        
-        tracked_document::where('id',$tracked_document->id)->update($validatedData);
         DocumentHistory::create($validatedHistory);
         return back()->with('success', 'Dokumen berhasil disetujui');
 

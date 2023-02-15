@@ -73,6 +73,7 @@ Route::get('/site-all', [SitesController::class, 'indexAll'])->middleware('auth'
 Route::get('/site-tp', [SitesController::class, 'indexTp'])->middleware('auth');
 Route::get('/site-telkom', [SitesController::class, 'indexTelkom'])->middleware('auth');
 Route::get('/site-telkomsel', [SitesController::class, 'indexTelkomsel'])->middleware('auth');
+Route::get('/site-reseller', [SitesController::class, 'indexReseller'])->middleware('auth');
 
 
 // NOP charts 

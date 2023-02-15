@@ -13,7 +13,7 @@
 
     {{-- site box --}}
     <div class="row">
-        <div class="col-lg col-sm">
+        <div class="col-lg">
             <a href="/site-all" style="text-decoration: none;">
                 <div class="sites">
                     <div class="site-title">
@@ -25,7 +25,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-lg col-sm">
+        <div class="col-lg">
             <a href="/site-tp" style="text-decoration: none;">
                 <div class="sites">
                     <div class="site-title">
@@ -37,7 +37,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-lg col-sm">
+        <div class="col-lg">
             <a href="/site-telkom" style="text-decoration: none;">
                 <div class="sites">
                     <div class="site-title">
@@ -49,7 +49,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-lg col-sm">
+        <div class="col-lg">
             <a href="/site-telkomsel" style="text-decoration: none;">
             <div class="sites">
                 <div class="site-title">
@@ -61,8 +61,8 @@
             </div>
             </a>
         </div>
-        <div class="col-lg col-sm">
-            <a href="/dashboard" style="text-decoration: none;">
+        <div class="col-lg">
+            <a href="/site-reseller" style="text-decoration: none;">
             <div class="sites">
                 <div class="site-title">
                     <h4>SITE RESELLER</h4>
@@ -75,13 +75,11 @@
         </div>
     </div>
 
-    <br>
     
     {{-- search bar --}}
-
-    <div class="form-group container">
+    <div class="form-group container mt-4">
         <form action="{{ url('/search') }}" method="GET" role="search" >
-            <input value="" name="search" class="form-control" id="exampleFormControlInput1" placeholder="Search By Site ID">
+            <input value="" name="search" class="form-control" id="search" placeholder="Search By Site ID">
         </form>
     </div>
 
