@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\BBM;
 use App\Models\RVC;
+use App\Models\OPEX;
 use Carbon\CarbonPeriod;
 use App\Models\KPI_aktif;
 use App\Models\KPI_utama;
@@ -12,9 +13,11 @@ use App\Models\KPI_Support;
 use App\Models\profit_loss;
 use App\Models\siteprofile;
 use App\Models\ReservedCost;
+use App\Models\tren_irr;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
+use Maatwebsite\Excel\Concerns\ToArray;
 
 class DashboardController extends Controller
 {
@@ -106,8 +109,8 @@ class DashboardController extends Controller
                             $val_x_1[$key] += $data_target['revenue'];
                             $val_x_2[$key] += $data_target['cost'];
                         }
-                    }
-                    else if($chart_type === 'bbm'){
+                    }else if($chart_type === 'bbm'){
+
                         if($month_target === $month){
                             $val_x_1[$key] += $data_target['harga_total'];
                             $val_x_2[$key] += $data_target['RH'];
@@ -221,8 +224,46 @@ class DashboardController extends Controller
 
         $this->ChartFunction($AllIds_BBM,$monthList_BBM,'bbm',$value_BBM_total,$value_BBM_RH,$value_BBM_BBM);
 
+         /* ==================================== LOGIC OPEX REGIONAL =========================================================== */
 
-        // dd($monthList_BBM);
+        $AllIds_OPEX = OPEX::get()->toArray();
+        $absorbtion = 0;
+        $accure = 0;
+        $available = 0;
+        foreach($AllIds_OPEX as $data){
+            $absorbtion += $data['absorption'];
+            $accure += $data['accure'];
+            $available += $data['available'];
+        }
+        
+        $total = $absorbtion + $accure + $absorbtion;
+
+         /* ==================================== LOGIC TREN IRR REGIONAL =========================================================== */
+
+        $AllIds_IRR = tren_irr::orderBy('periode')->get()->ToArray();
+
+        $size = $AllIds_IRR[sizeof($AllIds_IRR)-1]['periode'] - $AllIds_IRR[0]['periode'] + 1;
+        $b2s = array_fill(0, $size, 0);
+        $collo_tp = array_fill(0, $size, 0);
+        $target_irr_collo = array_fill(0, $size, 0);
+        $target_irr_b2s = array_fill(0, $size, 0);
+        $komitmen_collo = array_fill(0, $size, 0);
+        $komitmen_b2s = array_fill(0, $size, 0);
+        $monthList_IRR = array_fill(0, $size, 0);
+
+        foreach($AllIds_IRR as $key => $data){
+            $b2s[$key] = $data['b2s'];
+            $collo_tp[$key] = $data['collo_tp'];
+            $target_irr_collo[$key] = $data['target_irr_collo'];
+            $target_irr_b2s[$key] = $data['target_irr_b2s'];
+            $komitmen_collo[$key] = $data['komitmen_collo'];
+            $komitmen_b2s[$key] = $data['komitmen_b2s'];
+            $monthList_IRR[$key] = 'M'.($key+1);
+        }
+        
+
+
+        // dd($monthList_IRR);
         return view('portal.dashboard', [
             "site_all" => siteprofile::count(),
             "site_tp" => siteprofile::where('TOWERSTATUS', "Sewa TP")->count(),
@@ -262,6 +303,18 @@ class DashboardController extends Controller
             "value_BBM_total" => $value_BBM_total,
             "value_BBM_RH" => $value_BBM_RH,
             "value_BBM_BBM" => $value_BBM_BBM,
+
+            "absorbtion" => $absorbtion,
+            "accure" => $accure,
+            "available" => $available,
+
+            "b2s" => $b2s,
+            "collo_tp" => $collo_tp,
+            "target_irr_collo" => $target_irr_collo,
+            "target_irr_b2s" => $target_irr_b2s,
+            "komitmen_collo" => $komitmen_collo,
+            "komitmen_b2s" => $komitmen_b2s,
+            "monthList_IRR" => $monthList_IRR,
 
 
         ]);

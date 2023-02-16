@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class lain_document extends Model
+class opex extends Model
 {
-    public $timestamps = false;
     protected $guarded = [];
     use HasFactory;
 }
