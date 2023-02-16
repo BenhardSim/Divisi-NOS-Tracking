@@ -349,8 +349,17 @@
         {{-- opex donut chart --}}
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
-                <div class="rvc-title">
-                    <a href="/opex" class="links text-white"><h5>OPEX</h5></a>
+                <div class="rvc-title title-box">
+                   <div class="title-cont">
+                        <a href="/opex" class="links text-white"><h5>OPEX</h5></a>
+                    </div>
+                    <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
+                        {{-- view All Data Button --}}
+                        <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailOPEX">
+                            <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
+                            <span>Magnify</span>
+                        </button>
+                    </div>
                 </div>
                 <div class="rvc-graph d-flex justify-content-center">
                     <div style="width: 50%">
@@ -360,14 +369,112 @@
             </div>
         </div>
 
+        {{-- MODAL MAGNIFY OPEX --}}
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDetailOPEX" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FILTER DATA OPEX</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body container row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <div class="container rvc-stat shadow">
+                            <div class="rvc-graph">
+                                <canvas id="opex_main_toast"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow" style="padding: 10px" >
+                            <form method="GET">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="filter awal">Starting Date</label>
+                                        <input id="in_awal_OPEX" name='interval_awal' type="date" class="form-control" placeholder="filter awal">
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="filter akhir">End Date</label>
+                                        <input id="in_akhir_OPEX" name="interval_akhir" type="date" class="form-control" placeholder="filter akhir">
+                                    </div>
+                                    <div class="col-2">
+                                        <br>
+                                        <button type="submit" id="search-filter-OPEX" class="btn btn-primary" >Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        {{-- TREN IRR --}}
+
         <div class="col-lg-6">
             <div class="container rvc-stat shadow">
-                <div class="rvc-title">
-                    <a href="/tirr" class="links text-white"><h5>Tren IRR VS Revenue VS Komitmen</h5></a>
+                <div class="rvc-title title-box">
+                    <div class="title-cont">
+                        <a href="/tirr" class="links text-white"><h5>Tren IRR VS Revenue VS Komitmen</h5></a>
+                    </div>
+                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailIRR">
+                        <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
+                        <span>Magnify</span>
+                    </button>
                 </div>
                 <div class="rvc-graph">
                     <canvas id="tirr_main"></canvas>
                 </div>
+            </div>
+        </div>
+
+        {{-- MODAL MAGNIFY IRR --}}
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDetailIRR" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FILTER DATA IRR</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body container row">
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow">
+                            <div class="rvc-graph">
+                                <canvas id="tirr_main_toast"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow" style="padding: 10px" >
+                            <form method="GET">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="filter awal">Starting Date</label>
+                                        <input id="in_awal_OPEX" name='interval_awal' type="date" class="form-control" placeholder="filter awal">
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="filter akhir">End Date</label>
+                                        <input id="in_akhir_OPEX" name="interval_akhir" type="date" class="form-control" placeholder="filter akhir">
+                                    </div>
+                                    <div class="col-2">
+                                        <br>
+                                        <button type="submit" id="search-filter-OPEX" class="btn btn-primary" >Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
 
@@ -580,6 +687,9 @@
 
 @endsection
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.0/chartjs-plugin-zoom.min.js"
+    integrity="sha512-B6F98QATBNaDHSE7uANGo5h0mU6fhKCUD+SPAY7KZDxE8QgZw9rewDtNiu3mbbutYDWOKT3SPYD8qDBpG2QnEg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="module">
 
     // grafik revenue vs cost
@@ -915,7 +1025,7 @@
         datasets: [
         {
         label: ['Data OPEX'],
-        data: [90, 50, 18],
+        data: [@json($absorbtion), @json($accure), @json($available)],
         backgroundColor: [
         'rgb(255, 99, 132)',
         'rgb(54, 162, 235)',
@@ -939,29 +1049,62 @@
 
     new Chart(opex_main, opex_mainconfig);
 
+    // OPEX
+
+    const opex_mainToast = document.getElementById('opex_main_toast').getContext('2d');
+    //const labels = Utils.months({count: 7});
+    const opex_mainToastdata = {
+        labels: ['Absorption', 'Accrue', 'Available'],
+        datasets: [
+        {
+        label: ['Data OPEX'],
+        data: [@json($absorbtion), @json($accure), @json($available)],
+        backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)'
+        ],
+        hoverOffset: 4
+        },
+    ]
+    };
+    const opex_mainToastconfig = {
+        type: 'doughnut',
+        data: opex_mainToastdata,
+        // options: {
+        //     scales: {
+        //         y: {
+        //         beginAtZero: true
+        //         }
+        //     }
+        // }
+    };
+
+    let OPEX_toast = new Chart(opex_mainToast, opex_mainToastconfig);
+
     // tren IRR
     const tirr_main = document.getElementById('tirr_main').getContext('2d');
      //const labels = Utils.months({count: 7});
      const tirr_maindata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+         labels: @json($monthList_IRR),
          datasets: [
          {
          label: ['B2S'],
-         data: [28, 55.3, 61.7, 66.6, 74.2, 84.6, 89.4, 90, 89.9, 91.2, 93.1, 91.2],
+         data: @json($b2s),
          fill: false,
          borderColor: 'rgb(250, 120, 100)',
          tension: 0.1
          },
          {
          label: ['Collo TP'],
-         data: [13.1, 35.2, 39.3, 43, 46.1, 47.5, 50.4, 57.3, 60.4, 60.7, 64.5, 67.7],
+         data: @json($collo_tp),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
          tension: 0.1
          },
          {
          label: ['Target IRR Collo'],
-         data: [51.6, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2],
+         data: @json($target_irr_collo),
          fill: false,
          borderColor: 'rgb(0, 0, 100)',
          pointStyle: 'crossRot',
@@ -970,7 +1113,7 @@
          },
          {
          label: ['Target IRR B2S'],
-         data: [61.3, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4],
+         data:@json($target_irr_b2s),
          fill: false,
          borderColor: 'rgb(255, 125, 0)',
          pointStyle: 'crossRot',
@@ -979,14 +1122,14 @@
          },
          {
          label: ['Komitmen Collo'],
-         data: [79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1],
+         data: @json($komitmen_collo),
          fill: false,
          borderColor: 'rgb(28, 115, 102)',
          tension: 0.1
          },
          {
          label: ['Komitmen B2S'],
-         data: [79.3, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2],
+         data: @json($komitmen_b2s),
          fill: false,
          borderColor: 'rgb(200, 100, 100)',
          tension: 0.1
@@ -1001,11 +1144,79 @@
                  y: {
                  beginAtZero: true
                  }
-             }
-         }
+             },
+         },
      };
 
      new Chart(tirr_main, tirr_mainconfig);
+
+     // tren IRR toast
+    const tirr_mainToast = document.getElementById('tirr_main_toast').getContext('2d');
+     //const labels = Utils.months({count: 7});
+     const tirr_mainToastdata = {
+         labels: @json($monthList_IRR),
+         datasets: [
+         {
+         label: ['B2S'],
+         data: @json($b2s),
+         fill: false,
+         borderColor: 'rgb(250, 120, 100)',
+         tension: 0.1
+         },
+         {
+         label: ['Collo TP'],
+         data: @json($collo_tp),
+         fill: false,
+         borderColor: 'rgb(100, 255, 100)',
+         tension: 0.1
+         },
+         {
+         label: ['Target IRR Collo'],
+         data: @json($target_irr_collo),
+         fill: false,
+         borderColor: 'rgb(0, 0, 100)',
+         pointStyle: 'crossRot',
+         radius: 7,
+         tension: 0.1
+         },
+         {
+         label: ['Target IRR B2S'],
+         data:@json($target_irr_b2s),
+         fill: false,
+         borderColor: 'rgb(255, 125, 0)',
+         pointStyle: 'crossRot',
+         radius: 7,
+         tension: 0.1
+         },
+         {
+         label: ['Komitmen Collo'],
+         data: @json($komitmen_collo),
+         fill: false,
+         borderColor: 'rgb(28, 115, 102)',
+         tension: 0.1
+         },
+         {
+         label: ['Komitmen B2S'],
+         data: @json($komitmen_b2s),
+         fill: false,
+         borderColor: 'rgb(200, 100, 100)',
+         tension: 0.1
+         },
+     ]
+     };
+     const tirr_mainToastconfig = {
+         type: 'line',
+         data: tirr_mainToastdata,
+         options: {
+             scales: {
+                 y: {
+                 beginAtZero: true
+                 }
+             },
+         },
+     };
+
+     new Chart(tirr_mainToast, tirr_mainToastconfig);
 
      // infra irr
      const iirr_main = document.getElementById('iirr_main').getContext('2d');

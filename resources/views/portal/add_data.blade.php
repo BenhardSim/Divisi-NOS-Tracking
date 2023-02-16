@@ -52,7 +52,7 @@
                             <option value="BBM">Cost BBM</option>
                             <option value="OPEX">OPEX</option>
                             <option value="RVC">Revenue VS Cost</option>
-                            <option value="5">Three</option>
+                            <option value="Tren_IRR">Tren IRR</option>
                         </select>
                     </div>
                     <a id="download-template" class="btn btn-dark">Download Template</a>

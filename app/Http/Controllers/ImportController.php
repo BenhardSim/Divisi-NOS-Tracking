@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Imports\BBMImport;
+use App\Imports\IRRImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\KPIImport;
 use App\Imports\KPIActivityImport;
 use App\Imports\KPISupportImport;
+use App\Imports\OPEXImport;
 use App\Imports\ReservedCostImport;
 use App\Imports\ProfitLossImport;
 use App\Imports\RVCImport;
@@ -41,6 +43,12 @@ class ImportController extends Controller
         }else if($validatedData["tipe-template"] === 'BBM'){
             Excel::import(new BBMImport,request()->file('file'));
             return back()->with('toast_success', 'Data BBM berhasil ditambahkan');
+        }else if($validatedData["tipe-template"] === 'OPEX'){
+            Excel::import(new OPEXImport,request()->file('file'));
+            return back()->with('toast_success', 'Data OPEX berhasil ditambahkan');
+        }else if($validatedData["tipe-template"] === 'Tren_IRR'){
+            Excel::import(new IRRImport,request()->file('file'));
+            return back()->with('toast_success', 'Data Tren IRR berhasil ditambahkan');
         };
         return back()->with('toast_error', 'pilih jenis Dokumen yang akan di masukkan !');
     }
