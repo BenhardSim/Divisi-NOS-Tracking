@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MailNotify;
 use App\Models\DocumentHistory;
 use App\Models\tracked_document;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
 
 class TrackedDocumentController extends Controller
 {
@@ -110,8 +112,37 @@ class TrackedDocumentController extends Controller
         if (Gate::allows('gm')){
             $validatedHistory['action'] = "Created and Approved";
         }
-         DocumentHistory::create($validatedHistory);
-         return back()->with('success', 'Data tracked document berhasil ditambahkan');
+        DocumentHistory::create($validatedHistory);
+        // mailing
+        if(Gate::allows('gm')){
+            return back()->with('success', 'Data tracked document berhasil ditambahkan');
+        }
+        $data = [];
+        
+        if(Gate::allows('staff')){
+            $sender = User::find($validatedData['id_pengirim']);
+            $receiver = User::find($validatedData['id_level_dua']);
+        }
+        if(Gate::allows('supervisor')){
+            $sender = User::find($validatedData['id_pengirim']);
+            $receiver = User::find($validatedData['id_level_tiga']);
+        }
+        if(Gate::allows('manager')){
+            $sender = User::find($validatedData['id_pengirim']);
+            $receiver = User::find($validatedData['id_level_empat']);
+        }
+        
+        
+        $data["sender_name"] = $sender->name;
+        $data["receiver_name"] = $receiver->name;
+        $data["document_name"] = $validatedData['file'];
+
+        $data["body"] = "There's a document named: ".$data["document_name"]." waiting for your approval. You can view the portal to find more details";
+
+
+        // Send the mail...
+        Mail::to($receiver->email)->send(new MailNotify($data));
+        return back()->with('success', 'Data tracked document berhasil ditambahkan');
     }
 
     /**
@@ -174,6 +205,18 @@ class TrackedDocumentController extends Controller
     
             ];
             DocumentHistory::create($validatedHistory);
+
+            // mailing
+            $data = [];
+            $receiver = User::find($tracked_document->id_pengirim);
+            
+            $data["sender_name"] = auth()->user()->name;
+            $data["receiver_name"] = $receiver->name;
+            $data["document_name"] = $tracked_document->file;
+            $data["body"] = "Sorry, your document: ".$data["document_name"]." got rejected. You can view the portal to find more details";
+ 
+            // Send the mail...
+            Mail::to($receiver->email)->send(new MailNotify($data));
             return back()->with('success', 'Dokumen berhasil ditolak');
         }
 
@@ -200,6 +243,36 @@ class TrackedDocumentController extends Controller
 
         ];
         DocumentHistory::create($validatedHistory);
+        // mailing
+        $data = [];
+        
+        if(Gate::allows('supervisor')){
+            $sender = User::find($tracked_document->id_pengirim);
+            $receiver = User::find($tracked_document->id_level_tiga);
+        }
+        if(Gate::allows('manager')){
+            $sender = User::find($tracked_document->id_pengirim);
+            $receiver = User::find($tracked_document->id_level_empat);
+        }
+        if(Gate::allows('gm')){
+            $sender = auth()->user();
+            $receiver = User::find($tracked_document->id_pengirim);
+        }
+        
+        
+        $data["sender_name"] = $sender->name;
+        $data["receiver_name"] = $receiver->name;
+        $data["document_name"] = $tracked_document->file;
+
+        if(Gate::allows('gm')){
+            $data["body"] = "Good news! Your document: ".$data["document_name"]." got approved. You can view the portal to find more details";
+        }
+        else{
+            $data["body"] = "There's a document named: ".$data["document_name"]." waiting for your approval. You can view the portal to find more details";
+        }
+
+        // Send the mail...
+        Mail::to($receiver->email)->send(new MailNotify($data));
         return back()->with('success', 'Dokumen berhasil disetujui');
 
         
