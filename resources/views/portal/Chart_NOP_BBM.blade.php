@@ -1099,6 +1099,7 @@
                         start_date: start_date,
                         end_date: end_date,
                         type:type,
+                        NOP:NOP,
                     },
                     headers: {
                         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
