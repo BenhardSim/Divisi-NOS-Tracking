@@ -10,11 +10,6 @@
     </div>
     @include('portal.component.userProfile')
 </div>
-@if (session()->has('success'))
-<div class="alert alert-success container col-lg-12" role="alert">
-  {{ session('success') }}
-</div>
-@endif
 {{-- upload file  --}}
 <div>
   <div class="row">
