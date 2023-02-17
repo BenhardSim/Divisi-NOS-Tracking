@@ -118,7 +118,7 @@
           </form>
           {{-- <small class="d-block text-center mt-1">Not registered? <a href="/register">Register Now</a></small> --}}
         </main>
-        <p class="mt-5 text-muted text-center">&copy; 2023 Copyright: PT. Telkomunikasi Seluler Indonesia</p>
+        <p class="mt-5 text-muted text-center">&copy; 2023 Copyright: PT. Telkomunikasi Selular Indonesia</p>
       </div>
   </div>
 </section>
