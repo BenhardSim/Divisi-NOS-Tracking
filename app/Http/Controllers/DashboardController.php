@@ -241,24 +241,28 @@ class DashboardController extends Controller
          /* ==================================== LOGIC TREN IRR REGIONAL =========================================================== */
 
         $AllIds_IRR = tren_irr::orderBy('periode')->get()->ToArray();
+        $size = 0;
+        if(sizeof($AllIds_IRR) !== 0){
+            $size = $AllIds_IRR[sizeof($AllIds_IRR)-1]['periode'] - $AllIds_IRR[0]['periode'] + 1;
+        }
+            $b2s = array_fill(0, $size, 0);
+            $collo_tp = array_fill(0, $size, 0);
+            $target_irr_collo = array_fill(0, $size, 0);
+            $target_irr_b2s = array_fill(0, $size, 0);
+            $komitmen_collo = array_fill(0, $size, 0);
+            $komitmen_b2s = array_fill(0, $size, 0);
+            $monthList_IRR = array_fill(0, $size, 0);
 
-        $size = $AllIds_IRR[sizeof($AllIds_IRR)-1]['periode'] - $AllIds_IRR[0]['periode'] + 1;
-        $b2s = array_fill(0, $size, 0);
-        $collo_tp = array_fill(0, $size, 0);
-        $target_irr_collo = array_fill(0, $size, 0);
-        $target_irr_b2s = array_fill(0, $size, 0);
-        $komitmen_collo = array_fill(0, $size, 0);
-        $komitmen_b2s = array_fill(0, $size, 0);
-        $monthList_IRR = array_fill(0, $size, 0);
-
-        foreach($AllIds_IRR as $key => $data){
-            $b2s[$key] = $data['b2s'];
-            $collo_tp[$key] = $data['collo_tp'];
-            $target_irr_collo[$key] = $data['target_irr_collo'];
-            $target_irr_b2s[$key] = $data['target_irr_b2s'];
-            $komitmen_collo[$key] = $data['komitmen_collo'];
-            $komitmen_b2s[$key] = $data['komitmen_b2s'];
-            $monthList_IRR[$key] = 'M'.($key+1);
+            foreach($AllIds_IRR as $key => $data){
+                $b2s[$key] = $data['b2s'];
+                $collo_tp[$key] = $data['collo_tp'];
+                $target_irr_collo[$key] = $data['target_irr_collo'];
+                $target_irr_b2s[$key] = $data['target_irr_b2s'];
+                $komitmen_collo[$key] = $data['komitmen_collo'];
+                $komitmen_b2s[$key] = $data['komitmen_b2s'];
+                $monthList_IRR[$key] = 'M'.($key+1);
+    
+        
         }
         
 
