@@ -17,7 +17,7 @@ class UploadController extends Controller
             "users_lvl_3" => User::where('level_akun',3)->get(),
             "users_lvl_4" => User::where('level_akun',4)->get(),
             "documents" => tracked_document::orderBy('tanggal', 'DESC')->get(),
-            "histories" => DocumentHistory::all()
+            "histories" => DocumentHistory::orderBy('waktu', 'DESC')->get()
         ]);
     }
 }
