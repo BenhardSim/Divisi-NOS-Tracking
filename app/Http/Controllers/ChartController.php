@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\BBM;
+use App\Models\tren_irr;
 use App\Models\RVC;
 use Carbon\CarbonPeriod;
 use App\Models\KPI_aktif;
@@ -382,6 +383,8 @@ class ChartController extends Controller
             "site_all" => siteprofile::all()
         ]);
     }
+
+
     public function indexRVC(){
 
         /* ==================================== LOGIC REVENUE VS COST REGIONAL =========================================================== */
@@ -711,10 +714,257 @@ class ChartController extends Controller
 
 
     public function indexTIRR(){
+
+         /* ==================================== LOGIC TREN IRR REGIONAL =========================================================== */
+         
+         $AllIds_IRR = tren_irr::orderBy('periode')->get()->ToArray();
+         $size = 0;
+         if(sizeof($AllIds_IRR) !== 0){
+             $size = $AllIds_IRR[sizeof($AllIds_IRR)-1]['periode'] - $AllIds_IRR[0]['periode'] + 1;
+         }
+             $b2s = array_fill(0, $size, 0);
+             $collo_tp = array_fill(0, $size, 0);
+             $target_irr_collo = array_fill(0, $size, 0);
+             $target_irr_b2s = array_fill(0, $size, 0);
+             $komitmen_collo = array_fill(0, $size, 0);
+             $komitmen_b2s = array_fill(0, $size, 0);
+             $monthList_IRR = array_fill(0, $size, 0);
+ 
+             foreach($AllIds_IRR as $key => $data){
+                 $b2s[$key] = $data['b2s'];
+                 $collo_tp[$key] = $data['collo_tp'];
+                 $target_irr_collo[$key] = $data['target_irr_collo'];
+                 $target_irr_b2s[$key] = $data['target_irr_b2s'];
+                 $komitmen_collo[$key] = $data['komitmen_collo'];
+                 $komitmen_b2s[$key] = $data['komitmen_b2s'];
+                 $monthList_IRR[$key] = 'M'.($key+1);
+     
+         
+        }
+
+        /* ==================================== LOGIC TREN IRR NOP semarang =========================================================== */
+
+         $AllIds_IRR_semarang = tren_irr::where('NOP','semarang')->orderBy('periode')->get()->ToArray();
+         $size_semarang = 0;
+         if(sizeof($AllIds_IRR_semarang) !== 0){
+             $size_semarang = $AllIds_IRR_semarang[sizeof($AllIds_IRR_semarang)-1]['periode'] - $AllIds_IRR_semarang[0]['periode'] + 1;
+         }
+             $b2s_semarang = array_fill(0, $size_semarang, 0);
+             $collo_tp_semarang = array_fill(0, $size_semarang, 0);
+             $target_irr_collo_semarang = array_fill(0, $size_semarang, 0);
+             $target_irr_b2s_semarang = array_fill(0, $size_semarang, 0);
+             $komitmen_collo_semarang = array_fill(0, $size_semarang, 0);
+             $komitmen_b2s_semarang = array_fill(0, $size_semarang, 0);
+             $monthList_IRR_semarang = array_fill(0, $size_semarang, 0);
+ 
+             foreach($AllIds_IRR_semarang as $key => $data){
+                 $b2s_semarang[$key] = $data['b2s'];
+                 $collo_tp_semarang[$key] = $data['collo_tp'];
+                 $target_irr_collo_semarang[$key] = $data['target_irr_collo'];
+                 $target_irr_b2s_semarang[$key] = $data['target_irr_b2s'];
+                 $komitmen_collo_semarang[$key] = $data['komitmen_collo'];
+                 $komitmen_b2s_semarang[$key] = $data['komitmen_b2s'];
+                 $monthList_IRR_semarang[$key] = 'M'.($key+1);
+     
+         
+         }
+
+         /* ==================================== LOGIC TREN IRR NOP surakarta =========================================================== */
+
+         $AllIds_IRR_surakarta = tren_irr::where('NOP','surakarta')->orderBy('periode')->get()->ToArray();
+         $size_surakarta = 0;
+         if(sizeof($AllIds_IRR_surakarta) !== 0){
+             $size_surakarta = $AllIds_IRR_surakarta[sizeof($AllIds_IRR_surakarta)-1]['periode'] - $AllIds_IRR_surakarta[0]['periode'] + 1;
+         }
+             $b2s_surakarta = array_fill(0, $size_surakarta, 0);
+             $collo_tp_surakarta = array_fill(0, $size_surakarta, 0);
+             $target_irr_collo_surakarta = array_fill(0, $size_surakarta, 0);
+             $target_irr_b2s_surakarta = array_fill(0, $size_surakarta, 0);
+             $komitmen_collo_surakarta = array_fill(0, $size_surakarta, 0);
+             $komitmen_b2s_surakarta = array_fill(0, $size_surakarta, 0);
+             $monthList_IRR_surakarta = array_fill(0, $size_surakarta, 0);
+ 
+             foreach($AllIds_IRR_surakarta as $key => $data){
+                 $b2s_surakarta[$key] = $data['b2s'];
+                 $collo_tp_surakarta[$key] = $data['collo_tp'];
+                 $target_irr_collo_surakarta[$key] = $data['target_irr_collo'];
+                 $target_irr_b2s_surakarta[$key] = $data['target_irr_b2s'];
+                 $komitmen_collo_surakarta[$key] = $data['komitmen_collo'];
+                 $komitmen_b2s_surakarta[$key] = $data['komitmen_b2s'];
+                 $monthList_IRR_surakarta[$key] = 'M'.($key+1);
+     
+         
+         }
+
+         /* ==================================== LOGIC TREN IRR NOP yogyakarta =========================================================== */
+
+         $AllIds_IRR_yogyakarta = tren_irr::where('NOP','yogyakarta')->orderBy('periode')->get()->ToArray();
+         $size_yogyakarta = 0;
+         if(sizeof($AllIds_IRR_yogyakarta) !== 0){
+             $size_yogyakarta = $AllIds_IRR_yogyakarta[sizeof($AllIds_IRR_yogyakarta)-1]['periode'] - $AllIds_IRR_yogyakarta[0]['periode'] + 1;
+         }
+             $b2s_yogyakarta = array_fill(0, $size_yogyakarta, 0);
+             $collo_tp_yogyakarta = array_fill(0, $size_yogyakarta, 0);
+             $target_irr_collo_yogyakarta = array_fill(0, $size_yogyakarta, 0);
+             $target_irr_b2s_yogyakarta = array_fill(0, $size_yogyakarta, 0);
+             $komitmen_collo_yogyakarta = array_fill(0, $size_yogyakarta, 0);
+             $komitmen_b2s_yogyakarta = array_fill(0, $size_yogyakarta, 0);
+             $monthList_IRR_yogyakarta = array_fill(0, $size_yogyakarta, 0);
+ 
+             foreach($AllIds_IRR_yogyakarta as $key => $data){
+                 $b2s_yogyakarta[$key] = $data['b2s'];
+                 $collo_tp_yogyakarta[$key] = $data['collo_tp'];
+                 $target_irr_collo_yogyakarta[$key] = $data['target_irr_collo'];
+                 $target_irr_b2s_yogyakarta[$key] = $data['target_irr_b2s'];
+                 $komitmen_collo_yogyakarta[$key] = $data['komitmen_collo'];
+                 $komitmen_b2s_yogyakarta[$key] = $data['komitmen_b2s'];
+                 $monthList_IRR_yogyakarta[$key] = 'M'.($key+1);
+     
+         
+         }
+
+         /* ==================================== LOGIC TREN IRR NOP purwokerto =========================================================== */
+
+         $AllIds_IRR_purwokerto = tren_irr::where('NOP','purwokerto')->orderBy('periode')->get()->ToArray();
+         $size_purwokerto = 0;
+         if(sizeof($AllIds_IRR_purwokerto) !== 0){
+             $size_purwokerto = $AllIds_IRR_purwokerto[sizeof($AllIds_IRR_purwokerto)-1]['periode'] - $AllIds_IRR_purwokerto[0]['periode'] + 1;
+         }
+             $b2s_purwokerto = array_fill(0, $size_purwokerto, 0);
+             $collo_tp_purwokerto = array_fill(0, $size_purwokerto, 0);
+             $target_irr_collo_purwokerto = array_fill(0, $size_purwokerto, 0);
+             $target_irr_b2s_purwokerto = array_fill(0, $size_purwokerto, 0);
+             $komitmen_collo_purwokerto = array_fill(0, $size_purwokerto, 0);
+             $komitmen_b2s_purwokerto = array_fill(0, $size_purwokerto, 0);
+             $monthList_IRR_purwokerto = array_fill(0, $size_purwokerto, 0);
+ 
+             foreach($AllIds_IRR_purwokerto as $key => $data){
+                 $b2s_purwokerto[$key] = $data['b2s'];
+                 $collo_tp_purwokerto[$key] = $data['collo_tp'];
+                 $target_irr_collo_purwokerto[$key] = $data['target_irr_collo'];
+                 $target_irr_b2s_purwokerto[$key] = $data['target_irr_b2s'];
+                 $komitmen_collo_purwokerto[$key] = $data['komitmen_collo'];
+                 $komitmen_b2s_purwokerto[$key] = $data['komitmen_b2s'];
+                 $monthList_IRR_purwokerto[$key] = 'M'.($key+1);
+     
+         
+         }
+
+         /* ==================================== LOGIC TREN IRR NOP pekalongan =========================================================== */
+
+         $AllIds_IRR_pekalongan = tren_irr::where('NOP','pekalongan')->orderBy('periode')->get()->ToArray();
+         $size_pekalongan = 0;
+         if(sizeof($AllIds_IRR_pekalongan) !== 0){
+             $size_pekalongan = $AllIds_IRR_pekalongan[sizeof($AllIds_IRR_pekalongan)-1]['periode'] - $AllIds_IRR_pekalongan[0]['periode'] + 1;
+         }
+             $b2s_pekalongan = array_fill(0, $size_pekalongan, 0);
+             $collo_tp_pekalongan = array_fill(0, $size_pekalongan, 0);
+             $target_irr_collo_pekalongan = array_fill(0, $size_pekalongan, 0);
+             $target_irr_b2s_pekalongan = array_fill(0, $size_pekalongan, 0);
+             $komitmen_collo_pekalongan = array_fill(0, $size_pekalongan, 0);
+             $komitmen_b2s_pekalongan = array_fill(0, $size_pekalongan, 0);
+             $monthList_IRR_pekalongan = array_fill(0, $size_pekalongan, 0);
+ 
+             foreach($AllIds_IRR_pekalongan as $key => $data){
+                 $b2s_pekalongan[$key] = $data['b2s'];
+                 $collo_tp_pekalongan[$key] = $data['collo_tp'];
+                 $target_irr_collo_pekalongan[$key] = $data['target_irr_collo'];
+                 $target_irr_b2s_pekalongan[$key] = $data['target_irr_b2s'];
+                 $komitmen_collo_pekalongan[$key] = $data['komitmen_collo'];
+                 $komitmen_b2s_pekalongan[$key] = $data['komitmen_b2s'];
+                 $monthList_IRR_pekalongan[$key] = 'M'.($key+1);
+     
+         
+         }
+
+         /* ==================================== LOGIC TREN IRR NOP salatiga =========================================================== */
+
+         $AllIds_IRR_salatiga = tren_irr::where('NOP','salatiga')->orderBy('periode')->get()->ToArray();
+         $size_salatiga = 0;
+         if(sizeof($AllIds_IRR_salatiga) !== 0){
+             $size_salatiga = $AllIds_IRR_salatiga[sizeof($AllIds_IRR_salatiga)-1]['periode'] - $AllIds_IRR_salatiga[0]['periode'] + 1;
+         }
+             $b2s_salatiga = array_fill(0, $size_salatiga, 0);
+             $collo_tp_salatiga = array_fill(0, $size_salatiga, 0);
+             $target_irr_collo_salatiga = array_fill(0, $size_salatiga, 0);
+             $target_irr_b2s_salatiga = array_fill(0, $size_salatiga, 0);
+             $komitmen_collo_salatiga = array_fill(0, $size_salatiga, 0);
+             $komitmen_b2s_salatiga = array_fill(0, $size_salatiga, 0);
+             $monthList_IRR_salatiga = array_fill(0, $size_salatiga, 0);
+ 
+             foreach($AllIds_IRR_salatiga as $key => $data){
+                 $b2s_salatiga[$key] = $data['b2s'];
+                 $collo_tp_salatiga[$key] = $data['collo_tp'];
+                 $target_irr_collo_salatiga[$key] = $data['target_irr_collo'];
+                 $target_irr_b2s_salatiga[$key] = $data['target_irr_b2s'];
+                 $komitmen_collo_salatiga[$key] = $data['komitmen_collo'];
+                 $komitmen_b2s_salatiga[$key] = $data['komitmen_b2s'];
+                 $monthList_IRR_salatiga[$key] = 'M'.($key+1);
+         }
+
+
+
         return view('portal.Chart_NOP_TIRR', [
             "root" => "tirr",
             "title" => "Chart Tren IRR VS Revenue VS Komitmen NOP",
-            "site_all" => siteprofile::all()
+            "site_all" => siteprofile::all(),
+
+            "b2s" => $b2s,
+            "collo_tp" => $collo_tp,
+            "target_irr_collo" => $target_irr_collo,
+            "target_irr_b2s" => $target_irr_b2s,
+            "komitmen_collo" => $komitmen_collo,
+            "komitmen_b2s" => $komitmen_b2s,
+            "monthList_IRR" => $monthList_IRR,
+
+            "b2s_semarang" => $b2s_semarang,
+            "collo_tp_semarang" => $collo_tp_semarang,
+            "target_irr_collo_semarang" => $target_irr_collo_semarang,
+            "target_irr_b2s_semarang" => $target_irr_b2s_semarang,
+            "komitmen_collo_semarang" => $komitmen_collo_semarang,
+            "komitmen_b2s_semarang" => $komitmen_b2s_semarang,
+            "monthList_IRR_semarang" => $monthList_IRR_semarang,
+
+            "b2s_surakarta" => $b2s_surakarta,
+            "collo_tp_surakarta" => $collo_tp_surakarta,
+            "target_irr_collo_surakarta" => $target_irr_collo_surakarta,
+            "target_irr_b2s_surakarta" => $target_irr_b2s_surakarta,
+            "komitmen_collo_surakarta" => $komitmen_collo_surakarta,
+            "komitmen_b2s_surakarta" => $komitmen_b2s_surakarta,
+            "monthList_IRR_surakarta" => $monthList_IRR_surakarta,
+
+            "b2s_yogyakarta" => $b2s_yogyakarta,
+            "collo_tp_yogyakarta" => $collo_tp_yogyakarta,
+            "target_irr_collo_yogyakarta" => $target_irr_collo_yogyakarta,
+            "target_irr_b2s_yogyakarta" => $target_irr_b2s_yogyakarta,
+            "komitmen_collo_yogyakarta" => $komitmen_collo_yogyakarta,
+            "komitmen_b2s_yogyakarta" => $komitmen_b2s_yogyakarta,
+            "monthList_IRR_yogyakarta" => $monthList_IRR_yogyakarta,
+
+            "b2s_purwokerto" => $b2s_purwokerto,
+            "collo_tp_purwokerto" => $collo_tp_purwokerto,
+            "target_irr_collo_purwokerto" => $target_irr_collo_purwokerto,
+            "target_irr_b2s_purwokerto" => $target_irr_b2s_purwokerto,
+            "komitmen_collo_purwokerto" => $komitmen_collo_purwokerto,
+            "komitmen_b2s_purwokerto" => $komitmen_b2s_purwokerto,
+            "monthList_IRR_purwokerto" => $monthList_IRR_purwokerto,
+
+            "b2s_pekalongan" => $b2s_pekalongan,
+            "collo_tp_pekalongan" => $collo_tp_pekalongan,
+            "target_irr_collo_pekalongan" => $target_irr_collo_pekalongan,
+            "target_irr_b2s_pekalongan" => $target_irr_b2s_pekalongan,
+            "komitmen_collo_pekalongan" => $komitmen_collo_pekalongan,
+            "komitmen_b2s_pekalongan" => $komitmen_b2s_pekalongan,
+            "monthList_IRR_pekalongan" => $monthList_IRR_pekalongan,
+
+            "b2s_salatiga" => $b2s_salatiga,
+            "collo_tp_salatiga" => $collo_tp_salatiga,
+            "target_irr_collo_salatiga" => $target_irr_collo_salatiga,
+            "target_irr_b2s_salatiga" => $target_irr_b2s_salatiga,
+            "komitmen_collo_salatiga" => $komitmen_collo_salatiga,
+            "komitmen_b2s_salatiga" => $komitmen_b2s_salatiga,
+            "monthList_IRR_salatiga" => $monthList_IRR_salatiga,
+
         ]);
     }
     public function indexIIRR(){

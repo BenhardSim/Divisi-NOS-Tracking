@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Imports\BBMImport;
+use App\Imports\CComponentImport;
 use App\Imports\IRRImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\KPIImport;
@@ -49,6 +50,9 @@ class ImportController extends Controller
         }else if($validatedData["tipe-template"] === 'Tren_IRR'){
             Excel::import(new IRRImport,request()->file('file'));
             return back()->with('toast_success', 'Data Tren IRR berhasil ditambahkan');
+        }else if($validatedData["tipe-template"] === 'CCOMPONENT'){
+            Excel::import(new CComponentImport,request()->file('file'));
+            return back()->with('toast_success', 'Data Cost Component berhasil ditambahkan');
         };
         return back()->with('toast_error', 'pilih jenis Dokumen yang akan di masukkan !');
     }
