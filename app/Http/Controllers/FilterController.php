@@ -99,7 +99,7 @@ class FilterController extends Controller
                         }else if($month_target === $month && $data_target['remark'] === 'loss'){
                             $val_x_3[$key] += $data_target['revenue'];
                         }  
-                    }else if($chart_type === 'rvc'){
+                    }else if($chart_type === 'rvc' || $chart_type === 'rvc_semarang' || $chart_type === 'rvc_surakarta' || $chart_type === 'rvc_yogyakarta' || $chart_type === 'rvc_purwokerto' || $chart_type === 'rvc_pekalongan' || $chart_type === 'rvc_salatiga'){
                         if($month_target === $month){
                             $val_x_1[$key] += $data_target['revenue'];
                             $val_x_2[$key] += $data_target['cost'];
@@ -134,6 +134,18 @@ class FilterController extends Controller
             $all_val = ReservedCost::orderBy('date')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
         }else if($type === 'rvc'){
             $all_val = RVC::orderBy('date')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+        }else if($type === 'rvc_semarang'){
+            $all_val = RVC::orderBy('date')->where('NOP','semarang')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+        }else if($type === 'rvc_surakarta'){
+            $all_val = RVC::orderBy('date')->where('NOP','surakarta')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+        }else if($type === 'rvc_yogyakarta'){
+            $all_val = RVC::orderBy('date')->where('NOP','yogyakarta')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+        }else if($type === 'rvc_purwokerto'){
+            $all_val = RVC::orderBy('date')->where('NOP','purwokerto')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+        }else if($type === 'rvc_pekalongan'){
+            $all_val = RVC::orderBy('date')->where('NOP','pekalongan')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+        }else if($type === 'rvc_salatiga'){
+            $all_val = RVC::orderBy('date')->where('NOP','salatiga')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
         }else if($type === 'bbm'){
             $all_val = BBM::orderBy('date')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
         }
