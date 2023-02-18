@@ -430,6 +430,7 @@
         </div>
     </div>
 
+    
     <!-- Modal Edit Form Contract Site -->
     <div class="modal fade" id="editkontrak" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -1516,13 +1517,42 @@
         }
     </script>
 
-    <div class="col-lg-12">
+    <div class="col-lg-6">
         <div class="container rvc-stat shadow">
-            <div class="rvc-title">
-                <a href="/rvc" class="links text-white"><h5>Revenue VS Cost SITE {{ $id }}</h5></a>
+            <div class="rvc-title title-box">
+                <div class="title-cont">
+                    <a href="/rvc" class="links text-white"><h5>COST COMPONENT SITE {{ $id }}</h5></a>
+                </div>
+                <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
+                    {{-- view All Data Button --}}
+                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailRVC">
+                        <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
+                        <span>Magnify</span>
+                    </button>
+                </div>
             </div>
             <div class="rvc-graph">
                 <canvas id="revenue_main"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="container rvc-stat shadow">
+            <div class="rvc-title title-box">
+                <div class="title-cont">
+                    <a href="/rvc" class="links text-white"><h5>REVENUE VS COST SITE {{ $id }}</h5></a>
+                </div>
+                <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
+                    {{-- view All Data Button --}}
+                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailRVC">
+                        <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
+                        <span>Magnify</span>
+                    </button>
+                </div>
+            </div>
+            <div class="rvc-graph">
+                <canvas id="revenue_main_site"></canvas>
             </div>
         </div>
     </div>
@@ -1546,102 +1576,102 @@
     const revvcost_main = document.getElementById('revenue_main').getContext('2d');
     //const labels = Utils.months({count: 7});
     const revvcost_mainData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_CC),
         datasets: [
         {
         label: ['Depre BTS'],
-        data: [120000, 122000, 123000, 123000, 122000, 124000, 160000, 130000, 122000, 124000, 123000, 123000],
+        data: @json($val_x_1_CC),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
         },
         {
         label: ['Depre_TowerOwn'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data: @json($val_x_2_CC),
         fill: false,
         borderColor: 'rgb(100, 100, 0)',
         tension: 0.1
         },
         {
         label: ['Opex_Isr'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data: @json($val_x_3_CC),
         fill: false,
         borderColor: 'rgb(0, 100, 100)',
         tension: 0.1
         },
         {
         label: ['Cost_Nsr'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data: @json($val_x_4_CC),
         fill: false,
         borderColor: 'rgb(200, 100, 200)',
         tension: 0.1
         },
         {
         label: ['Depre_Combat'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data: @json($val_x_5_CC),
         fill: false,
         borderColor: 'rgb(200, 200, 192)',
         tension: 0.1
         },
         {
         label: ['Depre_Power'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data: @json($val_x_6_CC),
         fill: false,
         borderColor: 'rgb(50, 50, 50)',
         tension: 0.1
         },
         {
         label: ['Opex_Transmission'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data:@json($val_x_7_CC),
         fill: false,
         borderColor: 'rgb(0, 200, 50)',
         tension: 0.1
         },
         {
         label: ['Cost_Tower'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data:@json($val_x_8_CC),
         fill: false,
         borderColor: 'rgb(255, 255, 50)',
         tension: 0.1
         },
         {
         label: ['Depre_Uso'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data: @json($val_x_9_CC),
         fill: false,
         borderColor: 'rgb(255, 150, 150)',
         tension: 0.1
         },
         {
         label: ['Depre_SiteSupport'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data:@json($val_x_10_CC),
         fill: false,
         borderColor: 'rgb(255, 0, 0)',
         tension: 0.1
         },
         {
         label: ['Opex_Power'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data:@json($val_x_11_CC),
         fill: false,
         borderColor: 'rgb(0, 192, 0)',
         tension: 0.1
         },
         {
         label: ['Depre_AccessLink'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data:@json($val_x_12_CC),
         fill: false,
         borderColor: 'rgb(0, 192, 192)',
         tension: 0.1
         },
         {
         label: ['Opex_Frequency'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data:@json($val_x_13_CC),
         fill: false,
         borderColor: 'rgb(255, 0, 192)',
         tension: 0.1
         },
         {
         label: ['Opex_RM'],
-        data: [125000, 70000, 25000, 220000, 112500, 5000, 40000, 150000, 110000, 125500, 150000, 105000],
+        data:@json($val_x_14_CC),
         fill: false,
         borderColor: 'rgb(255, 192, 0)',
         tension: 0.1
@@ -1661,5 +1691,40 @@
     };
 
     new Chart(revvcost_main, revvcost_mainConfig);
+
+    const revvcost_main_site = document.getElementById('revenue_main_site');
+    //const labels = Utils.months({count: 7});
+    const revvcost_main_siteData = {
+        labels: @json($monthList_RVC),
+        datasets: [
+        {
+        label: ['Revenue'],
+        data: @json($value_RVC_rev),
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
+        },
+        {
+        label: ['Cost'],
+        data: @json($value_RVC_cost),
+        fill: false,
+        borderColor: 'rgb(255, 192, 192)',
+        tension: 0.1
+        }
+    ]
+    };
+    const revvcost_main_siteConfig = {
+        type: 'line',
+        data: revvcost_main_siteData,
+        options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+        }
+    };
+
+    new Chart(revvcost_main_site, revvcost_main_siteConfig);
 
 </script>

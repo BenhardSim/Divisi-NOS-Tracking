@@ -452,7 +452,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12">
+                    {{-- <div class="col-12">
                         <div class="container rvc-stat shadow" style="padding: 10px" >
                             <form method="GET">
                                 @csrf
@@ -472,7 +472,7 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             </div>

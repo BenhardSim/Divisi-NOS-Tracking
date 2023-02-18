@@ -34,6 +34,12 @@
             </div>
         </div>
     </div>
+
+    {{-- NOP-Row-1 --}}
+    <br><br>
+    <div class="col-lg-12 pt-5" style="text-align: center">
+        <h5>Tren IRR NOP</h5>
+    </div>
     
 
     <div class="row">
@@ -115,25 +121,25 @@
     const tirr_regional = document.getElementById('tirr_regional').getContext('2d');
      //const labels = Utils.months({count: 7});
      const tirr_regionaldata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+         labels: @json($monthList_IRR),
          datasets: [
          {
          label: ['B2S'],
-         data: [28, 55.3, 61.7, 66.6, 74.2, 84.6, 89.4, 90, 89.9, 91.2, 93.1, 91.2],
+         data: @json($b2s),
          fill: false,
          borderColor: 'rgb(250, 120, 100)',
          tension: 0.1
          },
          {
          label: ['Collo TP'],
-         data: [13.1, 35.2, 39.3, 43, 46.1, 47.5, 50.4, 57.3, 60.4, 60.7, 64.5, 67.7],
+         data: @json($collo_tp),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
          tension: 0.1
          },
          {
          label: ['Target IRR Collo'],
-         data: [51.6, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2],
+         data: @json($target_irr_collo),
          fill: false,
          borderColor: 'rgb(0, 0, 100)',
          pointStyle: 'crossRot',
@@ -142,7 +148,7 @@
          },
          {
          label: ['Target IRR B2S'],
-         data: [61.3, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4],
+         data: @json($target_irr_b2s),
          fill: false,
          borderColor: 'rgb(255, 125, 0)',
          pointStyle: 'crossRot',
@@ -151,14 +157,14 @@
          },
          {
          label: ['Komitmen Collo'],
-         data: [79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1],
+         data: @json($komitmen_collo),
          fill: false,
          borderColor: 'rgb(28, 115, 102)',
          tension: 0.1
          },
          {
          label: ['Komitmen B2S'],
-         data: [79.3, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2],
+         data: @json($komitmen_b2s),
          fill: false,
          borderColor: 'rgb(200, 100, 100)',
          tension: 0.1
@@ -182,25 +188,25 @@
      const tirr_semarang = document.getElementById('tirr_semarang').getContext('2d');
      //const labels = Utils.months({count: 7});
      const tirr_semarangdata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_IRR_semarang),
          datasets: [
          {
          label: ['B2S'],
-         data: [28, 55.3, 61.7, 66.6, 74.2, 84.6, 89.4, 90, 89.9, 91.2, 93.1, 91.2],
+         data: @json($b2s_semarang),
          fill: false,
          borderColor: 'rgb(250, 120, 100)',
          tension: 0.1
          },
          {
          label: ['Collo TP'],
-         data: [13.1, 35.2, 39.3, 43, 46.1, 47.5, 50.4, 57.3, 60.4, 60.7, 64.5, 67.7],
+         data: @json($collo_tp_semarang),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
          tension: 0.1
          },
          {
          label: ['Target IRR Collo'],
-         data: [51.6, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2],
+         data: @json($target_irr_collo_semarang),
          fill: false,
          borderColor: 'rgb(0, 0, 100)',
          pointStyle: 'crossRot',
@@ -209,7 +215,7 @@
          },
          {
          label: ['Target IRR B2S'],
-         data: [61.3, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4],
+         data: @json($target_irr_b2s_semarang),
          fill: false,
          borderColor: 'rgb(255, 125, 0)',
          pointStyle: 'crossRot',
@@ -218,14 +224,14 @@
          },
          {
          label: ['Komitmen Collo'],
-         data: [79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1],
+         data: @json($komitmen_collo_semarang),
          fill: false,
          borderColor: 'rgb(28, 115, 102)',
          tension: 0.1
          },
          {
          label: ['Komitmen B2S'],
-         data: [79.3, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2],
+         data: @json($komitmen_b2s_semarang),
          fill: false,
          borderColor: 'rgb(200, 100, 100)',
          tension: 0.1
@@ -249,25 +255,25 @@
      const tirr_surakarta = document.getElementById('tirr_surakarta').getContext('2d');
      //const labels = Utils.months({count: 7});
      const tirr_surakartadata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_IRR_surakarta),
          datasets: [
          {
          label: ['B2S'],
-         data: [28, 55.3, 61.7, 66.6, 74.2, 84.6, 89.4, 90, 89.9, 91.2, 93.1, 91.2],
+         data: @json($b2s_surakarta),
          fill: false,
          borderColor: 'rgb(250, 120, 100)',
          tension: 0.1
          },
          {
          label: ['Collo TP'],
-         data: [13.1, 35.2, 39.3, 43, 46.1, 47.5, 50.4, 57.3, 60.4, 60.7, 64.5, 67.7],
+         data: @json($collo_tp_surakarta),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
          tension: 0.1
          },
          {
          label: ['Target IRR Collo'],
-         data: [51.6, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2],
+         data: @json($target_irr_collo_surakarta),
          fill: false,
          borderColor: 'rgb(0, 0, 100)',
          pointStyle: 'crossRot',
@@ -276,7 +282,7 @@
          },
          {
          label: ['Target IRR B2S'],
-         data: [61.3, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4],
+         data: @json($target_irr_b2s_surakarta),
          fill: false,
          borderColor: 'rgb(255, 125, 0)',
          pointStyle: 'crossRot',
@@ -285,14 +291,14 @@
          },
          {
          label: ['Komitmen Collo'],
-         data: [79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1],
+         data: @json($komitmen_collo_surakarta),
          fill: false,
          borderColor: 'rgb(28, 115, 102)',
          tension: 0.1
          },
          {
          label: ['Komitmen B2S'],
-         data: [79.3, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2],
+         data: @json($komitmen_b2s_surakarta),
          fill: false,
          borderColor: 'rgb(200, 100, 100)',
          tension: 0.1
@@ -316,25 +322,25 @@
      const tirr_yogyakarta = document.getElementById('tirr_yogyakarta').getContext('2d');
      //const labels = Utils.months({count: 7});
      const tirr_yogyakartadata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_IRR_yogyakarta),
          datasets: [
          {
          label: ['B2S'],
-         data: [28, 55.3, 61.7, 66.6, 74.2, 84.6, 89.4, 90, 89.9, 91.2, 93.1, 91.2],
+         data: @json($b2s_yogyakarta),
          fill: false,
          borderColor: 'rgb(250, 120, 100)',
          tension: 0.1
          },
          {
          label: ['Collo TP'],
-         data: [13.1, 35.2, 39.3, 43, 46.1, 47.5, 50.4, 57.3, 60.4, 60.7, 64.5, 67.7],
+         data: @json($collo_tp_yogyakarta),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
          tension: 0.1
          },
          {
          label: ['Target IRR Collo'],
-         data: [51.6, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2],
+         data: @json($target_irr_collo_yogyakarta),
          fill: false,
          borderColor: 'rgb(0, 0, 100)',
          pointStyle: 'crossRot',
@@ -343,7 +349,7 @@
          },
          {
          label: ['Target IRR B2S'],
-         data: [61.3, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4],
+         data: @json($target_irr_b2s_yogyakarta),
          fill: false,
          borderColor: 'rgb(255, 125, 0)',
          pointStyle: 'crossRot',
@@ -352,14 +358,14 @@
          },
          {
          label: ['Komitmen Collo'],
-         data: [79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1],
+         data: @json($komitmen_collo_yogyakarta),
          fill: false,
          borderColor: 'rgb(28, 115, 102)',
          tension: 0.1
          },
          {
          label: ['Komitmen B2S'],
-         data: [79.3, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2],
+         data: @json($komitmen_b2s_yogyakarta),
          fill: false,
          borderColor: 'rgb(200, 100, 100)',
          tension: 0.1
@@ -383,25 +389,25 @@
      const tirr_purwokerto = document.getElementById('tirr_purwokerto').getContext('2d');
      //const labels = Utils.months({count: 7});
      const tirr_purwokertodata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_IRR_purwokerto),
          datasets: [
          {
          label: ['B2S'],
-         data: [28, 55.3, 61.7, 66.6, 74.2, 84.6, 89.4, 90, 89.9, 91.2, 93.1, 91.2],
+         data: @json($b2s_purwokerto),
          fill: false,
          borderColor: 'rgb(250, 120, 100)',
          tension: 0.1
          },
          {
          label: ['Collo TP'],
-         data: [13.1, 35.2, 39.3, 43, 46.1, 47.5, 50.4, 57.3, 60.4, 60.7, 64.5, 67.7],
+         data: @json($collo_tp_purwokerto),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
          tension: 0.1
          },
          {
          label: ['Target IRR Collo'],
-         data: [51.6, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2],
+         data: @json($target_irr_collo_purwokerto),
          fill: false,
          borderColor: 'rgb(0, 0, 100)',
          pointStyle: 'crossRot',
@@ -410,7 +416,7 @@
          },
          {
          label: ['Target IRR B2S'],
-         data: [61.3, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4],
+         data: @json($target_irr_b2s_purwokerto),
          fill: false,
          borderColor: 'rgb(255, 125, 0)',
          pointStyle: 'crossRot',
@@ -419,14 +425,14 @@
          },
          {
          label: ['Komitmen Collo'],
-         data: [79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1],
+         data: @json($komitmen_collo_purwokerto),
          fill: false,
          borderColor: 'rgb(28, 115, 102)',
          tension: 0.1
          },
          {
          label: ['Komitmen B2S'],
-         data: [79.3, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2],
+         data: @json($komitmen_b2s_purwokerto),
          fill: false,
          borderColor: 'rgb(200, 100, 100)',
          tension: 0.1
@@ -450,25 +456,25 @@
      const tirr_pekalongan = document.getElementById('tirr_pekalongan').getContext('2d');
      //const labels = Utils.months({count: 7});
      const tirr_pekalongandata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_IRR_pekalongan),
          datasets: [
          {
          label: ['B2S'],
-         data: [28, 55.3, 61.7, 66.6, 74.2, 84.6, 89.4, 90, 89.9, 91.2, 93.1, 91.2],
+         data: @json($b2s_pekalongan),
          fill: false,
          borderColor: 'rgb(250, 120, 100)',
          tension: 0.1
          },
          {
          label: ['Collo TP'],
-         data: [13.1, 35.2, 39.3, 43, 46.1, 47.5, 50.4, 57.3, 60.4, 60.7, 64.5, 67.7],
+         data: @json($collo_tp_pekalongan),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
          tension: 0.1
          },
          {
          label: ['Target IRR Collo'],
-         data: [51.6, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2],
+         data: @json($target_irr_collo_pekalongan),
          fill: false,
          borderColor: 'rgb(0, 0, 100)',
          pointStyle: 'crossRot',
@@ -477,7 +483,7 @@
          },
          {
          label: ['Target IRR B2S'],
-         data: [61.3, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4],
+         data: @json($target_irr_b2s_pekalongan),
          fill: false,
          borderColor: 'rgb(255, 125, 0)',
          pointStyle: 'crossRot',
@@ -486,14 +492,14 @@
          },
          {
          label: ['Komitmen Collo'],
-         data: [79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1],
+         data: @json($komitmen_collo_pekalongan),
          fill: false,
          borderColor: 'rgb(28, 115, 102)',
          tension: 0.1
          },
          {
          label: ['Komitmen B2S'],
-         data: [79.3, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2],
+         data: @json($komitmen_b2s_pekalongan),
          fill: false,
          borderColor: 'rgb(200, 100, 100)',
          tension: 0.1
@@ -517,25 +523,25 @@
      const tirr_salatiga = document.getElementById('tirr_salatiga').getContext('2d');
      //const labels = Utils.months({count: 7});
      const tirr_salatigadata = {
-         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'],
+        labels: @json($monthList_IRR_salatiga),
          datasets: [
          {
          label: ['B2S'],
-         data: [28, 55.3, 61.7, 66.6, 74.2, 84.6, 89.4, 90, 89.9, 91.2, 93.1, 91.2],
+         data: @json($b2s_salatiga),
          fill: false,
          borderColor: 'rgb(250, 120, 100)',
          tension: 0.1
          },
          {
          label: ['Collo TP'],
-         data: [13.1, 35.2, 39.3, 43, 46.1, 47.5, 50.4, 57.3, 60.4, 60.7, 64.5, 67.7],
+         data: @json($collo_tp_salatiga),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
          tension: 0.1
          },
          {
          label: ['Target IRR Collo'],
-         data: [51.6, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2, 51.2],
+         data: @json($target_irr_collo_salatiga),
          fill: false,
          borderColor: 'rgb(0, 0, 100)',
          pointStyle: 'crossRot',
@@ -544,7 +550,7 @@
          },
          {
          label: ['Target IRR B2S'],
-         data: [61.3, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4, 60.4],
+         data: @json($target_irr_b2s_salatiga),
          fill: false,
          borderColor: 'rgb(255, 125, 0)',
          pointStyle: 'crossRot',
@@ -553,14 +559,14 @@
          },
          {
          label: ['Komitmen Collo'],
-         data: [79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1, 79.1],
+         data: @json($komitmen_collo_salatiga),
          fill: false,
          borderColor: 'rgb(28, 115, 102)',
          tension: 0.1
          },
          {
          label: ['Komitmen B2S'],
-         data: [79.3, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2, 79.2],
+         data: @json($komitmen_b2s_salatiga),
          fill: false,
          borderColor: 'rgb(200, 100, 100)',
          tension: 0.1
