@@ -9,11 +9,6 @@
     @include('portal.component.userProfile')
 </div>
 {{-- notification --}}
-@if (session()->has('success'))
-<div class="alert alert-success container col-lg-12" role="alert">
-  {{ session('success') }}
-</div>
-@endif
 <div class="container con-tbl px-2">
     <table class="table table-hover" >
         <thead>

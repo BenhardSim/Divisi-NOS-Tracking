@@ -110,6 +110,7 @@ class DashboardController extends Controller
                             $val_x_2[$key] += $data_target['cost'];
                         }
                     }else if($chart_type === 'bbm'){
+
                         if($month_target === $month){
                             $val_x_1[$key] += $data_target['harga_total'];
                             $val_x_2[$key] += $data_target['RH'];
@@ -318,6 +319,7 @@ class DashboardController extends Controller
             "komitmen_collo" => $komitmen_collo,
             "komitmen_b2s" => $komitmen_b2s,
             "monthList_IRR" => $monthList_IRR,
+
 
         ]);
     }

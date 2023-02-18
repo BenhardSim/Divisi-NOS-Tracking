@@ -28,6 +28,93 @@
             </div>
         </div>
     </div>
+    {{-- MODAL MAGNIFY BBM --}}
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDetailBBM_regional" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FILTER DATA BBM</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body container row">
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow">
+                            <div class="rvc-graph">
+                                <canvas id="costbbm_regional_toast"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow" style="padding: 10px" >
+                            <form method="GET">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="filter awal">Starting Date</label>
+                                        <input id="in_awal_BBM_regional" name='interval_awal_regional' type="date" class="form-control" placeholder="filter awal">
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="filter akhir">End Date</label>
+                                        <input id="in_akhir_BBM_regional" name="interval_akhir_regional" type="date" class="form-control" placeholder="filter akhir">
+                                    </div>
+                                    <div class="col-2">
+                                        <br>
+                                        <button type="submit" id="search-filter-BBM-regional" class="btn btn-primary" >Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    {{-- MODAL MAGNIFY BBM --}}
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDetailBBM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FILTER DATA BBM</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body container row">
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow">
+                            <div class="rvc-graph">
+                                <canvas id="costbbm_main_toast"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow" style="padding: 10px" >
+                            <form method="GET">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="filter awal">Starting Date</label>
+                                        <input id="in_awal_BBM" name='interval_awal' type="date" class="form-control" placeholder="filter awal">
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="filter akhir">End Date</label>
+                                        <input id="in_akhir_BBM" name="interval_akhir" type="date" class="form-control" placeholder="filter akhir">
+                                    </div>
+                                    <div class="col-2">
+                                        <br>
+                                        <button type="submit" id="search-filter-BBM" class="btn btn-primary" >Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
 
     {{-- MODAL MAGNIFY BBM --}}
 
