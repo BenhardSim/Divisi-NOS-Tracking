@@ -1158,13 +1158,73 @@
                     success: function(dataOutput) {
                         if(NOP === 'regional'){
                             // labels
-                            kpiu_main_toastData.labels = dataOutput.val_month
+                            kpiu_regional_toastData.labels = dataOutput.val_month
                             // data
-                            kpiu_main_toastData.datasets[0].data = dataOutput.val_x_1;
-                            kpiu_main_toastData.datasets[1].data = dataOutput.val_x_2;
-                            kpiu_main_toastData.datasets[2].data = dataOutput.val_x_3;
+                            kpiu_regional_toastData.datasets[0].data = dataOutput.val_x_1;
+                            kpiu_regional_toastData.datasets[1].data = dataOutput.val_x_2;
+                            kpiu_regional_toastData.datasets[2].data = dataOutput.val_x_3;
                             // update
-                            KPIU_toast.update();
+                            KPIU_toast_regional.update();
+                        }
+                        else if(NOP === 'semarang'){
+                            // labels
+                            kpiu_semarang_toastData.labels = dataOutput.val_month
+                            // data
+                            kpiu_semarang_toastData.datasets[0].data = dataOutput.val_x_1;
+                            kpiu_semarang_toastData.datasets[1].data = dataOutput.val_x_2;
+                            kpiu_semarang_toastData.datasets[2].data = dataOutput.val_x_3;
+                            // update
+                            KPIU_toast_semarang.update();
+                        }
+                        else if(NOP === 'surakarta'){
+                            // labels
+                            kpiu_surakarta_toastData.labels = dataOutput.val_month
+                            // data
+                            kpiu_surakarta_toastData.datasets[0].data = dataOutput.val_x_1;
+                            kpiu_surakarta_toastData.datasets[1].data = dataOutput.val_x_2;
+                            kpiu_surakarta_toastData.datasets[2].data = dataOutput.val_x_3;
+                            // update
+                            KPIU_toast_surakarta.update();
+                        }
+                        else if(NOP === 'yogyakarta'){
+                            // labels
+                            kpiu_yogyakarta_toastData.labels = dataOutput.val_month
+                            // data
+                            kpiu_yogyakarta_toastData.datasets[0].data = dataOutput.val_x_1;
+                            kpiu_yogyakarta_toastData.datasets[1].data = dataOutput.val_x_2;
+                            kpiu_yogyakarta_toastData.datasets[2].data = dataOutput.val_x_3;
+                            // update
+                            KPIU_toast_yogyakarta.update();
+                        }
+                        else if(NOP === 'purwokerto'){
+                            // labels
+                            kpiu_purwokerto_toastData.labels = dataOutput.val_month
+                            // data
+                            kpiu_purwokerto_toastData.datasets[0].data = dataOutput.val_x_1;
+                            kpiu_purwokerto_toastData.datasets[1].data = dataOutput.val_x_2;
+                            kpiu_purwokerto_toastData.datasets[2].data = dataOutput.val_x_3;
+                            // update
+                            KPIU_toast_purwokerto.update();
+                        }
+                        else if(NOP === 'pekalongan'){
+                            // labels
+                            kpiu_pekalongan_toastData.labels = dataOutput.val_month
+                            // data
+                            kpiu_pekalongan_toastData.datasets[0].data = dataOutput.val_x_1;
+                            kpiu_pekalongan_toastData.datasets[1].data = dataOutput.val_x_2;
+                            kpiu_pekalongan_toastData.datasets[2].data = dataOutput.val_x_3;
+                            // update
+                            KPIU_toast_pekalongan.update();
+                        }
+                        else if(NOP === 'salatiga'){
+                            // labels
+                            kpiu_salatiga_toastData.labels = dataOutput.val_month
+                            // data
+                            kpiu_salatiga_toastData.datasets[0].data = dataOutput.val_x_1;
+                            kpiu_salatiga_toastData.datasets[1].data = dataOutput.val_x_2;
+                            kpiu_salatiga_toastData.datasets[2].data = dataOutput.val_x_3;
+                            // update
+                            KPIU_toast_salatiga.update();
                         }
 
                     },
