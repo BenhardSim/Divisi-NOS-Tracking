@@ -1548,13 +1548,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body container row">
-                    <div class="col-12">
+                    <div class="col-1"></div>
+                    <div class="col-10">
                         <div class="container rvc-stat shadow">
                             <div class="rvc-graph">
                                 <canvas id="component_main_toast"></canvas>
                             </div>
                         </div>
                     </div>
+                    <div class="col-1"></div>
                     <div class="col-12">
                         <div class="container rvc-stat shadow" style="padding: 10px" >
                             <form method="GET">
@@ -1612,13 +1614,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body container row">
-                    <div class="col-12">
+                    <div class="col-1"></div>
+                    <div class="col-10">
                         <div class="container rvc-stat shadow">
                             <div class="rvc-graph">
                                 <canvas id="revenue_main_site_toast"></canvas>
                             </div>
                         </div>
                     </div>
+                    <div class="col-1"></div>
                     <div class="col-12">
                         <div class="container rvc-stat shadow" style="padding: 10px" >
                             <form method="GET">

@@ -111,20 +111,22 @@
 
         <!-- Modal -->
         <div class="modal fade" id="modalDetailRVC" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">FILTER DATA REVENUE VS COST</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body container row">
-                    <div class="col-12">
+                    <div class="col-1"></div>
+                    <div class="col-10">
                         <div class="container rvc-stat shadow">
                             <div class="rvc-graph">
                                 <canvas id="revenue_main_toast"></canvas>
                             </div>
                         </div>
                     </div>
+                    <div class="col-1"></div>
                     <div class="col-12">
                         <div class="container rvc-stat shadow" style="padding: 10px" >
                             <form method="GET">
@@ -177,20 +179,22 @@
 
         <!-- Modal -->
         <div class="modal fade" id="modalDetailPL" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">FILTER DATA PROFIT LOSS</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body container row">
-                    <div class="col-12">
+                    <div class="col-1"></div>
+                    <div class="col-10">
                         <div class="container rvc-stat shadow">
                             <div class="rvc-graph">
                                 <canvas id="profitloss_main_toast"></canvas>
                             </div>
                         </div>
                     </div>
+                    <div class="col-1"></div>
                     <div class="col-12">
                         <div class="container rvc-stat shadow" style="padding: 10px" >
                             <form method="GET">
@@ -244,20 +248,22 @@
 
         <!-- Modal -->
         <div class="modal fade" id="modalDetailRCOST" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">FILTER DATA RESERVED VAR COST</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body container row">
-                    <div class="col-12">
+                    <div class="col-1"></div>
+                    <div class="col-10">
                         <div class="container rvc-stat shadow">
                             <div class="rvc-graph">
                                 <canvas id="varcost_main_toast"></canvas>
                             </div>
                         </div>
                     </div>
+                    <div class="col-1"></div>
                     <div class="col-12">
                         <div class="container rvc-stat shadow" style="padding: 10px" >
                             <form method="GET">
@@ -306,20 +312,22 @@
 
         <!-- Modal -->
         <div class="modal fade" id="modalDetailBBM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">FILTER DATA BBM</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body container row">
-                    <div class="col-12">
+                    <div class="col-1"></div>
+                    <div class="col-10">
                         <div class="container rvc-stat shadow">
                             <div class="rvc-graph">
                                 <canvas id="costbbm_main_toast"></canvas>
                             </div>
                         </div>
                     </div>
+                    <div class="col-1"></div>
                     <div class="col-12">
                         <div class="container rvc-stat shadow" style="padding: 10px" >
                             <form method="GET">
@@ -438,7 +446,7 @@
 
         <!-- Modal -->
         <div class="modal fade" id="modalDetailIRR" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">FILTER DATA IRR</h5>
@@ -513,20 +521,22 @@
 
         <!-- Modal -->
         <div class="modal fade" id="modalDetailKPIU" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">FILTER DATA KPI UTAMA</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body container row">
-                    <div class="col-12">
+                    <div class="col-1"></div>
+                    <div class="col-10">
                         <div class="container rvc-stat shadow">
                             <div class="rvc-graph">
                                 <canvas id="kpiu_main_toast"></canvas>
                             </div>
                         </div>
                     </div>
+                    <div class="col-1"></div>
                     <div class="col-12">
                         <div class="container rvc-stat shadow" style="padding: 10px" >
                             <form method="GET">
@@ -577,20 +587,22 @@
 
         <!-- Modal -->
         <div class="modal fade" id="modalDetailKPIA" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">FILTER DATA KPI ACTIVITY</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body container row">
-                    <div class="col-12">
+                    <div class="col-1"></div>
+                    <div class="col-10">
                         <div class="container rvc-stat shadow">
                             <div class="rvc-graph">
                                 <canvas id="kpia_main_toast"></canvas>
                             </div>
                         </div>
                     </div>
+                    <div class="col-1"></div>
                     <div class="col-12">
                         <div class="container rvc-stat shadow" style="padding: 10px" >
                             <form method="GET">
@@ -642,20 +654,22 @@
 
         <!-- Modal -->
         <div class="modal fade" id="modalDetailKPIS" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">FILTER DATA KPI SUPPORTING</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body container row">
-                    <div class="col-12">
+                    <div class="col-1"></div>
+                    <div class="col-10">
                         <div class="container rvc-stat shadow">
                             <div class="rvc-graph">
                                 <canvas id="kpis_mainToast"></canvas>
                             </div>
                         </div>
                     </div>
+                    <div class="col-1"></div>
                     <div class="col-12">
                         <div class="container rvc-stat shadow" style="padding: 10px" >
                             <form method="GET">

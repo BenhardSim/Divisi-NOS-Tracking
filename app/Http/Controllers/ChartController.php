@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\BBM;
+use App\Models\OPEX;
 use App\Models\tren_irr;
 use App\Models\RVC;
 use Carbon\CarbonPeriod;
@@ -377,10 +378,137 @@ class ChartController extends Controller
         ]);
     }
     public function indexOPEX(){
+
+        /* ==================================== LOGIC OPEX REGIONAL =========================================================== */
+
+        $AllIds_OPEX = OPEX::get()->toArray();
+        $absorbtion = 0;
+        $accure = 0;
+        $available = 0;
+        foreach($AllIds_OPEX as $data){
+            $absorbtion += $data['absorption'];
+            $accure += $data['accure'];
+            $available += $data['available'];
+        }
+        
+        $total = $absorbtion + $accure + $absorbtion;
+
+        /* ==================================== LOGIC OPEX NOP SEMARANG =========================================================== */
+
+        $AllIds_OPEX_semarang = OPEX::where('NOP','semarang')->get()->toArray();
+        $absorbtion_semarang = 0;
+        $accure_semarang = 0;
+        $available_semarang = 0;
+        foreach($AllIds_OPEX_semarang as $data){
+            $absorbtion_semarang += $data['absorption'];
+            $accure_semarang += $data['accure'];
+            $available_semarang += $data['available'];
+        }
+        
+        $total = $absorbtion_semarang + $accure_semarang + $absorbtion_semarang;
+
+        /* ==================================== LOGIC OPEX NOP surakarta =========================================================== */
+
+        $AllIds_OPEX_surakarta = OPEX::where('NOP','surakarta')->get()->toArray();
+        $absorbtion_surakarta = 0;
+        $accure_surakarta = 0;
+        $available_surakarta = 0;
+        foreach($AllIds_OPEX_surakarta as $data){
+            $absorbtion_surakarta += $data['absorption'];
+            $accure_surakarta += $data['accure'];
+            $available_surakarta += $data['available'];
+        }
+        
+        $total = $absorbtion_surakarta + $accure_surakarta + $absorbtion_surakarta;
+
+        /* ==================================== LOGIC OPEX NOP yogyakarta =========================================================== */
+
+        $AllIds_OPEX_yogyakarta = OPEX::where('NOP','yogyakarta')->get()->toArray();
+        $absorbtion_yogyakarta = 0;
+        $accure_yogyakarta = 0;
+        $available_yogyakarta = 0;
+        foreach($AllIds_OPEX_yogyakarta as $data){
+            $absorbtion_yogyakarta += $data['absorption'];
+            $accure_yogyakarta += $data['accure'];
+            $available_yogyakarta += $data['available'];
+        }
+        
+        $total = $absorbtion_yogyakarta + $accure_yogyakarta + $absorbtion_yogyakarta;
+
+        /* ==================================== LOGIC OPEX NOP purwokerto =========================================================== */
+
+        $AllIds_OPEX_purwokerto = OPEX::where('NOP','purwokerto')->get()->toArray();
+        $absorbtion_purwokerto = 0;
+        $accure_purwokerto = 0;
+        $available_purwokerto = 0;
+        foreach($AllIds_OPEX_purwokerto as $data){
+            $absorbtion_purwokerto += $data['absorption'];
+            $accure_purwokerto += $data['accure'];
+            $available_purwokerto += $data['available'];
+        }
+        
+        $total = $absorbtion_purwokerto + $accure_purwokerto + $absorbtion_purwokerto;
+
+        /* ==================================== LOGIC OPEX NOP pekalongan =========================================================== */
+
+        $AllIds_OPEX_pekalongan = OPEX::where('NOP','pekalongan')->get()->toArray();
+        $absorbtion_pekalongan = 0;
+        $accure_pekalongan = 0;
+        $available_pekalongan = 0;
+        foreach($AllIds_OPEX_pekalongan as $data){
+            $absorbtion_pekalongan += $data['absorption'];
+            $accure_pekalongan += $data['accure'];
+            $available_pekalongan += $data['available'];
+        }
+        
+        $total = $absorbtion_pekalongan + $accure_pekalongan + $absorbtion_pekalongan;
+
+        /* ==================================== LOGIC OPEX NOP salatiga =========================================================== */
+
+        $AllIds_OPEX_salatiga = OPEX::where('NOP','salatiga')->get()->toArray();
+        $absorbtion_salatiga = 0;
+        $accure_salatiga = 0;
+        $available_salatiga = 0;
+        foreach($AllIds_OPEX_salatiga as $data){
+            $absorbtion_salatiga += $data['absorption'];
+            $accure_salatiga += $data['accure'];
+            $available_salatiga += $data['available'];
+        }
+        
+        $total = $absorbtion_salatiga + $accure_salatiga + $absorbtion_salatiga;
+        
         return view('portal.Chart_NOP_OPEX', [
             "root" => "opex",
             "title" => "Chart OPEX NOP",
-            "site_all" => siteprofile::all()
+            "site_all" => siteprofile::all(),
+
+            "absorbtion" => $absorbtion,
+            "accure" => $accure,
+            "available" => $available,
+
+            "absorbtion_semarang" => $absorbtion_semarang,
+            "accure_semarang" => $accure_semarang,
+            "available_semarang" => $available_semarang,
+
+            "absorbtion_surakarta" => $absorbtion_surakarta,
+            "accure_surakarta" => $accure_surakarta,
+            "available_surakarta" => $available_surakarta,
+
+            "absorbtion_yogyakarta" => $absorbtion_yogyakarta,
+            "accure_yogyakarta" => $accure_yogyakarta,
+            "available_yogyakarta" => $available_yogyakarta,
+
+            "absorbtion_purwokerto" => $absorbtion_purwokerto,
+            "accure_purwokerto" => $accure_purwokerto,
+            "available_purwokerto" => $available_purwokerto,
+
+            "absorbtion_pekalongan" => $absorbtion_pekalongan,
+            "accure_pekalongan" => $accure_pekalongan,
+            "available_pekalongan" => $available_pekalongan,
+
+            "absorbtion_salatiga" => $absorbtion_salatiga,
+            "accure_salatiga" => $accure_salatiga,
+            "available_salatiga" => $available_salatiga,
         ]);
     }
 
