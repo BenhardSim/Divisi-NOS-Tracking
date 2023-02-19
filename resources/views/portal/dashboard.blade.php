@@ -687,6 +687,8 @@
 
 @endsection
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/Chart.min.js"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.0/chartjs-plugin-zoom.min.js"
     integrity="sha512-B6F98QATBNaDHSE7uANGo5h0mU6fhKCUD+SPAY7KZDxE8QgZw9rewDtNiu3mbbutYDWOKT3SPYD8qDBpG2QnEg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -727,7 +729,7 @@
         }
     };
 
-    new Chart(revvcost_main, revvcost_mainConfig);
+    let RVC_main = new Chart(revvcost_main, revvcost_mainConfig);
 
     // grafik revenue vs cost TOAST
 
@@ -1314,6 +1316,9 @@
                 position: 'top' // place legend on the right side of chart
             },
              scales: {
+                y: {
+                beginAtZero: true
+                }
             }
         }
     };
@@ -1357,6 +1362,10 @@
                 position: 'top' // place legend on the right side of chart
             },
              scales: {
+                y: {
+                beginAtZero: true
+                }
+
             }
         }
     };
