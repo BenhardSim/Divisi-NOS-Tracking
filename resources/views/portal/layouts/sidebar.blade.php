@@ -28,8 +28,8 @@
         @cannot('admin')
         <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('upload-dokumen') ? '#5B8FB9' : '' }} ">
           <a class="nav-link text-white"  href="/upload-dokumen">
-            <span style="color: #EB3223" data-feather="upload" class="align-text-bottom"></span>
-            Upload Document
+            <span style="color: #EB3223" data-feather="send" class="align-text-bottom"></span>
+            Send Document
           </a> 
         </li>
 
