@@ -119,17 +119,6 @@ class TrackedDocumentController extends Controller
         }
         DocumentHistory::create($validatedHistory);
         if(Gate::allows('gm')){
-            $data = [
-                'document' => $saved,
-                'downloaded_time' => Carbon::now('Asia/Jakarta'),
-                
-            ];
-            if($saved->level_approval == 4){
-                $data['ttd'] = User::find($saved->id_level_empat);
-            }
-            $pdf = Pdf::loadView('portal.template_pdf', $data);
-            $uniqname = 'id-tracked-'.$saved->id.'-'.$saved->file;
-            return $pdf->stream($uniqname . '.pdf');
             return back()->with('success', 'Data tracked document berhasil ditambahkan');
         }
         // mailing
@@ -157,7 +146,7 @@ class TrackedDocumentController extends Controller
 
 
         // Send the mail...
-        //Mail::to($receiver->email)->send(new MailNotify($data));
+        Mail::to($receiver->email)->send(new MailNotify($data));
         return back()->with('success', 'Data tracked document berhasil ditambahkan');
     }
 
@@ -232,21 +221,18 @@ class TrackedDocumentController extends Controller
             $data["body"] = "Sorry, your document: ".$data["document_name"]." got rejected. You can view the portal to find more details";
  
             // Send the mail...
-            //Mail::to($receiver->email)->send(new MailNotify($data));
+            Mail::to($receiver->email)->send(new MailNotify($data));
             return back()->with('success', 'Dokumen berhasil ditolak');
         }
 
         // approval
+        $validatedData = [
+            "level_approval" => $tracked_document->level_approval + 1,
+        ];
         if (Gate::allows('gm')) {
-            $validatedData = [
-                "status" => "Approved",
-            ];
+            $validatedData["status"] = "Approved";
         }
-        else{
-            $validatedData = [
-                "level_approval" => $tracked_document->level_approval + 1,
-            ];
-        }
+        
         tracked_document::where('id',$tracked_document->id)->update($validatedData);
 
         // creating history row
@@ -288,7 +274,7 @@ class TrackedDocumentController extends Controller
         }
 
         // Send the mail...
-        //Mail::to($receiver->email)->send(new MailNotify($data));
+        Mail::to($receiver->email)->send(new MailNotify($data));
         return back()->with('success', 'Dokumen berhasil disetujui');
 
         
@@ -309,7 +295,6 @@ class TrackedDocumentController extends Controller
         $data = [
             'document' => $id_trc,
             'downloaded_time' => Carbon::now('Asia/Jakarta'),
-            
         ];
         if($id_trc->level_approval == 4){
             $data['ttd'] = User::find($id_trc->id_level_empat);

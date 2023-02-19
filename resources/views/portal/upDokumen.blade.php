@@ -122,10 +122,10 @@
                     $history4 = App\Models\DocumentHistory::where("document_id", $document->id)->where("user_id", $keempat->id)->first();
                   }
               @endphp
-                <a href="tracked_document/{{ $document->id }}">
+                
               <tr>
                 <td>
-                  <div>
+                  <a href="tracked_document/{{ $document->id }}" class="links text-dark">
                     <p style="padding: 0%">
                       <b>Pengirim</b> : {{ $document->nama_pengirim }} <br>
                       <b>Nama Dokumen</b> : {{ $document->file }} <br>
@@ -139,10 +139,10 @@
                       <b>Approval Level 3</b> :@isset($history3) {{ $history3->waktu->format('D, d M Y H:i')  }} @else - @endisset<br>
                       <b>Approval Level 4</b> :@isset($history4) {{ $history4->waktu->format('D, d M Y H:i')  }} @else - @endisset<br>
                     </p>  
-                    </div>
-                  </td>
+                  </a>
+                </td>
               </tr> 
-            </a>
+            
               @endforeach
             </tbody>
           </table>
@@ -172,7 +172,7 @@
           </div>
           <p class="mb-1">{{ $history->document_name }}</p>
           <small>{{ $user->name }}</small>
-      </div>
+        </div>
       @endforeach   
   </div>
     
