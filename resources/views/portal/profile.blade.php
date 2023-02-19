@@ -307,11 +307,11 @@
                     <a href="/rvc" class="links text-white"><h5>Contract SITE</h5></a>
                 </div>
                 <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
-                    {{-- view All Data Button --}}
+                    {{-- view All Data Button
                     <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
                         <span> View All</span>
-                    </button>
+                    </button> --}}
 
                     <!-- Insert Data Button -->
                     <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#addeditkontrak">
@@ -1525,17 +1525,61 @@
                 </div>
                 <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
                     {{-- view All Data Button --}}
-                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailRVC">
+                    <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailCC">
                         <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
                         <span>Magnify</span>
                     </button>
                 </div>
             </div>
             <div class="rvc-graph">
-                <canvas id="revenue_main"></canvas>
+                <canvas id="component_main"></canvas>
             </div>
         </div>
     </div>
+
+      {{-- MODAL MAGNIFY COST COMPONENT --}}
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDetailCC" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FILTER DATA COST COMPONENT SITE {{ $id }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body container row">
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow">
+                            <div class="rvc-graph">
+                                <canvas id="component_main_toast"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow" style="padding: 10px" >
+                            <form method="GET">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="filter awal">Starting Date</label>
+                                        <input id="in_awal_CC" name='interval_awal' type="date" class="form-control" placeholder="filter awal">
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="filter akhir">End Date</label>
+                                        <input id="in_akhir_CC" name="interval_akhir" type="date" class="form-control" placeholder="filter akhir">
+                                    </div>
+                                    <div class="col-2">
+                                        <br>
+                                        <button type="submit" id="search-filter-CC" class="btn btn-primary" >Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
 
     <div class="col-lg-6">
         <div class="container rvc-stat shadow">
@@ -1557,6 +1601,52 @@
         </div>
     </div>
 
+     {{-- MODAL MAGNIFY REVENUE VS COST SITE --}}
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDetailRVC" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FILTER DATA REVENUE VS COST SITE {{ $id }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body container row">
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow">
+                            <div class="rvc-graph">
+                                <canvas id="revenue_main_site_toast"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow" style="padding: 10px" >
+                            <form method="GET">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="filter awal">Starting Date</label>
+                                        <input id="in_awal_RVC" name='interval_awal' type="date" class="form-control" placeholder="filter awal">
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="filter akhir">End Date</label>
+                                        <input id="in_akhir_RVC" name="interval_akhir" type="date" class="form-control" placeholder="filter akhir">
+                                    </div>
+                                    <div class="col-2">
+                                        <br>
+                                        <button type="submit" id="search-filter-RVC" class="btn btn-primary" >Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+  
+
 
 </div>
 
@@ -1573,9 +1663,9 @@
 
     // grafik revenue vs cost
 
-    const revvcost_main = document.getElementById('revenue_main').getContext('2d');
+    const CostComponent_main = document.getElementById('component_main').getContext('2d');
     //const labels = Utils.months({count: 7});
-    const revvcost_mainData = {
+    const CostComponent_mainData = {
         labels: @json($monthList_CC),
         datasets: [
         {
@@ -1678,9 +1768,9 @@
         },
     ]
     };
-    const revvcost_mainConfig = {
+    const CostComponent_mainConfig = {
         type: 'line',
-        data: revvcost_mainData,
+        data: CostComponent_mainData,
         options: {
             scales: {
                 y: {
@@ -1690,7 +1780,126 @@
         }
     };
 
-    new Chart(revvcost_main, revvcost_mainConfig);
+    new Chart(CostComponent_main, CostComponent_mainConfig);
+
+    const CostComponent_mainToast = document.getElementById('component_main_toast').getContext('2d');
+    //const labels = Utils.months({count: 7});
+    const CostComponent_mainToastData = {
+        labels: @json($monthList_CC),
+        datasets: [
+        {
+        label: ['Depre BTS'],
+        data: @json($val_x_1_CC),
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
+        },
+        {
+        label: ['Depre_TowerOwn'],
+        data: @json($val_x_2_CC),
+        fill: false,
+        borderColor: 'rgb(100, 100, 0)',
+        tension: 0.1
+        },
+        {
+        label: ['Opex_Isr'],
+        data: @json($val_x_3_CC),
+        fill: false,
+        borderColor: 'rgb(0, 100, 100)',
+        tension: 0.1
+        },
+        {
+        label: ['Cost_Nsr'],
+        data: @json($val_x_4_CC),
+        fill: false,
+        borderColor: 'rgb(200, 100, 200)',
+        tension: 0.1
+        },
+        {
+        label: ['Depre_Combat'],
+        data: @json($val_x_5_CC),
+        fill: false,
+        borderColor: 'rgb(200, 200, 192)',
+        tension: 0.1
+        },
+        {
+        label: ['Depre_Power'],
+        data: @json($val_x_6_CC),
+        fill: false,
+        borderColor: 'rgb(50, 50, 50)',
+        tension: 0.1
+        },
+        {
+        label: ['Opex_Transmission'],
+        data:@json($val_x_7_CC),
+        fill: false,
+        borderColor: 'rgb(0, 200, 50)',
+        tension: 0.1
+        },
+        {
+        label: ['Cost_Tower'],
+        data:@json($val_x_8_CC),
+        fill: false,
+        borderColor: 'rgb(255, 255, 50)',
+        tension: 0.1
+        },
+        {
+        label: ['Depre_Uso'],
+        data: @json($val_x_9_CC),
+        fill: false,
+        borderColor: 'rgb(255, 150, 150)',
+        tension: 0.1
+        },
+        {
+        label: ['Depre_SiteSupport'],
+        data:@json($val_x_10_CC),
+        fill: false,
+        borderColor: 'rgb(255, 0, 0)',
+        tension: 0.1
+        },
+        {
+        label: ['Opex_Power'],
+        data:@json($val_x_11_CC),
+        fill: false,
+        borderColor: 'rgb(0, 192, 0)',
+        tension: 0.1
+        },
+        {
+        label: ['Depre_AccessLink'],
+        data:@json($val_x_12_CC),
+        fill: false,
+        borderColor: 'rgb(0, 192, 192)',
+        tension: 0.1
+        },
+        {
+        label: ['Opex_Frequency'],
+        data:@json($val_x_13_CC),
+        fill: false,
+        borderColor: 'rgb(255, 0, 192)',
+        tension: 0.1
+        },
+        {
+        label: ['Opex_RM'],
+        data:@json($val_x_14_CC),
+        fill: false,
+        borderColor: 'rgb(255, 192, 0)',
+        tension: 0.1
+        },
+    ]
+    };
+    const CostComponent_mainToastConfig = {
+        type: 'line',
+        data: CostComponent_mainToastData,
+        options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+        }
+    };
+
+    let CCOMPONENT_toast = new Chart(CostComponent_mainToast, CostComponent_mainToastConfig);
 
     const revvcost_main_site = document.getElementById('revenue_main_site');
     //const labels = Utils.months({count: 7});
@@ -1726,5 +1935,180 @@
     };
 
     new Chart(revvcost_main_site, revvcost_main_siteConfig);
+
+    // REVENUE VS COST TOAST
+    
+    const revvcost_main_site_toast = document.getElementById('revenue_main_site_toast');
+    //const labels = Utils.months({count: 7});
+    const revvcost_main_site_toastData = {
+        labels: @json($monthList_RVC),
+        datasets: [
+        {
+        label: ['Revenue'],
+        data: @json($value_RVC_rev),
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
+        },
+        {
+        label: ['Cost'],
+        data: @json($value_RVC_cost),
+        fill: false,
+        borderColor: 'rgb(255, 192, 192)',
+        tension: 0.1
+        }
+    ]
+    };
+    const revvcost_main_site_toastConfig = {
+        type: 'line',
+        data: revvcost_main_site_toastData,
+        options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+        }
+    };
+
+    let RVC_site_toast = new Chart(revvcost_main_site_toast, revvcost_main_site_toastConfig);
+
+    let updateChart = function(start_date,end_date,type){
+        $.ajax({
+            url: "/filter-data",
+                    type: "GET",
+                    dataType: "json",
+                    data: {
+                        start_date: start_date,
+                        end_date: end_date,
+                        type:type,
+                    },
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    success: function(dataOutput) {
+                        if(type === 'kpi_utama'){
+                            // labels
+                            kpiu_main_toastData.labels = dataOutput.val_month
+                            // data
+                            kpiu_main_toastData.datasets[0].data = dataOutput.val_x_1;
+                            kpiu_main_toastData.datasets[1].data = dataOutput.val_x_2;
+                            kpiu_main_toastData.datasets[2].data = dataOutput.val_x_3;
+                            // update
+                            KPIU_toast.update();
+                        }else if(type === 'kpi_activity'){
+                            // labels
+                            kpia_main_toastData.labels = dataOutput.val_month
+                            // data
+                            kpia_main_toastData.datasets[0].data = dataOutput.val_x_1;
+                            kpia_main_toastData.datasets[1].data = dataOutput.val_x_2;
+                            kpia_main_toastData.datasets[2].data = dataOutput.val_x_3;
+                            // update
+                            KPIA_toast.update();
+                        }else if(type === 'kpi_support'){
+                            // labels
+                            kpis_mainToastData.labels = dataOutput.val_month
+                            // data
+                            kpis_mainToastData.datasets[0].data = dataOutput.val_x_1;
+                            kpis_mainToastData.datasets[1].data = dataOutput.val_x_2;
+                            kpis_mainToastData.datasets[2].data = dataOutput.val_x_3;
+                            // update
+                            KPIS_toast.update();
+                        }else if(type === 'profit_loss'){
+                            // labels
+                            profitloss_main_toastData.labels = dataOutput.val_month
+                            // data
+                            profitloss_main_toastData.datasets[0].data = dataOutput.val_x_1;
+                            profitloss_main_toastData.datasets[1].data = dataOutput.val_x_2;
+                            profitloss_main_toastData.datasets[2].data = dataOutput.val_x_3;
+                            // update
+                            PL_toast.update();
+                        }else if(type === 'var_cost'){
+                            // labels
+                            varcost_main_toastdata.labels = dataOutput.val_month
+                            // data
+                            varcost_main_toastdata.datasets[0].data = dataOutput.val_x_1;
+                            varcost_main_toastdata.datasets[1].data = dataOutput.val_x_2;
+                            // update
+                            RCOST_toast.update();
+                        }else if(type === 'rvc'){
+                            // labels
+                            revvcost_mainToastData.labels = dataOutput.val_month
+                            // data
+                            revvcost_mainToastData.datasets[0].data = dataOutput.val_x_1;
+                            revvcost_mainToastData.datasets[1].data = dataOutput.val_x_2;
+                            // update
+                            RVC_toast.update();
+                        }else if(type.slice(0,8) === 'rvc_site'){
+                            // labels
+                            revvcost_main_site_toastData.labels = dataOutput.val_month
+                            // data
+                            revvcost_main_site_toastData.datasets[0].data = dataOutput.val_x_1;
+                            revvcost_main_site_toastData.datasets[1].data = dataOutput.val_x_2;
+                            // update
+                            RVC_site_toast.update();
+                        }else if(type === 'bbm'){
+                            // labels
+                            costbbm_mainToastdata.labels = dataOutput.val_month
+                            // data
+                            costbbm_mainToastdata.datasets[0].data = dataOutput.val_x_1;
+                            costbbm_mainToastdata.datasets[1].data = dataOutput.val_x_2;
+                            costbbm_mainToastdata.datasets[2].data = dataOutput.val_x_3;
+                            // update
+                            BBM_toast.update();
+                        }else if(type.slice(0,2) === 'cc'){
+
+                            // labels
+                            CostComponent_mainToastData.labels = dataOutput.val_month
+                             // data
+                            CostComponent_mainToastData.datasets[0].data = dataOutput.val_x_1;
+                            CostComponent_mainToastData.datasets[1].data = dataOutput.val_x_2;
+                            CostComponent_mainToastData.datasets[2].data = dataOutput.val_x_3;
+                            CostComponent_mainToastData.datasets[3].data = dataOutput.val_x_4;
+                            CostComponent_mainToastData.datasets[4].data = dataOutput.val_x_5;
+                            CostComponent_mainToastData.datasets[5].data = dataOutput.val_x_6;
+                            CostComponent_mainToastData.datasets[6].data = dataOutput.val_x_7;
+                            CostComponent_mainToastData.datasets[7].data = dataOutput.val_x_8;
+                            CostComponent_mainToastData.datasets[8].data = dataOutput.val_x_9;
+                            CostComponent_mainToastData.datasets[9].data = dataOutput.val_x_10;
+                            CostComponent_mainToastData.datasets[10].data = dataOutput.val_x_11;
+                            CostComponent_mainToastData.datasets[11].data = dataOutput.val_x_12;
+                            CostComponent_mainToastData.datasets[12].data = dataOutput.val_x_13;
+                            CostComponent_mainToastData.datasets[13].data = dataOutput.val_x_14;
+
+                            // update
+                            CCOMPONENT_toast.update();
+                        }
+                        
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    },           
+            });
+        
+    }
+
+    $('#search-filter-RVC').click(function(e) {
+            // console.log('test');
+            e.preventDefault();
+            let in_awal_RVC = $('#in_awal_RVC').val();
+            let in_akhir_RVC = $('#in_akhir_RVC').val();
+            let siteid = {{ Js::from($id) }};
+            console.log('rvc_site_' + siteid);
+            updateChart(in_awal_RVC,in_akhir_RVC,'rvc_site_' + siteid);
+
+    })
+
+    $('#search-filter-CC').click(function(e) {
+            // console.log('test');
+            e.preventDefault();
+            let in_awal_CC = $('#in_awal_CC').val();
+            let in_akhir_CC = $('#in_akhir_CC').val();
+            let siteid = {{ Js::from($id) }};
+            console.log('cc_' + siteid);
+            updateChart(in_awal_CC,in_akhir_CC,'cc_' + siteid);
+
+    })
+
 
 </script>
