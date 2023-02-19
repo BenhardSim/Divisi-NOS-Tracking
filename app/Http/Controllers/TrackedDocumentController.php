@@ -165,6 +165,10 @@ class TrackedDocumentController extends Controller
             "kedua" => User::where("id", $tracked_document->id_level_dua)->first(),
             "ketiga" => User::where("id", $tracked_document->id_level_tiga)->first(),
             "keempat" => User::where("id", $tracked_document->id_level_empat)->first(),
+            "users_lvl_1" => User::where('level_akun',1)->get(),
+            "users_lvl_2" => User::where('level_akun',2)->get(),
+            "users_lvl_3" => User::where('level_akun',3)->get(),
+            "users_lvl_4" => User::where('level_akun',4)->get(),
         ]);
     }
 
@@ -188,6 +192,18 @@ class TrackedDocumentController extends Controller
      */
     public function update(Request $request, tracked_document $tracked_document)
     {
+        // change tujuan
+        if(isset($request['id_level_empat'])){
+            $validatedData = $request->validate([
+                "id_level_dua" => "",
+                "id_level_tiga" => "",
+                "id_level_empat" => "",
+
+            ]);
+            tracked_document::where('id',$tracked_document->id)->update($validatedData);
+            return back()->with('success', 'Tujuan berhasil diubah');
+        }
+
         // rejection
         if(isset($request['keterangan'])){
             $request->validate([
