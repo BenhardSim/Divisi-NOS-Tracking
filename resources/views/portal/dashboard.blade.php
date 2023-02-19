@@ -686,6 +686,7 @@
     
 
 @endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/Chart.min.js"></script> --}}
@@ -1497,6 +1498,7 @@
              scales: {
             }
         }
+        // plugins: [plugin],
     };
 
     new Chart(kpia_main, kpia_mainConfig);
@@ -1691,4 +1693,16 @@
             updateChart(interval_awal_BBM,interval_akhir_BBM,'bbm');
 
     })
+
+    const plugin = {
+        id: 'customCanvasBackgroundColor',
+        beforeDraw: (chart, args, options) => {
+            const {ctx} = chart;
+            ctx.save();
+            ctx.globalCompositeOperation = 'destination-over';
+            ctx.fillStyle = options.color || '#99ffff';
+            ctx.fillRect(0, 0, chart.width, chart.height);
+            ctx.restore();
+        }
+    };
 </script>

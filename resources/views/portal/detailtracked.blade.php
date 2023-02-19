@@ -54,11 +54,11 @@
       </tr>
       <tr>
         <th class="table-info" scope="row">Tujuan Level Dua</th>
-        <td>{{ $kedua->name }}</td>
+        <td>@isset($kedua) {{ $kedua->name }} @endisset</td>
       </tr>
       <tr>
         <th class="table-info" scope="row">Tujuan Level Tiga</th>
-        <td>{{ $ketiga->name }}</td>
+        <td>@isset($ketiga) {{ $ketiga->name }} @endisset</td>
       </tr>
       <tr>
         <th class="table-info" scope="row">Tujuan Level Empat</th>
