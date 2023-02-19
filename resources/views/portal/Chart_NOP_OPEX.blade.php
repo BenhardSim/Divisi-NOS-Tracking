@@ -36,6 +36,12 @@
             </div>
         </div>
     </div>
+
+    {{-- NOP-Row-1 --}}
+    <br><br>
+    <div class="col-lg-12 pt-5" style="text-align: center">
+        <h5>OPEX NOP</h5>
+    </div>
     
 
     <div class="row">
@@ -133,7 +139,7 @@
         datasets: [
         {
         label: ['Data OPEX'],
-        data: [90, 50, 18],
+        data: [@json($absorbtion), @json($accure), @json($available)],
         backgroundColor: [
         'rgb(255, 99, 132)',
         'rgb(54, 162, 235)',
@@ -165,7 +171,7 @@
         datasets: [
         {
         label: ['Data OPEX'],
-        data: [90, 50, 18],
+        data: [@json($absorbtion_semarang), @json($accure_semarang), @json($available_semarang) ],
         backgroundColor: [
         'rgb(255, 99, 132)',
         'rgb(54, 162, 235)',
@@ -196,7 +202,7 @@
         datasets: [
         {
         label: ['Data OPEX'],
-        data: [90, 50, 18],
+        data: [@json($absorbtion_surakarta), @json($accure_surakarta), @json($available_surakarta) ],
         backgroundColor: [
         'rgb(255, 99, 132)',
         'rgb(54, 162, 235)',
@@ -227,7 +233,7 @@
         datasets: [
         {
         label: ['Data OPEX'],
-        data: [90, 50, 18],
+        data:  [@json($absorbtion_yogyakarta), @json($accure_yogyakarta), @json($available_yogyakarta) ],
         backgroundColor: [
         'rgb(255, 99, 132)',
         'rgb(54, 162, 235)',
@@ -258,7 +264,7 @@
         datasets: [
         {
         label: ['Data OPEX'],
-        data: [90, 50, 18],
+        data:  [@json($absorbtion_purwokerto), @json($accure_purwokerto), @json($available_purwokerto) ],
         backgroundColor: [
         'rgb(255, 99, 132)',
         'rgb(54, 162, 235)',
@@ -289,7 +295,7 @@
         datasets: [
         {
         label: ['Data OPEX'],
-        data: [90, 50, 18],
+        data:  [@json($absorbtion_pekalongan), @json($accure_pekalongan), @json($available_pekalongan) ],
         backgroundColor: [
         'rgb(255, 99, 132)',
         'rgb(54, 162, 235)',
@@ -320,7 +326,7 @@
         datasets: [
         {
         label: ['Data OPEX'],
-        data: [90, 50, 18],
+        data:  [@json($absorbtion_salatiga), @json($accure_salatiga), @json($available_salatiga) ],
         backgroundColor: [
         'rgb(255, 99, 132)',
         'rgb(54, 162, 235)',
