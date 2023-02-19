@@ -29,7 +29,8 @@ class tracked_documentFactory extends Factory
             // $table->string('id_level_dua');
             // $table->string('id_level_tiga');
             // $table->string('id_level_empat');
-            'file' => $this->faker->sentence(3),
+            'file' => $this->faker->words(3, true),
+            'body' => $this->faker->paragraph(3, true),
             'level_approval' => 1,
             // 'view_file' => $this->faker->name(),
             'id_pengirim' => User::where("level_akun", 1)->first()->id,

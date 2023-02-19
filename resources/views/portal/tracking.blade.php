@@ -31,7 +31,7 @@
           <tr class="text-left">
             <th scope="row">{{ $document->id}}</th>
             <td>{{ $document->nama_pengirim }}</td>
-            <td>{{ $document->deskripsi }}</td>
+            <td>{{ \Illuminate\Support\Str::limit($document->deskripsi, 50, $end='...') }}</td>
             <td>{{ $document->tanggal->format('D, d M Y H:i')}}</td>
             <td>{{ $document->status}}</td>
             <td class="d-flex justify-content-center"> 

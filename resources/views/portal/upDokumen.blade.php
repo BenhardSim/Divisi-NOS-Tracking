@@ -78,11 +78,21 @@
             @enderror
           </div>
           <div class="form-group">
-            <label for="file">Upload Dokumen</label>
-            <input class="form-control  @error('file') is-invalid @enderror" id="file" name="file" type="file">
+            <label for="file">Nama File</label>
+            <input class="form-control  @error('file') is-invalid @enderror" id="file" name="file" type="text">
             @error('file')
                 <div class="invalid-feedback">
                   {{ $message }}
+                </div> 
+            @enderror
+          </div>
+          <div class="form-group">
+            <label for="body">Body Dokumen</label>
+            <input id="body" type="hidden" name="body">
+            <trix-editor input="body"></trix-editor>
+            @error('body')
+                <div class="invalid-feedback">
+                  Invalid
                 </div> 
             @enderror
           </div>
@@ -147,7 +157,7 @@
           $user = App\Models\User::where("id", $history->user_id)->first();
           $document = App\Models\tracked_document::where("id", $history->document_id)->first();
       @endphp
-      <a href="tracked_document/{{ $document->id }}" class="list-group-item list-group-item-action" aria-current="true">
+      <div class="list-group-item list-group-item-action" aria-current="true">
           <div class="d-flex w-100 justify-content-between">
             @if ($history->action == "Created and Approved" || $history->action == "Approved")
               <h5 class="mb-1 text-success">{{ $history->action }}</h5>
@@ -162,7 +172,7 @@
           </div>
           <p class="mb-1">{{ $history->document_name }}</p>
           <small>{{ $user->name }}</small>
-      </a>
+      </div>
       @endforeach   
   </div>
     

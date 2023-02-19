@@ -6,6 +6,7 @@ use App\Mail\MailNotify;
 use App\Models\DocumentHistory;
 use App\Models\tracked_document;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -48,7 +49,8 @@ class TrackedDocumentController extends Controller
                 "id_level_tiga" => "required",
                 "id_level_empat" => "required",
                 "deskripsi" => "required",
-                "file" => "required"
+                "file" => "required",
+                "body" =>"required"
              ]);
         }
         if (Gate::allows('supervisor')) {
@@ -57,19 +59,22 @@ class TrackedDocumentController extends Controller
                 "id_level_empat" => "required",
                 "deskripsi" => "required",
                 "file" => "required",
+                "body" =>"required"
              ]);
         }
         if (Gate::allows('manager')) {
             $validatedData = $request->validate([
                 "id_level_empat" => "required",
                 "deskripsi" => "required",
-                "file" => "required"
+                "file" => "required",
+                "body" =>"required"
              ]);
         }
         if (Gate::allows('gm')) {
             $validatedData = $request->validate([
                 "deskripsi" => "required",
                 "file" => "required",
+                "body" =>"required"
              ]);
         }
         //$validatedData['idimbas'] = tracked_document::max('idimbas') + 1;
@@ -78,10 +83,10 @@ class TrackedDocumentController extends Controller
 
         $max = tracked_document::max('id') + 1;
 
-        $docs = $request->file('file');
-        $uniqname = 'id-tracked-'.$max.'-'.$docs->getClientOriginalName();
-        $docs->storeAs('public/file-tracked',$uniqname);
-        $validatedData['file'] = $uniqname;
+        // $docs = $request->file('file');
+        // $uniqname = 'id-tracked-'.$max.'-'.$docs->getClientOriginalName();
+        // $docs->storeAs('public/file-tracked',$uniqname);
+        // $validatedData['file'] = $uniqname;
         $validatedData['id_pengirim'] = auth()->user()->id;
         $validatedData['nama_pengirim'] = auth()->user()->name;
         $validatedData['level_approval'] = auth()->user()->level_akun;
@@ -113,10 +118,21 @@ class TrackedDocumentController extends Controller
             $validatedHistory['action'] = "Created and Approved";
         }
         DocumentHistory::create($validatedHistory);
-        // mailing
         if(Gate::allows('gm')){
+            $data = [
+                'document' => $saved,
+                'downloaded_time' => Carbon::now('Asia/Jakarta'),
+                
+            ];
+            if($saved->level_approval == 4){
+                $data['ttd'] = User::find($saved->id_level_empat);
+            }
+            $pdf = Pdf::loadView('portal.template_pdf', $data);
+            $uniqname = 'id-tracked-'.$saved->id.'-'.$saved->file;
+            return $pdf->stream($uniqname . '.pdf');
             return back()->with('success', 'Data tracked document berhasil ditambahkan');
         }
+        // mailing
         $data = [];
         
         if(Gate::allows('staff')){
@@ -141,7 +157,7 @@ class TrackedDocumentController extends Controller
 
 
         // Send the mail...
-        Mail::to($receiver->email)->send(new MailNotify($data));
+        //Mail::to($receiver->email)->send(new MailNotify($data));
         return back()->with('success', 'Data tracked document berhasil ditambahkan');
     }
 
@@ -216,7 +232,7 @@ class TrackedDocumentController extends Controller
             $data["body"] = "Sorry, your document: ".$data["document_name"]." got rejected. You can view the portal to find more details";
  
             // Send the mail...
-            Mail::to($receiver->email)->send(new MailNotify($data));
+            //Mail::to($receiver->email)->send(new MailNotify($data));
             return back()->with('success', 'Dokumen berhasil ditolak');
         }
 
@@ -272,7 +288,7 @@ class TrackedDocumentController extends Controller
         }
 
         // Send the mail...
-        Mail::to($receiver->email)->send(new MailNotify($data));
+        //Mail::to($receiver->email)->send(new MailNotify($data));
         return back()->with('success', 'Dokumen berhasil disetujui');
 
         
@@ -290,7 +306,16 @@ class TrackedDocumentController extends Controller
     }
 
     public function getDocs(tracked_document $id_trc){
-        $name = $id_trc->file;
-        return response()->file(storage_path('app\public\file-tracked\\'.$name));
+        $data = [
+            'document' => $id_trc,
+            'downloaded_time' => Carbon::now('Asia/Jakarta'),
+            
+        ];
+        if($id_trc->level_approval == 4){
+            $data['ttd'] = User::find($id_trc->id_level_empat);
+        }
+        $pdf = Pdf::loadView('portal.template_pdf', $data);
+        $uniqname = 'id-tracked-'.$id_trc->id.'-'.$id_trc->file;
+        return $pdf->stream($uniqname . '.pdf');
     }
 }

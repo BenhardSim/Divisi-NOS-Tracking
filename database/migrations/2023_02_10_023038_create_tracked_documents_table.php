@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('file')->default('-');
             $table->string('deskripsi')->default('-');
+            $table->text('body');
             $table->string('status')->default('Pending');
             $table->integer('level_approval');
             $table->string('id_pengirim');
