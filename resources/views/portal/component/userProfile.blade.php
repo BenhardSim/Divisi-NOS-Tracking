@@ -14,6 +14,7 @@
     @endphp
     
     <div class="profile-pic">
+        @cannot('admin')
         <div style="padding-right: 18px">
             <a href="/sign-document" class="notification">
                 <span data-feather="bell" class="align-text-bottom belll" style="width: 28px;height:28px;"></span>
@@ -26,6 +27,7 @@
                 @endisset
             </a>
         </div>
+        @endcannot
         <div style="padding-right: 10px">
             <p>
                 <b>{{ auth()->user()->name }}</b>

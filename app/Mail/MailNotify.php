@@ -34,7 +34,7 @@ class MailNotify extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('juliusa368@gmail.com', 'Julius Adrian'),
+            from: new Address('nos.portal@gmail.com', 'NOS PORTAL'),
             subject: 'Document Approval',
         );
     }
