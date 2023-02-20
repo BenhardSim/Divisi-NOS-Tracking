@@ -404,11 +404,11 @@
                                 <div class="row">
                                     <div class="col-5">
                                         <label for="filter awal">Starting Date</label>
-                                        <input id="in_awal_OPEX" name='interval_awal' type="date" class="form-control" placeholder="filter awal">
+                                        <input id="in_awal_OPEX" name='interval_awal' type="month" class="form-control" placeholder="filter awal">
                                     </div>
                                     <div class="col-5">
                                         <label for="filter akhir">End Date</label>
-                                        <input id="in_akhir_OPEX" name="interval_akhir" type="date" class="form-control" placeholder="filter akhir">
+                                        <input id="in_akhir_OPEX" name="interval_akhir" type="month" class="form-control" placeholder="filter akhir">
                                     </div>
                                     <div class="col-2">
                                         <br>
@@ -1635,6 +1635,16 @@
                             costbbm_mainToastdata.datasets[2].data = dataOutput.val_x_3;
                             // update
                             BBM_toast.update();
+                        }else if(type === 'opex'){
+                            // label
+                            opex_mainToastdata.labels = ['Absorption', 'Accrue', 'Available'],
+                            // data
+                            opex_mainToastdata.datasets[0].data[0] = dataOutput.absorption;
+                            opex_mainToastdata.datasets[0].data[1] = dataOutput.accure;
+                            opex_mainToastdata.datasets[0].data[2] = dataOutput.available;
+                            console.log(dataOutput.absorption);
+                            // update
+                            OPEX_toast.update();
                         }
 
                     },
@@ -1705,6 +1715,15 @@
             let interval_awal_BBM = $('#in_awal_BBM').val();
             let interval_akhir_BBM = $('#in_akhir_BBM').val();
             updateChart(interval_awal_BBM,interval_akhir_BBM,'bbm');
+
+    })
+
+    $('#search-filter-OPEX').click(function(e) {
+            // console.log('test');
+            e.preventDefault();
+            let in_awal_OPEX = $('#in_awal_OPEX').val();
+            let in_akhir_OPEX = $('#in_akhir_OPEX').val();
+            updateChart(in_awal_OPEX,in_akhir_OPEX,'opex');
 
     })
 
