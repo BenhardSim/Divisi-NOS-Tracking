@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\KPI_utama;
 use App\Models\siteprofile;
 use App\Models\tracked_document;
 use App\Models\User;
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
         User::factory(20)->create();
         tracked_document::factory(5)->create();
         siteprofile::factory(500)->create();
+        KPI_utama::factory(100)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

@@ -35,7 +35,7 @@
             <td>{{ $document->tanggal->format('D, d M Y H:i')}}</td>
             <td>{{ $document->status}}</td>
             <td class="d-flex justify-content-center"> 
-                <a href="/tracked_document/{{ $document->id }}" class="badge bg-info links px-3 py-2"><span data-feather="eye" class="" style=""></span> View</a>
+                <a href="/tracking/{{ $document->id }}" class="badge bg-info links px-3 py-2"><span data-feather="eye" class="" style=""></span> View</a>
             </td>
           </tr>  
           @endforeach
