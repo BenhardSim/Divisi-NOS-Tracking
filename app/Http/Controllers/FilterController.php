@@ -10,6 +10,7 @@ use Carbon\CarbonPeriod;
 use App\Models\KPI_aktif;
 use App\Models\KPI_utama;
 use App\Models\KPI_Support;
+use App\Models\opex;
 use App\Models\profit_loss;
 use App\Models\ReservedCost;
 
@@ -153,6 +154,28 @@ class FilterController extends Controller
         $interval_akhir_in = Carbon::parse(request()->end_date);
         $type = request()->type;
 
+        $val_x_1 = array();
+        $val_x_2 = array();
+        $val_x_3 = array();
+        $val_x_4 = array();
+        $val_x_5 = array();
+        $val_x_6 = array();
+        $val_x_7 = array();
+        $val_x_8 = array();
+        $val_x_9 = array();
+        $val_x_10 = array();
+        $val_x_11 = array();
+        $val_x_12 = array();
+        $val_x_13 = array();
+        $val_x_14 = array();
+
+        $val_month = array();
+
+                
+        $absorption = 0;
+        $accure = 0;
+        $available = 0;
+
         if($type === 'kpi_utama'){
             $all_val = KPI_utama::orderBy('date')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
         }else if($type === 'kpi_activity'){
@@ -221,27 +244,58 @@ class FilterController extends Controller
         }else if(substr($type,0,2) === 'cc'){
             $siteid = substr($type,3,strlen($type)+1);
             $all_val = CostComponent::orderBy('date')->where('SITEID',$siteid)->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+        }else if($type === 'opex'){
+            $all_val = opex::whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+            foreach($all_val as $data){
+                $absorption += $data['absorption'];
+                $accure += $data['accure'];
+                $available += $data['available'];
+            }
+        }else if($type === 'opex_semarang'){
+            $all_val = opex::where('NOP','semarang')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+            foreach($all_val as $data){
+                $absorption += $data['absorption'];
+                $accure += $data['accure'];
+                $available += $data['available'];
+            }
+        }else if($type === 'opex_surakarta'){
+            $all_val = opex::where('NOP','surakarta')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+            foreach($all_val as $data){
+                $absorption += $data['absorption'];
+                $accure += $data['accure'];
+                $available += $data['available'];
+            }
+        }else if($type === 'opex_yogyakarta'){
+            $all_val = opex::where('NOP','yogyakarta')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+            foreach($all_val as $data){
+                $absorption += $data['absorption'];
+                $accure += $data['accure'];
+                $available += $data['available'];
+            }
+        }else if($type === 'opex_purwokerto'){
+            $all_val = opex::where('NOP','purwokerto')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+            foreach($all_val as $data){
+                $absorption += $data['absorption'];
+                $accure += $data['accure'];
+                $available += $data['available'];
+            }
+        }else if($type === 'opex_pekalongan'){
+            $all_val = opex::where('NOP','pekalongan')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+            foreach($all_val as $data){
+                $absorption += $data['absorption'];
+                $accure += $data['accure'];
+                $available += $data['available'];
+            }
+        }else if($type === 'opex_salatiga'){
+            $all_val = opex::where('NOP','salatiga')->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+            foreach($all_val as $data){
+                $absorption += $data['absorption'];
+                $accure += $data['accure'];
+                $available += $data['available'];
+            }
         }
-
-        $val_x_1 = array();
-        $val_x_2 = array();
-        $val_x_3 = array();
-        $val_x_4 = array();
-        $val_x_5 = array();
-        $val_x_6 = array();
-        $val_x_7 = array();
-        $val_x_8 = array();
-        $val_x_9 = array();
-        $val_x_10 = array();
-        $val_x_11 = array();
-        $val_x_12 = array();
-        $val_x_13 = array();
-        $val_x_14 = array();
-
-        $val_month = array();
-
         $this->ChartFunction($all_val,$val_month,$type,$val_x_1,$val_x_2,$val_x_3,$val_x_4,$val_x_5,$val_x_6,$val_x_7,$val_x_8,$val_x_9,$val_x_10,$val_x_11,$val_x_12,$val_x_13,$val_x_14);
 
-        return response()->json(compact('val_x_1','val_x_2','val_x_3','val_x_4','val_x_5','val_x_6','val_x_7','val_x_8','val_x_9','val_x_10','val_x_11','val_x_12','val_x_13','val_x_14','val_month'));
+        return response()->json(compact('absorption','accure','available','val_x_1','val_x_2','val_x_3','val_x_4','val_x_5','val_x_6','val_x_7','val_x_8','val_x_9','val_x_10','val_x_11','val_x_12','val_x_13','val_x_14','val_month'));
     }
 }
