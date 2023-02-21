@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\KPI_utama>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\KPI_Support>
  */
-class KPI_utamaFactory extends Factory
+class KPI_SupportFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -24,7 +24,7 @@ class KPI_utamaFactory extends Factory
             'avail_power' => $this->faker->numberBetween(10, 1000),
             'kpi_target' => 70,
             'date' => $this->faker->dateTimeBetween('-1 years', 'now'),
-            'kpi_utama' => $fake_kpi,
+            'kpi_support' => $fake_kpi,
         ];
     }
 }

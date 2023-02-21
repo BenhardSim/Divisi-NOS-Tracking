@@ -953,17 +953,19 @@
          labels: @json($monthList_BBM),
          datasets: [
          {
-         label: ['Cost (dalam ribuan rupiah)'],
+         label: ['Cost'],
          data: @json($value_BBM_total),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
-         tension: 0.1
+         tension: 0.1,
+         yAxisID: 'cost',
          },
          {
          label: ['Lama Pemakaian (jam)'],
          data: @json($value_BBM_RH),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
+         yAxisID: 'jam',
          tension: 0.1
          },
          {
@@ -971,6 +973,7 @@
          data: @json($value_BBM_BBM),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
+         yAxisID: 'liter',
          tension: 0.1
          }
      ]
@@ -980,9 +983,25 @@
          data: costbbm_maindata,
          options: {
              scales: {
-                 y: {
-                 beginAtZero: true
-                 }
+                //  y: {
+                //  beginAtZero: true
+                //  }
+                 yAxes :[
+                    { id: 'cost',
+                        position:'left'},
+                    { id: 'jam',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    },
+                    { id: 'liter',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    }  
+                ]
              }
          }
      };
@@ -1001,6 +1020,7 @@
          data: @json($value_BBM_total),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
+         yAxisID: 'cost_toast',
          tension: 0.1
          },
          {
@@ -1008,6 +1028,7 @@
          data: @json($value_BBM_RH),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
+         yAxisID: 'jam_toast',
          tension: 0.1
          },
          {
@@ -1015,6 +1036,7 @@
          data: @json($value_BBM_BBM),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
+         yAxisID: 'liter_toast',
          tension: 0.1
          }
      ]
@@ -1024,9 +1046,22 @@
          data: costbbm_mainToastdata,
          options: {
              scales: {
-                 y: {
-                 beginAtZero: true
-                 }
+                yAxes :[
+                    { id: 'cost_toast',
+                        position:'left'},
+                    { id: 'jam_toast',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    },
+                    { id: 'liter_toast',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    }  
+                ]
              }
          }
      };
