@@ -1255,14 +1255,14 @@
         {
             axis: 'y',
             label: 'B2S',
-            data: [2, 4, 0, 2, 1, 1, 10, 2, 5, 7, 11],
+            data: @json($b2s),
             fill: false,
             backgroundColor: '#22aa99'
         },
         {
             axis: 'y',
             label: 'Collo TP',
-            data: [0, 0, 1, 1, 1, 1, 2, 1, 0, 10, 1],
+            data: @json($collo_tp),
             fill: false,
             backgroundColor: '#994499'
         },

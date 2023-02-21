@@ -34,6 +34,12 @@
             </div>
         </div>
     </div>
+
+    {{-- NOP-Row-1 --}}
+    <br><br>
+    <div class="col-lg-12 pt-5" style="text-align: center">
+        <h5>Infra IRR NOP</h5>
+    </div>
     
 
     <div class="row">
