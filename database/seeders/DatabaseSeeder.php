@@ -4,14 +4,17 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\BBM;
 use App\Models\KPI_aktif;
 use App\Models\KPI_Support;
 use App\Models\KPI_utama;
+use App\Models\opex;
 use App\Models\profit_loss;
 use App\Models\ReservedCost;
 use App\Models\RVC;
 use App\Models\siteprofile;
 use App\Models\tracked_document;
+use App\Models\tren_irr;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -33,6 +36,9 @@ class DatabaseSeeder extends Seeder
         RVC::factory(100)->create();
         profit_loss::factory(100)->create();
         ReservedCost::factory(100)->create();
+        BBM::factory(100)->create();
+        opex::factory(100)->create();
+        tren_irr::factory(12)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

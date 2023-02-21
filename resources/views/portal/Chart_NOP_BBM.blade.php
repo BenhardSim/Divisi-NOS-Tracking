@@ -556,13 +556,15 @@
          data: @json($value_BBM_total),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
-         tension: 0.1
+         tension: 0.1,
+         yAxisID: 'cost_regional',
          },
          {
          label: ['Lama Pemakaian (jam)'],
          data: @json($value_BBM_RH),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
+         yAxisID: 'jam_regional',
          tension: 0.1
          },
          {
@@ -570,6 +572,7 @@
          data: @json($value_BBM_BBM),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
+         yAxisID: 'liter_regional',
          tension: 0.1
          }
      ]
@@ -579,9 +582,22 @@
          data: costbbm_regionaldata,
          options: {
              scales: {
-                 y: {
-                 beginAtZero: true
-                 }
+                yAxes :[
+                    { id: 'cost_regional',
+                        position:'left'},
+                    { id: 'jam_regional',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    },
+                    { id: 'liter_regional',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    }  
+                ]
              }
          }
      };
@@ -598,6 +614,7 @@
          data: @json($value_BBM_total),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
+         yAxisID: 'cost_regional_toast',
          tension: 0.1
          },
          {
@@ -605,6 +622,7 @@
          data: @json($value_BBM_RH),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
+         yAxisID: 'jam_regional_toast',
          tension: 0.1
          },
          {
@@ -612,6 +630,7 @@
          data: @json($value_BBM_BBM),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
+         yAxisID: 'liter_regional_toast',
          tension: 0.1
          }
      ]
@@ -621,9 +640,22 @@
          data: costbbm_mainToastdata,
          options: {
              scales: {
-                 y: {
-                 beginAtZero: true
-                 }
+                yAxes :[
+                    { id: 'cost_regional_toast',
+                        position:'left'},
+                    { id: 'jam_regional_toast',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    },
+                    { id: 'liter_regional_toast',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    }  
+                ]
              }
          }
      };
@@ -642,6 +674,7 @@
          data: @json($value_BBM_total_semarang),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
+         yAxisID: 'cost_semarang',
          tension: 0.1
          },
          {
@@ -649,6 +682,7 @@
          data: @json($value_BBM_RH_semarang),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
+         yAxisID: 'jam_semarang',
          tension: 0.1
          },
          {
@@ -656,6 +690,7 @@
          data: @json($value_BBM_BBM_semarang),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
+         yAxisID: 'liter_semarang',
          tension: 0.1
          }
      ]
@@ -665,9 +700,22 @@
          data: costbbm_semarangdata,
          options: {
              scales: {
-                 y: {
-                 beginAtZero: true
-                 }
+                yAxes :[
+                    { id: 'cost_semarang',
+                        position:'left'},
+                    { id: 'jam_semarang',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    },
+                    { id: 'liter_semarang',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    }  
+                ]
              }
          }
      };
@@ -686,6 +734,7 @@
          data: @json($value_BBM_total_semarang),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
+         yAxisID: 'cost_semarang_toast',
          tension: 0.1
          },
          {
@@ -693,6 +742,7 @@
          data: @json($value_BBM_RH_semarang),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
+         yAxisID: 'jam_semarang_toast',
          tension: 0.1
          },
          {
@@ -700,6 +750,7 @@
          data: @json($value_BBM_BBM_semarang),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
+         yAxisID: 'liter_semarang_toast',
          tension: 0.1
          }
      ]
@@ -709,9 +760,22 @@
          data: costbbm_mainToast_semarangdata,
          options: {
              scales: {
-                 y: {
-                 beginAtZero: true
-                 }
+                yAxes :[
+                    { id: 'cost_semarang_toast',
+                        position:'left'},
+                    { id: 'jam_semarang_toast',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    },
+                    { id: 'liter_semarang_toast',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    }  
+                ]
              }
          }
      };
@@ -728,6 +792,7 @@
          data: @json($value_BBM_total_surakarta),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
+         yAxisID: 'cost_surakarta',
          tension: 0.1
          },
          {
@@ -735,6 +800,7 @@
          data: @json($value_BBM_RH_surakarta),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
+         yAxisID: 'jam_surakarta',
          tension: 0.1
          },
          {
@@ -742,6 +808,7 @@
          data: @json($value_BBM_BBM_surakarta),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
+         yAxisID: 'liter_surakarta',
          tension: 0.1
          }
      ]
@@ -751,9 +818,22 @@
          data: costbbm_surakartadata,
          options: {
              scales: {
-                 y: {
-                 beginAtZero: true
-                 }
+                yAxes :[
+                    { id: 'cost_surakarta',
+                        position:'left'},
+                    { id: 'jam_surakarta',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    },
+                    { id: 'liter_surakarta',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    }  
+                ]
              }
          }
      };
@@ -772,6 +852,7 @@
          data: @json($value_BBM_total_surakarta),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
+         yAxisID: 'cost_surakarta_toast',
          tension: 0.1
          },
          {
@@ -779,6 +860,7 @@
          data: @json($value_BBM_RH_surakarta),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
+         yAxisID: 'jam_surakarta_toast',
          tension: 0.1
          },
          {
@@ -786,6 +868,7 @@
          data: @json($value_BBM_BBM_surakarta),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
+         yAxisID: 'liter_surakarta_toast',
          tension: 0.1
          }
      ]
@@ -795,9 +878,22 @@
          data: costbbm_mainToast_surakartadata,
          options: {
              scales: {
-                 y: {
-                 beginAtZero: true
-                 }
+                yAxes :[
+                    { id: 'cost_surakarta_toast',
+                        position:'left'},
+                    { id: 'jam_surakarta_toast',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    },
+                    { id: 'liter_surakarta_toast',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    }  
+                ]
              }
          }
      };
@@ -814,6 +910,7 @@
          data: @json($value_BBM_total_yogyakarta),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
+         yAxisID: 'cost_yogyakarta',
          tension: 0.1
          },
          {
@@ -821,6 +918,7 @@
          data: @json($value_BBM_RH_yogyakarta),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
+         yAxisID: 'jam_yogyakarta',
          tension: 0.1
          },
          {
@@ -828,6 +926,7 @@
          data: @json($value_BBM_BBM_yogyakarta),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
+         yAxisID: 'liter_yogyakarta',
          tension: 0.1
          }
      ]
@@ -837,9 +936,22 @@
          data: costbbm_yogyakartadata,
          options: {
              scales: {
-                 y: {
-                 beginAtZero: true
-                 }
+                yAxes :[
+                    { id: 'cost_yogyakarta',
+                        position:'left'},
+                    { id: 'jam_yogyakarta',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    },
+                    { id: 'liter_yogyakarta',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    }  
+                ]
              }
          }
      };
@@ -858,6 +970,7 @@
          data: @json($value_BBM_total_yogyakarta),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
+         yAxisID: 'cost_yogyakarta_toast',
          tension: 0.1
          },
          {
@@ -865,6 +978,7 @@
          data: @json($value_BBM_RH_yogyakarta),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
+         yAxisID: 'jam_yogyakarta_toast',
          tension: 0.1
          },
          {
@@ -872,6 +986,7 @@
          data: @json($value_BBM_BBM_yogyakarta),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
+         yAxisID: 'liter_yogyakarta_toast',
          tension: 0.1
          }
      ]
@@ -881,9 +996,22 @@
          data: costbbm_mainToast_yogyakartadata,
          options: {
              scales: {
-                 y: {
-                 beginAtZero: true
-                 }
+                yAxes :[
+                    { id: 'cost_yogyakarta_toast',
+                        position:'left'},
+                    { id: 'jam_yogyakarta_toast',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    },
+                    { id: 'liter_yogyakarta_toast',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    }  
+                ]
              }
          }
      };
@@ -900,6 +1028,7 @@
          data: @json($value_BBM_total_purwokerto),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
+         yAxisID: 'cost_purwokerto',
          tension: 0.1
          },
          {
@@ -907,6 +1036,7 @@
          data: @json($value_BBM_RH_purwokerto),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
+         yAxisID: 'jam_purwokerto',
          tension: 0.1
          },
          {
@@ -914,6 +1044,7 @@
          data: @json($value_BBM_BBM_purwokerto),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
+         yAxisID: 'liter_purwokerto',
          tension: 0.1
          }
      ]
@@ -923,9 +1054,22 @@
          data: costbbm_purwokertodata,
          options: {
              scales: {
-                 y: {
-                 beginAtZero: true
-                 }
+                yAxes :[
+                    { id: 'cost_purwokerto',
+                        position:'left'},
+                    { id: 'jam_purwokerto',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    },
+                    { id: 'liter_purwokerto',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    }  
+                ]
              }
          }
      };
@@ -944,6 +1088,7 @@
          data: @json($value_BBM_total_purwokerto),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
+         yAxisID: 'cost_purwokerto_toast',
          tension: 0.1
          },
          {
@@ -951,6 +1096,7 @@
          data: @json($value_BBM_RH_purwokerto),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
+         yAxisID: 'jam_purwokerto_toast',
          tension: 0.1
          },
          {
@@ -958,6 +1104,7 @@
          data: @json($value_BBM_BBM_purwokerto),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
+         yAxisID: 'liter_purwokerto_toast',
          tension: 0.1
          }
      ]
@@ -967,9 +1114,22 @@
          data: costbbm_mainToast_purwokertodata,
          options: {
              scales: {
-                 y: {
-                 beginAtZero: true
-                 }
+                yAxes :[
+                    { id: 'cost_purwokerto_toast',
+                        position:'left'},
+                    { id: 'jam_purwokerto_toast',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    },
+                    { id: 'liter_purwokerto_toast',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    }  
+                ]
              }
          }
      };
@@ -986,6 +1146,7 @@
          data: @json($value_BBM_total_pekalongan),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
+         yAxisID: 'cost_pekalongan',
          tension: 0.1
          },
          {
@@ -993,6 +1154,7 @@
          data: @json($value_BBM_RH_pekalongan),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
+         yAxisID: 'jam_pekalongan',
          tension: 0.1
          },
          {
@@ -1000,6 +1162,7 @@
          data: @json($value_BBM_BBM_pekalongan),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
+         yAxisID: 'liter_pekalongan',
          tension: 0.1
          }
      ]
@@ -1009,9 +1172,22 @@
          data: costbbm_pekalongandata,
          options: {
              scales: {
-                 y: {
-                 beginAtZero: true
-                 }
+                yAxes :[
+                    { id: 'cost_pekalongan',
+                        position:'left'},
+                    { id: 'jam_pekalongan',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    },
+                    { id: 'liter_pekalongan',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    }  
+                ]
              }
          }
      };
@@ -1030,6 +1206,7 @@
          data: @json($value_BBM_total_pekalongan),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
+         yAxisID: 'cost_pekalongan_toast',
          tension: 0.1
          },
          {
@@ -1037,6 +1214,7 @@
          data: @json($value_BBM_RH_pekalongan),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
+         yAxisID: 'jam_pekalongan_toast',
          tension: 0.1
          },
          {
@@ -1044,6 +1222,7 @@
          data: @json($value_BBM_BBM_pekalongan),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
+         yAxisID: 'liter_pekalongan_toast',
          tension: 0.1
          }
      ]
@@ -1053,9 +1232,22 @@
          data: costbbm_mainToast_pekalongandata,
          options: {
              scales: {
-                 y: {
-                 beginAtZero: true
-                 }
+                yAxes :[
+                    { id: 'cost_pekalongan_toast',
+                        position:'left'},
+                    { id: 'jam_pekalongan_toast',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    },
+                    { id: 'liter_pekalongan_toast',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    }  
+                ]
              }
          }
      };
@@ -1072,6 +1264,7 @@
          data: @json($value_BBM_total_salatiga),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
+         yAxisID: 'cost_salatiga',
          tension: 0.1
          },
          {
@@ -1079,6 +1272,7 @@
          data: @json($value_BBM_RH_salatiga),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
+         yAxisID: 'jam_salatiga',
          tension: 0.1
          },
          {
@@ -1086,6 +1280,7 @@
          data: @json($value_BBM_BBM_salatiga),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
+         yAxisID: 'liter_salatiga',
          tension: 0.1
          }
      ]
@@ -1095,9 +1290,22 @@
          data: costbbm_salatigadata,
          options: {
              scales: {
-                 y: {
-                 beginAtZero: true
-                 }
+                yAxes :[
+                    { id: 'cost_salatiga',
+                        position:'left'},
+                    { id: 'jam_salatiga',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    },
+                    { id: 'liter_salatiga',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    }  
+                ]
              }
          }
      };
@@ -1116,6 +1324,7 @@
          data: @json($value_BBM_total_salatiga),
          fill: false,
          borderColor: 'rgb(100, 100, 255)',
+         yAxisID: 'cost_salatiga_toast',
          tension: 0.1
          },
          {
@@ -1123,6 +1332,7 @@
          data: @json($value_BBM_RH_salatiga),
          fill: false,
          borderColor: 'rgb(100, 255, 100)',
+         yAxisID: 'jam_salatiga_toast',
          tension: 0.1
          },
          {
@@ -1130,6 +1340,7 @@
          data: @json($value_BBM_BBM_salatiga),
          fill: false,
          borderColor: 'rgb(255, 100, 100)',
+         yAxisID: 'liter_salatiga_toast',
          tension: 0.1
          }
      ]
@@ -1139,9 +1350,22 @@
          data: costbbm_mainToast_salatigadata,
          options: {
              scales: {
-                 y: {
-                 beginAtZero: true
-                 }
+                yAxes :[
+                    { id: 'cost_salatiga_toast',
+                        position:'left'},
+                    { id: 'jam_salatiga_toast',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    },
+                    { id: 'liter_salatiga_toast',
+                        position:'right',
+                        type: 'linear',
+                        gridLines: {
+                    drawOnChartArea: false}
+                    }  
+                ]
              }
          }
      };

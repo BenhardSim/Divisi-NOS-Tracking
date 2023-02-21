@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('genset');
             $table->integer('harga_rata');
             $table->string('cluster');
-            $table->string('RH');
+            $table->integer('RH');
             $table->integer('harga_total');
             $table->date('date');
             $table->integer('bbm');
