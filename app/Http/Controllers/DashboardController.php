@@ -270,57 +270,20 @@ class DashboardController extends Controller
 
          $AllIds_IIRR = infraIrr::orderBy('date')->get()->ToArray();
 
-         $b2s = array_fill(0, 11, 0);
-         $collo_tp = array_fill(0, 11, 0);
+         $b2s_infra = array_fill(0, 11, 0);
+         $collo_tp_infra = array_fill(0, 11, 0);
 
          foreach($AllIds_IIRR as $data){
             for($i=0 ;$i<11;$i++){
                 $conditions = 'condition_'.$i+1;
                 if($data['owner'] === 'b2s'){
-                    $b2s[$i] = $data[$conditions];
+                    $b2s_infra[$i] = $data[$conditions];
                 }else if($data['owner'] === 'collo_tp'){
-                    $collo_tp[$i] = $data[$conditions];
+                    $collo_tp_infra[$i] = $data[$conditions];
                 }
             }
          }
-        //  foreach($AllIds_IIRR as $data){
-        //     $condition_1 += $data['condition_1'];
-        //     $condition_2 += $data['condition_2'];
-        //     $condition_3 += $data['condition_3'];
-        //     $condition_4 += $data['condition_4'];
-        //     $condition_5 += $data['condition_5'];
-        //     $condition_6 += $data['condition_6'];
-        //     $condition_7 += $data['condition_7'];
-        //     $condition_8 += $data['condition_8'];
-        //     $condition_9 += $data['condition_9'];
-        //     $condition_10 += $data['condition_10'];
-        //     $condition_11 += $data['condition_11'];
-        //  }
-        //  $size = 0;
-        //  if(sizeof($AllIds_IRR) !== 0){
-        //      $size = $AllIds_IRR[sizeof($AllIds_IRR)-1]['periode'] - $AllIds_IRR[0]['periode'] + 1;
-        //  }
-        //      $b2s = array_fill(0, $size, 0);
-        //      $collo_tp = array_fill(0, $size, 0);
-        //      $target_irr_collo = array_fill(0, $size, 0);
-        //      $target_irr_b2s = array_fill(0, $size, 0);
-        //      $komitmen_collo = array_fill(0, $size, 0);
-        //      $komitmen_b2s = array_fill(0, $size, 0);
-        //      $monthList_IRR = array_fill(0, $size, 0);
- 
-        //      foreach($AllIds_IRR as $key => $data){
-        //          $b2s[$key] = $data['b2s'];
-        //          $collo_tp[$key] = $data['collo_tp'];
-        //          $target_irr_collo[$key] = $data['target_irr_collo'];
-        //          $target_irr_b2s[$key] = $data['target_irr_b2s'];
-        //          $komitmen_collo[$key] = $data['komitmen_collo'];
-        //          $komitmen_b2s[$key] = $data['komitmen_b2s'];
-        //          $monthList_IRR[$key] = 'M'.($key+1);
-     
-         
-        //  }
-
-
+       
         // dd($monthList_IRR);
         return view('portal.dashboard', [
             "site_all" => siteprofile::count(),
@@ -374,8 +337,8 @@ class DashboardController extends Controller
             "komitmen_b2s" => $komitmen_b2s,
             "monthList_IRR" => $monthList_IRR,
 
-            "b2s" => $b2s,
-            "collo_tp" => $collo_tp,
+            "b2s_infra" => $b2s_infra,
+            "collo_tp_infra" => $collo_tp_infra,
 
 
         ]);
