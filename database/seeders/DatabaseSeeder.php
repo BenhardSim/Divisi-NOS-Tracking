@@ -5,6 +5,8 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\BBM;
+use App\Models\CostComponent;
+use App\Models\infraIrr;
 use App\Models\KPI_aktif;
 use App\Models\KPI_Support;
 use App\Models\KPI_utama;
@@ -27,9 +29,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(20)->create();
+        User::factory(30)->create();
         tracked_document::factory(5)->create();
-        siteprofile::factory(100)->create();
+        siteprofile::factory(20)->create();
         KPI_utama::factory(100)->create();
         KPI_Support::factory(100)->create();
         KPI_aktif::factory(100)->create();
@@ -39,6 +41,8 @@ class DatabaseSeeder extends Seeder
         BBM::factory(100)->create();
         opex::factory(100)->create();
         tren_irr::factory(12)->create();
+        infraIrr::factory(100)->create();
+        CostComponent::factory(100)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

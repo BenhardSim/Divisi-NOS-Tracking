@@ -337,6 +337,7 @@ class DashboardController extends Controller
             "komitmen_b2s" => $komitmen_b2s,
             "monthList_IRR" => $monthList_IRR,
 
+
             "b2s_infra" => $b2s_infra,
             "collo_tp_infra" => $collo_tp_infra,
 
