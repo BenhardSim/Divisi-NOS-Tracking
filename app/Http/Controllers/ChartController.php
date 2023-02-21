@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\BBM;
-use App\Models\OPEX;
-use App\Models\tren_irr;
 use App\Models\RVC;
+use App\Models\OPEX;
+use App\Models\infraIrr;
+use App\Models\tren_irr;
 use Carbon\CarbonPeriod;
 use App\Models\KPI_aktif;
 use App\Models\KPI_utama;
@@ -1096,10 +1097,162 @@ class ChartController extends Controller
         ]);
     }
     public function indexIIRR(){
+
+         /* ==================================== LOGIC INFRA IRR REGIONAL =========================================================== */
+
+         $AllIds_IIRR = infraIrr::orderBy('date')->get()->ToArray();
+
+         $b2s_infra = array_fill(0, 11, 0);
+         $collo_tp_infra = array_fill(0, 11, 0);
+
+         foreach($AllIds_IIRR as $data){
+            for($i=0 ;$i<11;$i++){
+                $conditions = 'condition_'.$i+1;
+                if($data['owner'] === 'b2s'){
+                    $b2s_infra[$i] = $data[$conditions];
+                }else if($data['owner'] === 'collo_tp'){
+                    $collo_tp_infra[$i] = $data[$conditions];
+                }
+            }
+         }
+
+         /* ==================================== LOGIC INFRA IRR semarang =========================================================== */
+
+         $AllIds_IIRR_semarang = infraIrr::where('NOP','semarang')->orderBy('date')->get()->ToArray();
+
+         $b2s_infra_semarang = array_fill(0, 11, 0);
+         $collo_tp_infra_semarang = array_fill(0, 11, 0);
+
+         foreach($AllIds_IIRR_semarang as $data){
+            for($i=0 ;$i<11;$i++){
+                $conditions = 'condition_'.$i+1;
+                if($data['owner'] === 'b2s'){
+                    $b2s_infra_semarang[$i] = $data[$conditions];
+                }else if($data['owner'] === 'collo_tp'){
+                    $collo_tp_infra_semarang[$i] = $data[$conditions];
+                }
+            }
+         }
+
+          /* ==================================== LOGIC INFRA IRR surakarta =========================================================== */
+
+          $AllIds_IIRR_surakarta = infraIrr::where('NOP','surakarta')->orderBy('date')->get()->ToArray();
+
+          $b2s_infra_surakarta = array_fill(0, 11, 0);
+          $collo_tp_infra_surakarta = array_fill(0, 11, 0);
+ 
+          foreach($AllIds_IIRR_surakarta as $data){
+             for($i=0 ;$i<11;$i++){
+                 $conditions = 'condition_'.$i+1;
+                 if($data['owner'] === 'b2s'){
+                     $b2s_infra_surakarta[$i] = $data[$conditions];
+                 }else if($data['owner'] === 'collo_tp'){
+                     $collo_tp_infra_surakarta[$i] = $data[$conditions];
+                 }
+             }
+          }
+
+           /* ==================================== LOGIC INFRA IRR yogyakarta =========================================================== */
+
+         $AllIds_IIRR_yogyakarta = infraIrr::where('NOP','yogyakarta')->orderBy('date')->get()->ToArray();
+
+         $b2s_infra_yogyakarta = array_fill(0, 11, 0);
+         $collo_tp_infra_yogyakarta = array_fill(0, 11, 0);
+
+         foreach($AllIds_IIRR_yogyakarta as $data){
+            for($i=0 ;$i<11;$i++){
+                $conditions = 'condition_'.$i+1;
+                if($data['owner'] === 'b2s'){
+                    $b2s_infra_yogyakarta[$i] = $data[$conditions];
+                }else if($data['owner'] === 'collo_tp'){
+                    $collo_tp_infra_yogyakarta[$i] = $data[$conditions];
+                }
+            }
+         }
+
+          /* ==================================== LOGIC INFRA IRR purwokerto =========================================================== */
+
+          $AllIds_IIRR_purwokerto = infraIrr::where('NOP','purwokerto')->orderBy('date')->get()->ToArray();
+
+          $b2s_infra_purwokerto = array_fill(0, 11, 0);
+          $collo_tp_infra_purwokerto = array_fill(0, 11, 0);
+ 
+          foreach($AllIds_IIRR_purwokerto as $data){
+             for($i=0 ;$i<11;$i++){
+                 $conditions = 'condition_'.$i+1;
+                 if($data['owner'] === 'b2s'){
+                     $b2s_infra_purwokerto[$i] = $data[$conditions];
+                 }else if($data['owner'] === 'collo_tp'){
+                     $collo_tp_infra_purwokerto[$i] = $data[$conditions];
+                 }
+             }
+          }
+
+           /* ==================================== LOGIC INFRA IRR pekalongan =========================================================== */
+
+         $AllIds_IIRR_pekalongan = infraIrr::where('NOP','pekalongan')->orderBy('date')->get()->ToArray();
+
+         $b2s_infra_pekalongan = array_fill(0, 11, 0);
+         $collo_tp_infra_pekalongan = array_fill(0, 11, 0);
+
+         foreach($AllIds_IIRR_pekalongan as $data){
+            for($i=0 ;$i<11;$i++){
+                $conditions = 'condition_'.$i+1;
+                if($data['owner'] === 'b2s'){
+                    $b2s_infra_pekalongan[$i] = $data[$conditions];
+                }else if($data['owner'] === 'collo_tp'){
+                    $collo_tp_infra_pekalongan[$i] = $data[$conditions];
+                }
+            }
+         }
+
+          /* ==================================== LOGIC INFRA IRR salatiga =========================================================== */
+
+          $AllIds_IIRR_salatiga = infraIrr::where('NOP','salatiga')->orderBy('date')->get()->ToArray();
+
+          $b2s_infra_salatiga = array_fill(0, 11, 0);
+          $collo_tp_infra_salatiga = array_fill(0, 11, 0);
+ 
+          foreach($AllIds_IIRR_salatiga as $data){
+             for($i=0 ;$i<11;$i++){
+                 $conditions = 'condition_'.$i+1;
+                 if($data['owner'] === 'b2s'){
+                     $b2s_infra_salatiga[$i] = $data[$conditions];
+                 }else if($data['owner'] === 'collo_tp'){
+                     $collo_tp_infra_salatiga[$i] = $data[$conditions];
+                 }
+             }
+          }
+
+
+
         return view('portal.Chart_NOP_IIRR', [
             "root" => "iirr",
             "title" => "Chart Infra IRR NOP",
-            "site_all" => siteprofile::all()
+            "site_all" => siteprofile::all(),
+
+            "b2s_infra" => $b2s_infra,
+            "collo_tp_infra" => $collo_tp_infra,
+
+            "b2s_infra_semarang" => $b2s_infra_semarang,
+            "collo_tp_infra_semarang" => $collo_tp_infra_semarang,
+
+            
+            "b2s_infra_surakarta" => $b2s_infra_surakarta,
+            "collo_tp_infra_surakarta" => $collo_tp_infra_surakarta,
+
+            "b2s_infra_yogyakarta" => $b2s_infra_yogyakarta,
+            "collo_tp_infra_yogyakarta" => $collo_tp_infra_yogyakarta,
+            
+            "b2s_infra_purwokerto" => $b2s_infra_purwokerto,
+            "collo_tp_infra_purwokerto" => $collo_tp_infra_purwokerto,
+
+            "b2s_infra_pekalongan" => $b2s_infra_pekalongan,
+            "collo_tp_infra_pekalongan" => $collo_tp_infra_pekalongan,
+
+            "b2s_infra_salatiga" => $b2s_infra_salatiga,
+            "collo_tp_infra_salatiga" => $collo_tp_infra_salatiga,
+
         ]);
     }
     public function indexKPIA(){

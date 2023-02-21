@@ -1290,14 +1290,14 @@
         {
             axis: 'y',
             label: 'B2S',
-            data: @json($b2s),
+            data: @json($b2s_infra),
             fill: false,
             backgroundColor: '#22aa99'
         },
         {
             axis: 'y',
             label: 'Collo TP',
-            data: @json($collo_tp),
+            data: @json($collo_tp_infra),
             fill: false,
             backgroundColor: '#994499'
         },
