@@ -66,6 +66,7 @@ Route::get('/tagging', [TaggingController::class, 'index'])->middleware('auth');
 Route::get('/sign-document', [SignController::class, 'index'])->middleware('auth');
 Route::get('/history',[HistoryController::class, 'index'])->middleware('auth');
 Route::get('/tracking',[TrackingController::class, 'index'])->middleware('auth');
+Route::get('/tracking/{tracked_document:id}',[TrackingController::class, 'show'])->middleware('auth');
 
 
 // site list

@@ -135,9 +135,9 @@
                       <b>Tujuan User Level 2</b> : @isset($kedua){{ $kedua->name }} @else - @endisset<br>
                       <b>Tujuan User Level 3</b> : @isset($ketiga){{ $ketiga->name }} @else - @endisset<br>
                       <b>Tujuan User Level 4</b> : @isset($keempat){{ $keempat->name }} @else - @endisset<br>
-                      <b>Approval Level 2</b> :@isset($history2) {{ $history2->waktu->format('D, d M Y H:i')  }} @else - @endisset<br>
-                      <b>Approval Level 3</b> :@isset($history3) {{ $history3->waktu->format('D, d M Y H:i')  }} @else - @endisset<br>
-                      <b>Approval Level 4</b> :@isset($history4) {{ $history4->waktu->format('D, d M Y H:i')  }} @else - @endisset<br>
+                      <b>Approval/Rejection Level 2</b> :@isset($history2) {{ $history2->waktu->format('D, d M Y H:i')  }} @else - @endisset<br>
+                      <b>Approval/Rejection Level 3</b> :@isset($history3) {{ $history3->waktu->format('D, d M Y H:i')  }} @else - @endisset<br>
+                      <b>Approval/Rejection Level 4</b> :@isset($history4) {{ $history4->waktu->format('D, d M Y H:i')  }} @else - @endisset<br>
                     </p>  
                   </a> --}}
   
