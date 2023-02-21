@@ -1138,7 +1138,7 @@
     const tirr_main = document.getElementById('tirr_main').getContext('2d');
      //const labels = Utils.months({count: 7});
      const tirr_maindata = {
-         labels: @json($monthList_IRR),
+        labels: @json($monthList_IRR),
          datasets: [
          {
          label: ['B2S'],
@@ -1165,7 +1165,7 @@
          },
          {
          label: ['Target IRR B2S'],
-         data:@json($target_irr_b2s),
+         data: @json($target_irr_b2s),
          fill: false,
          borderColor: 'rgb(255, 125, 0)',
          pointStyle: 'crossRot',
