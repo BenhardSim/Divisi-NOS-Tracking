@@ -50,6 +50,8 @@ class TrackedDocumentController extends Controller
                 "id_level_empat" => "required",
                 "deskripsi" => "required",
                 "file" => "required",
+                "tipe_file" => 'required',
+                "nomor" => 'required',
                 "body" =>"required"
              ]);
         }
@@ -59,6 +61,8 @@ class TrackedDocumentController extends Controller
                 "id_level_empat" => "required",
                 "deskripsi" => "required",
                 "file" => "required",
+                "tipe_file" => 'required',
+                "nomor" => 'required',
                 "body" =>"required"
              ]);
         }
@@ -67,6 +71,8 @@ class TrackedDocumentController extends Controller
                 "id_level_empat" => "required",
                 "deskripsi" => "required",
                 "file" => "required",
+                "tipe_file" => 'required',
+                "nomor" => 'required',
                 "body" =>"required"
              ]);
         }
@@ -74,6 +80,8 @@ class TrackedDocumentController extends Controller
             $validatedData = $request->validate([
                 "deskripsi" => "required",
                 "file" => "required",
+                "tipe_file" => 'required',
+                "nomor" => 'required',
                 "body" =>"required"
              ]);
         }
@@ -313,7 +321,10 @@ class TrackedDocumentController extends Controller
             'downloaded_time' => Carbon::now('Asia/Jakarta'),
         ];
         if($id_trc->level_approval == 4){
-            $data['ttd'] = User::find($id_trc->id_level_empat);
+            $data['pengirim'] = User::find($id_trc->id_level_empat);
+            $data['kedua'] = User::find($id_trc->id_level_dua);
+            $data['ketiga'] = User::find($id_trc->id_level_tiga);
+            $data['keempat'] = User::find($id_trc->id_level_empat);
         }
         $pdf = Pdf::loadView('portal.template_pdf', $data);
         $uniqname = 'id-tracked-'.$id_trc->id.'-'.$id_trc->file;
