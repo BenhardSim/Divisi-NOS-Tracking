@@ -137,14 +137,14 @@
         {
             axis: 'y',
             label: 'B2S',
-            data: [2, 4, 0, 2, 1, 1, 10, 2, 5, 7, 11],
+            data: @json($b2s_infra),
             fill: false,
             backgroundColor: '#22aa99'
         },
         {
             axis: 'y',
             label: 'Collo TP',
-            data: [0, 0, 1, 1, 1, 1, 2, 1, 0, 10, 1],
+            data:  @json($collo_tp_infra),
             fill: false,
             backgroundColor: '#994499'
         },
@@ -195,14 +195,14 @@
         {
             axis: 'y',
             label: 'B2S',
-            data: [2, 4, 0, 2, 1, 1, 10, 2, 5, 7, 11],
+            data: @json($b2s_infra_semarang),
             fill: false,
             backgroundColor: '#22aa99'
         },
         {
             axis: 'y',
             label: 'Collo TP',
-            data: [0, 0, 1, 1, 1, 1, 2, 1, 0, 10, 1],
+            data: @json($collo_tp_infra_semarang),
             fill: false,
             backgroundColor: '#994499'
         },
@@ -253,14 +253,14 @@
         {
             axis: 'y',
             label: 'B2S',
-            data: [2, 4, 0, 2, 1, 1, 10, 2, 5, 7, 11],
+            data: @json($b2s_infra_surakarta),
             fill: false,
             backgroundColor: '#22aa99'
         },
         {
             axis: 'y',
             label: 'Collo TP',
-            data: [0, 0, 1, 1, 1, 1, 2, 1, 0, 10, 1],
+            data: @json($collo_tp_infra_surakarta),
             fill: false,
             backgroundColor: '#994499'
         },
@@ -311,14 +311,14 @@
         {
             axis: 'y',
             label: 'B2S',
-            data: [2, 4, 0, 2, 1, 1, 10, 2, 5, 7, 11],
+            data: @json($b2s_infra_yogyakarta),
             fill: false,
             backgroundColor: '#22aa99'
         },
         {
             axis: 'y',
             label: 'Collo TP',
-            data: [0, 0, 1, 1, 1, 1, 2, 1, 0, 10, 1],
+            data: @json($collo_tp_infra_yogyakarta),
             fill: false,
             backgroundColor: '#994499'
         },
@@ -369,14 +369,14 @@
         {
             axis: 'y',
             label: 'B2S',
-            data: [2, 4, 0, 2, 1, 1, 10, 2, 5, 7, 11],
+            data: @json($b2s_infra_purwokerto),
             fill: false,
             backgroundColor: '#22aa99'
         },
         {
             axis: 'y',
             label: 'Collo TP',
-            data: [0, 0, 1, 1, 1, 1, 2, 1, 0, 10, 1],
+            data: @json($collo_tp_infra_purwokerto),
             fill: false,
             backgroundColor: '#994499'
         },
@@ -427,14 +427,14 @@
         {
             axis: 'y',
             label: 'B2S',
-            data: [2, 4, 0, 2, 1, 1, 10, 2, 5, 7, 11],
+            data: @json($b2s_infra_pekalongan),
             fill: false,
             backgroundColor: '#22aa99'
         },
         {
             axis: 'y',
             label: 'Collo TP',
-            data: [0, 0, 1, 1, 1, 1, 2, 1, 0, 10, 1],
+            data: @json($collo_tp_infra_pekalongan),
             fill: false,
             backgroundColor: '#994499'
         },
@@ -485,14 +485,14 @@
         {
             axis: 'y',
             label: 'B2S',
-            data: [2, 4, 0, 2, 1, 1, 10, 2, 5, 7, 11],
+            data: @json($b2s_infra_salatiga),
             fill: false,
             backgroundColor: '#22aa99'
         },
         {
             axis: 'y',
             label: 'Collo TP',
-            data: [0, 0, 1, 1, 1, 1, 2, 1, 0, 10, 1],
+            data: @json($collo_tp_infra_salatiga),
             fill: false,
             backgroundColor: '#994499'
         },
