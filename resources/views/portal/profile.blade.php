@@ -1517,7 +1517,8 @@
         }
     </script>
 
-    <div class="col-lg-6">
+    <div class="col-1"></div>
+    <div class="col-lg-10">
         <div class="container rvc-stat shadow">
             <div class="rvc-title title-box">
                 <div class="title-cont">
@@ -1536,6 +1537,7 @@
             </div>
         </div>
     </div>
+    <div class="col-1"></div>
 
       {{-- MODAL MAGNIFY COST COMPONENT --}}
 
@@ -1646,6 +1648,28 @@
                     </div>
                 </div>
             </div>
+            </div>
+        </div>
+
+        {{-- PLN --}}
+
+        <div class="col-lg-6">
+            <div class="container rvc-stat shadow">
+                <div class="rvc-title title-box">
+                    <div class="title-cont">
+                        <a href="/rvc" class="links text-white"><h5>COST PLN SITE {{ $id }}</h5></a>
+                    </div>
+                    <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
+                        {{-- view All Data Button --}}
+                        <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailRVC">
+                            <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
+                            <span>Magnify</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="rvc-graph">
+                    <canvas id="pln_main_site"></canvas>
+                </div>
             </div>
         </div>
 
@@ -1977,6 +2001,36 @@
     };
 
     let RVC_site_toast = new Chart(revvcost_main_site_toast, revvcost_main_site_toastConfig);
+
+    // chart PLN
+
+    const pln_main_site = document.getElementById('pln_main_site');
+    //const labels = Utils.months({count: 7});
+    const pln_main_siteData = {
+        labels: @json($monthList_RVC),
+        datasets: [
+        {
+        label: ['Jumlah tagihan'],
+        data: @json($value_RVC_rev),
+        fill: false,
+        borderColor: 'rgb(12, 12, 200)',
+        tension: 0.1
+        },
+    ]
+    };
+    const pln_main_siteConfig = {
+        type: 'line',
+        data: pln_main_siteData,
+        options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+        }
+    };
+
+    new Chart(pln_main_site, pln_main_siteConfig);
 
     let updateChart = function(start_date,end_date,type){
         $.ajax({

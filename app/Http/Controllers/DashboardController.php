@@ -258,7 +258,7 @@ class DashboardController extends Controller
                 $b2s[$key] = $data['b2s'];
                 $collo_tp[$key] = $data['collo_tp'];
                 $target_irr_collo[$key] = $data['target_irr_collo'];
-                $target_irr_b2s[$key] = $data['target_irr_b2s'];
+                $target_irr_b2s[$key] = $data['target_irr_b2s'];    
                 $komitmen_collo[$key] = $data['komitmen_collo'];
                 $komitmen_b2s[$key] = $data['komitmen_b2s'];
                 $monthList_IRR[$key] = 'M'.($key+1);
