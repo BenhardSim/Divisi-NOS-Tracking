@@ -61,7 +61,7 @@
                   <option value="{{ $user_lvl_4->id }}">{{ $user_lvl_4->name }}</option>
                 @endforeach
               </select>
-              @error('id_level_4')
+              @error('id_level_empat')
                 <div class="invalid-feedback">
                   {{ $message }}
                 </div> 
@@ -69,6 +69,31 @@
             </div>
             @endcanany
             
+          <div class="form-group">
+            <label for="tipe_file">Tipe File</label>
+            <select class="form-control  @error('tipe_file') is-invalid @enderror" id="tipe_file" name="tipe_file">
+              <option selected>Pilih Tipe File</option>
+              <option value="Form Pemesanan Barang/Jasa">Form Pemesanan Barang/Jasa</option>
+              <option value="Berita Acara Kesepakatan">Berita Acara Kesepakatan</option>
+              <option value="Minutes of Meeting">Minutes of Meeting</option>
+              <option value="Justifikasi Usulan Kebutuhan Barang/Jasa">Justifikasi Usulan Kebutuhan Barang/Jasa</option>
+            </select>
+            @error('tipe_file')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div> 
+            @enderror
+          </div>
+          <div class="form-group">
+            <label for="nomor">Nomor</label>
+            <input class="form-control  @error('nomor') is-invalid @enderror" id="nomor" name="nomor" type="text" placeholder="Masukkan Nomor Dokumen">
+            @error('nomor')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div> 
+            @enderror
+          </div>
+
           <div class="form-group">
             <label for="deskripsi">Deskripsi Dokumen</label>
             <textarea class="form-control  @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="3" placeholder="Masukkan Deskripsi Dokumen"></textarea>
@@ -80,7 +105,7 @@
           </div>
           <div class="form-group">
             <label for="file">Nama File</label>
-            <input class="form-control  @error('file') is-invalid @enderror" id="file" name="file" type="text">
+            <input class="form-control  @error('file') is-invalid @enderror" id="file" name="file" type="text" placeholder="Masukkan Nama Dokumen">
             @error('file')
                 <div class="invalid-feedback">
                   {{ $message }}
@@ -89,7 +114,7 @@
           </div>
           <div class="form-group">
             <label for="body">Body Dokumen</label>
-            <input id="body" type="hidden" name="body">
+            <input id="body" type="hidden" name="body" >
             <trix-editor input="body"></trix-editor>
             @error('body')
                 <div class="invalid-feedback">

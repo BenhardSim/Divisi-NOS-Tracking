@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('tracked_documents', function (Blueprint $table) {
             $table->id();
+            $table->string('nomor')->default('-');
             $table->string('file')->default('-');
+            $table->string('tipe_file')->default('-');
             $table->string('deskripsi')->default('-');
             $table->text('body');
             $table->string('status')->default('Pending');
