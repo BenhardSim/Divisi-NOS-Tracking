@@ -11,6 +11,7 @@ use App\Imports\KPIImport;
 use App\Imports\KPIActivityImport;
 use App\Imports\KPISupportImport;
 use App\Imports\OPEXImport;
+use App\Imports\PLNImport_2;
 use App\Imports\ReservedCostImport;
 use App\Imports\ProfitLossImport;
 use App\Imports\RVCImport;
@@ -57,7 +58,11 @@ class ImportController extends Controller
         }else if($validatedData["tipe-template"] === 'IIRR'){
             Excel::import(new InfraImport,request()->file('file'));
             return back()->with('toast_success', 'Data Infra IRR berhasil ditambahkan');
-        };
+        }else if($validatedData['tipe-template'] === 'PLN'){
+            // dd('test');
+            Excel::import(new PLNImport_2,request()->file('file'));
+            return back()->with('toast_success', 'Data PLN berhasil ditambahkan');
+        }
         return back()->with('toast_error', 'pilih jenis Dokumen yang akan di masukkan !');
     }
 }
