@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\pbb;
+use App\Models\pln;
 use App\Models\RVC;
 use Carbon\CarbonPeriod;
 use App\Models\commissue;
@@ -11,15 +12,15 @@ use App\Models\imbas_petir;
 use App\Models\siteprofile;
 use App\Models\imb_document;
 use Illuminate\Http\Request;
+use App\Models\CostComponent;
 use App\Models\lain_document;
 use App\Models\certificate_document;
-use App\Models\CostComponent;
 use App\Models\kontrak_site_history;
 
 class SitesController extends Controller
 {
 
-    function ChartFunction($AllIds,&$month_list,$chart_type,&$val_x_1,&$val_x_2,&$val_x_3='empty',&$val_x_4='empty',&$val_x_5='empty',&$val_x_6='empty',&$val_x_7='empty',&$val_x_8='empty',&$val_x_9='empty',&$val_x_10='empty',&$val_x_11='empty',&$val_x_12='empty',&$val_x_13='empty',&$val_x_14='empty'){
+    function ChartFunction($AllIds,&$month_list,$chart_type,&$val_x_1,&$val_x_2='empty',&$val_x_3='empty',&$val_x_4='empty',&$val_x_5='empty',&$val_x_6='empty',&$val_x_7='empty',&$val_x_8='empty',&$val_x_9='empty',&$val_x_10='empty',&$val_x_11='empty',&$val_x_12='empty',&$val_x_13='empty',&$val_x_14='empty'){
         if(sizeof($AllIds) !== 0){
             // ambil interval date bulan dari data paling kecil ke paling besar 
             $from = $AllIds[0]['date'];
@@ -143,6 +144,10 @@ class SitesController extends Controller
                             $val_x_13[$key] += $data_target['opex_frequency'];
                             $val_x_14[$key] += $data_target['opex_frequency'];
                         }
+                    }else if($chart_type === 'PLN'){
+                        if($month_target === $month){
+                            $val_x_1[$key] += $data_target['jmltagihan'];
+                        }
                     }
                 // array_push($monthList,$month_target);
             };
@@ -262,6 +267,17 @@ class SitesController extends Controller
 
         $this->ChartFunction($AllIds_CC, $monthList_CC,'CC',$val_x_1_CC,$val_x_2_CC,$val_x_3_CC,$val_x_4_CC,$val_x_5_CC,$val_x_6_CC,$val_x_7_CC,$val_x_8_CC,$val_x_9_CC,$val_x_10_CC,$val_x_11_CC,$val_x_12_CC,$val_x_13_CC,$val_x_14_CC);
 
+         /* =================================== COST PLN SITE =========================== */
+
+         $AllIds_PLN = pln::where('SITEID', $id->SITEID)->orderBy('date')->get()->toArray(); 
+         $cost_pln = array();
+         $monthList_PLN = array();
+
+         $this->ChartFunction($AllIds_PLN, $monthList_PLN,'PLN',$cost_pln);
+
+
+
+        // dd($cost_pln);
         return view('portal.profile',[
             "title" => "SITE ".$id->SITEID,
             "id" => $id->SITEID,
@@ -304,6 +320,9 @@ class SitesController extends Controller
             "val_x_9_CC" => $val_x_9_CC,
             "val_x_14_CC" => $val_x_14_CC,
             "monthList_CC" => $monthList_CC,
+
+            "cost_pln" => $cost_pln,
+            "monthList_PLN" => $monthList_PLN,
         ]);
     }
 
