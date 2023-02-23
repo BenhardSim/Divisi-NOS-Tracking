@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\lain_document;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\lain_document;
+use Illuminate\Support\Facades\Validator;
 
 class lainController extends Controller
 {
@@ -36,11 +37,17 @@ class lainController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validatedData = $request->all();
+
+        $validator = Validator::make($request->all(),[
             'SITEID' => 'required',
             'nama_file' => 'required',
             'file_lain' => 'required',
         ]);
+
+        if($validator->fails()){
+            return back()->with('toast_error', 'Field Form Document lainnya tidak boleh kosong !');
+        };
 
         $validatedData['id'] = lain_document::max('id') + 1;
         $validatedData['SITEID'] = $request->SITEID;

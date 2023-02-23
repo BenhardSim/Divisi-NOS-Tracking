@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\commissue;
 use App\Models\siteprofile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CommController extends Controller
 {
@@ -36,7 +37,9 @@ class CommController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validatedData = $request->all();
+
+        $validator = Validator::make($request->all(), [
             "SITEID" => "required",
             "SITENAME" => "required",
             "REVENUE" => "required",
@@ -48,6 +51,11 @@ class CommController extends Controller
             "STATSCASE" => "required",
             "KOMPENSASI" => "required",
         ]);
+
+
+        if($validator->fails()){
+            return back()->with('toast_error', 'field comm issue tidak boleh kosong !');
+        }
 
         $validatedData['idComm'] = commissue::max('idComm') + 1;
         commissue::create($validatedData);

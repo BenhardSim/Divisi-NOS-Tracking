@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\imbas_petir;
 use App\Models\siteprofile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ImbasController extends Controller
 {
@@ -39,8 +40,11 @@ class ImbasController extends Controller
 
         
         //
-        $validatedData = $request->validate([
-           "Siteid" => "required",
+        $validatedData = $request->all();
+
+        
+        $validator = Validator::make($request->all(),[
+            "Siteid" => "required",
            "SiteName" => "required",
            "ClaimID" => "required|unique:imbas_petirs",
            "claim" => "required",
@@ -55,6 +59,11 @@ class ImbasController extends Controller
            "RTPO" => "required",
            "Regional" => "required",
         ]);
+
+        if($validator->fails()){
+            return back()->with('toast_error', 'Field Form Imbas Petir tidak boleh kosong !');
+        };
+
         $validatedData['idimbas'] = imbas_petir::max('idimbas') + 1;
         //return redirect('/dashboard')->with('toast_success', 'Data berhasil dimasukkan');
         // return view('portal.test', dd($request));
