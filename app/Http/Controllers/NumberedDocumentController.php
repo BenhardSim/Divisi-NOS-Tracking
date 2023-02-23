@@ -54,9 +54,8 @@ class NumberedDocumentController extends Controller
         $year = $date->year;
         $month = Terbilang::roman($date->month, false); // MCCXXXIV;
         $format ='/KX-04'.$validatedData['tipe_file'].$validatedData['departemen'].'/'.$month.'/'.$year;
-        $counter = NumberedDocument::where('kode', 'like', $format)->count() + 1;
+        $counter = NumberedDocument::where('kode', 'like', '%'.$format)->count() + 1;
         $format = str_pad($counter, 3, '0', STR_PAD_LEFT).$format;
-        $invID = str_pad($counter, 4, '0', STR_PAD_LEFT);
         $validatedData['tanggal'] = $date;
         $validatedData['kode'] = $format;
         $docs = $request->file('dokumen');
