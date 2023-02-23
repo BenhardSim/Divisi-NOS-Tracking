@@ -16,6 +16,11 @@
           </tr>
         </thead>
         <tbody>
+          @if ($site_all->count() == 0)
+                <tr class="text-center text-danger">
+                    <th colspan="5">There isn't any data yet</th>
+                </tr>
+              @endif
           @foreach ($site_all as $site)
           <tr class="text-left">
             <th scope="row">{{ $site->SITEID }}</th>

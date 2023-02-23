@@ -22,6 +22,11 @@
           </tr>
         </thead>
         <tbody>
+          @if ($documents->count() == 0)
+            <tr class="text-center text-danger">
+                <th colspan="6">There isn't any data yet</th>
+            </tr>
+          @endif
           @foreach ($documents as $document)
           <tr class="text-left">
             <th scope="row">{{ $document->id}}</th>
