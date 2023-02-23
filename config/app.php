@@ -198,6 +198,7 @@ return [
         Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Riskihajar\Terbilang\TerbilangServiceProvider::class,
 
     ],
 
@@ -217,6 +218,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Terbilang' => Riskihajar\Terbilang\Facades\Terbilang::class,
     ])->toArray(),
 
 ];

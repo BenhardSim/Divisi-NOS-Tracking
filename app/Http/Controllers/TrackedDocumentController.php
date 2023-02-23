@@ -326,7 +326,7 @@ class TrackedDocumentController extends Controller
             $data['ketiga'] = User::find($id_trc->id_level_tiga);
             $data['keempat'] = User::find($id_trc->id_level_empat);
         }
-        $pdf = Pdf::loadView('portal.template_pdf', $data);
+        $pdf = PDF::loadView('portal.template_pdf', $data);
         $uniqname = 'id-tracked-'.$id_trc->id.'-'.$id_trc->file;
         return $pdf->stream($uniqname . '.pdf');
     }
