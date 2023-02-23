@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\claim_asset;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ClaimController extends Controller
 {
@@ -36,7 +37,10 @@ class ClaimController extends Controller
     public function store(Request $request)
     {
         //
-        $validatedData = $request->validate([
+        $validatedData = $request->all();
+
+
+        $validator = Validator::make($request->all(),[
             "SiteIDClaim" => "required",
             "SiteNameClaim" => "required",
             "Reportdate" => "required",
@@ -52,6 +56,11 @@ class ClaimController extends Controller
             "ItemMerk" => "required",
             "ItemUnit" => "required",
         ]);
+
+        if($validator->fails()){
+            return back()->with('toast_error', 'Field Form Claim Asset tidak boleh kosong !');
+        };
+
         $validatedData['idclaim'] = claim_asset::max('idclaim') + 1;
         //return redirect('/dashboard')->with('success', 'Data berhasil dimasukkan');
         // return view('portal.test', dd($request));

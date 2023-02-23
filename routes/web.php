@@ -118,9 +118,9 @@ Route::resource('/claim_assets', ClaimController::class)->middleware('auth');
 Route::resource('/kontrak_site_histories', ContractController::class)->middleware('auth');
 // CRUD Commissue
 Route::resource('/commissues',CommController::class)->middleware('auth');
+
 // CRUD certificate Document
 Route::resource('/certificate_documents',CertificateController::class)->middleware('auth');
-
 // CRUD IMB Document
 Route::resource('/certificate_imbs',ImbController::class)->middleware('auth');
 // CRUD Document Lainnya

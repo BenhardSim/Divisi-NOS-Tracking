@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\imb_document;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ImbController extends Controller
 {
@@ -35,11 +36,17 @@ class ImbController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validatedData = $request->all();
+
+        $validator = Validator::make($request->all(),[
             "SITEID" => "required",
             "no_imb" => "required",
             "file_imb" => "required",
         ]);
+
+        if($validator->fails()){
+            return back()->with('toast_error', 'Field Form Document IMB tidak boleh kosong !');
+        };
 
         $validatedData['id'] = imb_document::max('id') + 1;
         $validatedData['SITEID'] = $request->SITEID;
