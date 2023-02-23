@@ -1517,7 +1517,8 @@
         }
     </script>
 
-    <div class="col-lg-6">
+    <div class="col-1"></div>
+    <div class="col-lg-10">
         <div class="container rvc-stat shadow">
             <div class="rvc-title title-box">
                 <div class="title-cont">
@@ -1536,6 +1537,7 @@
             </div>
         </div>
     </div>
+    <div class="col-1"></div>
 
       {{-- MODAL MAGNIFY COST COMPONENT --}}
 
@@ -1639,6 +1641,74 @@
                                     <div class="col-2">
                                         <br>
                                         <button type="submit" id="search-filter-RVC" class="btn btn-primary" >Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        {{-- PLN --}}
+
+        <div class="col-lg-6">
+            <div class="container rvc-stat shadow">
+                <div class="rvc-title title-box">
+                    <div class="title-cont">
+                        <a href="/rvc" class="links text-white"><h5>COST PLN SITE {{ $id }}</h5></a>
+                    </div>
+                    <div class="addicon" style="vertical-align: middle;display: flex;align-items:center;flex-direction:row">
+                        {{-- view All Data Button --}}
+                        <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalDetailPLN">
+                            <span data-feather="eye" class="align-text-bottom" style="margin-right: 5px"></span> 
+                            <span>Magnify</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="rvc-graph">
+                    <canvas id="pln_main_site"></canvas>
+                </div>
+            </div>
+        </div>
+
+         {{-- MODAL MAGNIFY PLN SITE --}}
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDetailPLN" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FILTER DATA PLN SITE {{ $id }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body container row">
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <div class="container rvc-stat shadow">
+                            <div class="rvc-graph">
+                                <canvas id="pln_main_site_toast"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-12">
+                        <div class="container rvc-stat shadow" style="padding: 10px" >
+                            <form method="GET">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="filter awal">Starting Date</label>
+                                        <input id="in_awal_PLN" name='interval_awal' type="date" class="form-control" placeholder="filter awal">
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="filter akhir">End Date</label>
+                                        <input id="in_akhir_PLN" name="interval_akhir" type="date" class="form-control" placeholder="filter akhir">
+                                    </div>
+                                    <div class="col-2">
+                                        <br>
+                                        <button type="submit" id="search-filter-PLN" class="btn btn-primary" >Search</button>
                                     </div>
                                 </div>
                             </form>
@@ -1978,6 +2048,66 @@
 
     let RVC_site_toast = new Chart(revvcost_main_site_toast, revvcost_main_site_toastConfig);
 
+    // chart PLN
+
+    const pln_main_site = document.getElementById('pln_main_site');
+    //const labels = Utils.months({count: 7});
+    const pln_main_siteData = {
+        labels: @json($monthList_PLN),
+        datasets: [
+        {
+        label: ['Jumlah tagihan'],
+        data: @json($cost_pln),
+        fill: false,
+        borderColor: 'rgb(12, 12, 200)',
+        tension: 0.1
+        },
+    ]
+    };
+    const pln_main_siteConfig = {
+        type: 'line',
+        data: pln_main_siteData,
+        options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+        }
+    };
+
+    new Chart(pln_main_site, pln_main_siteConfig);
+
+    // chart PLN Toast
+
+    const pln_main_site_toast = document.getElementById('pln_main_site_toast');
+    //const labels = Utils.months({count: 7});
+    const pln_main_site_toastData = {
+        labels: @json($monthList_PLN),
+        datasets: [
+        {
+        label: ['Jumlah tagihan'],
+        data: @json($cost_pln),
+        fill: false,
+        borderColor: 'rgb(12, 12, 200)',
+        tension: 0.1
+        },
+    ]
+    };
+    const pln_main_site_toastConfig = {
+        type: 'line',
+        data: pln_main_site_toastData,
+        options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+        }
+    };
+
+    let PLN_site_toast = new Chart(pln_main_site_toast, pln_main_site_toastConfig);
+
     let updateChart = function(start_date,end_date,type){
         $.ajax({
             url: "/filter-data",
@@ -2083,6 +2213,13 @@
 
                             // update
                             CCOMPONENT_toast.update();
+                        }else if(type.slice(0,3) === 'pln'){
+                            // labels
+                            pln_main_site_toastData.labels = dataOutput.val_month
+                            // data
+                            pln_main_site_toastData.datasets[0].data = dataOutput.val_x_1;
+                            // update
+                            PLN_site_toast.update();
                         }
                         
                     },
@@ -2112,6 +2249,17 @@
             let siteid = {{ Js::from($id) }};
             console.log('cc_' + siteid);
             updateChart(in_awal_CC,in_akhir_CC,'cc_' + siteid);
+
+    })
+
+    $('#search-filter-PLN').click(function(e) {
+            // console.log('test');
+            e.preventDefault();
+            let in_awal_PLN = $('#in_awal_PLN').val();
+            let in_akhir_PLN = $('#in_akhir_PLN').val();
+            let siteid = {{ Js::from($id) }};
+            console.log('cc_' + siteid);
+            updateChart(in_awal_PLN,in_akhir_PLN,'pln_' + siteid);
 
     })
 

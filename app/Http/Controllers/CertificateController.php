@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\certificate_document;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\certificate_document;
+use Illuminate\Support\Facades\Validator;
 
 
 class CertificateController extends Controller
@@ -37,11 +38,17 @@ class CertificateController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validatedData = $request->all();
+
+        $validator = Validator::make($request->all(),[
             "no_ser" => "required",
             "file_ser" => "required",
             "SITEID" => "required",
         ]);
+
+        if($validator->fails()){
+            return back()->with('toast_error', 'Field Form Document Certificate tidak boleh kosong !');
+        };
 
         $validatedData['id'] = certificate_document::max('id') + 1;
         $validatedData['SITEID'] = $request->SITEID;

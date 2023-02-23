@@ -55,6 +55,7 @@
                             <option value="Tren_IRR">Tren IRR</option>
                             <option value="CCOMPONENT">Cost Component</option>
                             <option value="IIRR">Infra IRR</option>
+                            <option value="PLN">Cost PLN</option>
                         </select>
                     </div>
                     <a id="download-template" class="btn btn-dark">Download Template</a>
@@ -73,7 +74,7 @@
                 <h6>Mohon Baca petunjuk berikut sebelum mengupload data.</h6>
                 <br>
                 <ol>
-                    <li>Pastikan Dokumen yang Dimasukkan merupakan dokumen dengan format .CSV</li>
+                    <li>Pastikan Dokumen yang Dimasukkan merupakan dokumen dengan format .csv atau .xlsx</li>
                     <li>Pilih Tipe Dokumen yang akan di masukkan </li>
                     <li>pastikan format dari table sesuai dengan template yang telah di sediakan</li>
                     <li>Jangan mengubah/menambahkan/menghapus kolom dari template table</li>

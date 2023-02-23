@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\pbb;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PbbController extends Controller
 {
@@ -36,7 +37,9 @@ class PbbController extends Controller
     public function store(Request $request)
     {
         //
-        $validatedData = $request->validate([
+        $validatedData = $request->all();
+
+        $validator = Validator::make($request->all(),[
             "SITEID" => "required",
             "SITENAME" => "required",
             "NOP" => "required",
@@ -48,6 +51,13 @@ class PbbController extends Controller
             "PROVINSI" => "required",
             "KPP" => "required",
         ]);
+
+        if($validator->fails()){
+            return back()->with('toast_error', 'Field Form PBB tidak boleh kosong !');
+        };
+
+
+
         $validatedData['idPBB'] = pbb::max('idPBB') + 1;
         //return redirect('/dashboard')->with('success', 'Data berhasil dimasukkan');
         // return view('portal.test', dd($request));

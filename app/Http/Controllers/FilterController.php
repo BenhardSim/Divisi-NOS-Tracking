@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\BBM;
-use App\Models\CostComponent;
+use App\Models\pln;
 use App\Models\RVC;
+use App\Models\opex;
 use Carbon\CarbonPeriod;
 use App\Models\KPI_aktif;
 use App\Models\KPI_utama;
 use App\Models\KPI_Support;
-use App\Models\opex;
 use App\Models\profit_loss;
 use App\Models\ReservedCost;
 
 use Illuminate\Http\Request;
+use App\Models\CostComponent;
 use function PHPSTORM_META\type;
 
 class FilterController extends Controller
@@ -142,6 +143,10 @@ class FilterController extends Controller
                             $val_x_13[$key] += $data_target['opex_frequency'];
                             $val_x_14[$key] += $data_target['opex_frequency'];
                         }
+                    }else if(substr($chart_type,0,3) === 'pln'){
+                        if($month_target === $month){
+                            $val_x_1[$key] += $data_target['jmltagihan'];
+                        }
                     }
                 // array_push($monthList,$month_target);
             };
@@ -244,6 +249,9 @@ class FilterController extends Controller
         }else if(substr($type,0,2) === 'cc'){
             $siteid = substr($type,3,strlen($type)+1);
             $all_val = CostComponent::orderBy('date')->where('SITEID',$siteid)->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
+        }else if(substr($type,0,3) === 'pln'){
+            $siteid = substr($type,4,strlen($type)+1);
+            $all_val = pln::orderBy('date')->where('SITEID',$siteid)->whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
         }else if($type === 'opex'){
             $all_val = opex::whereDate('date','<=',$interval_akhir_in->format('y-m-d'))->whereDate('date','>=',$interval_awal_in->format('y-m-d'))->get()->toArray();
             foreach($all_val as $data){
