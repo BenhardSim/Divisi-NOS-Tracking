@@ -139,6 +139,8 @@ class ContractController extends Controller
     public function destroy(kontrak_site_history $kontrak_site_history)
     {
         kontrak_site_history::where('id',$kontrak_site_history->id)->delete();
+        $name = $kontrak_site_history->file_pks;
+        unlink(storage_path('app\public\file-kontrak\\'.$name));
         return back()->with('toast_success', 'Data kontrak site berhasil dihapus');
     }
 
