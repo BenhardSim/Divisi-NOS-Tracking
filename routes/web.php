@@ -1,17 +1,7 @@
 <?php
 
-use App\Models\User;
-use App\Imports\KPIImport;
 use App\Models\imbas_petir;
 use App\Models\siteprofile;
-use App\Models\kontrak_site;
-use Illuminate\Http\Request;
-use App\Models\tagging_asset;
-use Illuminate\Http\Response;
-use App\Models\tracked_document;
-use Illuminate\Support\Facades\App;
-use App\Models\kontrak_site_history;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImbController;
 use App\Http\Controllers\PbbController;
@@ -26,13 +16,13 @@ use App\Http\Controllers\SitesController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\SettingController;
-use App\Http\Controllers\TaggingController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\TrackedDocumentController;
 use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\NumberedDocumentController;
 use App\Http\Controllers\TrackingController;
 
 /*
@@ -62,11 +52,11 @@ Route::get('/upload-dokumen', [UploadController::class, 'index'])->middleware('a
 Route::get('/upload-data', function(){
     return view('portal.add_data');
 })->middleware('admin');
-Route::get('/tagging', [TaggingController::class, 'index'])->middleware('auth');
 Route::get('/sign-document', [SignController::class, 'index'])->middleware('auth');
 Route::get('/history',[HistoryController::class, 'index'])->middleware('auth');
-Route::get('/tracking',[TrackingController::class, 'index'])->middleware('auth');
+Route::get('/tracking',[TrackingController::class, 'index'])->middleware('admin');
 Route::get('/tracking/{tracked_document:id}',[TrackingController::class, 'show'])->middleware('auth');
+Route::resource('/numbereddocuments', NumberedDocumentController::class)->middleware('auth');
 
 
 // site list

@@ -57,18 +57,8 @@
         @endcannot
 
     
-        {{-- <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('numbering*') ? '#5B8FB9' : '' }} ">
-            <a class="nav-link text-white" href="/numbering">
-              <span style="color: #EB3223" data-feather="hash" class="align-text-bottom"></span>
-              Numbering Document
-            </a>
-        </li>
-        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('contract*') ? '#5B8FB9' : '' }} ">
-            <a class="nav-link text-white" href="/contract">
-              <span style="color: #EB3223" data-feather="pen-tool" class="align-text-bottom"></span>
-              Contract TP
-            </a>
-        </li> --}}
+        
+
 
         @can('admin')
         <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('tracking*') ? '#5B8FB9' : '' }} ">
@@ -79,6 +69,13 @@
         </li>
         @endcan
 
+        <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('numbereddocuments*') ? '#5B8FB9' : '' }} ">
+            <a class="nav-link text-white" href="/numbereddocuments/create">
+              <span style="color: #EB3223" data-feather="hash" class="align-text-bottom"></span>
+              Numbering Document
+            </a>
+        </li>
+        
         <li class="nav-item pt-2 pb-2" style="background-color: {{ Request::is('setting*') ? '#5B8FB9' : '' }} ">
           <a class="nav-link text-white" aria-current="page" href="/setting">
             <span style="color: #EB3223" data-feather="settings" class="align-text-bottom"></span>
