@@ -9,4 +9,6 @@ class pln extends Model
 {
     protected $guarded = [];
     use HasFactory;
+    public $timestamps = false;
+    protected $dates = ['date'];
 }

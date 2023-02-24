@@ -17,17 +17,16 @@ return new class extends Migration
             $table->id();
             $table->string('SITEID');
             $table->string('sitename');
-            $table->integer('IDPEL');
-            $table->integer('tarif');
+            $table->string('IDPEL');
+            $table->string('tarif');
             $table->integer('DAYA');
             $table->string('statusdaya');
             $table->string('faktorkali');
-            $table->string('standawal');
-            $table->string('standakhir');
+            $table->integer('standawal');
+            $table->integer('standakhir');
             $table->string('pemakaianreal');
-            $table->string('jmltagihan');
+            $table->integer('jmltagihan');
             $table->date('date');
-            $table->timestamps();
         });
     }
 

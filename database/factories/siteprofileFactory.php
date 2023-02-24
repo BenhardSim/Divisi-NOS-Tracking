@@ -50,7 +50,7 @@ class siteprofileFactory extends Factory
             'JENISCATUANLISTRIK' => "PLN",
             'DAYALISTRIKTERPASANG' => $this->faker->numberBetween(5000, 60000),
             'SITESTATUS' => $this->faker->randomElement(['Active', 'Not Active']),
-            'ID_PEL' => $this->faker->regexify('[0-9]{12}'),
+            'IDPEL' => $this->faker->regexify('[0-9]{12}'),
             'PAYMENTPLNMETODE' => $this->faker->randomElement(['Centralized', 'Listrik by TP', 'Include Sarpen']),
             'HO' => $this->faker->numberBetween(1, 200),
             'SITETSELBARU' => $this->faker->randomElement(['DONE', 'DONE_TP', 'Unknown']),
