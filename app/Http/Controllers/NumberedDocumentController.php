@@ -62,29 +62,35 @@ class NumberedDocumentController extends Controller
         $uniqname = 'id-numbered-'.$maxID.'-'.$docs->getClientOriginalName();
         $docs->storeAs('public/file-numbered',$uniqname);
         $validatedData['dokumen'] = $uniqname;
-        if($validatedData['departemen'] == "-41"){
-            $validatedData['departemen'] = 'Network Service Semarang';
+        if($validatedData['departemen'] == "-4"){
+            $validatedData['departemen'] = 'Region Network Operations and Productivity Jawa Timur Division';
+        }
+        else if($validatedData['departemen'] == "-41"){
+            $validatedData['departemen'] = 'Network Operations and Productivity Semarang Department';
         }
         else if($validatedData['departemen'] == "-42"){
-            $validatedData['departemen'] = 'Network Service Purwokerto';
+            $validatedData['departemen'] = 'Network Operations and Productivity Purwokerto Department';
         }
         else if($validatedData['departemen'] == "-43"){
-            $validatedData['departemen'] = 'Network Service Pekalongan';
+            $validatedData['departemen'] = 'Network Operations and Productivity Pekalongan Department';
         }
         else if($validatedData['departemen'] == "-44"){
-            $validatedData['departemen'] = 'Network Service Yogyakarta';
+            $validatedData['departemen'] = 'Network Operations and Productivity Yogyakarta Department';
         }
         else if($validatedData['departemen'] == "-45"){
-            $validatedData['departemen'] = 'Network Service Surakarta';
+            $validatedData['departemen'] = 'Network Operations and Productivity Surakarta Department';
         }
         else if($validatedData['departemen'] == "-46"){
-            $validatedData['departemen'] = 'RTSO Jateng & DIY';
+            $validatedData['departemen'] = 'Network Operations and Productivity Salatiga Department';
         }
         else if($validatedData['departemen'] == "-47"){
-            $validatedData['departemen'] = 'CDPO Jateng & DIY';
+            $validatedData['departemen'] = 'Service Quality Assurance Jawa Tengah and DIY Department';
         }
         else if($validatedData['departemen'] == "-48"){
-            $validatedData['departemen'] = 'NOS Jateng & DIY';
+            $validatedData['departemen'] = 'Core, Transport, and Datacenter Operations Jawa Tengah and DIY Department';
+        }
+        else if($validatedData['departemen'] == "-49"){
+            $validatedData['departemen'] = 'Network Operations Support Jawa Tengah and DIY Department';
         }
 
         if($validatedData['tipe_file'] == "/BAST"){
