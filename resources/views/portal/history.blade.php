@@ -26,6 +26,9 @@
           @if ($history->action == "Created")
             <h5 class="mb-1 text-primary">{{ $history->action }}</h5>
           @endif
+          @if ($history->action == "Changed Receiver")
+            <h5 style="color: darkgoldenrod" class="mb-1">{{ $history->action }}</h5>
+          @endif
           <small>{{ $history->waktu->format('D, d M Y H:i') }}</small>
         </div>
         <p class="mb-1">{{ $history->document_name }}</p>

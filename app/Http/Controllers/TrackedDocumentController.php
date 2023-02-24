@@ -209,6 +209,16 @@ class TrackedDocumentController extends Controller
 
             ]);
             tracked_document::where('id',$tracked_document->id)->update($validatedData);
+            // creating history row
+            $validatedHistory = [
+                "user_id" => auth()->user()->id,
+                "document_name" => $tracked_document->file,
+                "document_id" => $tracked_document->id,
+                "action" => "Changed Receiver",
+                "waktu" => Carbon::now('Asia/Jakarta'),
+    
+            ];
+            DocumentHistory::create($validatedHistory);
             return back()->with('success', 'Tujuan berhasil diubah');
         }
 

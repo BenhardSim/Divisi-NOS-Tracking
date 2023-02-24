@@ -46,7 +46,7 @@ return new class extends Migration
             $table->string('JENISCATUANLISTRIK');
             $table->string('DAYALISTRIKTERPASANG');
             $table->string('SITESTATUS');
-            $table->string('ID_PEL');
+            $table->string('IDPEL');
             $table->string('PAYMENTPLNMETODE');
             $table->string('HO',20);
             $table->string('SITETSELBARU',20);

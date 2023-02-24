@@ -11,6 +11,7 @@ use App\Models\KPI_aktif;
 use App\Models\KPI_Support;
 use App\Models\KPI_utama;
 use App\Models\opex;
+use App\Models\pln;
 use App\Models\profit_loss;
 use App\Models\ReservedCost;
 use App\Models\RVC;
@@ -43,6 +44,7 @@ class DatabaseSeeder extends Seeder
         tren_irr::factory(12)->create();
         infraIrr::factory(100)->create();
         CostComponent::factory(100)->create();
+        pln::factory(100)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
