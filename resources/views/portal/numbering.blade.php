@@ -60,14 +60,16 @@
                         <label for="departemen" class="form-label">Departemen</label>
                         <select id="departemen" name="departemen" class="form-select" aria-label="Default select example">
                             <option  value="">Pilih Departemen </option>
-                            <option @if (old('departemen') == "-41") selected @endif value="-41">Network Service Semarang</option>
-                            <option @if (old('departemen') == "-42") selected @endif value="-42">Network Service Purwokerto</option>
-                            <option @if (old('departemen') == "-43") selected @endif value="-43">Network Service Pekalongan</option>
-                            <option @if (old('departemen') == "-44") selected @endif value="-44">Network Service Yogyakarta</option>
-                            <option @if (old('departemen') == "-45") selected @endif value="-45">Network Service Surakarta</option>
-                            <option @if (old('departemen') == "-46") selected @endif value="-46">RTSO Jateng & DIY</option>
-                            <option @if (old('departemen') == "-47") selected @endif value="-47">CDPO Jateng & DIY</option>
-                            <option @if (old('departemen') == "-48") selected @endif value="-48">NOS Jateng & DIY</option>
+                            <option @if (old('departemen') == "-4") selected @endif value="-4">Region Network Operations and Productivity Jawa Timur Division</option>
+                            <option @if (old('departemen') == "-41") selected @endif value="-41">Network Operations and Productivity Semarang Department</option>
+                            <option @if (old('departemen') == "-42") selected @endif value="-42">Network Operations and Productivity Purwokerto Department</option>
+                            <option @if (old('departemen') == "-43") selected @endif value="-43">Network Operations and Productivity Pekalongan Department</option>
+                            <option @if (old('departemen') == "-44") selected @endif value="-44">Network Operations and Productivity Yogyakarta Department</option>
+                            <option @if (old('departemen') == "-45") selected @endif value="-45">Network Operations and Productivity Surakarta Department</option>
+                            <option @if (old('departemen') == "-46") selected @endif value="-46">Network Operations and Productivity Salatiga Department</option>
+                            <option @if (old('departemen') == "-47") selected @endif value="-47">Service Quality Assurance Jawa Tengah and DIY Department</option>
+                            <option @if (old('departemen') == "-48") selected @endif value="-48">Core, Transport, and Datacenter Operations Jawa Tengah and DIY Department</option>
+                            <option @if (old('departemen') == "-49") selected @endif value="-49">Network Operations Support Jawa Tengah and DIY Department</option>
                         </select>
                     </div>
                     <div class="form-group">
