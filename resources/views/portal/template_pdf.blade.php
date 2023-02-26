@@ -37,8 +37,6 @@
         <h5>Nama File: {{ $document->file }}</h5>
         <h5>Tanggal: {{ $document->tanggal->format('d M Y') }}</h5>
     </div>
-    
-    <p>Accessed: {{ $downloaded_time->format('D, d M Y H:i') }}</p>
     <div class="body-text">
         {!! $document->body !!}
     </div>

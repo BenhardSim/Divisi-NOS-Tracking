@@ -99,6 +99,8 @@
     </div>
         
 </div>
+
+{{ $documents->links() }}
 @endsection
 <script>
     let target_id; 

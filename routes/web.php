@@ -57,6 +57,9 @@ Route::get('/history',[HistoryController::class, 'index'])->middleware('auth');
 Route::get('/tracking',[TrackingController::class, 'index'])->middleware('admin');
 Route::get('/tracking/{tracked_document:id}',[TrackingController::class, 'show'])->middleware('auth');
 Route::resource('/numbereddocuments', NumberedDocumentController::class)->middleware('auth');
+Route::get('/help',function(){
+    return view('portal.help',["title" => "Help"]);
+});
 
 
 // site list

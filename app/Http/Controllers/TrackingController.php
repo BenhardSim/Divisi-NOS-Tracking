@@ -13,7 +13,7 @@ class TrackingController extends Controller
     public function index(){
         return view('portal.tracking', [
             "title" => "Tracked Document List",
-            "documents" => tracked_document::orderBy("tanggal", "DESC")->get(),
+            "documents" => tracked_document::orderBy("tanggal", "DESC")->paginate(10),
         ]);
     }
 
