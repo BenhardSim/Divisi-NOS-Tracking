@@ -3,7 +3,7 @@
 @section('container')
 
     {{-- title section  --}}
-    <div class="mt-4 navbar d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
+    <div class="mt-4 navbar d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
         {{-- <h1 class="h2 mt-4">Welcome back, {{ auth()->user()->name }}</h1> --}}
         <div class="header-title">
             <h4 class="" style="font-weight: normal;">NOS Portal | Numbering Document</h4>
@@ -34,8 +34,18 @@
     </div>
     @endif
 
+    <div class="menu row  border-bottom pb-2 mb-3">
+        <div class="col-12 display-flex px-4">
+            <a href="#form-docs" class="text-decoration-none" style="color:gray">Document Form | </a>
+            <a href="#numbered-docs" class="text-decoration-none" style="color:gray">Numbered Document List</a>
+        </div>
+    </div>
+
     
-    <div class="row">
+    <div class="row border-bottom pb-5">
+        <div class="col-12 container px-4" id="form-docs">
+            <h6>Document Form</h6>
+        </div>
         <div class="col-8">
             <div class="container up-data shadow-lg">                
                 <form id="form-import" enctype="multipart/form-data" method="POST" action="/numbereddocuments">
@@ -122,6 +132,11 @@
             </div>
         </div>
 
+    </div>
+
+    <br><br>
+    <div class="col-12 container px-4" id="numbered-docs">
+        <h6>Numbered Document List</h6>
     </div>
 
     <div class="container con-tbl px-2 my-3">

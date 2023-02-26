@@ -97,7 +97,7 @@
         </div>
         </div>
     </div>
-        
+{{ $documents->links() }}
 </div>
 @endsection
 <script>
