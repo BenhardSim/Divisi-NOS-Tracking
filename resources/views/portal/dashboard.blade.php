@@ -83,11 +83,19 @@
         </form>
     </div>
 
+{{--     
+    <div class="menu row  border-bottom pb-2 mb-3">
+        <div class="col-12 display-flex px-5">
+            <a id="change-grid-1"  class="text-decoration-none" style="color:gray">grid 1x1  |</a>
+            <a id="change-grid-2"  class="text-decoration-none" style="color:gray">grid 2x1</a>
+        </div>
+    </div> --}}
+
 
     <section class="row">
         {{-- chart revenue vs cost regional  --}}
 
-        <div class="col-lg-6">
+        <div id="rvc_chart" class="col-lg-6">
             <div class="container rvc-stat shadow">
                 <div class="rvc-title title-box">
                     <div class="title-cont">
@@ -1594,6 +1602,26 @@
     };
 
     let KPIA_toast = new Chart(kpia_main_toast, kpia_main_toastConfig);
+
+
+    document.getElementById("change-grid-1").addEventListener('click',()=>{
+        console.log('test');
+        let rvc_chart = document.getElementById('rvc_chart');
+        if(rvc_chart.classList.contains('col-lg-6')){
+            rvc_chart.classList.remove('col-lg-6');
+            rvc_chart.classList.add('col-lg-12');
+        }
+    })
+
+    document.getElementById("change-grid-2").addEventListener('click',()=>{
+        console.log('test');
+        let rvc_chart = document.getElementById('rvc_chart');
+        if(rvc_chart.classList.contains('col-lg-12')){
+            rvc_chart.classList.remove('col-lg-12');
+            rvc_chart.classList.add('col-lg-6');
+        }
+    })
+
 
     let updateChart = function(start_date,end_date,type){
         $.ajax({
