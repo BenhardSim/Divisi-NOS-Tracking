@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class isLevel_1
+class notAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class isLevel_1
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->guest() || auth()->user()->level_akun !== 1){
+        if(auth()->guest() || auth()->user()->level_akun === 5){
             abort(403);
         }
         return $next($request);

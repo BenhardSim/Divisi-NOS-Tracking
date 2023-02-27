@@ -3,7 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\isAdmin;
-use App\Http\Middleware\isLevel_1;
+use App\Http\Middleware\notAdmin;
 use App\Http\Middleware\isLevel_2;
 use App\Http\Middleware\isLevel_3;
 use App\Http\Middleware\isLevel_4;
@@ -71,7 +71,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin' => isAdmin::class,
-        'level_1' => isLevel_1::class,
+        'notAdmin' => notAdmin::class,
         'level_2' => isLevel_2::class,
         'level_3' => isLevel_3::class,
         'level_4' => isLevel_4::class

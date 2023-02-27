@@ -49,9 +49,11 @@
                     <p>NO Sertifikat : - </p>
                     <p>See Latest Document : -</p>
                 @endif
+                @can('admin')
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_doc_imb">
                    Upload Document
                 </button>
+                @endcan
             </div>
         </div>
     </div>
@@ -129,9 +131,11 @@
                     <p>File Name : -</p>
                     <p>See Latest Document : -</p>
                 @endif
+                @can('admin')
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_doc_lain">
                     Upload Document
                  </button>
+                 @endcan
             </div>
         </div>
     </div>
@@ -215,10 +219,11 @@
                     <p>NO IMB : - </p>
                     <p>See Latest Document : -</p>
                 @endif
-
+                @can('admin')
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_doc_certi">
                     Upload Document
                  </button>
+                 @endcan
             </div>
         </div>
     </div>
@@ -314,11 +319,12 @@
                     </button> --}}
 
                     <!-- Insert Data Button -->
+                    @can('admin')
                     <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#addeditkontrak">
                         <span data-feather="plus-circle" class="align-text-bottom" style="margin-right: 5px"></span> 
                         <span> Add Data </span>
                     </button>
-
+                    @endcan
                 </div>       
             </div>
             <table class="table table-hover">
@@ -513,10 +519,12 @@
                     </div>
                     <div class="addicon">
                         <!-- Button trigger modal -->
+                        @can('admin')
                         <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#modalcommissue">
                             <span data-feather="plus-circle" class="align-text-bottom" style="margin-right: 5px"></span> 
                             <span> Add Data </span>
                         </button>
+                        @endcan
                     </div>
                 </div>
             <table class="table table-hover">
@@ -722,10 +730,12 @@
                 </div>
                 <div class="addicon">
                     <!-- Button trigger modal -->
+                    @can('admin')
                     <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#imbasModal">
                         <span data-feather="plus-circle" class="align-text-bottom" style="margin-right: 5px"></span> 
                         <span> Add Data </span>
                     </button>
+                    @endcan
                 </div>
             </div>
             <table class="table table-hover">
@@ -1002,10 +1012,12 @@
                 </div>
                 <div class="addicon">
                     <!-- Button trigger modal -->
+                    @can('admin')
                     <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#claimModal">
                         <span data-feather="plus-circle" class="align-text-bottom" style="margin-right: 5px"></span> 
                         <span> Add Data </span>
                     </button>
+                    @endcan
                 </div>
             </div>
             <table class="table table-hover">
@@ -1284,10 +1296,12 @@
                 </div>
                 <div class="addicon">
                     <!-- Button trigger modal -->
+                    @can('admin')
                     <button style="display: flex;align-items:center;" type="submit" class="btn btn-outline-light btn-sm border-dark"  data-bs-toggle="modal" data-bs-target="#pbbModal">
                         <span data-feather="plus-circle" class="align-text-bottom" style="margin-right: 5px"></span> 
                         <span> Add Data </span>
                     </button>
+                    @endcan
                 </div>
             </div>
             <table class="table table-hover">

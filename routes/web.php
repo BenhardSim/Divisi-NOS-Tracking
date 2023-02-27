@@ -48,7 +48,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/setting', [SettingController::class, 'index'])->middleware('auth');
 Route::put('/setting', [SettingController::class, 'update'])->middleware('auth');
-Route::get('/upload-dokumen', [UploadController::class, 'index'])->middleware('level_1', 'level_2', 'level_3', 'level_4');
+Route::get('/upload-dokumen', [UploadController::class, 'index'])->middleware('notAdmin');
 Route::get('/upload-data', function(){
     return view('portal.add_data');
 })->middleware('admin');

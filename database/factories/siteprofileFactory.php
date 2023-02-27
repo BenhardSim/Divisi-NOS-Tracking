@@ -38,6 +38,7 @@ class siteprofileFactory extends Factory
             'BIAYASEWATOWER' => $this->faker->numberBetween(1000000000, 2000000000),
             'UTILITIESITE' => $this->faker->randomElement(['TP', 'Non TP', 'Unknown']),
             'IMBSTATUS' => $this->faker->randomElement(['No Need', 'Valid', 'Unknown', 'Inovasi to DMT']),
+            'STATUSIMB' => $this->faker->randomElement(['No Need', 'Valid', 'Unknown', 'Inovasi to DMT']),
             'NOIMBTOWER' => $this->faker->numberBetween(1, 1000),
             'NOSERTIFIKATLAHAN' => $this->faker->numberBetween(10, 1000),
             'NOKONTRAK' => $this->faker->regexify('PKS.[0-9]{3}/[A-Z]{2}[0-9]{2}/[A-Z]{2}[0-9]{2}/[0-9]{2}/[0-9]{4}'),
