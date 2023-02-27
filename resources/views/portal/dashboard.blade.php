@@ -1603,26 +1603,6 @@
 
     let KPIA_toast = new Chart(kpia_main_toast, kpia_main_toastConfig);
 
-
-    document.getElementById("change-grid-1").addEventListener('click',()=>{
-        console.log('test');
-        let rvc_chart = document.getElementById('rvc_chart');
-        if(rvc_chart.classList.contains('col-lg-6')){
-            rvc_chart.classList.remove('col-lg-6');
-            rvc_chart.classList.add('col-lg-12');
-        }
-    })
-
-    document.getElementById("change-grid-2").addEventListener('click',()=>{
-        console.log('test');
-        let rvc_chart = document.getElementById('rvc_chart');
-        if(rvc_chart.classList.contains('col-lg-12')){
-            rvc_chart.classList.remove('col-lg-12');
-            rvc_chart.classList.add('col-lg-6');
-        }
-    })
-
-
     let updateChart = function(start_date,end_date,type){
         $.ajax({
             url: "/filter-data",

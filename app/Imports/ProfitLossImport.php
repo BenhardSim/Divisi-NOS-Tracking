@@ -17,6 +17,10 @@ class ProfitLossImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         $latestId = profit_loss::max('id') + 1;
+        // if($row['siteid'] === 'BAT003'){
+        //     return back()->with('toast_success', 'ada site BAT003');
+        // }
+        // dd($row['siteid']);
         return new profit_loss([
             'id' => $latestId,
             'siteid' => $row['siteid'],

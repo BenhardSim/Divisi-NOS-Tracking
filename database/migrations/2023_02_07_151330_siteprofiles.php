@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('TAHUNONAIR');
             $table->string('TYPESITE');
             $table->string('TYPEBTN');
+            $table->string('STATUSIMB');
             $table->string('JENISTOWER');
             $table->string('KETINGGIANTOWER');
             $table->string('TOWERSTATUS');

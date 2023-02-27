@@ -12,11 +12,11 @@
     </div>
 
     {{-- notification --}}
-    @if (session()->has('success'))
+    @if (session()->has('cell_kosong'))
     <div class="row">
-        <div class="col-8">
-            <div class="alert alert-success container alert-dismissible fade show" role="alert">
-                {{ session('fail') }}
+        <div class="col-11">
+            <div class="alert alert-danger container alert-dismissible fade show" role="alert">
+                {!! session('cell_kosong') !!}
             </div>
         </div>
         <div class="col-4"></div>
