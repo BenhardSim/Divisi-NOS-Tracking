@@ -1,7 +1,7 @@
 @extends('portal.layouts.main')
 
 @section('container')
-<div class="mt-4 navbar d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+<div class="mt-4 navbar d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3">
     {{-- <h1 class="h2 mt-4">Welcome back, {{ auth()->user()->name }}</h1> --}}
     <div class="header-title">
         <h4 class="" style="font-weight: normal;">NOS Portal | {{ $title }}</h4>
@@ -12,7 +12,8 @@
 <div class="menu row  border-bottom pb-2 mb-3">
     <div class="col-12 display-flex px-4">
         <a href="#import_data" class="text-decoration-none" style="color:gray">Import Data | </a>
-        <a href="#numbered-docs" class="text-decoration-none" style="color:gray">Document Tracking | </a>
+        <a href="#doc_tracking" class="text-decoration-none" style="color:gray">Document Tracking | </a>
+        <a href="#doc_number" class="text-decoration-none" style="color:gray">Document Numbering | </a>
         <a href="#dev_contact" class="text-decoration-none" style="color:gray">Developer Contact </a>
     </div>
 </div>
@@ -45,7 +46,27 @@
         </ul>
     </div>
     <div class="col-5"></div>
+
+    <div id="doc_tracking" class="container col-7 border-bottom pb-2 mb-3">
+        <h6>Document Tracking</h6>
+    </div>
+    <div class="col-5"></div>
+
+    <div id="doc_number" class="container col-7 border-bottom pb-2 mb-3">
+        <h6>Document Numbering</h6>
+        <p>Document Numbering merupakan fitur yang digunakan untuk mengenerate nomer dokumen berdasarkan jenis dokumen, jenis departemen serta jumlah dokumen yang telah ada di dalam database</p>
+        <p>Berikut cara mengenerate nomer dokumen : </p>
+        <ol>
+            <li>Pastikan Anda telah login, fitur ini bisa diakses oleh semua user yang sudah terauthorisasi</li>
+            <li>Masuk ke Halaman Menu <b>Numbering Document</b> pada sidebar aplikasi</li>
+            <li>Isi Form <b>Document Form</b> sesuai dengan kriteria yang dinginkan, pastikan tidak ada field yang dibiarkan kosong</li>
+            <li>pilih dokumen yang akan diberikan penomoran</li>
+            <li>bila data berhasil dimasukkan maka nomer yang di generate akan muncul pada bagian bawah form di tabel <b>Numbered Document List</b></li>
+        </ol>
     
+    </div>
+    <div class="col-5"></div>
+
     <div id="dev_contact" class="container col-7">
         <h6>Developer Contact</h6>
         <ul>
