@@ -49,6 +49,28 @@
 
     <div id="doc_tracking" class="container col-7 border-bottom pb-2 mb-3">
         <h6>Document Tracking</h6>
+        <p>Fitur Document Tracking adalah fitur yang dibuat untuk melihat progress approval dokumen yang terkirim melalui persetujuan multi-level</p>
+        <p>Berikut cara mengirim dokumen bagi user non-admin : </p>
+        <ol>
+            <li>Pastikan anda login dengan tingkat authorisasi level non-admin</li>
+            <li>Masuk Kedalam menu sidebar <b>Send Document</b></li>
+            <li>Isi data dan body dokumen sesuai form yang diberi</li>
+            <li>Tentukan tujuan dokumen untuk level-level di atas level anda</li>
+            <li>Pastikan tidak ada inputan yang kosong</li>
+            <li>Dokumen akan dikirim ketika menekan tombol submit</li>
+            <li>Atasan anda akan menerima email notifikasi</li>
+        </ol>
+        <p>Berikut cara melihat progress dari document tracking <b>(per dokumen)</b> :</p>
+        <ul>
+            <li style="color:red">Untuk Admin:</li>
+            <p>Buka menu sidebar <b>Document Tracking</b>, klik dokumen yang ingin dilihat detailnya</p>
+            <li style="color:red">Untuk User lain</li>
+            <p>Buka menu sidebar <b>Send Document</b>, di bagian kanan akan terlihat menu log pengiriman dokumen, buka dokumen yang anda inginkan</p>
+        </ul>
+        <p>Berikut cara melihat history dari document tracking <b>(per aksi)</b> :</p>
+        <ul>
+            <p>Buka menu sidebar <b>History</b>, anda akan melihat history log yang sudah dipecah untuk setiap action yang dilakukan. Klik salah satu log untuk membuka menu detail</p>
+        </ul>
     </div>
     <div class="col-5"></div>
 
